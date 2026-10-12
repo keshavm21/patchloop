@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "patchloop"
+dynamic = ["version"]
+description = "A sandboxed, self-repairing coding agent, with a benchmark harness and a sandbox chaos suite."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.0",
+    "defusedxml>=0.7.1",
+    "docker>=7.1",
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "openai>=1.40",
+    "pandas>=2.2",
+    "pydantic>=2.7",
+    "pyyaml>=6.0",
+    "rich>=13.7",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "ruff==0.17.0"]
+
+[project.scripts]
+patchloop = "patchloop.cli:app"
+
+[tool.hatch.version]
+path = "src/patchloop/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/patchloop"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+# A bare `pytest` runs only the fast unit tests; the chaos suite needs Docker and is run explicitly.
+testpaths = ["tests/unit"]
+addopts = ["-ra", "--strict-markers"]

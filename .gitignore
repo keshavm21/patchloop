@@ -1,0 +1,27 @@
+patchloop-project-plan.md
+CLAUDE.md
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Tool caches, including the model response cache
+.pytest_cache/
+.ruff_cache/
+.cache/
+
+# Secrets: only the template is committed
+.env
+.env.*
+!.env.example
+
+# Run folders and raw traces; results/ keeps committed summaries only
+runs/
+results/**/trace.jsonl
+results/**/traces/
+
+.DS_Store
