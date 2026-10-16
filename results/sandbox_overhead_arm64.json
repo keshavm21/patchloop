@@ -1,0 +1,14 @@
+{
+  "measured_at": "2026-10-13T10:01:16+00:00",
+  "what": "end-to-end run_tests() time for a trivial passing task with one test",
+  "runs": 20,
+  "p50_s": 0.348,
+  "p95_s": 0.382,
+  "min_s": 0.321,
+  "max_s": 0.425,
+  "image_id": "sha256:01dfafc7a160a67a9f554481dc99633c0fa12b3d4c17d1dc44789e83a06bf1c9",
+  "arch": "arm64",
+  "docker": "28.5.1 (Docker Desktop 4.49.0 (208700))",
+  "git_sha": "af548ad58b2cb8f236cff3da43d85a731cdc80bb",
+  "git_dirty": true
+}

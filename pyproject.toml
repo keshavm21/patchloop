@@ -37,6 +37,8 @@ packages = ["src/patchloop"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+# Only src/ holds first-party code; otherwise the docker/ folder shadows the docker package.
+src = ["src"]
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "UP"]

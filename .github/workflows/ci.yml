@@ -17,4 +17,6 @@ jobs:
           cache-dependency-path: pyproject.toml
       - run: pip install -e ".[dev]"
       - run: ruff check .
+      - run: make sandbox-image
       - run: make test
+      - run: make chaos # real Docker, no model
