@@ -1,0 +1,20 @@
+{
+  "id": "examples/second_largest",
+  "mode": "repair",
+  "instruction": "Fix second_largest so it matches its docstring and passes the tests.",
+  "entrypoint": "solution.py",
+  "files": {
+    "solution.py": "def second_largest(nums):\n    \"\"\"Return the second-largest distinct value in nums, or None if there isn't one.\"\"\"\n    uniq = sorted(set(nums))\n    return uniq[-2]\n"
+  },
+  "visible_tests": "second_largest/tests/visible/",
+  "hidden_tests": "second_largest/tests/hidden/",
+  "expected_counts": {
+    "visible": 4,
+    "hidden": 9
+  },
+  "meta": {
+    "source": "examples",
+    "bug_type": "missing logic",
+    "reference": "second_largest/reference.py"
+  }
+}

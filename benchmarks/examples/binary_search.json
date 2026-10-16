@@ -1,0 +1,20 @@
+{
+  "id": "examples/binary_search",
+  "mode": "repair",
+  "instruction": "Fix binary_search so it matches its docstring and passes the tests.",
+  "entrypoint": "solution.py",
+  "files": {
+    "solution.py": "def binary_search(items, target):\n    \"\"\"Return the index of target in the sorted list items, or -1 if it isn't there.\"\"\"\n    lo, hi = 0, len(items) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            lo = mid\n        else:\n            hi = mid - 1\n    return -1\n"
+  },
+  "visible_tests": "binary_search/tests/visible/",
+  "hidden_tests": "binary_search/tests/hidden/",
+  "expected_counts": {
+    "visible": 3,
+    "hidden": 8
+  },
+  "meta": {
+    "source": "examples",
+    "bug_type": "value misuse",
+    "reference": "binary_search/reference.py"
+  }
+}

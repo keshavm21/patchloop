@@ -1,0 +1,20 @@
+{
+  "id": "examples/top_k_words",
+  "mode": "repair",
+  "instruction": "Fix top_k_words so it matches its docstring and passes the tests.",
+  "entrypoint": "solution.py",
+  "files": {
+    "solution.py": "from collections import Counter\n\n\ndef top_k_words(text, k):\n    \"\"\"Return the k most frequent words in text, lowercased.\n\n    Words are split on whitespace. Higher counts come first; equal counts are ordered\n    alphabetically.\n    \"\"\"\n    counts = Counter(text.lower().split())\n    ranked = sorted(counts.items(), key=lambda item: (item[1], item[0]), reverse=True)\n    return [word for word, _ in ranked[:k]]\n"
+  },
+  "visible_tests": "top_k_words/tests/visible/",
+  "hidden_tests": "top_k_words/tests/hidden/",
+  "expected_counts": {
+    "visible": 3,
+    "hidden": 7
+  },
+  "meta": {
+    "source": "examples",
+    "bug_type": "function misuse",
+    "reference": "top_k_words/reference.py"
+  }
+}

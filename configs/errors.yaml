@@ -1,0 +1,8 @@
+# Failing test names, exception types and messages (§8.4).
+feedback: L2
+max_attempts: 3
+explain_failures: false
+model:
+  name: gemini-3.5-flash
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  temperature: 0.0

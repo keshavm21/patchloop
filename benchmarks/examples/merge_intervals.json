@@ -1,0 +1,20 @@
+{
+  "id": "examples/merge_intervals",
+  "mode": "repair",
+  "instruction": "Fix merge_intervals so it matches its docstring and passes the tests.",
+  "entrypoint": "solution.py",
+  "files": {
+    "solution.py": "def merge_intervals(intervals):\n    \"\"\"Merge overlapping or touching closed intervals [start, end].\n\n    Returns a new list of merged intervals sorted by start. The input is not modified.\n    \"\"\"\n    merged = []\n    for start, end in sorted(intervals):\n        if merged and start < merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n"
+  },
+  "visible_tests": "merge_intervals/tests/visible/",
+  "hidden_tests": "merge_intervals/tests/hidden/",
+  "expected_counts": {
+    "visible": 3,
+    "hidden": 8
+  },
+  "meta": {
+    "source": "examples",
+    "bug_type": "operator misuse",
+    "reference": "merge_intervals/reference.py"
+  }
+}

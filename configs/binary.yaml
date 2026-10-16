@@ -1,0 +1,8 @@
+# Pass/fail counts only (§8.4).
+feedback: L1
+max_attempts: 3
+explain_failures: false
+model:
+  name: gemini-3.5-flash
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  temperature: 0.0

@@ -1,0 +1,20 @@
+{
+  "id": "examples/roman_to_int",
+  "mode": "repair",
+  "instruction": "Fix roman_to_int so it matches its docstring and passes the tests.",
+  "entrypoint": "solution.py",
+  "files": {
+    "solution.py": "VALUES = {\"I\": 1, \"V\": 5, \"X\": 10, \"L\": 50, \"C\": 100, \"D\": 500, \"M\": 1000}\n\n\ndef roman_to_int(numeral):\n    \"\"\"Convert a valid Roman numeral (1 to 3999), such as \"XIV\", to an int.\"\"\"\n    total = 0\n    for ch in numeral:\n        total += VALUES[ch]\n    return total\n"
+  },
+  "visible_tests": "roman_to_int/tests/visible/",
+  "hidden_tests": "roman_to_int/tests/hidden/",
+  "expected_counts": {
+    "visible": 3,
+    "hidden": 8
+  },
+  "meta": {
+    "source": "examples",
+    "bug_type": "missing logic",
+    "reference": "roman_to_int/reference.py"
+  }
+}

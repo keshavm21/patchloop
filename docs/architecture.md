@@ -2,11 +2,11 @@
 
 PatchLoop repairs buggy Python functions. A model proposes a fix, the fix runs against visible tests in locked-down Docker containers, the failures are fed back, and the loop repeats until the tests pass or a stop condition fires. Hidden tests, which the model never sees, give the final verdict.
 
-This page covers what is built so far (the sandbox) and how it fits into the planned system.
+This page covers what is built so far (the sandbox and the repair loop) and how it fits into the planned system.
 
 ## The whole system
 
-Solid boxes are built; dashed boxes are planned.
+Solid boxes are built; dashed boxes are planned. The syntax check exists; the policy rules arrive in Phase 5, and until then the loop's policy hook allows everything.
 
 ```mermaid
 flowchart LR
@@ -14,15 +14,15 @@ flowchart LR
 
     subgraph host["Host (trusted)"]
         direction TB
-        prompt["agent/prompts.py<br/>build prompt"]:::planned
-        llm["llm/<br/>call the model"]:::planned
-        parse_code["agent/parsing.py<br/>extract one code block"]:::planned
-        policy["safety/policy.py<br/>ast syntax + policy check"]:::planned
+        prompt["agent/prompts.py<br/>build prompt"]
+        llm["llm/<br/>call the model"]
+        parse_code["agent/parsing.py<br/>extract one code block"]
+        policy["syntax check, then<br/>safety/policy.py (Phase 5)"]:::planned
         runner["sandbox/docker_runner.py<br/>run_tests()"]
         resparse["sandbox/parse.py<br/>parse + classify"]
-        stop["agent/stopping.py<br/>stop conditions"]:::planned
-        feedback["agent/feedback.py<br/>render failures"]:::planned
-        trace["tracing.py<br/>trace.jsonl"]:::planned
+        stop["agent/stopping.py<br/>stop conditions"]
+        feedback["agent/feedback.py<br/>render failures"]
+        trace["tracing.py<br/>trace.jsonl"]
     end
 
     subgraph judgebox["Judge container (no candidate code)"]
@@ -172,6 +172,30 @@ flowchart TD
 - **Visible inputs can be special-cased.** A candidate can hard-code the visible tests' answers. That is why hidden tests decide the final verdict.
 - **Containers share the host kernel.** Kernel exploits are out of scope. gVisor or Firecracker would be the next step.
 
+## The repair loop
+
+`agent/loop.py` is a plain state machine, with no agent framework. Each attempt goes through these steps:
+
+1. **Prompt.** `agent/prompts.py` fills the templates in `prompts/v1/` with the task, the current code, the visible tests, a one-line summary of each earlier attempt and full feedback on the latest one. The prompt is rebuilt from scratch on every attempt, so its size stays bounded. Untrusted text goes inside `<task>`, `<code>`, `<tests>` and `<execution_output>` tags, and any closing tag inside it is escaped.
+2. **Model.** `llm/openai_compat.py` calls any OpenAI-compatible API, including Ollama. It backs off on 429 and 5xx errors and counts tokens, cost and latency. `llm/cache.py` caches replies on disk, keyed by model, messages, parameters and repeat index.
+3. **Parse.** `agent/parsing.py` takes exactly one fenced Python block, which is the whole file. No block, or blocks that disagree, is `PARSE_FAILED`, and the feedback restates the format.
+4. **Host checks.** A syntax check with `ast`, then the policy hook. Nothing executes on the host.
+5. **Sandbox.** The visible tests run in the two-container sandbox above.
+6. **Stop or continue.** `agent/stopping.py` checks the stop conditions below. Otherwise `agent/feedback.py` renders feedback at the configured level (L0 to L3), and the next attempt starts.
+
+| Stop reason | When |
+|---|---|
+| `SOLVED` | the visible tests pass |
+| `MAX_ATTEMPTS` | the attempt budget is used up (3 by default) |
+| `NO_PROGRESS` | the code repeats an earlier attempt's (comments and formatting don't count as change), or the same error repeats on consecutive attempts |
+| `BUDGET_EXCEEDED` | the token, cost or wall-clock budget runs out (30k tokens and 180 s by default) |
+| `POLICY_BLOCKED` | the policy check blocks two attempts |
+| `INFRA_ERROR` | the model API or Docker fails; the run doesn't count against the agent |
+
+Whatever the reason, the hidden tests then judge the best candidate that ran: the one with the most visible tests passed, with the earlier attempt winning ties. If nothing ran, they judge the starting code. Unsolved runs can also get a short model-written explanation; it is off in the ablation configs, so it doesn't skew token counts.
+
+Every step is one line of `trace.jsonl`. `patchloop replay` turns a trace back into a timeline, with a code diff for each attempt.
+
 ## Code map (built so far)
 
 ```
@@ -188,7 +212,23 @@ src/patchloop/
   sandbox/docker_runner.py   run_tests(): judge + candidate containers, retry, SandboxInfraError
   sandbox/parse.py           sentinel splitting, defusedxml JUnit parsing, classification
   sandbox/overhead.py        measures per-run overhead into results/
-tests/unit/                  parser, classifier and wire-format tests, no Docker
-tests/sandbox/               real-Docker status tests and the chaos suite
+  agent/loop.py              the repair loop
+  agent/prompts.py           prompt building from prompts/<version>/
+  agent/parsing.py           one fenced code block from a reply; syntax check
+  agent/feedback.py          L0–L3 feedback, history one-liners, regressions
+  agent/stopping.py          stop conditions and best-so-far selection
+  llm/                       OpenAI-compatible client, disk cache, FakeLLM
+  sandbox/sandbox.py         the Sandbox interface and DockerSandbox
+  sandbox/fake.py            FakeSandbox for unit tests
+  safety/base.py             the policy hook (allow_all until Phase 5)
+  config.py                  pydantic models for configs/*.yaml
+  tracing.py                 trace.jsonl writer
+  view.py                    terminal rendering for solve and replay
+  cli.py                     patchloop solve, patchloop replay
+prompts/v1/                  versioned prompt templates
+configs/                     single_shot, binary, errors, full, full_reflect
+benchmarks/examples/         5 hand-picked repair tasks with reference solutions
+tests/unit/                  loop, reply parsing, feedback, prompts, LLM, config, CLI, result parsing, wire
+tests/sandbox/               real-Docker status tests, the chaos suite, example validation, loop e2e
 results/                     committed measurements (sandbox overhead)
 ```

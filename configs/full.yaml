@@ -1,0 +1,9 @@
+# Rich feedback, three attempts: the main configuration (§8.4).
+feedback: L3
+max_attempts: 3
+reflect: false
+explain_failures: false  # on by default for `patchloop solve` without --config
+model:
+  name: gemini-3.5-flash
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  temperature: 0.0
