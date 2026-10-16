@@ -1,0 +1,8 @@
+# Rich feedback, three attempts: the main configuration (§8.4).
+feedback: L3
+max_attempts: 3
+reflect: false
+explain_failures: false  # on by default for `patchloop solve` without --config
+model:
+  name: ""          # not chosen yet; pass --model, or set it here
+  temperature: 0.0

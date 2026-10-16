@@ -2,7 +2,7 @@
 
 A sandboxed, self-repairing coding agent. An LLM fixes buggy Python functions by running visible tests in a locked-down Docker container, reading the failures and patching until the tests pass. A benchmark harness measures how much each design choice helps, and a chaos suite shows the sandbox holds.
 
-**Status:** early development. The sandbox runner and its chaos suite are in place; the agent loop and benchmarks come next.
+**Status:** early development. The sandbox, its chaos suite and the repair loop are in place, and have been tested with a scripted model; runs with a real model and the benchmarks come next.
 
 See [docs/architecture.md](docs/architecture.md) for diagrams of the system, a sandbox run and the status rules.
 
@@ -20,6 +20,14 @@ ruff check .
 make test                   # unit tests, no Docker needed
 make sandbox-image          # build the sandbox image
 make chaos                  # sandbox tests against real Docker
+```
+
+Repair one task, against any OpenAI-compatible API or a local Ollama:
+
+```bash
+patchloop solve benchmarks/examples/second_largest.json --model <model-name>
+patchloop solve benchmarks/examples/second_largest.json --model <model-name> --base-url http://localhost:11434/v1
+patchloop replay runs/<date>/<task>/<run>/      # step through a finished run, with code diffs
 ```
 
 Check that Python can reach Docker:

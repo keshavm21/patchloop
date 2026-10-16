@@ -34,6 +34,7 @@ class Case:
     outcome: str  # "passed", "failed", "error" or "skipped"
     message: str
     detail: str
+    stdout: str = ""
 
 
 def parse_runner_output(
@@ -109,8 +110,16 @@ def parse_junit(xml: str) -> list[Case] | None:
                 break
         message = node.get("message", "") if node is not None else ""
         detail = (node.text or "") if node is not None else ""
+        out = case.find("system-out")
+        stdout = (out.text or "") if out is not None else ""
         cases.append(
-            Case(_head(name, MAX_NAME), outcome, _head(message, MAX_TEXT), _tail(detail, MAX_TEXT))
+            Case(
+                _head(name, MAX_NAME),
+                outcome,
+                _head(message, MAX_TEXT),
+                _tail(detail, MAX_TEXT),
+                _head(stdout, MAX_TEXT),
+            )
         )
     return cases
 
@@ -175,7 +184,12 @@ def _failed_test(case: Case) -> FailedTest:
     else:
         kind, exception = "exception", _exception_name(message) or "Exception"
     return FailedTest(
-        name=case.name, kind=kind, exception=exception, message=message, traceback=case.detail
+        name=case.name,
+        kind=kind,
+        exception=exception,
+        message=message,
+        traceback=case.detail,
+        stdout=case.stdout,
     )
 
 

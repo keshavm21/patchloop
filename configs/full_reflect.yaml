@@ -1,0 +1,8 @@
+# L3 feedback plus a short diagnosis before each patch (§8.4).
+feedback: L3
+max_attempts: 3
+reflect: true
+explain_failures: false
+model:
+  name: ""
+  temperature: 0.0

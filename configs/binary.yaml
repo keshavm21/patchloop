@@ -1,0 +1,7 @@
+# Pass/fail counts only (§8.4).
+feedback: L1
+max_attempts: 3
+explain_failures: false
+model:
+  name: ""
+  temperature: 0.0

@@ -1,0 +1,7 @@
+# Baseline: one attempt, no execution feedback (§8.4).
+feedback: L0
+max_attempts: 1
+explain_failures: false
+model:
+  name: ""
+  temperature: 0.0

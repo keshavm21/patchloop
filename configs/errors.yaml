@@ -1,0 +1,7 @@
+# Failing test names, exception types and messages (§8.4).
+feedback: L2
+max_attempts: 3
+explain_failures: false
+model:
+  name: ""
+  temperature: 0.0

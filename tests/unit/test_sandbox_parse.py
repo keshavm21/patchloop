@@ -140,3 +140,13 @@ def test_long_tracebacks_keep_their_end():
     kept = result.failures[0].traceback
     assert len(kept) < MAX_TEXT + 50
     assert kept.endswith("IndexError: boom")
+
+
+def test_captured_stdout_is_kept_per_failure():
+    case = (
+        '<testcase classname="test_visible" name="test_a"><failure message="assert 1 == 2">'
+        "Traceback</failure><system-out>debug: got 1</system-out></testcase>"
+    )
+    result = parse(output(1, junit(case, ok("test_b"))))
+    [failure] = result.failures
+    assert failure.stdout == "debug: got 1"

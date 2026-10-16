@@ -5,6 +5,7 @@
 cd /tmp || exit 1
 python -m pytest /work/tests -q -p no:cacheprovider \
   --timeout="${PER_TEST_TIMEOUT:-5}" \
+  -o junit_logging=system-out -o junit_log_passing_tests=false \
   --junitxml=/tmp/report.xml >/tmp/pytest.log 2>&1
 echo "@@PL_EXIT $?"
 echo "@@PL_REPORT"
