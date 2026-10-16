@@ -1,6 +1,7 @@
 #!/bin/sh
-# Trusted runner: runs the mounted tests, then prints sentinel-delimited results on stdout,
-# so no writable host mount is needed. The report and log sections are untrusted output.
+# Trusted runner in the judge container: runs the mounted tests (whose `solution` import is the
+# stub in /runner/judge), then prints sentinel-delimited results on stdout, so no writable host
+# mount is needed. The report and log carry strings from the candidate, so they stay untrusted.
 cd /tmp || exit 1
 python -m pytest /work/tests -q -p no:cacheprovider \
   --timeout="${PER_TEST_TIMEOUT:-5}" \

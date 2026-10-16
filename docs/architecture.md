@@ -1,6 +1,6 @@
 # Architecture
 
-PatchLoop repairs buggy Python functions. A model proposes a fix, the fix runs against visible tests in a locked-down Docker container, the failures are fed back, and the loop repeats until the tests pass or a stop condition fires. Hidden tests, which the model never sees, give the final verdict.
+PatchLoop repairs buggy Python functions. A model proposes a fix, the fix runs against visible tests in locked-down Docker containers, the failures are fed back, and the loop repeats until the tests pass or a stop condition fires. Hidden tests, which the model never sees, give the final verdict.
 
 This page covers what is built so far (the sandbox) and how it fits into the planned system.
 
@@ -25,18 +25,23 @@ flowchart LR
         trace["tracing.py<br/>trace.jsonl"]:::planned
     end
 
-    subgraph box["Docker container (untrusted)"]
-        tests["pytest on the candidate<br/>docker/run_tests.sh"]
+    subgraph judgebox["Judge container (no candidate code)"]
+        tests["pytest + the tests<br/>against a stub solution.py"]
+    end
+
+    subgraph candbox["Candidate container (untrusted)"]
+        worker["worker.py imports<br/>the candidate's code"]
     end
 
     task --> prompt --> llm --> parse_code --> policy
     policy -- "allowed" --> runner
     policy -- "blocked: fed back,<br/>no container" --> feedback
     runner --> tests
+    tests <-- "calls and plain-data<br/>answers over a socket" --> worker
     tests -- "stdout only" --> resparse
     resparse -- "ExecutionResult" --> stop
     stop -- "keep going" --> feedback --> prompt
-    stop -- "stop: best-so-far vs<br/>hidden tests, fresh container" --> runner
+    stop -- "stop: best-so-far vs<br/>hidden tests, fresh containers" --> runner
     stop -.-> trace
 
     classDef planned stroke-dasharray: 5 5,color:#888
@@ -44,31 +49,52 @@ flowchart LR
 
 ## One sandbox run
 
-`run_tests(solution_dir, tests_dir, expected_tests)` runs one candidate in a fresh container and returns a typed `ExecutionResult`.
+`run_tests(solution_dir, tests_dir, expected_tests)` judges one candidate and returns a typed `ExecutionResult`. Each run uses two fresh containers from the same image and a fresh Docker volume, all removed afterwards:
+
+- **The judge** has the tests (read-only) and runs pytest through the trusted `run_tests.sh`. The `solution` module its tests import is a stub (`docker/runner/judge/solution.py`). It holds none of the candidate's code.
+- **The candidate's container** has the candidate's `solution.py` (read-only) and runs `docker/runner/worker.py`, which imports it and answers calls.
+- **The volume** holds only the Unix socket between them. It is writable in the judge and read-only in the candidate's container, which can connect to the socket but can't create files there. Both containers keep `network_mode="none"`.
 
 ```mermaid
 sequenceDiagram
     participant H as Host: run_tests()
-    participant D as Docker
-    participant C as Container (uid 10001)
+    participant J as Judge container
+    participant C as Candidate container
     participant P as Host: parse.py
 
-    H->>D: create container (label patchloop=1, all limits)
-    Note over D,C: solution and tests mounted read-only,<br/>/tmp is a 64 MB tmpfs, no network
-    H->>D: start, then wait up to the wall-clock limit
-    D->>C: /runner/run_tests.sh
-    C->>C: pytest /work/tests --timeout --junitxml=/tmp/report.xml
-    C-->>D: stdout: @@PL_EXIT code, @@PL_REPORT xml, @@PL_LOG log
-    alt still running at the wall limit
-        H->>D: kill (timed_out = true)
+    H->>J: create (tests ro, volume rw, all limits)
+    H->>C: create (solution.py ro, volume ro, all limits)
+    H->>J: start: run_tests.sh, pytest
+    H->>C: start: worker.py
+    J->>J: collecting tests imports the stub, which listens on /run/pl/judge.sock
+    C->>J: connect, import solution.py, send its exports
+    loop every call a test makes
+        J->>C: {"id", "name", "args"}
+        C-->>J: {"id", "ok": value} or {"id", "raise": type, message, traceback}
     end
-    H->>D: read OOMKilled flag and the first 256 KB of stdout
-    H->>D: remove container (always, in finally)
+    J-->>H: stdout: @@PL_EXIT code, @@PL_REPORT xml, @@PL_LOG log
+    alt judge still running at the wall limit
+        H->>J: kill (timed_out = true)
+    end
+    H->>C: kill
+    H->>H: OOMKilled from both, first 256 KB of the judge's stdout
+    H->>H: remove both containers and the volume (always)
     H->>P: raw output, timed_out, oom, expected count
     P-->>H: ExecutionResult(status, failures, counts, log, ...)
 ```
 
-Results leave the container only on stdout, between sentinel lines printed by the trusted runner script. That is why the container needs no writable host mount. Everything the container prints is treated as untrusted. The JUnit report is parsed with `defusedxml`, and every string kept from it is length-capped.
+The tests, pytest, its timeouts and the JUnit report all run in the judge, where the candidate can't reach them. Earlier, with one container, a candidate could fake `PASSED` by planting `/tmp/report.xml` and calling `os._exit(0)`, or by printing fake result lines to the runner's stdout. Both attacks are now chaos fixtures, and both come back `TESTS_FAILED`.
+
+What crosses the socket is deliberately narrow (`docker/runner/plwire.py`):
+
+- **Values** are JSON with tags for plain data only: `None`, `bool`, `int`, `float`, `complex`, `str`, `bytes`, `list`, `tuple`, `set`, `frozenset` and `dict` (numpy values become lists or scalars). Nothing on the wire can name a class or run code. Messages are capped at 16 MB and nesting at 100 levels.
+- **Exceptions** come back as their type name, builtin base classes, message and the candidate's traceback. The judge raises the nearest builtin type, so `pytest.raises(ValueError)` still works, and attaches the traceback as a note so failures still show the candidate's line.
+- **Printed output** from the candidate is captured per call (up to 8,000 characters) and replayed in the judge, so pytest shows it with the failing test.
+- **Module names a candidate exports** (`import math`, `from typing import List`) are re-imported by the judge, but only from the standard library and numpy.
+
+The worker is trusted code, but it runs in the candidate's process, so the judge trusts none of its replies. A forged reply can only change the candidate's own answers. That amounts to hard-coding outputs, which the hidden tests catch.
+
+The judge reports results only on stdout, between sentinel lines printed by `run_tests.sh`, so neither container needs a writable host mount. Strings that came from the candidate (messages, tracebacks, printed output) still end up in the report and the log, so everything the judge prints is treated as untrusted too. The report is parsed with `defusedxml`, and every string kept from it is length-capped.
 
 If the run comes back as `SANDBOX_ERROR`, it is retried once. If the retry fails the same way on the same code, it becomes `INTEGRITY_FAIL`. If Docker itself fails (daemon down, image missing, API error), `SandboxInfraError` is raised so that the failure is never blamed on the candidate.
 
@@ -102,42 +128,49 @@ flowchart TD
 
 | Control | Setting | Stops |
 |---|---|---|
-| No network | `network_mode="none"` | Exfiltration, downloads |
+| Separate judge | tests run in their own container; the candidate is reached only through a socket | Faked reports and results |
+| No network | `network_mode="none"` (both containers) | Exfiltration, downloads |
 | No shared memory | `ipc_mode="none"` (no `/dev/shm`) | A second writable path |
 | Memory, no swap | 512 MB, swap limit equal | Memory blowups |
 | CPU | 1 CPU | Starving other runs |
 | Processes | `pids_limit=64` | Fork bombs |
 | Time | per-test `pytest-timeout`, plus a host kill at 30 s | Infinite loops, hangs |
-| Filesystem | read-only root, 64 MB `/tmp` tmpfs, inputs mounted read-only | Persistence, disk filling, test tampering |
+| Filesystem | read-only root, 64 MB `/tmp` tmpfs, inputs mounted read-only; the candidate never gets the tests | Persistence, disk filling, test tampering |
 | User | uid 10001, all capabilities dropped, `no-new-privileges` | Privilege escalation |
-| Environment | only `PYTHONPATH`, `HOME=/tmp`, `PYTHONDONTWRITEBYTECODE`, `PER_TEST_TIMEOUT` | Secret leakage |
+| Environment | only `PYTHONPATH`, `HOME=/tmp`, `PYTHONDONTWRITEBYTECODE`, plus `PER_TEST_TIMEOUT` in the judge | Secret leakage |
 | Output | Docker log capped at 1 MB; host reads 256 KB; log kept to 20k characters | Log floods |
-| Lifetime | a fresh container per run, always removed | State leaking between runs |
+| Lifetime | fresh containers and volume per run, always removed | State leaking between runs |
 | Image | `python:3.12-slim` pinned by digest, hash-locked packages | Drift |
 
 ## The chaos suite
 
-`make chaos` runs 11 hostile fixtures from `tests/sandbox/cases/chaos/` against real Docker, with no model involved, and checks that each one is contained. The fixtures run only inside the container. Host-side pytest never collects them.
+`make chaos` runs hostile fixtures from `tests/sandbox/cases/chaos/` against real Docker, with no model involved, and checks that each one is contained. The fixtures run only inside the sandbox; host-side pytest never collects them. Probes that need their own test (`tests/` beside the fixture) report what the candidate's container allowed.
 
 | Scenario | What the fixture does | Checked outcome |
 |---|---|---|
-| Infinite loop | spins forever after disabling pytest-timeout's alarm | `TIMEOUT` from the host kill, within the limit plus 5 s |
+| Infinite loop | spins forever in the function, after disabling pytest-timeout in its own process | `TIMEOUT` from the judge's per-test timeout |
+| Infinite loop at import | spins forever while being imported | `TIMEOUT` from the host kill, within the limit plus 5 s |
 | Memory blowup | touches 4 GiB | `OOM` (or `MemoryError`); Docker still responds |
 | Process storm | forks without cleaning up | fewer than 64 children; the run ends cleanly |
 | Network egress | TCP over IPv4 and IPv6, DNS, UDP, `host.docker.internal` | every attempt fails; no routes except loopback |
 | Secret hunting | dumps the environment, `/proc/*/environ`, home, `/etc/shadow`, the Docker socket | a canary key set on the host never appears; only the expected variables |
-| Writes outside `/tmp` | writes to the mounts, `/`, `/etc`, site-packages, `/dev/shm`, … | all fail; `/tmp` works |
-| Test tampering | rewrites, deletes or shadows the tests at import | blocked; test file hashes unchanged; all tests still run |
-| Disk fill | writes until it can't | stops at 64 MB; leaving `/tmp` full can't pass |
-| Output flood | prints about 15 MB | log truncated to the cap |
+| Writes outside `/tmp` | writes to the mounts, `/`, `/etc`, site-packages, `/dev/shm`, the socket folder, … | all fail; `/tmp` works |
+| Test tampering | rewrites, deletes or shadows the tests at import | blocked (the tests aren't even in its container); hashes unchanged; all tests still run |
+| Disk fill | writes until it can't | stops at 64 MB; filling its own `/tmp` doesn't affect the judge |
+| Output flood | prints about 15 MB | capped per call; the log stays under the cap |
 | Lingering process | leaves a detached background process | container removed; the next run starts clean |
-| Fake success | `os._exit(0)` or `sys.exit(0)` at import | `INTEGRITY_FAIL` or `RUNTIME_ERROR`, never `PASSED` |
+| Fake success: exit | `os._exit(0)` or `sys.exit(0)` at import | `RUNTIME_ERROR` (an import error), never `PASSED` |
+| Fake success: forged report | plants a passing JUnit report, then answers wrongly | `TESTS_FAILED`: the judge's own report decides |
+| Fake success: forged output | writes passing result lines to its PID 1's pipes, then answers wrongly | `TESTS_FAILED` |
+| Wire garbage | floods the judge's socket with 20 MB of junk | rejected as too large; `RUNTIME_ERROR` |
 
-`tests/sandbox/test_runner.py` also checks every status against benign variants of one small task. Every sandbox test asserts that no `patchloop`-labelled container is left behind.
+`tests/sandbox/test_runner.py` also checks every status against benign variants of one small task. Every sandbox test asserts that no `patchloop`-labelled container or volume is left behind.
 
-## Known limitation: report forging
+## Known limitations
 
-The tests and the candidate run in the same process, as the same user, so a deliberately hostile candidate can forge its own result. For example, it can write a fake `/tmp/report.xml` and then call `os._exit(0)`, or print fake sentinel lines on the runner's stdout. The static policy check will block the obvious forms, but it can be bypassed. The fix is a judge that calls the solution from a separate process and compares outputs itself. It is planned but not built yet.
+- **Only plain data crosses.** A function under test must take and return plain data. A function that returns its own class's instances, a generator or a callable can't be judged this way, and neither can a test that relies on the function mutating its arguments, since the judge sees only the return value. When benchmarks are validated (Phase 3), tasks like these fail the reference-solution check and are dropped and logged.
+- **Visible inputs can be special-cased.** A candidate can hard-code the visible tests' answers. That is why hidden tests decide the final verdict.
+- **Containers share the host kernel.** Kernel exploits are out of scope. gVisor or Firecracker would be the next step.
 
 ## Code map (built so far)
 
@@ -145,14 +178,17 @@ The tests and the candidate run in the same process, as the same user, so a deli
 docker/
   sandbox.Dockerfile         pinned image, non-root user
   sandbox-requirements.txt   hash-locked pytest, pytest-timeout, numpy
-  run_tests.sh               trusted runner: runs pytest, prints the sentinel sections
+  run_tests.sh               trusted runner in the judge: runs pytest, prints the sentinel sections
+  runner/plwire.py           the wire: plain-data JSON encoding and newline framing
+  runner/worker.py           runs in the candidate's container: imports it, answers calls
+  runner/judge/solution.py   the judge's stub for the candidate's module
 src/patchloop/
   models.py                  Status, FailedTest, ExecutionResult
   sandbox/limits.py          resource limits (never loosened to make a run pass)
-  sandbox/docker_runner.py   run_tests(), SandboxInfraError, retry on SANDBOX_ERROR
+  sandbox/docker_runner.py   run_tests(): judge + candidate containers, retry, SandboxInfraError
   sandbox/parse.py           sentinel splitting, defusedxml JUnit parsing, classification
   sandbox/overhead.py        measures per-run overhead into results/
-tests/unit/                  parser and classifier tests, no Docker
+tests/unit/                  parser, classifier and wire-format tests, no Docker
 tests/sandbox/               real-Docker status tests and the chaos suite
 results/                     committed measurements (sandbox overhead)
 ```

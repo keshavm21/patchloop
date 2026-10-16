@@ -1,14 +1,14 @@
 {
-  "measured_at": "2026-10-13T10:01:16+00:00",
+  "measured_at": "2026-10-16T09:05:20+00:00",
   "what": "end-to-end run_tests() time for a trivial passing task with one test",
   "runs": 20,
-  "p50_s": 0.348,
-  "p95_s": 0.382,
-  "min_s": 0.321,
-  "max_s": 0.425,
-  "image_id": "sha256:01dfafc7a160a67a9f554481dc99633c0fa12b3d4c17d1dc44789e83a06bf1c9",
+  "p50_s": 0.595,
+  "p95_s": 0.765,
+  "min_s": 0.519,
+  "max_s": 0.821,
+  "image_id": "sha256:f3e8894d4afa0952b51f867037f5ed2bf23efa31526c3320832b1317e9be8b55",
   "arch": "arm64",
   "docker": "28.5.1 (Docker Desktop 4.49.0 (208700))",
-  "git_sha": "af548ad58b2cb8f236cff3da43d85a731cdc80bb",
+  "git_sha": "08058189a6a7c55b578e77a8d7d7e20d58eeaa92",
   "git_dirty": true
 }

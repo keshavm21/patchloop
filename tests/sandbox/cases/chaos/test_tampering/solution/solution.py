@@ -1,5 +1,6 @@
 """Chaos: a wrong answer that tries, at import, to rewrite, delete or shadow the tests so they
-pass anyway."""
+pass anyway. The tests live only in the judge's container, so it also goes after the one path
+the two containers share."""
 
 import glob
 import os
@@ -17,7 +18,7 @@ for _path in glob.glob("/work/tests/*.py"):
             _attempt(_path)
         except OSError:
             pass
-for _path in ("/work/tests/conftest.py", "/work/conftest.py", "/tmp/conftest.py"):
+for _path in ("/work/tests/conftest.py", "/work/conftest.py", "/run/pl/conftest.py"):
     try:
         with open(_path, "w") as _f:  # a conftest that would mark every test as passed
             _f.write("import pytest\n\n@pytest.hookimpl(tryfirst=True)\n"

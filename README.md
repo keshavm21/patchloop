@@ -6,7 +6,7 @@ A sandboxed, self-repairing coding agent. An LLM fixes buggy Python functions by
 
 See [docs/architecture.md](docs/architecture.md) for diagrams of the system, a sandbox run and the status rules.
 
-Each sandbox run gets a fresh container with no network, 512 MB of memory and no swap, 1 CPU, 64 processes, a read-only filesystem with a 64 MB `/tmp`, an unprivileged user and per-test and wall-clock timeouts. A trivial passing run takes 0.35 s at the median and 0.38 s at p95, from container creation to removal (20 runs on Apple Silicon with Docker Desktop; [`results/sandbox_overhead_arm64.json`](results/sandbox_overhead_arm64.json)).
+Each sandbox run uses two fresh containers: a judge that runs the tests, and one that runs the candidate's code, reached only through a Unix socket that carries plain data. The candidate can't touch the tests or forge the verdict. Each container has no network, 512 MB of memory and no swap, 1 CPU, 64 processes, a read-only filesystem with a 64 MB `/tmp`, an unprivileged user, and per-test and wall-clock timeouts. A trivial passing run takes 0.60 s at the median and 0.77 s at p95, from container creation to removal (20 runs on Apple Silicon with Docker Desktop; [`results/sandbox_overhead_arm64.json`](results/sandbox_overhead_arm64.json)).
 
 ## Development setup
 
