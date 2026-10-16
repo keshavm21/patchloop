@@ -67,6 +67,7 @@ def _run_once(
             limits.image,
             labels={"patchloop": "1"},
             network_mode="none",
+            ipc_mode="none",  # no /dev/shm: /tmp stays the only writable path
             mem_limit=limits.memory,
             memswap_limit=limits.memory,  # equal to mem_limit: no swap
             nano_cpus=int(limits.cpus * 1e9),

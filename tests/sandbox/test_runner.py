@@ -5,22 +5,17 @@ from pathlib import Path
 import pytest
 
 from patchloop.models import ExecutionResult, Status
-from patchloop.sandbox.docker_runner import run_tests
-from patchloop.sandbox.limits import Limits
 
 CASE = Path(__file__).parent / "cases" / "second_largest"
 GRACE_S = 5.0
 
 
 @pytest.fixture
-def run(docker_client):
+def run(run_sandbox):
     def _run(
         solution: str, expected: int = 4, tests: Path = CASE / "tests", **limits
     ) -> ExecutionResult:
-        result = run_tests(CASE / solution, tests, expected, Limits(**limits), docker_client)
-        leftovers = docker_client.containers.list(all=True, filters={"label": "patchloop"})
-        assert not leftovers, f"containers left behind: {leftovers}"
-        return result
+        return run_sandbox(CASE / solution, tests, expected, **limits)
 
     return _run
 

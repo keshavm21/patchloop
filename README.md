@@ -2,7 +2,9 @@
 
 A sandboxed, self-repairing coding agent. An LLM fixes buggy Python functions by running visible tests in a locked-down Docker container, reading the failures and patching until the tests pass. A benchmark harness measures how much each design choice helps, and a chaos suite shows the sandbox holds.
 
-**Status:** early development. The sandbox runner is in place; the agent loop and benchmarks come next.
+**Status:** early development. The sandbox runner and its chaos suite are in place; the agent loop and benchmarks come next.
+
+See [docs/architecture.md](docs/architecture.md) for diagrams of the system, a sandbox run and the status rules.
 
 Each sandbox run gets a fresh container with no network, 512 MB of memory and no swap, 1 CPU, 64 processes, a read-only filesystem with a 64 MB `/tmp`, an unprivileged user and per-test and wall-clock timeouts. A trivial passing run takes 0.35 s at the median and 0.38 s at p95, from container creation to removal (20 runs on Apple Silicon with Docker Desktop; [`results/sandbox_overhead_arm64.json`](results/sandbox_overhead_arm64.json)).
 
