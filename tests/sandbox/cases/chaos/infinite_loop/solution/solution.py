@@ -1,4 +1,5 @@
-"""Chaos: spins forever, after disarming the alarm pytest-timeout uses to stop a test."""
+"""Chaos: spins forever inside the function under test, after disarming the alarm pytest-timeout
+would use if it ran in this process. It doesn't: the timeout runs in the judge."""
 
 import signal
 

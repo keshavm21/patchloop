@@ -14,6 +14,7 @@ TARGETS = [
     "/dev/shm/pwned",
     "/dev/mqueue/pwned",
     "/dev/pwned",
+    "/run/pl/pwned",  # the judge's socket folder
 ]
 
 

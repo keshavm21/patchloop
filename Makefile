@@ -18,3 +18,5 @@ demo:
 clean-containers:
 	@ids="$$(docker ps -aq --filter label=patchloop)"; \
 	if [ -n "$$ids" ]; then docker rm -f $$ids; else echo "no patchloop containers"; fi
+	@vols="$$(docker volume ls -q --filter label=patchloop)"; \
+	if [ -n "$$vols" ]; then docker volume rm $$vols; else echo "no patchloop volumes"; fi

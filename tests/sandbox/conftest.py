@@ -30,12 +30,15 @@ def docker_client() -> docker.DockerClient:
 
 @pytest.fixture
 def run_sandbox(docker_client):
-    """run_tests() against real Docker, asserting that no labelled container is left behind."""
+    """run_tests() against real Docker, asserting that no labelled container or volume is left
+    behind."""
 
     def _run(solution: Path, tests: Path, expected: int, **limits) -> ExecutionResult:
         result = run_tests(solution, tests, expected, Limits(**limits), docker_client)
-        leftovers = docker_client.containers.list(all=True, filters={"label": "patchloop"})
-        assert not leftovers, f"containers left behind: {leftovers}"
+        labelled = {"label": "patchloop"}
+        leftovers = docker_client.containers.list(all=True, filters=labelled)
+        leftovers += docker_client.volumes.list(filters=labelled)
+        assert not leftovers, f"left behind: {leftovers}"
         return result
 
     return _run
