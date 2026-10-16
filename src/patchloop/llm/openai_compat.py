@@ -47,6 +47,7 @@ class OpenAICompatClient:
     def chat(
         self, messages: list[Message], *, temperature: float, max_tokens: int, repeat: int = 0
     ) -> Reply:
+        first_try = time.monotonic()
         for attempt in range(self.max_retries + 1):
             start = time.monotonic()
             try:
@@ -63,7 +64,10 @@ class OpenAICompatClient:
                 continue
             except openai.OpenAIError as e:  # 4xx other than 429: a config problem, not the agent
                 raise LLMInfraError(f"{type(e).__name__}: {e}") from e
-            return self._reply(response, time.monotonic() - start)
+            reply = self._reply(response, time.monotonic() - start)
+            wait = start - first_try
+            usage = reply.usage.model_copy(update={"retries": attempt, "retry_wait_s": wait})
+            return Reply(text=reply.text, usage=usage, model=reply.model)
         raise AssertionError("unreachable")
 
     def _reply(self, response, latency_s: float) -> Reply:
@@ -71,8 +75,12 @@ class OpenAICompatClient:
             raise LLMInfraError("the API returned no choices")
         text = response.choices[0].message.content or ""
         usage = response.usage
-        input_tokens = usage.prompt_tokens if usage else 0
-        output_tokens = usage.completion_tokens if usage else 0
+        input_tokens = (usage.prompt_tokens or 0) if usage else 0
+        output_tokens = (usage.completion_tokens or 0) if usage else 0
+        # Thinking models can leave their reasoning tokens out of completion_tokens (Gemini's
+        # endpoint does) while still counting them in the total, and billing them as output.
+        total = (getattr(usage, "total_tokens", None) or 0) if usage else 0
+        output_tokens = max(output_tokens, total - input_tokens)
         return Reply(
             text=text,
             model=getattr(response, "model", None) or self.model,

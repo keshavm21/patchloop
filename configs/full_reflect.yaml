@@ -4,5 +4,6 @@ max_attempts: 3
 reflect: true
 explain_failures: false
 model:
-  name: ""
+  name: gemini-3.5-flash
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
   temperature: 0.0

@@ -26,8 +26,11 @@ class CachedClient:
         path = self.cache_dir / f"{key}.json"
         if path.exists():
             entry = json.loads(path.read_text())
-            # The recorded usage is kept, so token and cost numbers don't depend on the cache.
-            usage = Usage.model_validate(entry["usage"]).model_copy(update={"cached_calls": 1})
+            # The recorded tokens and cost are kept, so those numbers don't depend on the cache;
+            # the retries happened on the original call, not this one.
+            usage = Usage.model_validate(entry["usage"]).model_copy(
+                update={"cached_calls": 1, "retries": 0, "retry_wait_s": 0.0}
+            )
             return Reply(text=entry["text"], usage=usage, model=entry["model"])
         reply = self.inner.chat(
             messages, temperature=temperature, max_tokens=max_tokens, repeat=repeat

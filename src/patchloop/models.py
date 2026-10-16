@@ -114,9 +114,11 @@ class Usage(BaseModel):
     input_tokens: int = 0
     output_tokens: int = 0
     cost_usd: float | None = None  # None when the model has no price in the config
-    latency_s: float = 0.0
+    latency_s: float = 0.0  # of the successful tries only
     calls: int = 0
     cached_calls: int = 0
+    retries: int = 0
+    retry_wait_s: float = 0.0  # failed tries plus backoff: the provider's time, not the agent's
 
     @property
     def tokens(self) -> int:
@@ -133,6 +135,8 @@ class Usage(BaseModel):
             latency_s=self.latency_s + other.latency_s,
             calls=self.calls + other.calls,
             cached_calls=self.cached_calls + other.cached_calls,
+            retries=self.retries + other.retries,
+            retry_wait_s=self.retry_wait_s + other.retry_wait_s,
         )
 
 

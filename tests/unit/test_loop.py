@@ -290,3 +290,20 @@ def test_trace_records_every_step(task):
     ]
     assert tracer.events[0]["prompt_version"] == "v1"
     assert tracer.events[-1]["reason"] == StopReason.SOLVED
+
+
+def test_time_lost_to_rate_limits_does_not_count_against_the_budget(task):
+    ticks = iter(range(0, 10_000, 100))  # each clock() call is 100 s later
+
+    class RateLimited(FakeLLM):
+        def chat(self, *args, **kwargs):
+            reply = super().chat(*args, **kwargs)
+            usage = reply.usage.model_copy(update={"retries": 3, "retry_wait_s": 1000.0})
+            return type(reply)(text=reply.text, usage=usage, model=reply.model)
+
+    cfg = AgentConfig(explain_failures=False, budget=Budget(max_seconds=150))
+    llm = RateLimited([reply_with(STILL_BUGGY), reply_with(FIXED)])
+    sandbox = sandbox_for(task, {STILL_BUGGY: failed("test_single_element"), FIXED: passed()})
+    rec = solve(task, cfg, llm, sandbox, clock=lambda: next(ticks))
+    assert rec.stop_reason is StopReason.SOLVED
+    assert rec.usage.retries == 6

@@ -92,7 +92,9 @@ def solve(
 def _attempts(task, cfg, llm, sandbox, policy, tracer, rec, repeat, start, clock) -> StopReason:
     code = task.starting_code
     for n in range(1, cfg.max_attempts + 1):
-        if why := over_budget(rec.usage, clock() - start, cfg.budget):
+        # Time lost to the provider's rate limits and outages doesn't count against the agent.
+        elapsed = clock() - start - rec.usage.retry_wait_s
+        if why := over_budget(rec.usage, elapsed, cfg.budget):
             tracer.emit("budget", n, detail=why)
             return StopReason.BUDGET_EXCEEDED
         if rec.attempts and (shown := render(rec.attempts[-1], cfg.feedback)):
@@ -116,6 +118,8 @@ def _attempts(task, cfg, llm, sandbox, policy, tracer, rec, repeat, start, clock
             output_tokens=reply.usage.output_tokens,
             cost_usd=reply.usage.cost_usd,
             latency_s=reply.usage.latency_s,
+            retries=reply.usage.retries,
+            retry_wait_s=round(reply.usage.retry_wait_s, 3),
             cached=bool(reply.usage.cached_calls),
             reply=reply.text,
         )
