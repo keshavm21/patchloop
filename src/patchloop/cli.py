@@ -52,8 +52,6 @@ def solve(
     """Repair one task: attempts against the visible tests, then the hidden verdict."""
     from .agent.loop import solve as solve_task
     from .config import AgentConfig, load_config
-    from .llm.cache import CachedClient
-    from .llm.openai_compat import OpenAICompatClient
     from .models import StopReason, Task
     from .sandbox.sandbox import DockerSandbox
     from .tracing import Tracer
@@ -76,16 +74,7 @@ def solve(
     if not model_cfg.name:
         raise typer.BadParameter("no model set: pass --model, or set model.name in the config")
 
-    api_key = _secret(model_cfg.api_key_env)
-    if not api_key and not _is_local(model_cfg.base_url):
-        raise typer.BadParameter(
-            f"{model_cfg.api_key_env} is not set; put it in .env (see .env.example)"
-        )
-    llm = OpenAICompatClient(
-        model_cfg.name, api_key=api_key, base_url=model_cfg.base_url, price=model_cfg.price
-    )
-    if cache:
-        llm = CachedClient(llm)
+    llm = _make_llm(model_cfg, cache=cache)
 
     task = Task.load(task_path)
     now = datetime.now()
@@ -116,6 +105,112 @@ def replay(
     if not path.exists():
         raise typer.BadParameter(f"{path} does not exist")
     render_replay(read_trace(path), console)
+
+
+@app.command("eval")
+def eval_(
+    bench: Annotated[str, typer.Option(help="A frozen benchmark: humanevalfix or mutbench.")],
+    config: Annotated[list[Path], typer.Option(help="configs/*.yaml; repeat to compare.")],
+    split: Annotated[str, typer.Option(help="dev, test or all.")] = "dev",
+    repeats: Annotated[int, typer.Option(min=1)] = 1,
+    workers: Annotated[
+        int, typer.Option(min=1, help="Parallel runs; keep low on a free tier.")
+    ] = 1,
+    limit: Annotated[int | None, typer.Option(min=1, help="Only the first N tasks.")] = None,
+    out: Annotated[Path | None, typer.Option(help="Results folder.")] = None,
+    max_cost_usd: Annotated[
+        float | None, typer.Option(help="Stop once this much is spent.")
+    ] = None,
+    cache: Annotated[bool, typer.Option("--cache/--no-cache")] = True,
+) -> None:
+    """Run configs × tasks × repeats on a frozen benchmark; resumable."""
+    from .bench.frozen import BenchmarkMissing, load_benchmark
+    from .config import load_config
+    from .eval.runner import ROOT, EvalPlan, run_eval
+
+    if split not in ("dev", "test", "all"):
+        raise typer.BadParameter("--split must be dev, test or all")
+    try:
+        benchmark = load_benchmark(bench, split)
+    except BenchmarkMissing as e:
+        raise typer.BadParameter(str(e)) from None
+    if limit:
+        benchmark = type(benchmark)(benchmark.name, benchmark.manifest, benchmark.tasks[:limit])
+    configs = [load_config(path) for path in config]
+    for cfg in configs:
+        if not cfg.model.name:
+            raise typer.BadParameter(f"{cfg.name}: no model.name in the config")
+    out = out or ROOT / "results" / f"{bench}-{split}"
+    plan = EvalPlan(
+        bench=benchmark,
+        split=split,
+        configs=configs,
+        repeats=repeats,
+        out=out,
+        work=ROOT / "runs" / "eval" / out.name,
+        workers=workers,
+        max_cost_usd=max_cost_usd,
+    )
+    runs = len(benchmark.tasks) * len(configs) * repeats
+    calls = len(benchmark.tasks) * repeats * sum(c.max_attempts for c in configs)
+    console.print(
+        f"{bench}/{split}: {len(benchmark.tasks)} tasks × {len(configs)} configs × {repeats} "
+        f"repeats = {runs} runs, at most {calls} model calls (cached ones are free) -> {out}",
+        highlight=False,
+    )
+
+    def show(record: dict) -> None:
+        hidden = record.get("hidden_result") or {}
+        verdict = "solved" if hidden.get("status") == "PASSED" else record["stop_reason"]
+        console.print(
+            f"  {record['config']:<14} r{record['repeat']}  {record['task_id']:<28} "
+            f"{verdict:<16} attempts {len(record['attempts'])}",
+            highlight=False,
+        )
+
+    summary = run_eval(plan, lambda cfg: _make_llm(cfg.model, cache=cache), on_record=show)
+    latest = ROOT / "results" / "latest"
+    if latest.is_symlink() or not latest.exists():
+        latest.unlink(missing_ok=True)
+        latest.symlink_to(out.name)
+    console.print(
+        f"ran {summary.ran}, skipped {summary.skipped} already done, "
+        f"{summary.infra_errors} infra errors",
+        highlight=False,
+    )
+    if summary.stopped_early:
+        console.print(f"stopped early: {summary.stopped_early}", style="yellow", highlight=False)
+        raise typer.Exit(2)
+
+
+@app.command()
+def report(
+    results: Annotated[Path, typer.Argument(help="A results folder holding records.jsonl.")],
+) -> None:
+    """Write report.md and success_at_k.png for a results folder."""
+    from .eval.report import write_report
+
+    try:
+        path = write_report(results.resolve())
+    except FileNotFoundError as e:
+        raise typer.BadParameter(str(e)) from None
+    console.print(path.read_text(), highlight=False, markup=False)
+    console.print(f"wrote {path}", highlight=False)
+
+
+def _make_llm(model_cfg, *, cache: bool):
+    from .llm.cache import CachedClient
+    from .llm.openai_compat import OpenAICompatClient
+
+    api_key = _secret(model_cfg.api_key_env)
+    if not api_key and not _is_local(model_cfg.base_url):
+        raise typer.BadParameter(
+            f"{model_cfg.api_key_env} is not set; put it in .env (see .env.example)"
+        )
+    llm = OpenAICompatClient(
+        model_cfg.name, api_key=api_key, base_url=model_cfg.base_url, price=model_cfg.price
+    )
+    return CachedClient(llm) if cache else llm
 
 
 def _secret(name: str) -> str | None:

@@ -121,6 +121,7 @@ def _attempts(task, cfg, llm, sandbox, policy, tracer, rec, repeat, start, clock
             retries=reply.usage.retries,
             retry_wait_s=round(reply.usage.retry_wait_s, 3),
             cached=bool(reply.usage.cached_calls),
+            finish_reason=reply.finish_reason,
             reply=reply.text,
         )
 
@@ -146,6 +147,7 @@ def _attempts(task, cfg, llm, sandbox, policy, tracer, rec, repeat, start, clock
             regressions=regressions(rec.attempts, result) if ran else [],
             summary="",
             usage=reply.usage,
+            finish_reason=reply.finish_reason,
         )
         attempt.summary = summarize(attempt, "L3")
         rec.attempts.append(attempt)

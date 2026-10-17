@@ -26,7 +26,11 @@ class StubCompletions:
             raise self.errors.pop(0)
         return SimpleNamespace(
             model=kwargs["model"],
-            choices=[SimpleNamespace(message=SimpleNamespace(content="```python\nx = 1\n```"))],
+            choices=[
+                SimpleNamespace(
+                    message=SimpleNamespace(content="```python\nx = 1\n```"), finish_reason="stop"
+                )
+            ],
             usage=SimpleNamespace(
                 prompt_tokens=1200, completion_tokens=300, total_tokens=self.total_tokens
             ),
@@ -43,9 +47,9 @@ def client_with(errors=(), total_tokens=None, **kwargs):
     return client, stub, sleeps
 
 
-def api_error(cls, status):
+def api_error(cls, status, headers=None):
     request = SimpleNamespace(method="POST", url="https://example.invalid")
-    response = SimpleNamespace(status_code=status, headers={}, request=request)
+    response = SimpleNamespace(status_code=status, headers=headers or {}, request=request)
     return cls("boom", response=response, body=None)
 
 
@@ -109,3 +113,10 @@ def test_hidden_thinking_tokens_count_as_output():
     client, _, _ = client_with(total_tokens=2000)
     usage = client.chat(MESSAGES, temperature=0.0, max_tokens=100).usage
     assert (usage.input_tokens, usage.output_tokens) == (1200, 800)
+
+
+def test_retry_after_is_honoured_and_finish_reason_kept():
+    client, _, sleeps = client_with([api_error(openai.RateLimitError, 429, {"retry-after": "7"})])
+    reply = client.chat(MESSAGES, temperature=0.0, max_tokens=100)
+    assert sleeps == [7.0]
+    assert reply.finish_reason == "stop"

@@ -1,0 +1,3920 @@
+{
+  "name": "mutbench",
+  "version": "v1",
+  "dataset": {
+    "repo": "evalplus/mbppplus",
+    "revision": "b2d74c91837c3f2a20c1299ae98133cbe7cfa077"
+  },
+  "built": {
+    "at": "2026-10-17T09:16:44+00:00",
+    "git_sha": "62ee224f2ce2db19cf78be5e0362b0e0719de787",
+    "image_id": "sha256:853c1b6a21569bf0eca2d31cd8119b1b7cab1834b9ed07dcd5522f7db3a805ce",
+    "arch": "arm64"
+  },
+  "split": {
+    "seed": 20261017,
+    "dev_fraction": 0.25,
+    "stratified_by": "operator",
+    "counts": {
+      "dev": 50,
+      "test": 150
+    }
+  },
+  "checksum": "9abfe8e0f0f8e2a00b95d4b633fca7c686bb7196a6ba3bbe7a253b7047b038e7",
+  "valid_not_selected": 656,
+  "tasks": {
+    "Mbpp_100_swap_boolean_0": {
+      "id": "mutbench/100/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_100_swap_boolean_0.json": "91f8c5f4eccf6272cfa241d0e3d1f170de013851fd6d7539a9d479608e8ff132",
+        "Mbpp_100_swap_boolean_0/reference.py": "c7b6cd3db00165b5f76382cafccb88af6162bb8358341cae1d7ba1c407b57c2e",
+        "Mbpp_100_swap_boolean_0/tests/hidden/evalplus_check.py": "9e9682f55711ac7cd9226b4ea663b9408138ed1a3300b90a1d7a3e8a365ec328",
+        "Mbpp_100_swap_boolean_0/tests/hidden/test_Mbpp_100_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_100_swap_boolean_0/tests/visible/test_Mbpp_100.py": "0a027d51c078f3bbadd08dc1c0ae8b2aa6d9246574f674ba367319de032a222f"
+      }
+    },
+    "Mbpp_101_wrong_variable_0": {
+      "id": "mutbench/101/wrong_variable/0",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_101_wrong_variable_0.json": "697610614f2cb64a86931bb354b944199bb337592516b3b098104251c80bff3b",
+        "Mbpp_101_wrong_variable_0/reference.py": "f07e85370c00e520a4fd03bb1f317eb518e656c6442dba326d560d6bf0086e4b",
+        "Mbpp_101_wrong_variable_0/tests/hidden/evalplus_check.py": "2b622af48e4f3b3228fa564c17344c5d4b1110f0ad1c691fb25031d769f59677",
+        "Mbpp_101_wrong_variable_0/tests/hidden/test_Mbpp_101_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_101_wrong_variable_0/tests/visible/test_Mbpp_101.py": "2420d60d733a858981c621645f757ede2fcab5ab4c9944362e25fccc66c29072"
+      }
+    },
+    "Mbpp_102_swap_boolean_0": {
+      "id": "mutbench/102/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_102_swap_boolean_0.json": "0c543a8150b3539411f15331aeb24cea8e3e64d5112afcf6e01c1264c7becee1",
+        "Mbpp_102_swap_boolean_0/reference.py": "1f578ee45e63d5556d4459d11add69a1fab9b8ba55d3dd57b624d12dec6afefc",
+        "Mbpp_102_swap_boolean_0/tests/hidden/evalplus_check.py": "4631f3abe7ab511d257f4f6225e4c5e0152f76c6fd8ce44aa372e2db33be3e72",
+        "Mbpp_102_swap_boolean_0/tests/hidden/test_Mbpp_102_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_102_swap_boolean_0/tests/visible/test_Mbpp_102.py": "fa78be890d7c05d89c23f8cf5158a401177dbe557bdb20b9db4fbd1f942e25ab"
+      }
+    },
+    "Mbpp_103_drop_guard_1": {
+      "id": "mutbench/103/drop_guard/1",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_103_drop_guard_1.json": "16cd2d918c0252f35cfe2578df009f13ccd93601837bde87906f6d9cb0554faa",
+        "Mbpp_103_drop_guard_1/reference.py": "8f3c8c18ad5679c725958b4f3d31be2640cef69b4b18bdd98bbe0679b3bdbb5a",
+        "Mbpp_103_drop_guard_1/tests/hidden/evalplus_check.py": "d2260510c834153f76e355f51a3d4b6ac68b29ff31e7a8fdbee71c800c77c4cb",
+        "Mbpp_103_drop_guard_1/tests/hidden/test_Mbpp_103_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_103_drop_guard_1/tests/visible/test_Mbpp_103.py": "4201c64fee65aefbb0535ee8198b2215026ec4d730c5f55ede0f7863a7ae4fd4"
+      }
+    },
+    "Mbpp_106_swap_arithmetic_0": {
+      "id": "mutbench/106/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_106_swap_arithmetic_0.json": "13c13c7737aca47a2897a5f4172c4a3dbc700bb80c2ed1e72de50014e4799b43",
+        "Mbpp_106_swap_arithmetic_0/reference.py": "4c4064f7056fe606e237fe74bc9d9df85686deba9117f0d60e8f1f3c2b5c7096",
+        "Mbpp_106_swap_arithmetic_0/tests/hidden/evalplus_check.py": "ddd1a64192b096d7d4881ddda162021c4cec28f547609957bfb53a5a694b4fd1",
+        "Mbpp_106_swap_arithmetic_0/tests/hidden/test_Mbpp_106_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_106_swap_arithmetic_0/tests/visible/test_Mbpp_106.py": "f819df1614eab7d8fb5731f8d645debf3c576c391c9e02ea3aaed81619d51424"
+      }
+    },
+    "Mbpp_108_swap_arithmetic_1": {
+      "id": "mutbench/108/swap_arithmetic/1",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_108_swap_arithmetic_1.json": "32a5fa8cd43a447776a811dbb2158b514c82de377ca1b2087bfc49f33e15510c",
+        "Mbpp_108_swap_arithmetic_1/reference.py": "c6e10890c691192b1abf5b12f114fb7031f5d981c36a45054c973616bdbd5bab",
+        "Mbpp_108_swap_arithmetic_1/tests/hidden/evalplus_check.py": "89af135cd28f4fd8cdc82b464316bdffaa9036eccdc7c1b03935f83ec0a98b31",
+        "Mbpp_108_swap_arithmetic_1/tests/hidden/test_Mbpp_108_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_108_swap_arithmetic_1/tests/visible/test_Mbpp_108.py": "18677e51ebb3d421c2c28dca72e5abe3d432b2aa6cf1beb7a6fe5a5eded65bd3"
+      }
+    },
+    "Mbpp_109_shift_bound_1": {
+      "id": "mutbench/109/shift_bound/1",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_109_shift_bound_1.json": "0c238f978241c5d4398952c72859a835ff0dd77dad0546f814b42a23b832b50e",
+        "Mbpp_109_shift_bound_1/reference.py": "217f2a694ed525e4f8ff69aa72e85553cc27a8fd28db3292d6bae92a965bab09",
+        "Mbpp_109_shift_bound_1/tests/hidden/evalplus_check.py": "d9408a57ca43d91444a3d79ad1000cd690ca0fb00fa23c2f9de32e35d9ccc60f",
+        "Mbpp_109_shift_bound_1/tests/hidden/test_Mbpp_109_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_109_shift_bound_1/tests/visible/test_Mbpp_109.py": "ae1e98030425aef8872c129ba0105cd4dc5bb9be59e64ea195c1bc63b8ebd10c"
+      }
+    },
+    "Mbpp_113_shift_bound_0": {
+      "id": "mutbench/113/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_113_shift_bound_0.json": "94a8fd709f3509b43d91368d08d4796ff0db14276ef787421348d24dcdbd86e0",
+        "Mbpp_113_shift_bound_0/reference.py": "a2b84e572ed909c14c3decc88b7f17753d825d94a1e4a6d9a878852f95547d69",
+        "Mbpp_113_shift_bound_0/tests/hidden/evalplus_check.py": "ff51c23ecd217a95617e101126772c3edadad0d229a9760964d5c4abf91a6575",
+        "Mbpp_113_shift_bound_0/tests/hidden/test_Mbpp_113_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_113_shift_bound_0/tests/visible/test_Mbpp_113.py": "f5490c66f0243f7f4743f60f01cad66e2b7f622f3559e942adeee72f45f750fe"
+      }
+    },
+    "Mbpp_119_shift_bound_0": {
+      "id": "mutbench/119/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_119_shift_bound_0.json": "c43b883e57ea7f5f6ee94c8dd19a446d4b912e2ea389b5d0a37f7f41911f4364",
+        "Mbpp_119_shift_bound_0/reference.py": "fa0f3e2894e65137c7e7244af3b38ad7ad9e3d99eab98021999b32e618caf8af",
+        "Mbpp_119_shift_bound_0/tests/hidden/evalplus_check.py": "30dd6ba02ef84fdf383fc74c52cf6793e76dd906b04b6ff23c148927664315f5",
+        "Mbpp_119_shift_bound_0/tests/hidden/test_Mbpp_119_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_119_shift_bound_0/tests/visible/test_Mbpp_119.py": "f121f5e9d8359209b3b8d6b594be722211a1b91d9126d190337a1eaa474383d1"
+      }
+    },
+    "Mbpp_119_shift_bound_1": {
+      "id": "mutbench/119/shift_bound/1",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_119_shift_bound_1.json": "5a7ed1fcde7ba9e8f13ff5a2bee41052340ebefecd0afc9c9ce886ebcddb9132",
+        "Mbpp_119_shift_bound_1/reference.py": "fa0f3e2894e65137c7e7244af3b38ad7ad9e3d99eab98021999b32e618caf8af",
+        "Mbpp_119_shift_bound_1/tests/hidden/evalplus_check.py": "30dd6ba02ef84fdf383fc74c52cf6793e76dd906b04b6ff23c148927664315f5",
+        "Mbpp_119_shift_bound_1/tests/hidden/test_Mbpp_119_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_119_shift_bound_1/tests/visible/test_Mbpp_119.py": "f121f5e9d8359209b3b8d6b594be722211a1b91d9126d190337a1eaa474383d1"
+      }
+    },
+    "Mbpp_123_delete_statement_1": {
+      "id": "mutbench/123/delete_statement/1",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_123_delete_statement_1.json": "83b6ef600b36d1661e502b7d08821c4077a58b0d4a6135c39fdf9e7505d8d8ae",
+        "Mbpp_123_delete_statement_1/reference.py": "918c06ec7e535e7d7a3f9453282310a5bd60a86f1072169d23d53289c8711c50",
+        "Mbpp_123_delete_statement_1/tests/hidden/evalplus_check.py": "50b98a88a70358acd01a90bbb707225fb99b09de96f8632676b15bfe86f49f15",
+        "Mbpp_123_delete_statement_1/tests/hidden/test_Mbpp_123_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_123_delete_statement_1/tests/visible/test_Mbpp_123.py": "2701f5b1be000684a7216b8743ba63ba2b3a25ff75e7176c99a6d2091c59b3ed"
+      }
+    },
+    "Mbpp_124_wrong_variable_1": {
+      "id": "mutbench/124/wrong_variable/1",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_124_wrong_variable_1.json": "614df2ad9176d7aae33bc863a3b4d870e772e3d896c800acbeb224822bed4fc3",
+        "Mbpp_124_wrong_variable_1/reference.py": "6554a21c973322df8f2fe67cdfc268feee88efaa3494ea4a24920f7d194187ac",
+        "Mbpp_124_wrong_variable_1/tests/hidden/evalplus_check.py": "d889344d7c165f6a9d278898a062b7d513abdf5cce936f01534cfa90131085a5",
+        "Mbpp_124_wrong_variable_1/tests/hidden/test_Mbpp_124_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_124_wrong_variable_1/tests/visible/test_Mbpp_124.py": "71efb377e5f3eb9717559365a83a38c4ca99beb60f7eb114b833efc2123591d9"
+      }
+    },
+    "Mbpp_126_delete_statement_0": {
+      "id": "mutbench/126/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_126_delete_statement_0.json": "e86a54fa0afc1be45014b8bb86b2fbe8cca0bf0517e73c02ff7d224725474e15",
+        "Mbpp_126_delete_statement_0/reference.py": "b39c7754f261540d1cd87bf83ad3d10a3bcd567ea536dc957e5235f199fcd5b5",
+        "Mbpp_126_delete_statement_0/tests/hidden/evalplus_check.py": "08d696e90426be9433ef621fabc36131f26d321cde328b55d117f029a53ad12e",
+        "Mbpp_126_delete_statement_0/tests/hidden/test_Mbpp_126_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_126_delete_statement_0/tests/visible/test_Mbpp_126.py": "69d86142bb73e2ac1b5892cfda81e2f14c4038196af5b5ca62a77eee939326cf"
+      }
+    },
+    "Mbpp_128_flip_comparison_0": {
+      "id": "mutbench/128/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_128_flip_comparison_0.json": "a8add09759b8b219eb1c88dead452406c4e74461a5ddf9769ac362517c369566",
+        "Mbpp_128_flip_comparison_0/reference.py": "dda8d29f32715ac1a10e5d88a19d067cc0d99c7d35860893647f3c338df61b42",
+        "Mbpp_128_flip_comparison_0/tests/hidden/evalplus_check.py": "2e79a9ced20612d7187eec94dc6be8b0fd5541859bbbb22a732920b92b6958a0",
+        "Mbpp_128_flip_comparison_0/tests/hidden/test_Mbpp_128_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_128_flip_comparison_0/tests/visible/test_Mbpp_128.py": "5a391c546e622e9dcc705e71fab0075189d707e76b0faacdbf60bfd8d0fe3fcb"
+      }
+    },
+    "Mbpp_129_shift_bound_2": {
+      "id": "mutbench/129/shift_bound/2",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_129_shift_bound_2.json": "1b910a4b609065fb7041a52d19c5f3fb0e611c8853730702db7e05dd7c91d46e",
+        "Mbpp_129_shift_bound_2/reference.py": "43624c3403f8613bb6e60be20dbef14f9a0b1cc1c78189fc12fb625e10b506ca",
+        "Mbpp_129_shift_bound_2/tests/hidden/evalplus_check.py": "274bca2dd6e081624c71773130ff6e2048afccb75445180b6185ba78c592841e",
+        "Mbpp_129_shift_bound_2/tests/hidden/test_Mbpp_129_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_129_shift_bound_2/tests/visible/test_Mbpp_129.py": "96467d38b8c3bd3a8ca3af90f8a91c4aaa7c6b418c889b024519fc6b6978a17b"
+      }
+    },
+    "Mbpp_129_swap_arithmetic_1": {
+      "id": "mutbench/129/swap_arithmetic/1",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_129_swap_arithmetic_1.json": "ceaa4fb95d7087b3d4ff11248d16a1ab4f67b02e4962aa97101446c4773b887d",
+        "Mbpp_129_swap_arithmetic_1/reference.py": "43624c3403f8613bb6e60be20dbef14f9a0b1cc1c78189fc12fb625e10b506ca",
+        "Mbpp_129_swap_arithmetic_1/tests/hidden/evalplus_check.py": "274bca2dd6e081624c71773130ff6e2048afccb75445180b6185ba78c592841e",
+        "Mbpp_129_swap_arithmetic_1/tests/hidden/test_Mbpp_129_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_129_swap_arithmetic_1/tests/visible/test_Mbpp_129.py": "96467d38b8c3bd3a8ca3af90f8a91c4aaa7c6b418c889b024519fc6b6978a17b"
+      }
+    },
+    "Mbpp_130_delete_statement_0": {
+      "id": "mutbench/130/delete_statement/0",
+      "split": "dev",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_130_delete_statement_0.json": "a0abaea51783882a96597edb3fc5335f96667155d82ef810a9488685c323aff7",
+        "Mbpp_130_delete_statement_0/reference.py": "aaee730de4a58d095b968413fc331a79aff7e4ded88bec6616264dc42b3451e0",
+        "Mbpp_130_delete_statement_0/tests/hidden/evalplus_check.py": "4f4d8b8f4c54e30afd62d4a8ff199ff0cc02681afcd52baf7269baf430d33f6b",
+        "Mbpp_130_delete_statement_0/tests/hidden/test_Mbpp_130_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_130_delete_statement_0/tests/visible/test_Mbpp_130.py": "cded50cb9b86042df62ec668f08d5959e37745d8f587645be0e43c4bd817f051"
+      }
+    },
+    "Mbpp_131_flip_comparison_0": {
+      "id": "mutbench/131/flip_comparison/0",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_131_flip_comparison_0.json": "63874fe6bb197d7fd6b9798ebf0849346224eed03984b13cdd7aeccea0221b7d",
+        "Mbpp_131_flip_comparison_0/reference.py": "3ec032c9f3a65d0571ccf6522e2d4616a4e47dad393be36dfaade73e49272c23",
+        "Mbpp_131_flip_comparison_0/tests/hidden/evalplus_check.py": "d77cb772678efd44a2d10144caa286b2e430c6a7c23daa75ada6583d47b92ccb",
+        "Mbpp_131_flip_comparison_0/tests/hidden/test_Mbpp_131_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_131_flip_comparison_0/tests/visible/test_Mbpp_131.py": "c8578689b806522d065c709e3430a5ad751ee50435ca4aa08b91bdc3b6466444"
+      }
+    },
+    "Mbpp_131_swap_boolean_0": {
+      "id": "mutbench/131/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_131_swap_boolean_0.json": "e76aca341c8e7552c8cd44c52fb20adf93114a564784da57db0b2c16a47b4a72",
+        "Mbpp_131_swap_boolean_0/reference.py": "3ec032c9f3a65d0571ccf6522e2d4616a4e47dad393be36dfaade73e49272c23",
+        "Mbpp_131_swap_boolean_0/tests/hidden/evalplus_check.py": "d77cb772678efd44a2d10144caa286b2e430c6a7c23daa75ada6583d47b92ccb",
+        "Mbpp_131_swap_boolean_0/tests/hidden/test_Mbpp_131_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_131_swap_boolean_0/tests/visible/test_Mbpp_131.py": "c8578689b806522d065c709e3430a5ad751ee50435ca4aa08b91bdc3b6466444"
+      }
+    },
+    "Mbpp_138_flip_comparison_0": {
+      "id": "mutbench/138/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_138_flip_comparison_0.json": "540e4a7701cf63524dc40984fab1535cd593b28b59d37f5f1b940f41cca8dc89",
+        "Mbpp_138_flip_comparison_0/reference.py": "3cda7c8dfadaf3c4944dfaa35d0dbb63b3c82fa4ae96333403e2725a5d4152c0",
+        "Mbpp_138_flip_comparison_0/tests/hidden/evalplus_check.py": "4907d922c731b87005da36aae93b4b3beb4b5c9c9b32fae3d78203de5ce77fa5",
+        "Mbpp_138_flip_comparison_0/tests/hidden/test_Mbpp_138_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_138_flip_comparison_0/tests/visible/test_Mbpp_138.py": "cb6becee65f6c83c1ab9e3efde5f0bf73c16401f770477e2665fc97faee41f2a"
+      }
+    },
+    "Mbpp_138_swap_boolean_0": {
+      "id": "mutbench/138/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_138_swap_boolean_0.json": "5db6aed6504e65cebf9fa850283867f88c3fdc6414574054a358bf4bf1fb0361",
+        "Mbpp_138_swap_boolean_0/reference.py": "3cda7c8dfadaf3c4944dfaa35d0dbb63b3c82fa4ae96333403e2725a5d4152c0",
+        "Mbpp_138_swap_boolean_0/tests/hidden/evalplus_check.py": "4907d922c731b87005da36aae93b4b3beb4b5c9c9b32fae3d78203de5ce77fa5",
+        "Mbpp_138_swap_boolean_0/tests/hidden/test_Mbpp_138_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_138_swap_boolean_0/tests/visible/test_Mbpp_138.py": "cb6becee65f6c83c1ab9e3efde5f0bf73c16401f770477e2665fc97faee41f2a"
+      }
+    },
+    "Mbpp_141_delete_statement_0": {
+      "id": "mutbench/141/delete_statement/0",
+      "split": "dev",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "hang"
+      },
+      "files": {
+        "Mbpp_141_delete_statement_0.json": "5ec66dbc272433d0866ff0f1781cf510ace5d4710f21388f3557626c9026022c",
+        "Mbpp_141_delete_statement_0/reference.py": "35533a6d8082d5aff16054fe5c7a8b99f4725ccaa857bf86522bfc9f59b28664",
+        "Mbpp_141_delete_statement_0/tests/hidden/evalplus_check.py": "001c9abcc7a421cce1144b9dd8b0aea2e5d84eecb2a2e5445c887e30b69957a0",
+        "Mbpp_141_delete_statement_0/tests/hidden/test_Mbpp_141_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_141_delete_statement_0/tests/visible/test_Mbpp_141.py": "b06481546a9d1040d1be16523fe5fe90d107fce6b0428d3757967feae81d9577"
+      }
+    },
+    "Mbpp_160_flip_comparison_1": {
+      "id": "mutbench/160/flip_comparison/1",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_160_flip_comparison_1.json": "19070d6868cd81c4b9f0ed83a124f81570051e9659bcc2db5109f05ab71136f4",
+        "Mbpp_160_flip_comparison_1/reference.py": "0fa5bbaf02d3f1493fb34fe9390aaec32d57d7a33108a2424244999861923dd0",
+        "Mbpp_160_flip_comparison_1/tests/hidden/evalplus_check.py": "8aafbc37c7bcfdc077b014f5ae801cc24e5323af539df39e0b990160dc5399ee",
+        "Mbpp_160_flip_comparison_1/tests/hidden/test_Mbpp_160_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_160_flip_comparison_1/tests/visible/test_Mbpp_160.py": "1b7f1fb6127a96a3b76e5861a6adb6cc689108818f99bb3a17ba2280e11382ef"
+      }
+    },
+    "Mbpp_160_wrong_variable_4": {
+      "id": "mutbench/160/wrong_variable/4",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_160_wrong_variable_4.json": "fac0f13db9ec7c32ed193e0ca12541d51e25c6a27948e57151571f8888241c2f",
+        "Mbpp_160_wrong_variable_4/reference.py": "0fa5bbaf02d3f1493fb34fe9390aaec32d57d7a33108a2424244999861923dd0",
+        "Mbpp_160_wrong_variable_4/tests/hidden/evalplus_check.py": "8aafbc37c7bcfdc077b014f5ae801cc24e5323af539df39e0b990160dc5399ee",
+        "Mbpp_160_wrong_variable_4/tests/hidden/test_Mbpp_160_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_160_wrong_variable_4/tests/visible/test_Mbpp_160.py": "1b7f1fb6127a96a3b76e5861a6adb6cc689108818f99bb3a17ba2280e11382ef"
+      }
+    },
+    "Mbpp_161_flip_comparison_0": {
+      "id": "mutbench/161/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_161_flip_comparison_0.json": "3da7a7a39b41f6bdd2ccbde5906d5ccbd1bee1be486ecaeebe928cdeaf6daed8",
+        "Mbpp_161_flip_comparison_0/reference.py": "7faacc339cbc0714926d924d961fa7fbb1e01bf2ad219c4c87f543d01dde517c",
+        "Mbpp_161_flip_comparison_0/tests/hidden/evalplus_check.py": "75bca7ceace228af44541f425f747573c4127991a0e646bd4f01fbd523c9c368",
+        "Mbpp_161_flip_comparison_0/tests/hidden/test_Mbpp_161_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_161_flip_comparison_0/tests/visible/test_Mbpp_161.py": "f79ccec1cc74511c3a051fc3c4a172b97e49be320256046bc256a43ba9ed9206"
+      }
+    },
+    "Mbpp_162_shift_bound_0": {
+      "id": "mutbench/162/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_162_shift_bound_0.json": "42dcc7da26263ad89c336239f8ccbd11c1fbf136cfeb1983ef271d12ecbc1ff2",
+        "Mbpp_162_shift_bound_0/reference.py": "6812ab0d38b26cd78e36a2b57cb726e352a5aa72bc3d59a65fce51740aa54fb2",
+        "Mbpp_162_shift_bound_0/tests/hidden/evalplus_check.py": "0e8214afcd7529fff226235b8920ef1f5a4c22af34f4e9d7664f02d4b9ab4ce2",
+        "Mbpp_162_shift_bound_0/tests/hidden/test_Mbpp_162_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_162_shift_bound_0/tests/visible/test_Mbpp_162.py": "db6d41276165c3670cce10a869440cfc8bcb779e51744f223b545edf59ed0108"
+      }
+    },
+    "Mbpp_165_flip_comparison_0": {
+      "id": "mutbench/165/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_165_flip_comparison_0.json": "5b1b8f1af73a16b8a59e757cf1c0e75fe8124bcfa6e6e35bd4e0e6190695cb28",
+        "Mbpp_165_flip_comparison_0/reference.py": "4ad968ae87cc0269851ffea67c9d90bcf9aaeb31201ff1b11327a133e1033c2e",
+        "Mbpp_165_flip_comparison_0/tests/hidden/evalplus_check.py": "8593f17faafc00d46e9ac11633c7f47bd8214e51393411ac772ad8b5f18dda42",
+        "Mbpp_165_flip_comparison_0/tests/hidden/test_Mbpp_165_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_165_flip_comparison_0/tests/visible/test_Mbpp_165.py": "852beba47e03e07d138786c3e8f98f4b33d49a1e341b0e672a958a630b223d29"
+      }
+    },
+    "Mbpp_166_wrong_variable_5": {
+      "id": "mutbench/166/wrong_variable/5",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_166_wrong_variable_5.json": "f5bbbafb0b83fe131c9ec81973d3e21096ebabb97a9b8065c587d752a6549706",
+        "Mbpp_166_wrong_variable_5/reference.py": "93985024ce7e006bcddbc0208b6085fa451c353452897592b995af7219c78853",
+        "Mbpp_166_wrong_variable_5/tests/hidden/evalplus_check.py": "e5c896248ae8a69b4ee633ac427e14181417588751e53a82abbb6ee18a12a436",
+        "Mbpp_166_wrong_variable_5/tests/hidden/test_Mbpp_166_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_166_wrong_variable_5/tests/visible/test_Mbpp_166.py": "fc362f53705d374ab9bd44aa7e74ff2cd9c8e81cf4288263aa3953adb72d474d"
+      }
+    },
+    "Mbpp_167_delete_statement_1": {
+      "id": "mutbench/167/delete_statement/1",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_167_delete_statement_1.json": "dd6b9988906a2d069a38fc694de4bd60369751b514c077fd5ddb66446cb12ba8",
+        "Mbpp_167_delete_statement_1/reference.py": "ee72b16e02a4cf15b4b1b398cd36766b69140f809887f5c01c368ab85c22608f",
+        "Mbpp_167_delete_statement_1/tests/hidden/evalplus_check.py": "26c9ba7303b9312ae277c511179ff71e30636b39e84d154c0da9cf19d18e0f34",
+        "Mbpp_167_delete_statement_1/tests/hidden/test_Mbpp_167_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_167_delete_statement_1/tests/visible/test_Mbpp_167.py": "1fab70d96359889535e8570dae0bc33d5c342982b6f62abdf438f48812f2311e"
+      }
+    },
+    "Mbpp_167_flip_comparison_0": {
+      "id": "mutbench/167/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "hang"
+      },
+      "files": {
+        "Mbpp_167_flip_comparison_0.json": "1220785e7a15789593e4b8092fadc379605a54aeffd2dfaf2074699a8c199180",
+        "Mbpp_167_flip_comparison_0/reference.py": "ee72b16e02a4cf15b4b1b398cd36766b69140f809887f5c01c368ab85c22608f",
+        "Mbpp_167_flip_comparison_0/tests/hidden/evalplus_check.py": "26c9ba7303b9312ae277c511179ff71e30636b39e84d154c0da9cf19d18e0f34",
+        "Mbpp_167_flip_comparison_0/tests/hidden/test_Mbpp_167_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_167_flip_comparison_0/tests/visible/test_Mbpp_167.py": "1fab70d96359889535e8570dae0bc33d5c342982b6f62abdf438f48812f2311e"
+      }
+    },
+    "Mbpp_19_flip_comparison_0": {
+      "id": "mutbench/19/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_19_flip_comparison_0.json": "08673075d313cde8ea541940986e74886533f7eaa9786ed80b40ce87317d48d0",
+        "Mbpp_19_flip_comparison_0/reference.py": "86232adefc12e99ad0a51a7dfddf09ef1b2d027f4c9faf6870b18fe825d5624b",
+        "Mbpp_19_flip_comparison_0/tests/hidden/evalplus_check.py": "694e36a6f5f48120b5662ec4e6eb0f453627eaf372f2bf26104f94d9d6a474e7",
+        "Mbpp_19_flip_comparison_0/tests/hidden/test_Mbpp_19_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_19_flip_comparison_0/tests/visible/test_Mbpp_19.py": "64d175148bfa7ab8aa7ae8d3a0a9685f94ea251f1dcebb3ddd7f24c2ba4618c3"
+      }
+    },
+    "Mbpp_20_delete_statement_0": {
+      "id": "mutbench/20/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_20_delete_statement_0.json": "fbb3d1a22223e3b1c41e8d2eb0940808629e6e18f61d044639bb2a790141ed37",
+        "Mbpp_20_delete_statement_0/reference.py": "52ed05f82a662bbf69188fa0242b46bd941e6dc78516540c60540479f86eccfa",
+        "Mbpp_20_delete_statement_0/tests/hidden/evalplus_check.py": "4646529b3511a5a3ffe20a22b6bb345dd2994a2feb8a8839d668c84677af5290",
+        "Mbpp_20_delete_statement_0/tests/hidden/test_Mbpp_20_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_20_delete_statement_0/tests/visible/test_Mbpp_20.py": "696ead4a02d987417a2ae7f3a6943c20ca2a92a77b7ce024012a77ba79bd1a32"
+      }
+    },
+    "Mbpp_222_shift_bound_0": {
+      "id": "mutbench/222/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_222_shift_bound_0.json": "54b23b4d3b3b2b5504f05c4652bf00ce12231447d8e1a0cce114ccf597bec044",
+        "Mbpp_222_shift_bound_0/reference.py": "eff9e383f5fef6b7d8e6231b34cfee17dd45a6f23b42fb3cdd6da4ba5060a456",
+        "Mbpp_222_shift_bound_0/tests/hidden/evalplus_check.py": "5a2d011b0c869d6297fa29bec2700e526edd630372c3438b8887666191d22b43",
+        "Mbpp_222_shift_bound_0/tests/hidden/test_Mbpp_222_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_222_shift_bound_0/tests/visible/test_Mbpp_222.py": "93ce09b49164c2e5473dc1b41bec7ff8d84b985de4431742e342987e3e9fc5e4"
+      }
+    },
+    "Mbpp_226_shift_bound_0": {
+      "id": "mutbench/226/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_226_shift_bound_0.json": "78b3cd3806f384d1608715f9836fc7d245bc7c7f2ca8762a5fd78e1a815393f9",
+        "Mbpp_226_shift_bound_0/reference.py": "58c8d5624997546f3f9a747ff023a9ce0c94d42d675924ba86e201194045cefc",
+        "Mbpp_226_shift_bound_0/tests/hidden/evalplus_check.py": "2f59e5f974b464babe75165b498f03b24dd39d533e1f9d453014014c890664b7",
+        "Mbpp_226_shift_bound_0/tests/hidden/test_Mbpp_226_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_226_shift_bound_0/tests/visible/test_Mbpp_226.py": "3967729f48cd65ea3989e8c68741589d172006be3e30601dbc09ec5e66ea9372"
+      }
+    },
+    "Mbpp_235_delete_statement_1": {
+      "id": "mutbench/235/delete_statement/1",
+      "split": "dev",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "hang"
+      },
+      "files": {
+        "Mbpp_235_delete_statement_1.json": "69f844961ed047ee06bd19e578d3b32096be375953b0ccfeecb798b8a237dd3c",
+        "Mbpp_235_delete_statement_1/reference.py": "8e64ada251ab071951399f82689b63f717058b1e9f09e9068c63da55a95c59a9",
+        "Mbpp_235_delete_statement_1/tests/hidden/evalplus_check.py": "095034ecc3f67245d8605ddedbd2292b3d98374c30d8d2af58d2c9435bc4e3c0",
+        "Mbpp_235_delete_statement_1/tests/hidden/test_Mbpp_235_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_235_delete_statement_1/tests/visible/test_Mbpp_235.py": "b6e59ae8d123a0a6ee2f69d34d74ab40cdf524e68fa4759b34debd898e0d0b2d"
+      }
+    },
+    "Mbpp_238_wrong_variable_0": {
+      "id": "mutbench/238/wrong_variable/0",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_238_wrong_variable_0.json": "d505681a7dcd6d92ba02b131869646434c86217ff3d773cc9575f0c5264d343a",
+        "Mbpp_238_wrong_variable_0/reference.py": "f830d74780ae813566d627c00cd816841e772108ee77a656ddcc16fd41a3b8cc",
+        "Mbpp_238_wrong_variable_0/tests/hidden/evalplus_check.py": "68054e6ba75f4b806cece92e55e73b195894b9db3fc3f3e60e16a158f4052ba5",
+        "Mbpp_238_wrong_variable_0/tests/hidden/test_Mbpp_238_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_238_wrong_variable_0/tests/visible/test_Mbpp_238.py": "3dfc433cfccc33cd3bad35e509b7c226e1ebfa8d6c2cd77d4e2b726706d9aab3"
+      }
+    },
+    "Mbpp_239_shift_bound_9": {
+      "id": "mutbench/239/shift_bound/9",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_239_shift_bound_9.json": "1d77565fdfa095ff9d9cabb276bc2afeba6ad4d9b99d72adf1cfae1aef4b5ea9",
+        "Mbpp_239_shift_bound_9/reference.py": "e52c3a6fe4dd63a94e2e7386529f79cf09d86636f11d65e44f42c1bcbc29de03",
+        "Mbpp_239_shift_bound_9/tests/hidden/evalplus_check.py": "c284411351bbaf4dffdb45dcc6380001db176cd6094e4a615bfd4761e995351f",
+        "Mbpp_239_shift_bound_9/tests/hidden/test_Mbpp_239_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_239_shift_bound_9/tests/visible/test_Mbpp_239.py": "c869fd7a6f7685eb877ba3f7b1df242ea5ee6856c45c0d8f69e535f2a92a9ca1"
+      }
+    },
+    "Mbpp_240_swap_arithmetic_0": {
+      "id": "mutbench/240/swap_arithmetic/0",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_240_swap_arithmetic_0.json": "ab677ace39d0874f48adab259b4958a34c0ce47f71b90d58e311b0392e349820",
+        "Mbpp_240_swap_arithmetic_0/reference.py": "f41a17cc1b11cf06d7f83d0a9da29e3e637857f2fa0700f05c1bc936e0ca15dc",
+        "Mbpp_240_swap_arithmetic_0/tests/hidden/evalplus_check.py": "d3fe2609cc515798a3c49e01b52e22c487916fa9e300086bdb2afd0a89f33958",
+        "Mbpp_240_swap_arithmetic_0/tests/hidden/test_Mbpp_240_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_240_swap_arithmetic_0/tests/visible/test_Mbpp_240.py": "f61f2f16bcd11a56c4ff47f6226b023aa094392df32a1a72287688e462c96a45"
+      }
+    },
+    "Mbpp_245_swap_boolean_0": {
+      "id": "mutbench/245/swap_boolean/0",
+      "split": "dev",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_245_swap_boolean_0.json": "47f11127c099ccfe43fb8dcf025f7988142d2f14990a0233df3836d8dec9828d",
+        "Mbpp_245_swap_boolean_0/reference.py": "cb3447e3ada3bef13091b44da2d5ada24373f7d50e77accead23c1ced210ebe0",
+        "Mbpp_245_swap_boolean_0/tests/hidden/evalplus_check.py": "968462431f65059b42ce331983ca4c0ae453dec174f5735edca50913ceab5481",
+        "Mbpp_245_swap_boolean_0/tests/hidden/test_Mbpp_245_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_245_swap_boolean_0/tests/visible/test_Mbpp_245.py": "341b1013fa49d1f155aee5d35b7863f5672b37c9e18bea2bf868789c46644b5e"
+      }
+    },
+    "Mbpp_247_swap_arithmetic_2": {
+      "id": "mutbench/247/swap_arithmetic/2",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_247_swap_arithmetic_2.json": "647403d380a6f19966fd0b0e9837b426da1948927b9a9564c7c66943fdeeea59",
+        "Mbpp_247_swap_arithmetic_2/reference.py": "1f6770a3f397bf8f44c935846a448225ad5b5f1c82830c1d14a7e260db11e7ee",
+        "Mbpp_247_swap_arithmetic_2/tests/hidden/evalplus_check.py": "77d4d09ae1b7ef1e26444b772247a53512013fed53f58f2e17ef326ed5433b02",
+        "Mbpp_247_swap_arithmetic_2/tests/hidden/test_Mbpp_247_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_247_swap_arithmetic_2/tests/visible/test_Mbpp_247.py": "dae68b1ccfe6e15a793a463ef0c3d74488758de3ffa808793cf560d32e6fb58f"
+      }
+    },
+    "Mbpp_250_wrong_variable_1": {
+      "id": "mutbench/250/wrong_variable/1",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_250_wrong_variable_1.json": "4de436cd2568cecddf94d8d61f7468960ef0c71004bf68e60fd97e0764207e16",
+        "Mbpp_250_wrong_variable_1/reference.py": "26780abca81647354c066efeaf1f41fa0baad63e86102dbe83bde85d9caf3111",
+        "Mbpp_250_wrong_variable_1/tests/hidden/evalplus_check.py": "cc2c285c6925a3b23fe0fd26c06e9e07399633ee8d22af155ad208dc47cd9cbd",
+        "Mbpp_250_wrong_variable_1/tests/hidden/test_Mbpp_250_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_250_wrong_variable_1/tests/visible/test_Mbpp_250.py": "dabd6875edb1c1ab28bd25d163a4d701aaeeaadf027bfc78604f749109b080e5"
+      }
+    },
+    "Mbpp_261_swap_arithmetic_0": {
+      "id": "mutbench/261/swap_arithmetic/0",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_261_swap_arithmetic_0.json": "5247fea9b1fefa11ac4f51f9edd92ecf73787373d591efb94a25e33461cef9c8",
+        "Mbpp_261_swap_arithmetic_0/reference.py": "5d1e270257a10ac4bb1585d2568660da3f02d5af6645535c227ebb6a0db86ca1",
+        "Mbpp_261_swap_arithmetic_0/tests/hidden/evalplus_check.py": "5498b863f26bdd9fce3b9e5e1a1266873e3dab1826b408f64f556829276778b9",
+        "Mbpp_261_swap_arithmetic_0/tests/hidden/test_Mbpp_261_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_261_swap_arithmetic_0/tests/visible/test_Mbpp_261.py": "0aa29711641048d95149b0f73aa3b0a3089457d00fc5e410fe0acc0fe3fe735c"
+      }
+    },
+    "Mbpp_265_shift_bound_0": {
+      "id": "mutbench/265/shift_bound/0",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_265_shift_bound_0.json": "4b36cc7352dc54165cf94318d9c7a618db5ff0cb2411cb480963a7567aced19d",
+        "Mbpp_265_shift_bound_0/reference.py": "a1010f59ba709d46a8738699db7cd7bc45c72520745e7134e0519b801134bd88",
+        "Mbpp_265_shift_bound_0/tests/hidden/evalplus_check.py": "f7eb53981e17e8529f57d9bbc461c67a3fd477939316c8c1b94d2379d1f55e35",
+        "Mbpp_265_shift_bound_0/tests/hidden/test_Mbpp_265_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_265_shift_bound_0/tests/visible/test_Mbpp_265.py": "2a9440eace4ee755ca5aa8be534668693364df89cf6ba28cb716e30fc709b93a"
+      }
+    },
+    "Mbpp_265_wrong_variable_2": {
+      "id": "mutbench/265/wrong_variable/2",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_265_wrong_variable_2.json": "b5affcca0c61e98465ff7c59115e16d3068b0ed577e7418a4edd952fd91d5e9b",
+        "Mbpp_265_wrong_variable_2/reference.py": "a1010f59ba709d46a8738699db7cd7bc45c72520745e7134e0519b801134bd88",
+        "Mbpp_265_wrong_variable_2/tests/hidden/evalplus_check.py": "f7eb53981e17e8529f57d9bbc461c67a3fd477939316c8c1b94d2379d1f55e35",
+        "Mbpp_265_wrong_variable_2/tests/hidden/test_Mbpp_265_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_265_wrong_variable_2/tests/visible/test_Mbpp_265.py": "2a9440eace4ee755ca5aa8be534668693364df89cf6ba28cb716e30fc709b93a"
+      }
+    },
+    "Mbpp_270_wrong_variable_2": {
+      "id": "mutbench/270/wrong_variable/2",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_270_wrong_variable_2.json": "e3deca998e0285460c7706986a2da7365af00579726293e12ec1cba67fc841e1",
+        "Mbpp_270_wrong_variable_2/reference.py": "dc3a8e9617eb8bc429e29b95965c0308a26db650922989d0a5d429f9a8c9d3c2",
+        "Mbpp_270_wrong_variable_2/tests/hidden/evalplus_check.py": "3dbe10e185b2428f19f536f0ea5153ea8fc7f20c6bfce96cebbfff15ce0608b9",
+        "Mbpp_270_wrong_variable_2/tests/hidden/test_Mbpp_270_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_270_wrong_variable_2/tests/visible/test_Mbpp_270.py": "63f1f573697bd3715189a8671532a861aefe81f94d760e403b86c906964c5f70"
+      }
+    },
+    "Mbpp_278_wrong_variable_1": {
+      "id": "mutbench/278/wrong_variable/1",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_278_wrong_variable_1.json": "d3986c4848886b7fc3fe9885f3283cdf9b6e5dd24eb4818fdd64623e77b43c44",
+        "Mbpp_278_wrong_variable_1/reference.py": "9a922f657a50bb5db19a968265b0cc21aedac4c822039f7d14eea3973e92f4e7",
+        "Mbpp_278_wrong_variable_1/tests/hidden/evalplus_check.py": "05f008674a5c707651bd294df3aa9617f3a0d9df63d617fb1a902effd4328e76",
+        "Mbpp_278_wrong_variable_1/tests/hidden/test_Mbpp_278_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_278_wrong_variable_1/tests/visible/test_Mbpp_278.py": "cc9775991446cde1b3c48589e1ff8ecc84fccf476b68bf3e49bf96b1dc63fe7b"
+      }
+    },
+    "Mbpp_278_wrong_variable_2": {
+      "id": "mutbench/278/wrong_variable/2",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_278_wrong_variable_2.json": "ede54b64c9a98a0086b47a2c36237c7cff895a7eb92fd6f18cceaf54b569dc2c",
+        "Mbpp_278_wrong_variable_2/reference.py": "9a922f657a50bb5db19a968265b0cc21aedac4c822039f7d14eea3973e92f4e7",
+        "Mbpp_278_wrong_variable_2/tests/hidden/evalplus_check.py": "05f008674a5c707651bd294df3aa9617f3a0d9df63d617fb1a902effd4328e76",
+        "Mbpp_278_wrong_variable_2/tests/hidden/test_Mbpp_278_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_278_wrong_variable_2/tests/visible/test_Mbpp_278.py": "cc9775991446cde1b3c48589e1ff8ecc84fccf476b68bf3e49bf96b1dc63fe7b"
+      }
+    },
+    "Mbpp_280_wrong_variable_3": {
+      "id": "mutbench/280/wrong_variable/3",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_280_wrong_variable_3.json": "df19052684b7e8ff593ff4980784fba53683c5ed1322e91b703336639582c13a",
+        "Mbpp_280_wrong_variable_3/reference.py": "dbf7a7f008fb21f8c62af3fe3eeb069b3b134f56b051390ec1e13a231297f34c",
+        "Mbpp_280_wrong_variable_3/tests/hidden/evalplus_check.py": "52289079b26f2f06f4a825a80bb56363f65cf789b50b6d02fd116e4db26505c0",
+        "Mbpp_280_wrong_variable_3/tests/hidden/test_Mbpp_280_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_280_wrong_variable_3/tests/visible/test_Mbpp_280.py": "87a57577f5250153163b02f8df51f620cc2300637f6252f09efe24244b693e70"
+      }
+    },
+    "Mbpp_283_flip_comparison_0": {
+      "id": "mutbench/283/flip_comparison/0",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_283_flip_comparison_0.json": "c16cacd27fb3422f943f72b64c9132dfedca59744de28444a47c046945456d8d",
+        "Mbpp_283_flip_comparison_0/reference.py": "006f21b23c0358a5dfb28bef7dec3b184a6e80c4f81099124ede9c933a480e5b",
+        "Mbpp_283_flip_comparison_0/tests/hidden/evalplus_check.py": "567607fc440eafdc97b30b3e3618b092c94b5791c426c427e7163330154ec7e1",
+        "Mbpp_283_flip_comparison_0/tests/hidden/test_Mbpp_283_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_283_flip_comparison_0/tests/visible/test_Mbpp_283.py": "47312b6310f6b22838ab430aff710b721f2807549c8e650a07867e6673160951"
+      }
+    },
+    "Mbpp_285_wrong_variable_1": {
+      "id": "mutbench/285/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_285_wrong_variable_1.json": "4ea91431e63d7692a3a3b7a781edd8cfa83a2abab051ca4c7498a629e2b257df",
+        "Mbpp_285_wrong_variable_1/reference.py": "40eded978a66bd6052830ea0904d3a472fddddc92222bccad73ada3670a5fc82",
+        "Mbpp_285_wrong_variable_1/tests/hidden/evalplus_check.py": "b3732617b4ed053cbd3bfa0d99338c1864598eedfba80af90cae4f7f3ca2dd23",
+        "Mbpp_285_wrong_variable_1/tests/hidden/test_Mbpp_285_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_285_wrong_variable_1/tests/visible/test_Mbpp_285.py": "739c205a6cb8a8cf3bd7b7e9af9a1e9bfb24add9f41ac1a31a5dd2d2a90a4a27"
+      }
+    },
+    "Mbpp_286_swap_arithmetic_0": {
+      "id": "mutbench/286/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_286_swap_arithmetic_0.json": "40c753281ac76eeb3296484f7e9f235669db612763f662cdc5a14365064bab1c",
+        "Mbpp_286_swap_arithmetic_0/reference.py": "77677bccf30dc8d8eb871ac7ff0bf613fd2508e1bca0fecc985712f32adef61c",
+        "Mbpp_286_swap_arithmetic_0/tests/hidden/evalplus_check.py": "5fe5f91ba465cebc13fc9a80d3aa153e9d617704f38a8ad8fa557ec41bb47888",
+        "Mbpp_286_swap_arithmetic_0/tests/hidden/test_Mbpp_286_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_286_swap_arithmetic_0/tests/visible/test_Mbpp_286.py": "e63ca6bce943dbb09fa5c80e15c14bf51a2d7957ce54117dd3dd945e1952f478"
+      }
+    },
+    "Mbpp_294_wrong_variable_2": {
+      "id": "mutbench/294/wrong_variable/2",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_294_wrong_variable_2.json": "b73da695eb1f2329095eacf3e62372e9a4ba32fd7f777d11ca060f5d8a7308a5",
+        "Mbpp_294_wrong_variable_2/reference.py": "fca1fbdb4cfe785a1fed1ea3342a757ee9d22ef74e620d6b72bf2301d9494c60",
+        "Mbpp_294_wrong_variable_2/tests/hidden/evalplus_check.py": "16b39b42fe3c92231dfef380f49db3155932deda31546d7301538c9d7876e713",
+        "Mbpp_294_wrong_variable_2/tests/hidden/test_Mbpp_294_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_294_wrong_variable_2/tests/visible/test_Mbpp_294.py": "e3c786e17a43081cbbaac553dcd9ef67eac61b157ec07679c71760aaad2d01f9"
+      }
+    },
+    "Mbpp_294_wrong_variable_3": {
+      "id": "mutbench/294/wrong_variable/3",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_294_wrong_variable_3.json": "85b4cb9b515d93a809c998f2b63bcd7fe0aa277c986013f635e609494f0c3643",
+        "Mbpp_294_wrong_variable_3/reference.py": "fca1fbdb4cfe785a1fed1ea3342a757ee9d22ef74e620d6b72bf2301d9494c60",
+        "Mbpp_294_wrong_variable_3/tests/hidden/evalplus_check.py": "16b39b42fe3c92231dfef380f49db3155932deda31546d7301538c9d7876e713",
+        "Mbpp_294_wrong_variable_3/tests/hidden/test_Mbpp_294_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_294_wrong_variable_3/tests/visible/test_Mbpp_294.py": "e3c786e17a43081cbbaac553dcd9ef67eac61b157ec07679c71760aaad2d01f9"
+      }
+    },
+    "Mbpp_296_flip_comparison_0": {
+      "id": "mutbench/296/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_296_flip_comparison_0.json": "33b7c010370c2a31679d5983120557fe395b9ac55c657e4980df14e06196e784",
+        "Mbpp_296_flip_comparison_0/reference.py": "b41760bc826b7d880496d1128040aa50400d94afea64a72e1451df4946427602",
+        "Mbpp_296_flip_comparison_0/tests/hidden/evalplus_check.py": "ca313f1a0a75f964128f148c05fffcbc0b51c1a8baebc6397303f6fef29c408c",
+        "Mbpp_296_flip_comparison_0/tests/hidden/test_Mbpp_296_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_296_flip_comparison_0/tests/visible/test_Mbpp_296.py": "f594cdb68e872c90f97e54f74754e8edd4e8ef2928fcc73cb5e8327df915504a"
+      }
+    },
+    "Mbpp_299_delete_statement_0": {
+      "id": "mutbench/299/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_299_delete_statement_0.json": "200ff9c489140de49340951801ea12fe47c3a016e8a312bd70791cecb5b07fb5",
+        "Mbpp_299_delete_statement_0/reference.py": "ea167f8eec267df19c49f38bf22be2db0ce2a4b51de1c669ef39bbbe1c47226e",
+        "Mbpp_299_delete_statement_0/tests/hidden/evalplus_check.py": "0bac5636837ac288f9c0f69d3fcc2a012358ffd9d2d0d6b93aacf0ee985f0519",
+        "Mbpp_299_delete_statement_0/tests/hidden/test_Mbpp_299_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_299_delete_statement_0/tests/visible/test_Mbpp_299.py": "958d5d1de9fcae45fed8fb319f87d575926a97d83f6f39ba30fa7b10fe287f66"
+      }
+    },
+    "Mbpp_299_wrong_variable_1": {
+      "id": "mutbench/299/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_299_wrong_variable_1.json": "42aea383f86d6c37e54de5b3253355d1ba6c844e755a04e9f7c23f5cbcc8d0bc",
+        "Mbpp_299_wrong_variable_1/reference.py": "ea167f8eec267df19c49f38bf22be2db0ce2a4b51de1c669ef39bbbe1c47226e",
+        "Mbpp_299_wrong_variable_1/tests/hidden/evalplus_check.py": "0bac5636837ac288f9c0f69d3fcc2a012358ffd9d2d0d6b93aacf0ee985f0519",
+        "Mbpp_299_wrong_variable_1/tests/hidden/test_Mbpp_299_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_299_wrong_variable_1/tests/visible/test_Mbpp_299.py": "958d5d1de9fcae45fed8fb319f87d575926a97d83f6f39ba30fa7b10fe287f66"
+      }
+    },
+    "Mbpp_300_shift_bound_0": {
+      "id": "mutbench/300/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_300_shift_bound_0.json": "7d9ec23dd1fbaf9cb0fc7a9ed4dbfdc7b54b076bffc4ff7279bfd8de5ae2381f",
+        "Mbpp_300_shift_bound_0/reference.py": "b6e90a5d18396d515b803371e050e93dbb053b46c39ebcc71b4dc1614b81de0c",
+        "Mbpp_300_shift_bound_0/tests/hidden/evalplus_check.py": "f15a0641dcabf08b63366d97790fda8a29d91b570689d9eb4c8e5aa3a677da6a",
+        "Mbpp_300_shift_bound_0/tests/hidden/test_Mbpp_300_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_300_shift_bound_0/tests/visible/test_Mbpp_300.py": "2e8a94e20a8713e2670fea710525d99f2d65f9f597583fd34cbcd5febf4a47b9"
+      }
+    },
+    "Mbpp_300_swap_arithmetic_3": {
+      "id": "mutbench/300/swap_arithmetic/3",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_300_swap_arithmetic_3.json": "6f01128331eae15951ec19ef09a932e8ddf4dc77b691da621d3878d5063497a4",
+        "Mbpp_300_swap_arithmetic_3/reference.py": "b6e90a5d18396d515b803371e050e93dbb053b46c39ebcc71b4dc1614b81de0c",
+        "Mbpp_300_swap_arithmetic_3/tests/hidden/evalplus_check.py": "f15a0641dcabf08b63366d97790fda8a29d91b570689d9eb4c8e5aa3a677da6a",
+        "Mbpp_300_swap_arithmetic_3/tests/hidden/test_Mbpp_300_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_300_swap_arithmetic_3/tests/visible/test_Mbpp_300.py": "2e8a94e20a8713e2670fea710525d99f2d65f9f597583fd34cbcd5febf4a47b9"
+      }
+    },
+    "Mbpp_301_drop_guard_0": {
+      "id": "mutbench/301/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_301_drop_guard_0.json": "85a3d7adc90f09a15fa99f7bbea99e6ef5dbae51116d37f2f06d724bab05ca61",
+        "Mbpp_301_drop_guard_0/reference.py": "8c1560ca1ca7d4ec082e957d763c8b666180108c251980eba701ebe513a3a7c9",
+        "Mbpp_301_drop_guard_0/tests/hidden/evalplus_check.py": "628b1397c4f5d4730dabfc7c9e77e18878a8a2bf81124f935cbc958af7bf1657",
+        "Mbpp_301_drop_guard_0/tests/hidden/test_Mbpp_301_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_301_drop_guard_0/tests/visible/test_Mbpp_301.py": "7add1521f193fe0302595cb25bce7e7984560a3e5bc495735e3c911b0fc95f74"
+      }
+    },
+    "Mbpp_305_drop_guard_0": {
+      "id": "mutbench/305/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_305_drop_guard_0.json": "cd8fb67846c4d8428637ca303d2ef1c814514236d2ccbe53a9faaaa7ee435c50",
+        "Mbpp_305_drop_guard_0/reference.py": "deebb10de94ef679774ec4c8c127ee6f12f591dfa070ea558636738ec7d71122",
+        "Mbpp_305_drop_guard_0/tests/hidden/evalplus_check.py": "199c4fbbd7b847fe31bd67067eb9b372964b33eb07c3eed9b70cb5ff7142d948",
+        "Mbpp_305_drop_guard_0/tests/hidden/test_Mbpp_305_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_305_drop_guard_0/tests/visible/test_Mbpp_305.py": "7d5a5e8fb3f3669da650fafee0ef38cc579f8d1fa3cc551ac1af70db6b4e0234"
+      }
+    },
+    "Mbpp_310_swap_boolean_0": {
+      "id": "mutbench/310/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_310_swap_boolean_0.json": "264f8c737b04c5a1a0d31310f98f876732d380b6429eeff110e54147de1ce832",
+        "Mbpp_310_swap_boolean_0/reference.py": "36bad614a9b39aefa54ced8e8627626e8e20afcddf8c83ec1b58374efc3c5aeb",
+        "Mbpp_310_swap_boolean_0/tests/hidden/evalplus_check.py": "949b91f5d340bcfca11227b66fc7d8cda85856593aeac304407dfb6c1c5bae82",
+        "Mbpp_310_swap_boolean_0/tests/hidden/test_Mbpp_310_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_310_swap_boolean_0/tests/visible/test_Mbpp_310.py": "f7d30e83d45cec443fe84788220da915e449b533b78a4ddf2566be5b40ecdb41"
+      }
+    },
+    "Mbpp_311_drop_guard_0": {
+      "id": "mutbench/311/drop_guard/0",
+      "split": "dev",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_311_drop_guard_0.json": "e2b98968cca444f17001997836537af4a8079c741ab5911f8f62ffdcc66e251c",
+        "Mbpp_311_drop_guard_0/reference.py": "7f230c5bba4e59a11ae903cbf3a7f4d4773dc079ccef94ddb062fec4d375a341",
+        "Mbpp_311_drop_guard_0/tests/hidden/evalplus_check.py": "60da65ba117abcba6276b5fc287756ee5ea86c50712f71e3be87f916f7532de6",
+        "Mbpp_311_drop_guard_0/tests/hidden/test_Mbpp_311_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_311_drop_guard_0/tests/visible/test_Mbpp_311.py": "9538f77736c371efcad3ab73c5c9b64e55fda38c2b323117f4a4fb769019fefb"
+      }
+    },
+    "Mbpp_311_swap_arithmetic_1": {
+      "id": "mutbench/311/swap_arithmetic/1",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_311_swap_arithmetic_1.json": "eaae84f9e08ad06b6ffcc81bc98649e72279bc58892594f635c341824ec30254",
+        "Mbpp_311_swap_arithmetic_1/reference.py": "7f230c5bba4e59a11ae903cbf3a7f4d4773dc079ccef94ddb062fec4d375a341",
+        "Mbpp_311_swap_arithmetic_1/tests/hidden/evalplus_check.py": "60da65ba117abcba6276b5fc287756ee5ea86c50712f71e3be87f916f7532de6",
+        "Mbpp_311_swap_arithmetic_1/tests/hidden/test_Mbpp_311_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_311_swap_arithmetic_1/tests/visible/test_Mbpp_311.py": "9538f77736c371efcad3ab73c5c9b64e55fda38c2b323117f4a4fb769019fefb"
+      }
+    },
+    "Mbpp_388_delete_statement_0": {
+      "id": "mutbench/388/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "hang"
+      },
+      "files": {
+        "Mbpp_388_delete_statement_0.json": "bdf2d6d99cd85e447956dad53f63d4b1fd63138cc8537854160e9716f277a30e",
+        "Mbpp_388_delete_statement_0/reference.py": "6418985faf5b730c40c42666b17f9fe6ad86c74e8fb97d6b684244cf2e072a5c",
+        "Mbpp_388_delete_statement_0/tests/hidden/evalplus_check.py": "9a1dfe144e426f053f5d2b0cfccaaa2d7d6048f26798096938211cda53e01e40",
+        "Mbpp_388_delete_statement_0/tests/hidden/test_Mbpp_388_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_388_delete_statement_0/tests/visible/test_Mbpp_388.py": "1e9ff19231eec4539e5ca2a81c6637bead499d7d3432c705e418362e27175c30"
+      }
+    },
+    "Mbpp_388_swap_arithmetic_0": {
+      "id": "mutbench/388/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_388_swap_arithmetic_0.json": "01aeb13c6e53ddc312c7ccf29fab2a68581e7c2eb876f5e3237f5b2bddb185bd",
+        "Mbpp_388_swap_arithmetic_0/reference.py": "6418985faf5b730c40c42666b17f9fe6ad86c74e8fb97d6b684244cf2e072a5c",
+        "Mbpp_388_swap_arithmetic_0/tests/hidden/evalplus_check.py": "9a1dfe144e426f053f5d2b0cfccaaa2d7d6048f26798096938211cda53e01e40",
+        "Mbpp_388_swap_arithmetic_0/tests/hidden/test_Mbpp_388_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_388_swap_arithmetic_0/tests/visible/test_Mbpp_388.py": "1e9ff19231eec4539e5ca2a81c6637bead499d7d3432c705e418362e27175c30"
+      }
+    },
+    "Mbpp_389_drop_guard_0": {
+      "id": "mutbench/389/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_389_drop_guard_0.json": "27e3eee69c26151a3b46c9f9ebbde50ee0757b82687e7fb71b6030bc41e91dc2",
+        "Mbpp_389_drop_guard_0/reference.py": "e5d37f5872f8383541b4d250affe027be339e82d9ae289bf164b31659cf80879",
+        "Mbpp_389_drop_guard_0/tests/hidden/evalplus_check.py": "d333211603f651fc3a203a1fc4696b99738522830493071154ddd6a62c0cbf27",
+        "Mbpp_389_drop_guard_0/tests/hidden/test_Mbpp_389_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_389_drop_guard_0/tests/visible/test_Mbpp_389.py": "c81d9bea36b690fe929ddbb3a8b3793d8711d5711f63d6d35fb6257c3fba3e2a"
+      }
+    },
+    "Mbpp_389_flip_comparison_0": {
+      "id": "mutbench/389/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_389_flip_comparison_0.json": "6ec88006c33a6a7ffd6f023905ab493ccd30a692a6d4313fcccf30ea07972bbb",
+        "Mbpp_389_flip_comparison_0/reference.py": "e5d37f5872f8383541b4d250affe027be339e82d9ae289bf164b31659cf80879",
+        "Mbpp_389_flip_comparison_0/tests/hidden/evalplus_check.py": "d333211603f651fc3a203a1fc4696b99738522830493071154ddd6a62c0cbf27",
+        "Mbpp_389_flip_comparison_0/tests/hidden/test_Mbpp_389_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_389_flip_comparison_0/tests/visible/test_Mbpp_389.py": "c81d9bea36b690fe929ddbb3a8b3793d8711d5711f63d6d35fb6257c3fba3e2a"
+      }
+    },
+    "Mbpp_391_wrong_variable_6": {
+      "id": "mutbench/391/wrong_variable/6",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_391_wrong_variable_6.json": "798f212733197ad42731e75473c8c84a1d8a91cb693ed921bc861b532231342c",
+        "Mbpp_391_wrong_variable_6/reference.py": "d5991e0e716c86f5fbb592f89392705fd43c9ce39dee3c231bb3fe134e21f4a0",
+        "Mbpp_391_wrong_variable_6/tests/hidden/evalplus_check.py": "f48a384c23ce8b265eeffa33a26ff030fee04957f3ceab179bed4faa5cc46ea4",
+        "Mbpp_391_wrong_variable_6/tests/hidden/test_Mbpp_391_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_391_wrong_variable_6/tests/visible/test_Mbpp_391.py": "bdb786da2c95da3f68245a2f148e9a393deec0d10ea04ef9efb7b7a0d57d8675"
+      }
+    },
+    "Mbpp_392_shift_bound_1": {
+      "id": "mutbench/392/shift_bound/1",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_392_shift_bound_1.json": "bc745cef5dce93146175af0c7f1a845144e956fa0cbc1325979d23d92213f072",
+        "Mbpp_392_shift_bound_1/reference.py": "e06db20eb685fbad295351ab53a7b861ebaedff9984b1b15d2b04833c2110f40",
+        "Mbpp_392_shift_bound_1/tests/hidden/evalplus_check.py": "421e32955111004de6bdf65d25d6dc1f67687f79dcf17b340b36308126719b5c",
+        "Mbpp_392_shift_bound_1/tests/hidden/test_Mbpp_392_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_392_shift_bound_1/tests/visible/test_Mbpp_392.py": "c3d9c83e1afb6d315ddacf5962c8e0ff8a36ee7a39e00330ef8a2d688625c1ca"
+      }
+    },
+    "Mbpp_392_swap_arithmetic_2": {
+      "id": "mutbench/392/swap_arithmetic/2",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_392_swap_arithmetic_2.json": "f72103a69dd9583d67cb032b3ba58457562039138eab9f7835722f0455cc6964",
+        "Mbpp_392_swap_arithmetic_2/reference.py": "e06db20eb685fbad295351ab53a7b861ebaedff9984b1b15d2b04833c2110f40",
+        "Mbpp_392_swap_arithmetic_2/tests/hidden/evalplus_check.py": "421e32955111004de6bdf65d25d6dc1f67687f79dcf17b340b36308126719b5c",
+        "Mbpp_392_swap_arithmetic_2/tests/hidden/test_Mbpp_392_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_392_swap_arithmetic_2/tests/visible/test_Mbpp_392.py": "c3d9c83e1afb6d315ddacf5962c8e0ff8a36ee7a39e00330ef8a2d688625c1ca"
+      }
+    },
+    "Mbpp_395_drop_guard_0": {
+      "id": "mutbench/395/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_395_drop_guard_0.json": "452c9c818f78926be685e840b4b3e776e5a9a99febfef0757c8d395e1fdb629c",
+        "Mbpp_395_drop_guard_0/reference.py": "ca59f18bc5649fb07e2bba54792af87fa6c51ee3ecbbe48313f89b718b17cba2",
+        "Mbpp_395_drop_guard_0/tests/hidden/evalplus_check.py": "72d24c6683afeda5733db3b44d6db8e7a74d9f843e5c341ccef59fde4f161e80",
+        "Mbpp_395_drop_guard_0/tests/hidden/test_Mbpp_395_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_395_drop_guard_0/tests/visible/test_Mbpp_395.py": "95886fca26e99d81641eebd3cbd9de7719dc6edce2bb5c0cbf75e3ad5578a1ae"
+      }
+    },
+    "Mbpp_3_drop_guard_0": {
+      "id": "mutbench/3/drop_guard/0",
+      "split": "dev",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_3_drop_guard_0.json": "fcf8577312ae2cf92a614c81ed1aecc24be22e9f238d93670c8fd6bee0e142ef",
+        "Mbpp_3_drop_guard_0/reference.py": "478364e309458f302f0acd8095abf9defd4842d656fff8eb5f47a6a43e7a91fa",
+        "Mbpp_3_drop_guard_0/tests/hidden/evalplus_check.py": "7cd39611e82fe7d92d79e223f260128809981ef3ae8421b3013e33b52926af58",
+        "Mbpp_3_drop_guard_0/tests/hidden/test_Mbpp_3_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_3_drop_guard_0/tests/visible/test_Mbpp_3.py": "76eb750b7211f6c55a85051d4799c59f6fd60511a3064353b8bcf3954dcd63ef"
+      }
+    },
+    "Mbpp_3_flip_comparison_1": {
+      "id": "mutbench/3/flip_comparison/1",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_3_flip_comparison_1.json": "05cbb8b26a8d5ffc9bafcb0b2374213568d251db7e4d5184a3379dcc918d281b",
+        "Mbpp_3_flip_comparison_1/reference.py": "478364e309458f302f0acd8095abf9defd4842d656fff8eb5f47a6a43e7a91fa",
+        "Mbpp_3_flip_comparison_1/tests/hidden/evalplus_check.py": "7cd39611e82fe7d92d79e223f260128809981ef3ae8421b3013e33b52926af58",
+        "Mbpp_3_flip_comparison_1/tests/hidden/test_Mbpp_3_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_3_flip_comparison_1/tests/visible/test_Mbpp_3.py": "76eb750b7211f6c55a85051d4799c59f6fd60511a3064353b8bcf3954dcd63ef"
+      }
+    },
+    "Mbpp_405_flip_comparison_0": {
+      "id": "mutbench/405/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_405_flip_comparison_0.json": "8722ec10b7022ee64a324abaf3ac39c1b2298d68e42682746eb3158d61428066",
+        "Mbpp_405_flip_comparison_0/reference.py": "de31591ba51639029ca8592ed9746bcea4f7d70efac545f1a351facf6e186649",
+        "Mbpp_405_flip_comparison_0/tests/hidden/evalplus_check.py": "14e59caaa9a47b5484289d66326d0d61bfa8554b0147855a1a8fc709da6add51",
+        "Mbpp_405_flip_comparison_0/tests/hidden/test_Mbpp_405_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_405_flip_comparison_0/tests/visible/test_Mbpp_405.py": "85a94afd90e7f673ee51aa6ab18b2962904bc6526205a76c9be79b7fad55b30f"
+      }
+    },
+    "Mbpp_410_wrong_variable_1": {
+      "id": "mutbench/410/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_410_wrong_variable_1.json": "17b7232dae957ebd0e9196278493d049ac9ac83bd595d1ff5521e5873ce0c559",
+        "Mbpp_410_wrong_variable_1/reference.py": "22a78d9031c38a1b36e59b5e8558be4c6ff49c194a67cb5bb6a56f6cebf1bca8",
+        "Mbpp_410_wrong_variable_1/tests/hidden/evalplus_check.py": "da1512906bcc430d4e736860537eb2a7964ba5df705ae508f8f57b6732ff66c9",
+        "Mbpp_410_wrong_variable_1/tests/hidden/test_Mbpp_410_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_410_wrong_variable_1/tests/visible/test_Mbpp_410.py": "60cfa8f5fc317182d0f535be3045b09a2f44820722f245b228734aa2f4c3d0db"
+      }
+    },
+    "Mbpp_413_shift_bound_0": {
+      "id": "mutbench/413/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_413_shift_bound_0.json": "11a6fe8ad8797e7bb840346ebe3ad603d30ae8d30cac75ac94d727069ca9af80",
+        "Mbpp_413_shift_bound_0/reference.py": "e7c1c0d2d958aeaf9bda16fe8e99b2d471d5a0f40b70a9f058cc5fcff1eb6002",
+        "Mbpp_413_shift_bound_0/tests/hidden/evalplus_check.py": "b2720e52b164beeedd8a116af222a2c0e972acbdb5cd6e4ae22c473ead34fe51",
+        "Mbpp_413_shift_bound_0/tests/hidden/test_Mbpp_413_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_413_shift_bound_0/tests/visible/test_Mbpp_413.py": "ecdc56734f8ba75e902695d225ff126699d10051223597afb14954f34332e9a4"
+      }
+    },
+    "Mbpp_428_delete_statement_0": {
+      "id": "mutbench/428/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "hang"
+      },
+      "files": {
+        "Mbpp_428_delete_statement_0.json": "3a85412381bb277731d99ab79eab43f12a988d81591d13cd7be5ed7eacbd4014",
+        "Mbpp_428_delete_statement_0/reference.py": "b0b736364b3e789b696d70fa3de1c33b08e1b3537843f86814771473c56fb61b",
+        "Mbpp_428_delete_statement_0/tests/hidden/evalplus_check.py": "a511b9b16041c960f3a6fc89162dc60f4c952133c38c51586c5ff49e9f6a23d1",
+        "Mbpp_428_delete_statement_0/tests/hidden/test_Mbpp_428_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_428_delete_statement_0/tests/visible/test_Mbpp_428.py": "9b243bb17aedfe0a0b4024ea8ce0932dfd57fca8629e6553f036ede95a67fd33"
+      }
+    },
+    "Mbpp_428_swap_arithmetic_3": {
+      "id": "mutbench/428/swap_arithmetic/3",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_428_swap_arithmetic_3.json": "265c3f40c3899700faf17bfae58aba1a71cb6ba72144d618f29545645da2b8ac",
+        "Mbpp_428_swap_arithmetic_3/reference.py": "b0b736364b3e789b696d70fa3de1c33b08e1b3537843f86814771473c56fb61b",
+        "Mbpp_428_swap_arithmetic_3/tests/hidden/evalplus_check.py": "a511b9b16041c960f3a6fc89162dc60f4c952133c38c51586c5ff49e9f6a23d1",
+        "Mbpp_428_swap_arithmetic_3/tests/hidden/test_Mbpp_428_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_428_swap_arithmetic_3/tests/visible/test_Mbpp_428.py": "9b243bb17aedfe0a0b4024ea8ce0932dfd57fca8629e6553f036ede95a67fd33"
+      }
+    },
+    "Mbpp_440_wrong_variable_1": {
+      "id": "mutbench/440/wrong_variable/1",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_440_wrong_variable_1.json": "23085e79f00bda9b6305db9ce16187e60ac27837428994961533ff4de5ae89da",
+        "Mbpp_440_wrong_variable_1/reference.py": "612436e264049d9bd8f63d68deb98d48772269dad9cff634e2e7e6cc25695454",
+        "Mbpp_440_wrong_variable_1/tests/hidden/evalplus_check.py": "08e5921c45b9f4a7c8ee24d6bb25bcf8cccb5aeb54484d00e3adb0d9771701e1",
+        "Mbpp_440_wrong_variable_1/tests/hidden/test_Mbpp_440_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_440_wrong_variable_1/tests/visible/test_Mbpp_440.py": "958d61a6dd39c5431ef158173cd33a900489de490d5d7b2f613d071c3d227b73"
+      }
+    },
+    "Mbpp_441_swap_arithmetic_1": {
+      "id": "mutbench/441/swap_arithmetic/1",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_441_swap_arithmetic_1.json": "5972fdf5f98d93da162f5e70c2533f2ef2e1d0bbb1b33490144300d8d499e4f4",
+        "Mbpp_441_swap_arithmetic_1/reference.py": "72ec1e288a6fc8fb56b51a30bff88cf638384981fa1c2d628dffae3c4e56a9bb",
+        "Mbpp_441_swap_arithmetic_1/tests/hidden/evalplus_check.py": "039f9a01ad4c71c420b7af6a39462fd74840bbbb4ad2c88a80a2357cc1ba6017",
+        "Mbpp_441_swap_arithmetic_1/tests/hidden/test_Mbpp_441_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_441_swap_arithmetic_1/tests/visible/test_Mbpp_441.py": "e862f49bb1260c21decc2a2b1df3c99bb72f9ed4ad6f7bc5bce34455cae3b152"
+      }
+    },
+    "Mbpp_445_wrong_variable_5": {
+      "id": "mutbench/445/wrong_variable/5",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_445_wrong_variable_5.json": "b6175165584712b7ff7a57687fc1d1388f5b53c030a005f0f08483e2dd770c85",
+        "Mbpp_445_wrong_variable_5/reference.py": "b5be9ca6571e7d3c75365682e7847a16e81f5ab76f65506f037249f4779ca578",
+        "Mbpp_445_wrong_variable_5/tests/hidden/evalplus_check.py": "a3575d8a3bdfb92e8edde8e14588d65d4740ef1628e613d4289a55aba2c7b4ba",
+        "Mbpp_445_wrong_variable_5/tests/hidden/test_Mbpp_445_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_445_wrong_variable_5/tests/visible/test_Mbpp_445.py": "7b50e28eef77d00ac8abd9e73c899de05c67b100deffe4e06c2c061550aa17d0"
+      }
+    },
+    "Mbpp_453_swap_boolean_0": {
+      "id": "mutbench/453/swap_boolean/0",
+      "split": "dev",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_453_swap_boolean_0.json": "1e0e86c20a51158bcd2e23d4f73091c16be424f0b39aa60d44e046ee75cb0194",
+        "Mbpp_453_swap_boolean_0/reference.py": "b9234f139c092e3a23a51769e3e27662e422db7593ee0f49bac53b50f69e8b8d",
+        "Mbpp_453_swap_boolean_0/tests/hidden/evalplus_check.py": "6d744b83dae91f7d26685ebda0749e309909e1100afaab05384394d93734256b",
+        "Mbpp_453_swap_boolean_0/tests/hidden/test_Mbpp_453_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_453_swap_boolean_0/tests/visible/test_Mbpp_453.py": "ac350604aca01f296f6548f14866c5e09a992701e08122a734cf907adaf536cf"
+      }
+    },
+    "Mbpp_454_flip_comparison_0": {
+      "id": "mutbench/454/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_454_flip_comparison_0.json": "f0ccd1a880c596deec8915769bd519c2263d72ec4325fbec822c9f7c15eb81f5",
+        "Mbpp_454_flip_comparison_0/reference.py": "facaa6c5a3dc99a6cba75320959bcef0754f291df2bb19aba4f4693b59501491",
+        "Mbpp_454_flip_comparison_0/tests/hidden/evalplus_check.py": "47bccb29faafdad8d61f4a61bb0f66d81cb62df8e19a8cff7dd66e469bcb5af3",
+        "Mbpp_454_flip_comparison_0/tests/hidden/test_Mbpp_454_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_454_flip_comparison_0/tests/visible/test_Mbpp_454.py": "85caea9fa29770df26e97b968a30801bd3d21fc069366786a6cb35776a8bed42"
+      }
+    },
+    "Mbpp_460_shift_bound_0": {
+      "id": "mutbench/460/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_460_shift_bound_0.json": "9ecb6d2ff6b39d597c53bbe81775f439b7e0b7b4d0426fb1a5401f1cf57f353a",
+        "Mbpp_460_shift_bound_0/reference.py": "ea339f416cb7e4c8bdcbe171eeadd570ad3ec560623402f28002efb472a38bfb",
+        "Mbpp_460_shift_bound_0/tests/hidden/evalplus_check.py": "fe4a6742696e9523644bd7a855784845d62d7e72f3876dcc6ba04fe6ad208cb1",
+        "Mbpp_460_shift_bound_0/tests/hidden/test_Mbpp_460_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_460_shift_bound_0/tests/visible/test_Mbpp_460.py": "f821b9fa2e48a745344544ddd2b442077a8ae44a997063f238c18cd5fe54b9e7"
+      }
+    },
+    "Mbpp_460_wrong_variable_1": {
+      "id": "mutbench/460/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_460_wrong_variable_1.json": "1f8a2d83bc4ca21ae6a609e2a9257007abfbd899029bc286e2fe60d20cc40f58",
+        "Mbpp_460_wrong_variable_1/reference.py": "ea339f416cb7e4c8bdcbe171eeadd570ad3ec560623402f28002efb472a38bfb",
+        "Mbpp_460_wrong_variable_1/tests/hidden/evalplus_check.py": "fe4a6742696e9523644bd7a855784845d62d7e72f3876dcc6ba04fe6ad208cb1",
+        "Mbpp_460_wrong_variable_1/tests/hidden/test_Mbpp_460_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_460_wrong_variable_1/tests/visible/test_Mbpp_460.py": "f821b9fa2e48a745344544ddd2b442077a8ae44a997063f238c18cd5fe54b9e7"
+      }
+    },
+    "Mbpp_462_delete_statement_0": {
+      "id": "mutbench/462/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_462_delete_statement_0.json": "c2918e2e1f582f84f7a2c018923ec631ec6cc388dde56e29cf0f3d95c89fcfcc",
+        "Mbpp_462_delete_statement_0/reference.py": "e483b3beb60fd7172f8ebd8bae3dbfcbc17852f9b2e0e70a8eab2622e1499e02",
+        "Mbpp_462_delete_statement_0/tests/hidden/evalplus_check.py": "bbdc41d847b84e6f8cf0614a23006f8e4b0db5a502d69bcbae840d6000ba4b6d",
+        "Mbpp_462_delete_statement_0/tests/hidden/test_Mbpp_462_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_462_delete_statement_0/tests/visible/test_Mbpp_462.py": "23bdaa9367ea03904cd87ca232df11c6e6a9219b51a2e1f0d1d5162241d461a1"
+      }
+    },
+    "Mbpp_462_shift_bound_0": {
+      "id": "mutbench/462/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_462_shift_bound_0.json": "f979e2f3e49242b8998dca6e06a89a1daa690db19f60256bf07a600e1a234b5f",
+        "Mbpp_462_shift_bound_0/reference.py": "e483b3beb60fd7172f8ebd8bae3dbfcbc17852f9b2e0e70a8eab2622e1499e02",
+        "Mbpp_462_shift_bound_0/tests/hidden/evalplus_check.py": "bbdc41d847b84e6f8cf0614a23006f8e4b0db5a502d69bcbae840d6000ba4b6d",
+        "Mbpp_462_shift_bound_0/tests/hidden/test_Mbpp_462_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_462_shift_bound_0/tests/visible/test_Mbpp_462.py": "23bdaa9367ea03904cd87ca232df11c6e6a9219b51a2e1f0d1d5162241d461a1"
+      }
+    },
+    "Mbpp_463_shift_bound_0": {
+      "id": "mutbench/463/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_463_shift_bound_0.json": "be731b7d5c80f14795428bef51b5347d6ab94330e44d69fd2c5792d9841e23c4",
+        "Mbpp_463_shift_bound_0/reference.py": "cf918a7140011f0846392fd99909e2d628dabcd9bfc4cd5ccf6a8b1f5c3ce61d",
+        "Mbpp_463_shift_bound_0/tests/hidden/evalplus_check.py": "e263cafa9c5bb83eafc26cce925cea76df66f7774d01db3c3b162215ca61fea6",
+        "Mbpp_463_shift_bound_0/tests/hidden/test_Mbpp_463_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_463_shift_bound_0/tests/visible/test_Mbpp_463.py": "92de1906aaf39316539416cb5158e311f0873b41bec1a5784b0c27f39f09d1d8"
+      }
+    },
+    "Mbpp_475_shift_bound_0": {
+      "id": "mutbench/475/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_475_shift_bound_0.json": "f281903a18bf412b36661303bd106ee2d451cd0492e3351d831c310e6b6f6309",
+        "Mbpp_475_shift_bound_0/reference.py": "2203764c449a0876a025ba5fc18876bb61aa98cf0c035f18dbc90af5c6b86357",
+        "Mbpp_475_shift_bound_0/tests/hidden/evalplus_check.py": "d388c47cbc4bd8487e8ad7cd806eb9651df77d2bd88888569e1d6c41b6640f18",
+        "Mbpp_475_shift_bound_0/tests/hidden/test_Mbpp_475_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_475_shift_bound_0/tests/visible/test_Mbpp_475.py": "c22d6fbb237c7507a727c28d52d38f8e28ea337bb91bf9e96869beb9ebc5320e"
+      }
+    },
+    "Mbpp_556_flip_comparison_0": {
+      "id": "mutbench/556/flip_comparison/0",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_556_flip_comparison_0.json": "2ac5431a45a9be57a45d89e267b42925897b31937492c293646bdb4354a6d13c",
+        "Mbpp_556_flip_comparison_0/reference.py": "111cf3850b04a19eda9f2747d7e58ea48ad90aa8e9a754b8990f648089e79382",
+        "Mbpp_556_flip_comparison_0/tests/hidden/evalplus_check.py": "bc4f23d63098d37a8d7b42d1af2bd6f1fa7ba2306cc8150ff9738ce82b2d4697",
+        "Mbpp_556_flip_comparison_0/tests/hidden/test_Mbpp_556_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_556_flip_comparison_0/tests/visible/test_Mbpp_556.py": "977b824c01a8481d523de997ee5b154c7246c17ca5a56f4e6702b3d8816bbf12"
+      }
+    },
+    "Mbpp_559_shift_bound_1": {
+      "id": "mutbench/559/shift_bound/1",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_559_shift_bound_1.json": "a2155b52d89e20ecab84c51871372b271b5ab14860e7173630520ff32e5edcca",
+        "Mbpp_559_shift_bound_1/reference.py": "632b32ce9bd35055b643ad73c26fa9ea471a5e796655a0d24ec1fdddecf4c04b",
+        "Mbpp_559_shift_bound_1/tests/hidden/evalplus_check.py": "346de4e1d1da27fac4d403744312a371ae981a527ccc90edff168ac09aabea36",
+        "Mbpp_559_shift_bound_1/tests/hidden/test_Mbpp_559_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_559_shift_bound_1/tests/visible/test_Mbpp_559.py": "30994487cb44d759fc942a4cb09e1d3b37c86c35b3c5039a2aef50302012a192"
+      }
+    },
+    "Mbpp_560_swap_arithmetic_0": {
+      "id": "mutbench/560/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_560_swap_arithmetic_0.json": "86d876aa15dd6c512e1b53d330c5bf09126dad94b5f2154442cc12de1e30cad9",
+        "Mbpp_560_swap_arithmetic_0/reference.py": "fa0e0a65779f0c2bc2503a446bddf047227e79c33f71845b95326280a78e665a",
+        "Mbpp_560_swap_arithmetic_0/tests/hidden/evalplus_check.py": "960fd1533abbe1474d8f6ddfd08b747f6f2b93298ec48f0faf922b6b24c537aa",
+        "Mbpp_560_swap_arithmetic_0/tests/hidden/test_Mbpp_560_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_560_swap_arithmetic_0/tests/visible/test_Mbpp_560.py": "c1ed28b86d81b0a9ba458150d107efb213a94ff4a8085eefbfe01f5014082ec0"
+      }
+    },
+    "Mbpp_564_delete_statement_0": {
+      "id": "mutbench/564/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_564_delete_statement_0.json": "ec4620dd6d78334a6f2e2740b7fa513d68023b0c6c5cff1f5e002a746f2a0e67",
+        "Mbpp_564_delete_statement_0/reference.py": "3d92d171c31457be2f038f720d8d537399523e168b8683f32acff125cbbfa31c",
+        "Mbpp_564_delete_statement_0/tests/hidden/evalplus_check.py": "d40c3133f9889123c605f3a459e15072469c607b8b12b2e13ed86f47ac9e840f",
+        "Mbpp_564_delete_statement_0/tests/hidden/test_Mbpp_564_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_564_delete_statement_0/tests/visible/test_Mbpp_564.py": "40d478aae6e9cf7c5168ccc42d1937cdd0ca4e7b15c3a33ddd496cee097db8d1"
+      }
+    },
+    "Mbpp_564_flip_comparison_0": {
+      "id": "mutbench/564/flip_comparison/0",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_564_flip_comparison_0.json": "d5185a2d187eedb28c03252d9bbf02f411ae0900650797537538cfaf0e8e02e6",
+        "Mbpp_564_flip_comparison_0/reference.py": "3d92d171c31457be2f038f720d8d537399523e168b8683f32acff125cbbfa31c",
+        "Mbpp_564_flip_comparison_0/tests/hidden/evalplus_check.py": "d40c3133f9889123c605f3a459e15072469c607b8b12b2e13ed86f47ac9e840f",
+        "Mbpp_564_flip_comparison_0/tests/hidden/test_Mbpp_564_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_564_flip_comparison_0/tests/visible/test_Mbpp_564.py": "40d478aae6e9cf7c5168ccc42d1937cdd0ca4e7b15c3a33ddd496cee097db8d1"
+      }
+    },
+    "Mbpp_567_flip_comparison_0": {
+      "id": "mutbench/567/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_567_flip_comparison_0.json": "9085f890b8946b058fee36202120e2e89dc84e66c5bf387187acfe232b592321",
+        "Mbpp_567_flip_comparison_0/reference.py": "953c35e9ea569eaf37ac74538a3568cfe408146723c215042fe69becc949d2f7",
+        "Mbpp_567_flip_comparison_0/tests/hidden/evalplus_check.py": "fb096ed270fc265461156f0ae523122e9b8e6d14d56cadfcaad0029007037127",
+        "Mbpp_567_flip_comparison_0/tests/hidden/test_Mbpp_567_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_567_flip_comparison_0/tests/visible/test_Mbpp_567.py": "a70a95aae4fc86ffeed10d4444aa05409574a7938fabc40c7945dde49591a76d"
+      }
+    },
+    "Mbpp_568_shift_bound_0": {
+      "id": "mutbench/568/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_568_shift_bound_0.json": "b684e23727efc43e395ac4145a9370e77253d88efff76a3a64b4c9232aa0c121",
+        "Mbpp_568_shift_bound_0/reference.py": "9ab650ebbf69f2570fd4cc19e056c11e8104d121434c5e32357bf973014ad200",
+        "Mbpp_568_shift_bound_0/tests/hidden/evalplus_check.py": "03ece08e25473d97ce9548b463807802e65fd8baa59410d1d1d0376755bd52c2",
+        "Mbpp_568_shift_bound_0/tests/hidden/test_Mbpp_568_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_568_shift_bound_0/tests/visible/test_Mbpp_568.py": "1b5ff168765eae3519602d3a509915e35c95497e932f209db5bef3788440457a"
+      }
+    },
+    "Mbpp_576_shift_bound_0": {
+      "id": "mutbench/576/shift_bound/0",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_576_shift_bound_0.json": "89249bb264d2215ffa579bc9a258c0d9e7db6cf8b531a1c7d823457b3f34488f",
+        "Mbpp_576_shift_bound_0/reference.py": "cc271b89199236e50c62582055193c43e87778e0f1974066e3c34c16ebaba7e3",
+        "Mbpp_576_shift_bound_0/tests/hidden/evalplus_check.py": "178d81d961c43e0e6b8e7e4b3584c1b4190c891ab99ce3582c8b99427e95dded",
+        "Mbpp_576_shift_bound_0/tests/hidden/test_Mbpp_576_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_576_shift_bound_0/tests/visible/test_Mbpp_576.py": "531f4b17ef9bc076ace82a894c8600209a10a7bb08f220b58a5f6a5ab2febf1b"
+      }
+    },
+    "Mbpp_577_flip_comparison_2": {
+      "id": "mutbench/577/flip_comparison/2",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_577_flip_comparison_2.json": "f04723bbf111e1521dc87c8d9e3081345d380dd9b5ef4d52248c0340dfc5adad",
+        "Mbpp_577_flip_comparison_2/reference.py": "07f9ed7195421bd3a963cb5e28adf851969a92a17d39b037b1717e2c69006cf6",
+        "Mbpp_577_flip_comparison_2/tests/hidden/evalplus_check.py": "5fa5469f88c8c927356b23c5bce4a902af80789b8a7f04472a4716b7f0bd5481",
+        "Mbpp_577_flip_comparison_2/tests/hidden/test_Mbpp_577_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_577_flip_comparison_2/tests/visible/test_Mbpp_577.py": "cc6f70db1d201fa6be97a9af612d61aabe72e3984b60be4d6aebd31520d47d1a"
+      }
+    },
+    "Mbpp_580_swap_arithmetic_1": {
+      "id": "mutbench/580/swap_arithmetic/1",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_580_swap_arithmetic_1.json": "e234e95d947a11f751f00877e9609fd9d85c70f9c10d65b3dab5bc5e80e7f29b",
+        "Mbpp_580_swap_arithmetic_1/reference.py": "04771a762c3f591e41c60eeb12e25bd10143a2d9128c6f47a7581cf10fa03b31",
+        "Mbpp_580_swap_arithmetic_1/tests/hidden/evalplus_check.py": "ad4a8e439a4b71f955513d60b0a46f91b8a2a96e32ebaa5dee0ac2efecb9af6e",
+        "Mbpp_580_swap_arithmetic_1/tests/hidden/test_Mbpp_580_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_580_swap_arithmetic_1/tests/visible/test_Mbpp_580.py": "49af5164b3bd94f8c8ba0885dae7011c9cce05e20c6d5c5d045f33e3c926e241"
+      }
+    },
+    "Mbpp_583_delete_statement_0": {
+      "id": "mutbench/583/delete_statement/0",
+      "split": "dev",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_583_delete_statement_0.json": "45301547480d7f7447088dc0b25f65a515316ae5148332179afaa6b572442bb3",
+        "Mbpp_583_delete_statement_0/reference.py": "a3f7ba6432e129cfe864e1526f6554239e807125a65bfbfe6b86556ef49f1525",
+        "Mbpp_583_delete_statement_0/tests/hidden/evalplus_check.py": "5cd9b6c18bbfec97a13b1b2229e872988b05cde793472a493c5ae9220044c41c",
+        "Mbpp_583_delete_statement_0/tests/hidden/test_Mbpp_583_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_583_delete_statement_0/tests/visible/test_Mbpp_583.py": "77f603e0577bfa7c704de21ac292239cdf194f39adb898900c966bf8b010e8b7"
+      }
+    },
+    "Mbpp_583_drop_guard_0": {
+      "id": "mutbench/583/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_583_drop_guard_0.json": "f6f4177f045dea431378826b1baef3c4a247971b1fb003cb2177e70236df4bb0",
+        "Mbpp_583_drop_guard_0/reference.py": "a3f7ba6432e129cfe864e1526f6554239e807125a65bfbfe6b86556ef49f1525",
+        "Mbpp_583_drop_guard_0/tests/hidden/evalplus_check.py": "5cd9b6c18bbfec97a13b1b2229e872988b05cde793472a493c5ae9220044c41c",
+        "Mbpp_583_drop_guard_0/tests/hidden/test_Mbpp_583_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_583_drop_guard_0/tests/visible/test_Mbpp_583.py": "77f603e0577bfa7c704de21ac292239cdf194f39adb898900c966bf8b010e8b7"
+      }
+    },
+    "Mbpp_586_swap_arithmetic_0": {
+      "id": "mutbench/586/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_586_swap_arithmetic_0.json": "127a52712862b80aae8f827cb3d008aea85876e5d4d634214729e0d653f075f8",
+        "Mbpp_586_swap_arithmetic_0/reference.py": "1e27bc701b85e463258e83c590d564bcdfd156333421d156c1e8221b6356e645",
+        "Mbpp_586_swap_arithmetic_0/tests/hidden/evalplus_check.py": "05642000898787d39ff43bfbd9eee80050771a4febca0316ee33d1949e7f6fc2",
+        "Mbpp_586_swap_arithmetic_0/tests/hidden/test_Mbpp_586_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_586_swap_arithmetic_0/tests/visible/test_Mbpp_586.py": "766a5bc8eb0abb0f4dee204f9c5e9e3373c65fc972896e3a0ef9aa7b5698ba43"
+      }
+    },
+    "Mbpp_589_shift_bound_0": {
+      "id": "mutbench/589/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_589_shift_bound_0.json": "0610e67e50a3f0ea2cbc51d5bf4840652620dd531d3a99d0f19d748150590e98",
+        "Mbpp_589_shift_bound_0/reference.py": "bae992e029308eda5d46a607f507d94a7ba5941894aaccc030a607a0c0755cdd",
+        "Mbpp_589_shift_bound_0/tests/hidden/evalplus_check.py": "76f95a1695796376bfcae0412b3d5775f563a76b24b6633eec1f5fb31570dbdb",
+        "Mbpp_589_shift_bound_0/tests/hidden/test_Mbpp_589_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_589_shift_bound_0/tests/visible/test_Mbpp_589.py": "a3fc5a80aec41130caf8c4eea97dc4adb931d7d950675b0a43b9b06671353ce7"
+      }
+    },
+    "Mbpp_591_swap_arithmetic_0": {
+      "id": "mutbench/591/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_591_swap_arithmetic_0.json": "420fae0db1e587071673e1e776075d12cb7459b678a3629097fd25222375b333",
+        "Mbpp_591_swap_arithmetic_0/reference.py": "47e1754c70b313ab6891358209690cf685db37d02ff146a22031ad90ed6f253e",
+        "Mbpp_591_swap_arithmetic_0/tests/hidden/evalplus_check.py": "fdb6d4b640b90b723ac1263c5caf37b51f7516025d0697d434d01af2e9bc8ba9",
+        "Mbpp_591_swap_arithmetic_0/tests/hidden/test_Mbpp_591_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_591_swap_arithmetic_0/tests/visible/test_Mbpp_591.py": "7aa64282ba672d1cd8cab11a551396cd40838960880ce9c972323f54ebefa03c"
+      }
+    },
+    "Mbpp_591_swap_arithmetic_1": {
+      "id": "mutbench/591/swap_arithmetic/1",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_591_swap_arithmetic_1.json": "7c6aa9e448ed5d0870e1f7f347caf42e3fcc681cd9410a559c9f27d448915f7f",
+        "Mbpp_591_swap_arithmetic_1/reference.py": "47e1754c70b313ab6891358209690cf685db37d02ff146a22031ad90ed6f253e",
+        "Mbpp_591_swap_arithmetic_1/tests/hidden/evalplus_check.py": "fdb6d4b640b90b723ac1263c5caf37b51f7516025d0697d434d01af2e9bc8ba9",
+        "Mbpp_591_swap_arithmetic_1/tests/hidden/test_Mbpp_591_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_591_swap_arithmetic_1/tests/visible/test_Mbpp_591.py": "7aa64282ba672d1cd8cab11a551396cd40838960880ce9c972323f54ebefa03c"
+      }
+    },
+    "Mbpp_592_shift_bound_1": {
+      "id": "mutbench/592/shift_bound/1",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_592_shift_bound_1.json": "2297637defde36e93c22540c1ed007d7a8d8f284ec93c4834a389586961757d2",
+        "Mbpp_592_shift_bound_1/reference.py": "ab76d8203814fb1d7fe65fa53785c3a5c0e1aab436e4be6e1bd437135f3c3d12",
+        "Mbpp_592_shift_bound_1/tests/hidden/evalplus_check.py": "d4db45d242d2f76d95699e2be66db1f2b5065b2bfb5ca401970822c503a1ed03",
+        "Mbpp_592_shift_bound_1/tests/hidden/test_Mbpp_592_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_592_shift_bound_1/tests/visible/test_Mbpp_592.py": "9db0824c6e26f81ec2b54cfcec1c28bd6d865a2f3f3d003b5d8620fde45ebf4b"
+      }
+    },
+    "Mbpp_592_swap_arithmetic_1": {
+      "id": "mutbench/592/swap_arithmetic/1",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_592_swap_arithmetic_1.json": "c315bfeb8c50172887f6f7c04c3ff7457a9934eefc5a7e4c600db292fabf7e0d",
+        "Mbpp_592_swap_arithmetic_1/reference.py": "ab76d8203814fb1d7fe65fa53785c3a5c0e1aab436e4be6e1bd437135f3c3d12",
+        "Mbpp_592_swap_arithmetic_1/tests/hidden/evalplus_check.py": "d4db45d242d2f76d95699e2be66db1f2b5065b2bfb5ca401970822c503a1ed03",
+        "Mbpp_592_swap_arithmetic_1/tests/hidden/test_Mbpp_592_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_592_swap_arithmetic_1/tests/visible/test_Mbpp_592.py": "9db0824c6e26f81ec2b54cfcec1c28bd6d865a2f3f3d003b5d8620fde45ebf4b"
+      }
+    },
+    "Mbpp_597_swap_arithmetic_0": {
+      "id": "mutbench/597/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_597_swap_arithmetic_0.json": "202c0301da024efb8b502cdc643f77f16a2af6cdae478a16035d2eafe0a9117d",
+        "Mbpp_597_swap_arithmetic_0/reference.py": "7357c171f37ba587bd84fb92aa9298850f1e4f431bca6ba0c88d7e34e15e829b",
+        "Mbpp_597_swap_arithmetic_0/tests/hidden/evalplus_check.py": "f069d85a6cd7ecd49fbd52c6d8c7a6fac6583f784dc1bb509187e99af0c5a1eb",
+        "Mbpp_597_swap_arithmetic_0/tests/hidden/test_Mbpp_597_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_597_swap_arithmetic_0/tests/visible/test_Mbpp_597.py": "d406d67b00747e12d2007b52522d9bc804a5511804feacaef5cba07a017b7694"
+      }
+    },
+    "Mbpp_602_drop_guard_0": {
+      "id": "mutbench/602/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_602_drop_guard_0.json": "c8f5636d3a43ad3d023d29d0fd4e961ab264869f22ecd1194583c25ea9a4ee79",
+        "Mbpp_602_drop_guard_0/reference.py": "2c5215cfe36dbe80848e8dc3f4b571f68d5bc986f3afc966935ae4b861eeaccd",
+        "Mbpp_602_drop_guard_0/tests/hidden/evalplus_check.py": "afd32ac44a50ba6320523bf0e48369da2ee45ab57ca862b128d500ec9579dc10",
+        "Mbpp_602_drop_guard_0/tests/hidden/test_Mbpp_602_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_602_drop_guard_0/tests/visible/test_Mbpp_602.py": "3f26f3e41b37dd31b9dfedc45750a82ec92c2fa48c6a25112cac10638b1627c4"
+      }
+    },
+    "Mbpp_603_delete_statement_0": {
+      "id": "mutbench/603/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "hang"
+      },
+      "files": {
+        "Mbpp_603_delete_statement_0.json": "db032804f82895f8df22f8a9826c5d63ce77182a73ec6a0f29ce644fb24f5337",
+        "Mbpp_603_delete_statement_0/reference.py": "1ac31f0f8224ce76640518ab47edab744234f6dc56c0dea81fae191cbf329805",
+        "Mbpp_603_delete_statement_0/tests/hidden/evalplus_check.py": "e9ee79f4366ef9209378f3176fc32a9c81e2974f24000abba2545de97eaaa90d",
+        "Mbpp_603_delete_statement_0/tests/hidden/test_Mbpp_603_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_603_delete_statement_0/tests/visible/test_Mbpp_603.py": "1e42fee9e1ccacd8b75ffddcc7abaa4427ad96cfd4448753206655fe51994317"
+      }
+    },
+    "Mbpp_607_drop_guard_0": {
+      "id": "mutbench/607/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_607_drop_guard_0.json": "74a6649e88bb67175dd13fbd978530de0d4bac7548d8607abeef3f8e8aae62c7",
+        "Mbpp_607_drop_guard_0/reference.py": "710b2e0cd6a7e3975e5d79ba1899b07b46df82ad7afc5b78358386315604e340",
+        "Mbpp_607_drop_guard_0/tests/hidden/evalplus_check.py": "3b3fe20028e14afe2bfdedb6467849b3c2aa905557ba381db10c95c294b4ec74",
+        "Mbpp_607_drop_guard_0/tests/hidden/test_Mbpp_607_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_607_drop_guard_0/tests/visible/test_Mbpp_607.py": "f1d0341ffd1ede5a951c1c5c0349f8dfcd278b8c74d0cda9970ab4c761b7cbcd"
+      }
+    },
+    "Mbpp_607_flip_comparison_0": {
+      "id": "mutbench/607/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_607_flip_comparison_0.json": "1382ef9ee32bb734e6172054f58844bc6bae0965bdec63363db35a545a4025cb",
+        "Mbpp_607_flip_comparison_0/reference.py": "710b2e0cd6a7e3975e5d79ba1899b07b46df82ad7afc5b78358386315604e340",
+        "Mbpp_607_flip_comparison_0/tests/hidden/evalplus_check.py": "3b3fe20028e14afe2bfdedb6467849b3c2aa905557ba381db10c95c294b4ec74",
+        "Mbpp_607_flip_comparison_0/tests/hidden/test_Mbpp_607_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_607_flip_comparison_0/tests/visible/test_Mbpp_607.py": "f1d0341ffd1ede5a951c1c5c0349f8dfcd278b8c74d0cda9970ab4c761b7cbcd"
+      }
+    },
+    "Mbpp_608_shift_bound_0": {
+      "id": "mutbench/608/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_608_shift_bound_0.json": "fd5fb7e5fa3f2a266d98450f7e4d4d4cb950ab31e0f7af56d93d59644acfdc47",
+        "Mbpp_608_shift_bound_0/reference.py": "6942ca484016458456b9758750341f483014e2bad543d9ee90812798f3cc2133",
+        "Mbpp_608_shift_bound_0/tests/hidden/evalplus_check.py": "faee5a23439147f1d63ebc7aa781889200146f1a9c17462c67d26a9cae6725f6",
+        "Mbpp_608_shift_bound_0/tests/hidden/test_Mbpp_608_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_608_shift_bound_0/tests/visible/test_Mbpp_608.py": "cefdea4752b3ef60f4949fb3594d8781696053871fc0902242a44b6e587e7b51"
+      }
+    },
+    "Mbpp_608_wrong_variable_17": {
+      "id": "mutbench/608/wrong_variable/17",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_608_wrong_variable_17.json": "223ef58a5c8d1b15e04fcbd6defdc679c7f88b2a97cc3ccaabc74bf49dbca6e6",
+        "Mbpp_608_wrong_variable_17/reference.py": "6942ca484016458456b9758750341f483014e2bad543d9ee90812798f3cc2133",
+        "Mbpp_608_wrong_variable_17/tests/hidden/evalplus_check.py": "faee5a23439147f1d63ebc7aa781889200146f1a9c17462c67d26a9cae6725f6",
+        "Mbpp_608_wrong_variable_17/tests/hidden/test_Mbpp_608_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_608_wrong_variable_17/tests/visible/test_Mbpp_608.py": "cefdea4752b3ef60f4949fb3594d8781696053871fc0902242a44b6e587e7b51"
+      }
+    },
+    "Mbpp_610_swap_arithmetic_0": {
+      "id": "mutbench/610/swap_arithmetic/0",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_610_swap_arithmetic_0.json": "25471f40651f7e8a29dd005d76b7ad52c4ac93ca901201967fd54ab871bdb467",
+        "Mbpp_610_swap_arithmetic_0/reference.py": "5aa07f17ef2d64aa3755a8452c3a33da906ee4a0e72ea559e94814e4cd73a71e",
+        "Mbpp_610_swap_arithmetic_0/tests/hidden/evalplus_check.py": "973a12f1a45ed2e3034b0e785bef98b6f4fa854bcb1fb49125863acb810a907a",
+        "Mbpp_610_swap_arithmetic_0/tests/hidden/test_Mbpp_610_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_610_swap_arithmetic_0/tests/visible/test_Mbpp_610.py": "bda97f33f2da2f3bbd52884a48dfb2c85bfb317db9fb706c8852d09f36d66fb8"
+      }
+    },
+    "Mbpp_611_shift_bound_0": {
+      "id": "mutbench/611/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_611_shift_bound_0.json": "c674677b62dd68b472e5fba38216987a895e7421ff93ec2e7ba09a27a674783f",
+        "Mbpp_611_shift_bound_0/reference.py": "41f12cbe920a5e6e66e3cf29d41aad44d0b95da87ff6b70545ac8ec545d4c3fb",
+        "Mbpp_611_shift_bound_0/tests/hidden/evalplus_check.py": "063515124c73381f07fbee966d31306485ea64f360858b42021e7fa57c9e5620",
+        "Mbpp_611_shift_bound_0/tests/hidden/test_Mbpp_611_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_611_shift_bound_0/tests/visible/test_Mbpp_611.py": "8ab409984d0c938a56eb2a2e7cfff9698fed37628660c2c5c5229d178785fc09"
+      }
+    },
+    "Mbpp_619_swap_arithmetic_0": {
+      "id": "mutbench/619/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_619_swap_arithmetic_0.json": "4b32060aaf708af77abed616dffe37d51d76d912137834f26000426cf81c4156",
+        "Mbpp_619_swap_arithmetic_0/reference.py": "3ddd42bbbdd0b3d40f1e0a3e2231d9fda9e473d3471e74abc55ac60f4becd305",
+        "Mbpp_619_swap_arithmetic_0/tests/hidden/evalplus_check.py": "7d8c7a894e118354c5c8b6ef3a1ff6642da1911ebe83d628e4a6778043ff01a8",
+        "Mbpp_619_swap_arithmetic_0/tests/hidden/test_Mbpp_619_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_619_swap_arithmetic_0/tests/visible/test_Mbpp_619.py": "1fb3dc9fbd1c353b6575ce676c4b150f187eaaad98951c6f3a059d059b09c784"
+      }
+    },
+    "Mbpp_619_swap_boolean_0": {
+      "id": "mutbench/619/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_619_swap_boolean_0.json": "bfde7da7b82cf4ca7e4eca4412e999a5cc94ffb53702d902bf69215bc569ae3b",
+        "Mbpp_619_swap_boolean_0/reference.py": "3ddd42bbbdd0b3d40f1e0a3e2231d9fda9e473d3471e74abc55ac60f4becd305",
+        "Mbpp_619_swap_boolean_0/tests/hidden/evalplus_check.py": "7d8c7a894e118354c5c8b6ef3a1ff6642da1911ebe83d628e4a6778043ff01a8",
+        "Mbpp_619_swap_boolean_0/tests/hidden/test_Mbpp_619_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_619_swap_boolean_0/tests/visible/test_Mbpp_619.py": "1fb3dc9fbd1c353b6575ce676c4b150f187eaaad98951c6f3a059d059b09c784"
+      }
+    },
+    "Mbpp_61_delete_statement_2": {
+      "id": "mutbench/61/delete_statement/2",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_61_delete_statement_2.json": "0a3b96e282506afb39c512257c5175fd54180e6b6b04bcbecf8ca4858fbf69a7",
+        "Mbpp_61_delete_statement_2/reference.py": "d04357c4550e6fc0ad972640f171b709b482d94ac37d612230223dea67c43ce2",
+        "Mbpp_61_delete_statement_2/tests/hidden/evalplus_check.py": "ffe2e2cf048675e0d42fe27e2a4f4636b027c7ff91df72dd9f344f12bbd491f0",
+        "Mbpp_61_delete_statement_2/tests/hidden/test_Mbpp_61_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_61_delete_statement_2/tests/visible/test_Mbpp_61.py": "21050463311e4bb61a8d2b4c608c334910e02773ab266368aca8e5d53479b017"
+      }
+    },
+    "Mbpp_620_swap_boolean_0": {
+      "id": "mutbench/620/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_620_swap_boolean_0.json": "0122ceb587c394e2fbd74756a0df413059090f79710c3b379c56a20253c6c67b",
+        "Mbpp_620_swap_boolean_0/reference.py": "7c79afc3a07e65cf98b3e151301414f6047fe9222a38d3ccd8d8952d5d25a0ce",
+        "Mbpp_620_swap_boolean_0/tests/hidden/evalplus_check.py": "8dba6d68411b48d1ebdec36313185760006abd6900e39947ba41e271a1628c8c",
+        "Mbpp_620_swap_boolean_0/tests/hidden/test_Mbpp_620_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_620_swap_boolean_0/tests/visible/test_Mbpp_620.py": "057b00adefe08bd49b000e35908c089981cf9f03a95b32334b2e35ee56e19079"
+      }
+    },
+    "Mbpp_622_delete_statement_2": {
+      "id": "mutbench/622/delete_statement/2",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_622_delete_statement_2.json": "453155ca3ac15a9f639ede9b94ea87c239166850403aa37c422147ab20aa6482",
+        "Mbpp_622_delete_statement_2/reference.py": "18b166b275469ea60df57c80944033829f000ed89de099c1e676a8bfa1c9d1b0",
+        "Mbpp_622_delete_statement_2/tests/hidden/evalplus_check.py": "dfaf39295b13d833c4e452179d738f444482fdc9fd572c964f227032955bd217",
+        "Mbpp_622_delete_statement_2/tests/hidden/test_Mbpp_622_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_622_delete_statement_2/tests/visible/test_Mbpp_622.py": "1c96bcd298275b3c2e9937089a19ff4f363df4d040023421103c63c8189c2617"
+      }
+    },
+    "Mbpp_622_wrong_variable_13": {
+      "id": "mutbench/622/wrong_variable/13",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_622_wrong_variable_13.json": "51c7f7d7b5517dfdbdf492d91483fe712a24fa7feec54200b986762defb12c26",
+        "Mbpp_622_wrong_variable_13/reference.py": "18b166b275469ea60df57c80944033829f000ed89de099c1e676a8bfa1c9d1b0",
+        "Mbpp_622_wrong_variable_13/tests/hidden/evalplus_check.py": "dfaf39295b13d833c4e452179d738f444482fdc9fd572c964f227032955bd217",
+        "Mbpp_622_wrong_variable_13/tests/hidden/test_Mbpp_622_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_622_wrong_variable_13/tests/visible/test_Mbpp_622.py": "1c96bcd298275b3c2e9937089a19ff4f363df4d040023421103c63c8189c2617"
+      }
+    },
+    "Mbpp_623_wrong_variable_0": {
+      "id": "mutbench/623/wrong_variable/0",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_623_wrong_variable_0.json": "37592745be3620e8acaf2f14274cb9631385418195d8e5b08cee0430b98c57b5",
+        "Mbpp_623_wrong_variable_0/reference.py": "f7fdb7bf9c428892abcfafd3667d8a7b17224888fff2dd6b0a67e0ac2ae6bbb1",
+        "Mbpp_623_wrong_variable_0/tests/hidden/evalplus_check.py": "a422074fdc398aa6e5aa6b136ce189b5ce04bd9c1e7cb60c22b08456a90f89c5",
+        "Mbpp_623_wrong_variable_0/tests/hidden/test_Mbpp_623_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_623_wrong_variable_0/tests/visible/test_Mbpp_623.py": "8561b72c84eac3fe621d92595b6a2165b848d43ecf9a9cfd65903ce61d9a157f"
+      }
+    },
+    "Mbpp_626_drop_guard_0": {
+      "id": "mutbench/626/drop_guard/0",
+      "split": "dev",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_626_drop_guard_0.json": "ff811ff001519d965df8263e9b5d9e989eaf179be8c1b35bb4b3444910d30468",
+        "Mbpp_626_drop_guard_0/reference.py": "d7b94f5285d6b9291877de12728918035c050c406f065166a38fa55eaa56dc9d",
+        "Mbpp_626_drop_guard_0/tests/hidden/evalplus_check.py": "d2fb45939d887a07a718d1a15d1fc0f162105cfec1c5d1520dc1db5895c8a67a",
+        "Mbpp_626_drop_guard_0/tests/hidden/test_Mbpp_626_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_626_drop_guard_0/tests/visible/test_Mbpp_626.py": "da7a27ee6f243bb33103b8c37a5527d2dffab542f8bd69ad1f5e811b0e6ae70c"
+      }
+    },
+    "Mbpp_626_flip_comparison_0": {
+      "id": "mutbench/626/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_626_flip_comparison_0.json": "33cf43b8f3b2be6dd25f384f64c4048d3e7890ff6ce67b280d6ce5ba5c723221",
+        "Mbpp_626_flip_comparison_0/reference.py": "d7b94f5285d6b9291877de12728918035c050c406f065166a38fa55eaa56dc9d",
+        "Mbpp_626_flip_comparison_0/tests/hidden/evalplus_check.py": "d2fb45939d887a07a718d1a15d1fc0f162105cfec1c5d1520dc1db5895c8a67a",
+        "Mbpp_626_flip_comparison_0/tests/hidden/test_Mbpp_626_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_626_flip_comparison_0/tests/visible/test_Mbpp_626.py": "da7a27ee6f243bb33103b8c37a5527d2dffab542f8bd69ad1f5e811b0e6ae70c"
+      }
+    },
+    "Mbpp_630_shift_bound_1": {
+      "id": "mutbench/630/shift_bound/1",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_630_shift_bound_1.json": "fad793203b1db6621db4325e05e3c054d88e32c0350152f5ed8b1fb6a6e68762",
+        "Mbpp_630_shift_bound_1/reference.py": "9a53bb942032b0bb0cac5da6bbd35ce3434093d9d3aae1298608208a64d04b6d",
+        "Mbpp_630_shift_bound_1/tests/hidden/evalplus_check.py": "f085c2e4a85a73f589aaba1d8ff35487f3d975d96b159dacae4517ccb47c8f29",
+        "Mbpp_630_shift_bound_1/tests/hidden/test_Mbpp_630_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_630_shift_bound_1/tests/visible/test_Mbpp_630.py": "8889c7f8b2ca39f99b5632103234bec8e625f4ede27c6590170f6841d92a2f94"
+      }
+    },
+    "Mbpp_632_swap_arithmetic_0": {
+      "id": "mutbench/632/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_632_swap_arithmetic_0.json": "960eef82a76be791757ab524384ea069b0db9191bb74ec05f1d87031472a9cda",
+        "Mbpp_632_swap_arithmetic_0/reference.py": "65d60d1e4b31bd1cb85a7ffe998418c1e86a81180c3759846dd1181b9facef21",
+        "Mbpp_632_swap_arithmetic_0/tests/hidden/evalplus_check.py": "acf8ab2a4c5ecc4369ac59797add4036f992f8b4236846e1f6495b1aded7e51c",
+        "Mbpp_632_swap_arithmetic_0/tests/hidden/test_Mbpp_632_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_632_swap_arithmetic_0/tests/visible/test_Mbpp_632.py": "86c92bd1496b135d2256a51acbf9350ff5c31bcb48cd21c12e8456ba4ba80149"
+      }
+    },
+    "Mbpp_633_shift_bound_3": {
+      "id": "mutbench/633/shift_bound/3",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_633_shift_bound_3.json": "f93ab262d24d73a6cc6c85b081ba741dc75845132c71f4023310f1fe094788d6",
+        "Mbpp_633_shift_bound_3/reference.py": "cdc5514f392fe63db291508448c1f7b0bf50c6e1bbece9bdb232ebf64f3830d1",
+        "Mbpp_633_shift_bound_3/tests/hidden/evalplus_check.py": "776c7c60f52dabd1ac2922ff912dd0acab8f9fa21cd36fd0b789ec9bed7b6b16",
+        "Mbpp_633_shift_bound_3/tests/hidden/test_Mbpp_633_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_633_shift_bound_3/tests/visible/test_Mbpp_633.py": "514c4c085f9a3b3a2b90a741f961c4dfa2c396ed2d3bc94ee387a17271ca8971"
+      }
+    },
+    "Mbpp_635_wrong_variable_1": {
+      "id": "mutbench/635/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_635_wrong_variable_1.json": "8c87a8152c5531a6c3bf408f9b66a4ce706da8df9e8785fe7b45c4182bcfc3a5",
+        "Mbpp_635_wrong_variable_1/reference.py": "602a563512b2e941acef86f0a7f6c0d9aaee91bd3411bbe583309155ce4f4714",
+        "Mbpp_635_wrong_variable_1/tests/hidden/evalplus_check.py": "ed9367c4c09836899c2c8c0a72c6ea80af93f51720ab5c5cee7582531ac8a17b",
+        "Mbpp_635_wrong_variable_1/tests/hidden/test_Mbpp_635_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_635_wrong_variable_1/tests/visible/test_Mbpp_635.py": "4866dfc57f480ab9169f94ecf255fd6dd8259fbe417e82b292662b9cf48cba6b"
+      }
+    },
+    "Mbpp_639_shift_bound_0": {
+      "id": "mutbench/639/shift_bound/0",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_639_shift_bound_0.json": "3f47b8273ae376039cbefec66f4b2aa029a834cd1003b18ab32f7d32db5c9278",
+        "Mbpp_639_shift_bound_0/reference.py": "6f4c3f8354a877cb47ac2949a3ad9b482b28497a084b940ed6c29a966ebe7c64",
+        "Mbpp_639_shift_bound_0/tests/hidden/evalplus_check.py": "eb9b5d9967ff26bd2f60a86f04cb54f3028d4cec89e08877d310f82ce9e95b67",
+        "Mbpp_639_shift_bound_0/tests/hidden/test_Mbpp_639_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_639_shift_bound_0/tests/visible/test_Mbpp_639.py": "f8d211c03101a6bb7c5bc8b5a601f4f9d3cf04faae7e1adf25a594eb68debb1d"
+      }
+    },
+    "Mbpp_639_swap_boolean_0": {
+      "id": "mutbench/639/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_639_swap_boolean_0.json": "3f6f17b062a1169e586b9e03171b60143c6baf0b20c02303a60a02f5512aaa7e",
+        "Mbpp_639_swap_boolean_0/reference.py": "6f4c3f8354a877cb47ac2949a3ad9b482b28497a084b940ed6c29a966ebe7c64",
+        "Mbpp_639_swap_boolean_0/tests/hidden/evalplus_check.py": "eb9b5d9967ff26bd2f60a86f04cb54f3028d4cec89e08877d310f82ce9e95b67",
+        "Mbpp_639_swap_boolean_0/tests/hidden/test_Mbpp_639_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_639_swap_boolean_0/tests/visible/test_Mbpp_639.py": "f8d211c03101a6bb7c5bc8b5a601f4f9d3cf04faae7e1adf25a594eb68debb1d"
+      }
+    },
+    "Mbpp_644_swap_arithmetic_1": {
+      "id": "mutbench/644/swap_arithmetic/1",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_644_swap_arithmetic_1.json": "b0b4bf3a903c50fc4e498cdcad9bb1f99e485cd2217eaa4b9ab58d826c914372",
+        "Mbpp_644_swap_arithmetic_1/reference.py": "15d2ec082ff4a5226d52e18817e0d8f235c495a40ad0ec62cddded4a4d2591f4",
+        "Mbpp_644_swap_arithmetic_1/tests/hidden/evalplus_check.py": "235138e3d34c5a3bd7fad35b9474b3cb220716efea2e7061f0ce2aa3056d0235",
+        "Mbpp_644_swap_arithmetic_1/tests/hidden/test_Mbpp_644_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_644_swap_arithmetic_1/tests/visible/test_Mbpp_644.py": "8f9d32f0cd0b0c8ec8c58e71809ac55f582cc29bd5a2e61a5f9ff0d7bc59d486"
+      }
+    },
+    "Mbpp_644_wrong_variable_3": {
+      "id": "mutbench/644/wrong_variable/3",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_644_wrong_variable_3.json": "746a25783692a3de796091a7abbe3031a277742dada2f6ba61de4ec4c9e4af77",
+        "Mbpp_644_wrong_variable_3/reference.py": "15d2ec082ff4a5226d52e18817e0d8f235c495a40ad0ec62cddded4a4d2591f4",
+        "Mbpp_644_wrong_variable_3/tests/hidden/evalplus_check.py": "235138e3d34c5a3bd7fad35b9474b3cb220716efea2e7061f0ce2aa3056d0235",
+        "Mbpp_644_wrong_variable_3/tests/hidden/test_Mbpp_644_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_644_wrong_variable_3/tests/visible/test_Mbpp_644.py": "8f9d32f0cd0b0c8ec8c58e71809ac55f582cc29bd5a2e61a5f9ff0d7bc59d486"
+      }
+    },
+    "Mbpp_64_shift_bound_0": {
+      "id": "mutbench/64/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_64_shift_bound_0.json": "c7b925fa8f5aa45c982a334605bf4684536e465855ca7fcbff4f3ba09d977e69",
+        "Mbpp_64_shift_bound_0/reference.py": "80f1544d6a8d5a37f2f430035904fc626c43e0599ee76f66551c50539243b5bf",
+        "Mbpp_64_shift_bound_0/tests/hidden/evalplus_check.py": "6a39cb94c985a99769c8d537433c84b49a44bd73b6726062f4dcbeb7b6a630a0",
+        "Mbpp_64_shift_bound_0/tests/hidden/test_Mbpp_64_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_64_shift_bound_0/tests/visible/test_Mbpp_64.py": "91cbb8dcd63f4ed8f0f9284e8abe50a6567ecbb1f90b64cfdd1e3802e13c0628"
+      }
+    },
+    "Mbpp_65_flip_comparison_0": {
+      "id": "mutbench/65/flip_comparison/0",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_65_flip_comparison_0.json": "4c6e003524aa1c07bcece0f3262942940a87de38ea8e622365ab5d484ef25b86",
+        "Mbpp_65_flip_comparison_0/reference.py": "056380b49562cf767aaae783d69a35eecf4ea012fa31b8ea683bbf15de6b408a",
+        "Mbpp_65_flip_comparison_0/tests/hidden/evalplus_check.py": "5bbfb9e85a277262bfa1b118076b34cc5b6af916b84a1e1cca0f2a988ad67a6c",
+        "Mbpp_65_flip_comparison_0/tests/hidden/test_Mbpp_65_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_65_flip_comparison_0/tests/visible/test_Mbpp_65.py": "8e3273bb1252bc24c6842375331b996fe0b2c9c0e7aeae34658fcedd2f7fc92f"
+      }
+    },
+    "Mbpp_66_flip_comparison_0": {
+      "id": "mutbench/66/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_66_flip_comparison_0.json": "ac1be9a0acc03b404abce197725ed78057c3725dd66dfdae0eac38310561bbce",
+        "Mbpp_66_flip_comparison_0/reference.py": "81046479c72d76e45076535facbf049f20308a1191859c64543dc8441e3d4572",
+        "Mbpp_66_flip_comparison_0/tests/hidden/evalplus_check.py": "55fcdd1467a37c66425e8c1802525b03db62f469a19826bb9d883b7ec5091484",
+        "Mbpp_66_flip_comparison_0/tests/hidden/test_Mbpp_66_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_66_flip_comparison_0/tests/visible/test_Mbpp_66.py": "fb5300654620dc35cabc93872ff172fcaaef11a2cdaed7c75df1c5dafeec4744"
+      }
+    },
+    "Mbpp_67_shift_bound_7": {
+      "id": "mutbench/67/shift_bound/7",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_67_shift_bound_7.json": "045e25509b5a2c4e81066be83a7fcfb3a6c38a2580bde028077ab4464be2bd4d",
+        "Mbpp_67_shift_bound_7/reference.py": "5b4478f87a468b7d44ca2b8418ccf1789343a2b972cfd97f240ea6f34eb83de2",
+        "Mbpp_67_shift_bound_7/tests/hidden/evalplus_check.py": "6e02470f9726f2050b18820b324a2a70a85ff9d2dc9e7ffba77c0409f4f996d2",
+        "Mbpp_67_shift_bound_7/tests/hidden/test_Mbpp_67_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_67_shift_bound_7/tests/visible/test_Mbpp_67.py": "057129fd822431b8931137cd0fe09c186d1ed3f37287017036e995ca7860a82b"
+      }
+    },
+    "Mbpp_67_swap_arithmetic_7": {
+      "id": "mutbench/67/swap_arithmetic/7",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_67_swap_arithmetic_7.json": "7a41d5f8fdf15a62389d09d28a3e6f972f86775678a085892c47af35d983a097",
+        "Mbpp_67_swap_arithmetic_7/reference.py": "5b4478f87a468b7d44ca2b8418ccf1789343a2b972cfd97f240ea6f34eb83de2",
+        "Mbpp_67_swap_arithmetic_7/tests/hidden/evalplus_check.py": "6e02470f9726f2050b18820b324a2a70a85ff9d2dc9e7ffba77c0409f4f996d2",
+        "Mbpp_67_swap_arithmetic_7/tests/hidden/test_Mbpp_67_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_67_swap_arithmetic_7/tests/visible/test_Mbpp_67.py": "057129fd822431b8931137cd0fe09c186d1ed3f37287017036e995ca7860a82b"
+      }
+    },
+    "Mbpp_68_flip_comparison_1": {
+      "id": "mutbench/68/flip_comparison/1",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_68_flip_comparison_1.json": "96a5d7ee79c3bb259663439e82b3cd71a78e646bfe8ffeeee5e96c21781627e8",
+        "Mbpp_68_flip_comparison_1/reference.py": "a87a327a1a2d0488cb069f27a57eb1b80a073af3c8cc6aafe17402d16feddf9e",
+        "Mbpp_68_flip_comparison_1/tests/hidden/evalplus_check.py": "b8e7302d4d50a2833b370a2d8726d8aca94b8b5ed2617c91aad6841b616f1908",
+        "Mbpp_68_flip_comparison_1/tests/hidden/test_Mbpp_68_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_68_flip_comparison_1/tests/visible/test_Mbpp_68.py": "c5b9182889002366d66fd14c48f8a10a4992df86dda32cb64740e731fd681779"
+      }
+    },
+    "Mbpp_68_swap_boolean_0": {
+      "id": "mutbench/68/swap_boolean/0",
+      "split": "dev",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_68_swap_boolean_0.json": "ba20137c3bb3c92f1f193ec04c6cb2e940f243af82a019efb20d85f8f0207562",
+        "Mbpp_68_swap_boolean_0/reference.py": "a87a327a1a2d0488cb069f27a57eb1b80a073af3c8cc6aafe17402d16feddf9e",
+        "Mbpp_68_swap_boolean_0/tests/hidden/evalplus_check.py": "b8e7302d4d50a2833b370a2d8726d8aca94b8b5ed2617c91aad6841b616f1908",
+        "Mbpp_68_swap_boolean_0/tests/hidden/test_Mbpp_68_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_68_swap_boolean_0/tests/visible/test_Mbpp_68.py": "c5b9182889002366d66fd14c48f8a10a4992df86dda32cb64740e731fd681779"
+      }
+    },
+    "Mbpp_6_swap_boolean_0": {
+      "id": "mutbench/6/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_6_swap_boolean_0.json": "f3d65cca5cc6d6dedf7b84bf31f8d1ba7aaf29a236dd20aa0b1a8323f151de00",
+        "Mbpp_6_swap_boolean_0/reference.py": "9b9c254dd22c7d847b824e47ba57efebba7944aa56319e50c502f01a455b4523",
+        "Mbpp_6_swap_boolean_0/tests/hidden/evalplus_check.py": "161fed2a776306c1eaa83698ead9f848f235b2b9d8fe0c7c8dfbba23b4720fe9",
+        "Mbpp_6_swap_boolean_0/tests/hidden/test_Mbpp_6_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_6_swap_boolean_0/tests/visible/test_Mbpp_6.py": "0f73269d801f4dac885cfb11d489cbd8ade0e0df1fb7d20839fc1a90504c20e1"
+      }
+    },
+    "Mbpp_70_flip_comparison_0": {
+      "id": "mutbench/70/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_70_flip_comparison_0.json": "ec688d4f9480ec6a36c7d22825c6891405491015b4be43e7f579f93cdff0a0da",
+        "Mbpp_70_flip_comparison_0/reference.py": "5e4d88924f32072da9ca41ac36f3b5cddab6e231f06294e3c20a619a2b6822a0",
+        "Mbpp_70_flip_comparison_0/tests/hidden/evalplus_check.py": "f8529d22b770aeec0a2e6984ec83a9ed99ed17e4eb3fa11b3fbc367563a678a7",
+        "Mbpp_70_flip_comparison_0/tests/hidden/test_Mbpp_70_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_70_flip_comparison_0/tests/visible/test_Mbpp_70.py": "adacc8c1898371718c7f0aa46ff3ea5803e101bf7b6fa67cf2db5e883886d5e9"
+      }
+    },
+    "Mbpp_71_swap_boolean_0": {
+      "id": "mutbench/71/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_71_swap_boolean_0.json": "3c19c8d171f3abab0bc1d670682edae032515399fee7915a8a30bfe426444bb5",
+        "Mbpp_71_swap_boolean_0/reference.py": "76de0b8f785695ec117ad69234a42afefb49710dc65ee7857d879927742f297a",
+        "Mbpp_71_swap_boolean_0/tests/hidden/evalplus_check.py": "ec70de9906af9a6a6d6ed06a26c6eaf3b0317d5682a4214d4ad5b9d37cff56d6",
+        "Mbpp_71_swap_boolean_0/tests/hidden/test_Mbpp_71_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_71_swap_boolean_0/tests/visible/test_Mbpp_71.py": "001577916e6e689f938ab4089dc71bfb7640489b0188c94706678f19cce0c7f3"
+      }
+    },
+    "Mbpp_720_swap_arithmetic_0": {
+      "id": "mutbench/720/swap_arithmetic/0",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_720_swap_arithmetic_0.json": "7e1a295e0ba7665b157f0c68cddcc11dd42e708b0f0bd057186b7a6652b9a638",
+        "Mbpp_720_swap_arithmetic_0/reference.py": "15dc1ecd78e11ed74c113c1fbaaa6b72844d5a02a6914a8a0b4c46e695916b09",
+        "Mbpp_720_swap_arithmetic_0/tests/hidden/evalplus_check.py": "4cad8f053c94c101c5ea24e8f595875dac7d3367d0c77ec001d813f28da45557",
+        "Mbpp_720_swap_arithmetic_0/tests/hidden/test_Mbpp_720_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_720_swap_arithmetic_0/tests/visible/test_Mbpp_720.py": "5d712d92234d604d4840c8605e5a3a7469240e6057c31d5d58543f1036ac23da"
+      }
+    },
+    "Mbpp_721_swap_arithmetic_9": {
+      "id": "mutbench/721/swap_arithmetic/9",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_721_swap_arithmetic_9.json": "446fca356eacb549c1adad32c421f30404c5c48e8a2d7ecb02de00ba11f0f0fc",
+        "Mbpp_721_swap_arithmetic_9/reference.py": "3f9460b1fc013f12cd155b7674b242f5920476691df8fba569498a4cd167024e",
+        "Mbpp_721_swap_arithmetic_9/tests/hidden/evalplus_check.py": "a3bcb2dd54ff55155c102217f1eb62dc005f8dcca472d91ff21ead23afa6c468",
+        "Mbpp_721_swap_arithmetic_9/tests/hidden/test_Mbpp_721_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_721_swap_arithmetic_9/tests/visible/test_Mbpp_721.py": "6c7135ed3b0e71a71541bfc75b024aed2da22786455befba8169ab81cd5de3a3"
+      }
+    },
+    "Mbpp_722_shift_bound_1": {
+      "id": "mutbench/722/shift_bound/1",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_722_shift_bound_1.json": "d1a27b319ed45e56a8fb78b0775fdfe55583ecf0e27c867f7a926c7fb99639bd",
+        "Mbpp_722_shift_bound_1/reference.py": "1b60cac4d66eae267fc75557681e845e2ccff51745aaf3545de2e88a4f66e27c",
+        "Mbpp_722_shift_bound_1/tests/hidden/evalplus_check.py": "bff14285959aaa01f1229a702ec38fe8b28292d6d11fb8d8d86e630fed944e92",
+        "Mbpp_722_shift_bound_1/tests/hidden/test_Mbpp_722_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_722_shift_bound_1/tests/visible/test_Mbpp_722.py": "19bcfeaf287336825580a43617545224a4c82736046169aff867739a0f15b365"
+      }
+    },
+    "Mbpp_723_wrong_variable_2": {
+      "id": "mutbench/723/wrong_variable/2",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_723_wrong_variable_2.json": "f196c61fdd3b603587480e9ffcd379cf2d2263cbb422ca0b152afbebe1ad3126",
+        "Mbpp_723_wrong_variable_2/reference.py": "0060a182eceada5b9243d2fd6b201a23c9221640dbc64ef2556033b8c1ee01a5",
+        "Mbpp_723_wrong_variable_2/tests/hidden/evalplus_check.py": "20085928da6d833f52309ff1d6614d7417d98df64a3ef303d7664120eac6421a",
+        "Mbpp_723_wrong_variable_2/tests/hidden/test_Mbpp_723_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_723_wrong_variable_2/tests/visible/test_Mbpp_723.py": "d2c0b404f1f50ca4903a2f3959530586b0b2d0b49987c732abae69d456c511e6"
+      }
+    },
+    "Mbpp_728_wrong_variable_1": {
+      "id": "mutbench/728/wrong_variable/1",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_728_wrong_variable_1.json": "adb2b6656e05dfb1005a2312399103d5303051e69e2fdf8683bbf7e1b05cf779",
+        "Mbpp_728_wrong_variable_1/reference.py": "f2eb9a40a97f55a3b8150b641c9ef7cf78c4e48f12a8f9b1aa7779098477819a",
+        "Mbpp_728_wrong_variable_1/tests/hidden/evalplus_check.py": "afbf9e6807c2b40a9fc1fa139b207a48abb6bd1b190c0fdd56234a67be6b07de",
+        "Mbpp_728_wrong_variable_1/tests/hidden/test_Mbpp_728_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_728_wrong_variable_1/tests/visible/test_Mbpp_728.py": "db91d41f32e0d26013fc60003fc949e1721581aa1a0659c2ea2fb9d4579cd553"
+      }
+    },
+    "Mbpp_72_flip_comparison_0": {
+      "id": "mutbench/72/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_72_flip_comparison_0.json": "b8a611e108c1a80fa21fe0b9a022a3c71c11c8f6f1c60476c853ca2eef4737fa",
+        "Mbpp_72_flip_comparison_0/reference.py": "924e65e0b8a6c5dfed1485150ac3f1fb2416b175933f33f81c0f99eeff432d8f",
+        "Mbpp_72_flip_comparison_0/tests/hidden/evalplus_check.py": "8cf0eb3301bc99f432d6c5b550ec4474e314f1e7eff2a40c2282296f3de4f152",
+        "Mbpp_72_flip_comparison_0/tests/hidden/test_Mbpp_72_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_72_flip_comparison_0/tests/visible/test_Mbpp_72.py": "78e654a949dfd7b0ff29f6268c20862b8aaeb78257a936fbe8ba2d58196c4bce"
+      }
+    },
+    "Mbpp_731_swap_arithmetic_2": {
+      "id": "mutbench/731/swap_arithmetic/2",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_731_swap_arithmetic_2.json": "f6d60ba42ba2a325ebaaa92c369d8c18877324a9d35a41a0d55fc6694aa8b2e1",
+        "Mbpp_731_swap_arithmetic_2/reference.py": "a47d496635f864393207dc4b62675920ff8cd82bde4a1d9e4d36ad0ce9b8436e",
+        "Mbpp_731_swap_arithmetic_2/tests/hidden/evalplus_check.py": "d0e0360b4de652f44830447536078fa8b76dcfce46050211654e9206397d3862",
+        "Mbpp_731_swap_arithmetic_2/tests/hidden/test_Mbpp_731_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_731_swap_arithmetic_2/tests/visible/test_Mbpp_731.py": "d9244b31cc3451463b0b85163ab343fd796309d1aec637cc0fd1e8775a71c60f"
+      }
+    },
+    "Mbpp_733_shift_bound_0": {
+      "id": "mutbench/733/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_733_shift_bound_0.json": "1c04c6ccabb54c78e11be2c4085b1326f3c9c705384974583e436823847abdaf",
+        "Mbpp_733_shift_bound_0/reference.py": "99659b076f5ab621eb3dd550347bb90ec8d1e12f73d7036d017561270cdc401d",
+        "Mbpp_733_shift_bound_0/tests/hidden/evalplus_check.py": "0951555e8c02c290af921156ae269767d206b9910a8fd06b378e5bc3f8d4463f",
+        "Mbpp_733_shift_bound_0/tests/hidden/test_Mbpp_733_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_733_shift_bound_0/tests/visible/test_Mbpp_733.py": "2092c257377f9c8c9ea259e146244f161d2346c817d3e180f65a96c96781ef55"
+      }
+    },
+    "Mbpp_733_swap_arithmetic_2": {
+      "id": "mutbench/733/swap_arithmetic/2",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_733_swap_arithmetic_2.json": "458f86d79db07d0dca4a8bea12646aaed4c6ca8cea4994affa718687a215aec8",
+        "Mbpp_733_swap_arithmetic_2/reference.py": "99659b076f5ab621eb3dd550347bb90ec8d1e12f73d7036d017561270cdc401d",
+        "Mbpp_733_swap_arithmetic_2/tests/hidden/evalplus_check.py": "0951555e8c02c290af921156ae269767d206b9910a8fd06b378e5bc3f8d4463f",
+        "Mbpp_733_swap_arithmetic_2/tests/hidden/test_Mbpp_733_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_733_swap_arithmetic_2/tests/visible/test_Mbpp_733.py": "2092c257377f9c8c9ea259e146244f161d2346c817d3e180f65a96c96781ef55"
+      }
+    },
+    "Mbpp_734_flip_comparison_0": {
+      "id": "mutbench/734/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_734_flip_comparison_0.json": "ba54d11aa76a45934299a7d764adfdb0ce1e3945eb3e117761fa2fccd4ea059c",
+        "Mbpp_734_flip_comparison_0/reference.py": "1b544eb4b05aa92580ec77bd92a002f70dae561980d1608e8a4a5f844750bd74",
+        "Mbpp_734_flip_comparison_0/tests/hidden/evalplus_check.py": "8e2c280f6b69986b2364f21920df78f6419c723351cfaf739db3435c926c28b1",
+        "Mbpp_734_flip_comparison_0/tests/hidden/test_Mbpp_734_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_734_flip_comparison_0/tests/visible/test_Mbpp_734.py": "ad40b61e6856d4c48da2adffe08bcc9d18b0f5026318af220d672c6abf5a588b"
+      }
+    },
+    "Mbpp_734_swap_arithmetic_0": {
+      "id": "mutbench/734/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_734_swap_arithmetic_0.json": "7930e97738592e2af88cbc0b7203974a06f1c894ac8a0bdea0661b7f65b006b2",
+        "Mbpp_734_swap_arithmetic_0/reference.py": "1b544eb4b05aa92580ec77bd92a002f70dae561980d1608e8a4a5f844750bd74",
+        "Mbpp_734_swap_arithmetic_0/tests/hidden/evalplus_check.py": "8e2c280f6b69986b2364f21920df78f6419c723351cfaf739db3435c926c28b1",
+        "Mbpp_734_swap_arithmetic_0/tests/hidden/test_Mbpp_734_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_734_swap_arithmetic_0/tests/visible/test_Mbpp_734.py": "ad40b61e6856d4c48da2adffe08bcc9d18b0f5026318af220d672c6abf5a588b"
+      }
+    },
+    "Mbpp_736_wrong_variable_1": {
+      "id": "mutbench/736/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_736_wrong_variable_1.json": "fc574f0b67b0784ec84f9be07b9d4de785e8665916b2b1307cef928b25e3fbad",
+        "Mbpp_736_wrong_variable_1/reference.py": "426ef557a82103158d013db1c7d27d363642cbd6980aaa4850e5673851cdea96",
+        "Mbpp_736_wrong_variable_1/tests/hidden/evalplus_check.py": "af282684a00512dbb3b40cc0f91e40729bfd6f3389246c0fe49f9355f1015d2c",
+        "Mbpp_736_wrong_variable_1/tests/hidden/test_Mbpp_736_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_736_wrong_variable_1/tests/visible/test_Mbpp_736.py": "cc304cc6b900124d12326a86dc122ea71f478037659f206b52a542534c0cd263"
+      }
+    },
+    "Mbpp_740_swap_arithmetic_0": {
+      "id": "mutbench/740/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_740_swap_arithmetic_0.json": "35d3e34fa90208b613df41c82369e9ef23081a71ab10165a40768e63253b2e5a",
+        "Mbpp_740_swap_arithmetic_0/reference.py": "2c384384208b9e4ec9df88acb1bd148d08841066150a493ca4562d25c0ed5ba7",
+        "Mbpp_740_swap_arithmetic_0/tests/hidden/evalplus_check.py": "55f0070279b528a6891650fd533346d57f5be9d89d72a044f5795569debb06d9",
+        "Mbpp_740_swap_arithmetic_0/tests/hidden/test_Mbpp_740_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_740_swap_arithmetic_0/tests/visible/test_Mbpp_740.py": "3f8bc7c0f0bd27d714d5596daf10f45dffeaa01e26417a481a0b13285573b6af"
+      }
+    },
+    "Mbpp_741_flip_comparison_0": {
+      "id": "mutbench/741/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_741_flip_comparison_0.json": "03a6a4412d1006e3ef18acb4505f962b982962b2b01610ca02a5442a50962e2b",
+        "Mbpp_741_flip_comparison_0/reference.py": "30d4082ffb4fcfebfa370f95cc9006ecc7c209c33ae5d061053e309aa1fba5d5",
+        "Mbpp_741_flip_comparison_0/tests/hidden/evalplus_check.py": "c80011cb8037aa4b5da2d38bd89d71925e253da1c91e6f07f4b1126febed2142",
+        "Mbpp_741_flip_comparison_0/tests/hidden/test_Mbpp_741_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_741_flip_comparison_0/tests/visible/test_Mbpp_741.py": "65abdfb3b91dab166d9a45f136a9127c4480364150eae51d21a6be1b0b5aaeaf"
+      }
+    },
+    "Mbpp_743_swap_arithmetic_0": {
+      "id": "mutbench/743/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_743_swap_arithmetic_0.json": "ebeb3a8438ba7e35644492f6b4dec40478ad3c086326d8ab5fb95e2a83a4980b",
+        "Mbpp_743_swap_arithmetic_0/reference.py": "bd166c50e0d717cfc9101740a42f0045ab84f5f512fa9f23630b6570cd6f30eb",
+        "Mbpp_743_swap_arithmetic_0/tests/hidden/evalplus_check.py": "ef06fcadb2b919d4a4a4cdf9aa557958a7e352806569f09551cad8c879ecd110",
+        "Mbpp_743_swap_arithmetic_0/tests/hidden/test_Mbpp_743_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_743_swap_arithmetic_0/tests/visible/test_Mbpp_743.py": "48e7427fb9d99f71b16f113f3709573440421bddd0dec4ed881f240f3c6df13e"
+      }
+    },
+    "Mbpp_744_wrong_variable_1": {
+      "id": "mutbench/744/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_744_wrong_variable_1.json": "a5bbc94cfd44ca644f1c92d3b6373f17176bd92e2636ff5865869fbd8372b7f5",
+        "Mbpp_744_wrong_variable_1/reference.py": "77bc1e501b8b1bbb2dd009f628bf8ca7abee6ad9477d463c5b5bd505e0ed17b3",
+        "Mbpp_744_wrong_variable_1/tests/hidden/evalplus_check.py": "5a09098d583e87800d1b964e665be7bc52f788b311545ae0585439b0e455c06a",
+        "Mbpp_744_wrong_variable_1/tests/hidden/test_Mbpp_744_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_744_wrong_variable_1/tests/visible/test_Mbpp_744.py": "6fd478bed87e25189111cc78d33f42c025ae9b1d04b1bc9b28423d1d1b7ac2db"
+      }
+    },
+    "Mbpp_74_drop_guard_0": {
+      "id": "mutbench/74/drop_guard/0",
+      "split": "dev",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_74_drop_guard_0.json": "77c23eca559ef8dc429a56e4c12e9b34ec88141ceac90e775d91a9fffbd651ef",
+        "Mbpp_74_drop_guard_0/reference.py": "5835c3a7128de8666f3450439f5e73fb3888fbe08b2949f1338fbb6c86f28e25",
+        "Mbpp_74_drop_guard_0/tests/hidden/evalplus_check.py": "8b3a7d9d0ba7b6653d95fbaa951c8bc3e31bcec137589ffef813a6d09f75e08a",
+        "Mbpp_74_drop_guard_0/tests/hidden/test_Mbpp_74_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_74_drop_guard_0/tests/visible/test_Mbpp_74.py": "2437c2571ad1afb6b6d2182768a6fb373855245f714d0f46706f7a4d3fe9e408"
+      }
+    },
+    "Mbpp_74_shift_bound_1": {
+      "id": "mutbench/74/shift_bound/1",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_74_shift_bound_1.json": "184ede27e9c4b8ce1b1ca5fb4fe5c8f7ff72a82902c7f8ae35815e1174630e5f",
+        "Mbpp_74_shift_bound_1/reference.py": "5835c3a7128de8666f3450439f5e73fb3888fbe08b2949f1338fbb6c86f28e25",
+        "Mbpp_74_shift_bound_1/tests/hidden/evalplus_check.py": "8b3a7d9d0ba7b6653d95fbaa951c8bc3e31bcec137589ffef813a6d09f75e08a",
+        "Mbpp_74_shift_bound_1/tests/hidden/test_Mbpp_74_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_74_shift_bound_1/tests/visible/test_Mbpp_74.py": "2437c2571ad1afb6b6d2182768a6fb373855245f714d0f46706f7a4d3fe9e408"
+      }
+    },
+    "Mbpp_750_swap_arithmetic_0": {
+      "id": "mutbench/750/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_750_swap_arithmetic_0.json": "e23e5ae8ec5a1b0e9f5389b5b2c60e1b46631ade9c670a49799ec3ccc1490996",
+        "Mbpp_750_swap_arithmetic_0/reference.py": "afc74e48d82cfbb2c1e6ffe1a5aefe4f69af2d8fd770a24555513c96bb3b350f",
+        "Mbpp_750_swap_arithmetic_0/tests/hidden/evalplus_check.py": "110584c4d17f3dcd58c7b5784da6091089ddd43f882afd356b4b5159b0913229",
+        "Mbpp_750_swap_arithmetic_0/tests/hidden/test_Mbpp_750_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_750_swap_arithmetic_0/tests/visible/test_Mbpp_750.py": "6a51bf4532079c863ae165dedd208160b465b3144576bbf42d11c35180a33231"
+      }
+    },
+    "Mbpp_751_drop_guard_0": {
+      "id": "mutbench/751/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_751_drop_guard_0.json": "b7a980b0eadb2512a450a30e4c39d7519a756880fe2ad79b795f60abfef7cf60",
+        "Mbpp_751_drop_guard_0/reference.py": "0f93f1366158cbf1a4ebe0f7c9c991e9f2b089ec9eba719a16702405b3204b3b",
+        "Mbpp_751_drop_guard_0/tests/hidden/evalplus_check.py": "18781f6de7224def07c75d22317ce920a5700bda478741d69ccb3e6df9d2cbaf",
+        "Mbpp_751_drop_guard_0/tests/hidden/test_Mbpp_751_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_751_drop_guard_0/tests/visible/test_Mbpp_751.py": "e62f4485cdb606da4b9569e378c7936fbab9bd42ecea72fee42c8803b31f3988"
+      }
+    },
+    "Mbpp_751_swap_boolean_0": {
+      "id": "mutbench/751/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_751_swap_boolean_0.json": "4d9b3b3f483269a22de0334b5c9336258d06225ce7885ffeade1b2414178a6d6",
+        "Mbpp_751_swap_boolean_0/reference.py": "0f93f1366158cbf1a4ebe0f7c9c991e9f2b089ec9eba719a16702405b3204b3b",
+        "Mbpp_751_swap_boolean_0/tests/hidden/evalplus_check.py": "18781f6de7224def07c75d22317ce920a5700bda478741d69ccb3e6df9d2cbaf",
+        "Mbpp_751_swap_boolean_0/tests/hidden/test_Mbpp_751_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_751_swap_boolean_0/tests/visible/test_Mbpp_751.py": "e62f4485cdb606da4b9569e378c7936fbab9bd42ecea72fee42c8803b31f3988"
+      }
+    },
+    "Mbpp_752_shift_bound_0": {
+      "id": "mutbench/752/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_752_shift_bound_0.json": "a854a0f22c23a34fe00d43bc16b1dbb1e05c6dc82c2183d32d82e5bfb1c024a1",
+        "Mbpp_752_shift_bound_0/reference.py": "f373f1f56206ef8255c029990669d35e84faba790d5d5acb24fb35a27228d7ee",
+        "Mbpp_752_shift_bound_0/tests/hidden/evalplus_check.py": "8685856094a4fb1010dabebe9836e39d4107330882c92eda3561e1abd25db277",
+        "Mbpp_752_shift_bound_0/tests/hidden/test_Mbpp_752_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_752_shift_bound_0/tests/visible/test_Mbpp_752.py": "2c9fee686c1eaf156078b0bc82ec51ca36dd422f5e51678c409a1ae85cced6ca"
+      }
+    },
+    "Mbpp_752_swap_arithmetic_3": {
+      "id": "mutbench/752/swap_arithmetic/3",
+      "split": "dev",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_752_swap_arithmetic_3.json": "650ce718e20b186439704917cda89b10575c791c49cfa9daca8e16a82e718f9c",
+        "Mbpp_752_swap_arithmetic_3/reference.py": "f373f1f56206ef8255c029990669d35e84faba790d5d5acb24fb35a27228d7ee",
+        "Mbpp_752_swap_arithmetic_3/tests/hidden/evalplus_check.py": "8685856094a4fb1010dabebe9836e39d4107330882c92eda3561e1abd25db277",
+        "Mbpp_752_swap_arithmetic_3/tests/hidden/test_Mbpp_752_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_752_swap_arithmetic_3/tests/visible/test_Mbpp_752.py": "2c9fee686c1eaf156078b0bc82ec51ca36dd422f5e51678c409a1ae85cced6ca"
+      }
+    },
+    "Mbpp_753_shift_bound_0": {
+      "id": "mutbench/753/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_753_shift_bound_0.json": "0b03c572cf52343f02eedda4b9ce0a84da1162db951af205adcd9f016130c4c0",
+        "Mbpp_753_shift_bound_0/reference.py": "9cdd0859a7d4687ccd616798c25e4db097a322e348f79a520c68488802a189a5",
+        "Mbpp_753_shift_bound_0/tests/hidden/evalplus_check.py": "385ab277c6de053d69efd9b1582d19694018787d8f2c5fb9b0d82408123f2a61",
+        "Mbpp_753_shift_bound_0/tests/hidden/test_Mbpp_753_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_753_shift_bound_0/tests/visible/test_Mbpp_753.py": "509031c8a87ae47995cf480d99ab1a31234d28c0eb3d1f71cac0b387eaaa52f9"
+      }
+    },
+    "Mbpp_755_drop_guard_0": {
+      "id": "mutbench/755/drop_guard/0",
+      "split": "dev",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_755_drop_guard_0.json": "45d6bebb3c49d676a5a0a79d5f14ce345ea74a6f35df8550b2b7bdbeafca74fe",
+        "Mbpp_755_drop_guard_0/reference.py": "7f14e952251beafbb9015f7a25abd706b0cea7b470c635b47fc5071d56c320fb",
+        "Mbpp_755_drop_guard_0/tests/hidden/evalplus_check.py": "dd3c1e5eed4a3f1d11cb80eb54911e93947901aab4818ab27647b9db7c59ae57",
+        "Mbpp_755_drop_guard_0/tests/hidden/test_Mbpp_755_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_755_drop_guard_0/tests/visible/test_Mbpp_755.py": "1797f081c4f36d077b9a87fc2f822d559bde9d1cdb69599f23959817d24a2ef3"
+      }
+    },
+    "Mbpp_755_shift_bound_0": {
+      "id": "mutbench/755/shift_bound/0",
+      "split": "test",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_755_shift_bound_0.json": "3cdb61a4fde393b25f8765152ae14c588ee8a6f299eda810d4a5634bb1a30ce2",
+        "Mbpp_755_shift_bound_0/reference.py": "7f14e952251beafbb9015f7a25abd706b0cea7b470c635b47fc5071d56c320fb",
+        "Mbpp_755_shift_bound_0/tests/hidden/evalplus_check.py": "dd3c1e5eed4a3f1d11cb80eb54911e93947901aab4818ab27647b9db7c59ae57",
+        "Mbpp_755_shift_bound_0/tests/hidden/test_Mbpp_755_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_755_shift_bound_0/tests/visible/test_Mbpp_755.py": "1797f081c4f36d077b9a87fc2f822d559bde9d1cdb69599f23959817d24a2ef3"
+      }
+    },
+    "Mbpp_75_wrong_variable_4": {
+      "id": "mutbench/75/wrong_variable/4",
+      "split": "dev",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_75_wrong_variable_4.json": "034fc5c9481de3ab84ebe0f50a77d3fa0edc4177cb4adeeda88ccdd3c1f5d410",
+        "Mbpp_75_wrong_variable_4/reference.py": "2b3a7c135609b5c041305c1824a2e6f1de1dc85a8c6981ceed2286739902485a",
+        "Mbpp_75_wrong_variable_4/tests/hidden/evalplus_check.py": "811c3027d66faa9611c330396bd8516325acbbb726ba082404d6341d9a3e3758",
+        "Mbpp_75_wrong_variable_4/tests/hidden/test_Mbpp_75_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_75_wrong_variable_4/tests/visible/test_Mbpp_75.py": "dd5a09c67e1bd03d349b0ce23f3d0024358e807a9f1b628dc7ef4017cabcb3b7"
+      }
+    },
+    "Mbpp_760_flip_comparison_0": {
+      "id": "mutbench/760/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_760_flip_comparison_0.json": "dbec76d3a9249a0822be47bc6c360bcc4fde2661be2bb4d64002d66529b20097",
+        "Mbpp_760_flip_comparison_0/reference.py": "05eab00411f58ae16bb5f00b3e64a282545fc1ed70b7ac867e0e3ca5d0e11e0f",
+        "Mbpp_760_flip_comparison_0/tests/hidden/evalplus_check.py": "51f6fd1ab284f05456b200ee6a4c8e9e1139cc0722072b97f1278d96e01ffe50",
+        "Mbpp_760_flip_comparison_0/tests/hidden/test_Mbpp_760_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_760_flip_comparison_0/tests/visible/test_Mbpp_760.py": "e526dd90332638a711fbb508ba673131d4db1744ac006936304c684df9e98753"
+      }
+    },
+    "Mbpp_762_swap_boolean_0": {
+      "id": "mutbench/762/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_762_swap_boolean_0.json": "048e56276fc48843c431e243aba07c98ffc0d2fb7c8140d3f68f0f35db0b3ca2",
+        "Mbpp_762_swap_boolean_0/reference.py": "331a7629c376c2ba249b46e10412959f2ba2b5126f5f00a46a9b58d83f45a4bd",
+        "Mbpp_762_swap_boolean_0/tests/hidden/evalplus_check.py": "bea1ad3d19bdde6efa45701d014e168138c1aff11552eaf2e705607f7750e4d1",
+        "Mbpp_762_swap_boolean_0/tests/hidden/test_Mbpp_762_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_762_swap_boolean_0/tests/visible/test_Mbpp_762.py": "f8e992ee583800b0d2aa9f05d20c04eabaeb72808beea2f68669e7fcd3fbd87a"
+      }
+    },
+    "Mbpp_767_delete_statement_0": {
+      "id": "mutbench/767/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_767_delete_statement_0.json": "c6ad0e727d9ac24394178c6381d05ab5814ad410d9416e912cc503f0da3b91b2",
+        "Mbpp_767_delete_statement_0/reference.py": "118a8a190d42d8057693a6dab1a44f9b8cb346dd4b742f00ed209cc33c172f0e",
+        "Mbpp_767_delete_statement_0/tests/hidden/evalplus_check.py": "5e119cb9ad7c86b334914b0608274d08f3a21755b11897e90cacf7b07fd47cf7",
+        "Mbpp_767_delete_statement_0/tests/hidden/test_Mbpp_767_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_767_delete_statement_0/tests/visible/test_Mbpp_767.py": "0fc9b123f0317d7b0af96250e7c2a73190efd1100407c3d5e21562de09f81b9d"
+      }
+    },
+    "Mbpp_767_flip_comparison_0": {
+      "id": "mutbench/767/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_767_flip_comparison_0.json": "d4f0cdbbfd291a1fd3903ae1c75f1f6ed7584122dec1967c650ce7918c7e4749",
+        "Mbpp_767_flip_comparison_0/reference.py": "118a8a190d42d8057693a6dab1a44f9b8cb346dd4b742f00ed209cc33c172f0e",
+        "Mbpp_767_flip_comparison_0/tests/hidden/evalplus_check.py": "5e119cb9ad7c86b334914b0608274d08f3a21755b11897e90cacf7b07fd47cf7",
+        "Mbpp_767_flip_comparison_0/tests/hidden/test_Mbpp_767_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_767_flip_comparison_0/tests/visible/test_Mbpp_767.py": "0fc9b123f0317d7b0af96250e7c2a73190efd1100407c3d5e21562de09f81b9d"
+      }
+    },
+    "Mbpp_769_swap_arithmetic_1": {
+      "id": "mutbench/769/swap_arithmetic/1",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_769_swap_arithmetic_1.json": "9c86069c1f9df971dbf28be07441e8523e443b09c5e3e66a440da739bd61da79",
+        "Mbpp_769_swap_arithmetic_1/reference.py": "bd5a6d6fd04f798e121a679a0b3659029424d3b1fb5f37c2e8f3abe3da230d08",
+        "Mbpp_769_swap_arithmetic_1/tests/hidden/evalplus_check.py": "3e12195b3ee180182571480909bad00ca3886eabdb78a84cd3da8932b9614a1c",
+        "Mbpp_769_swap_arithmetic_1/tests/hidden/test_Mbpp_769_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_769_swap_arithmetic_1/tests/visible/test_Mbpp_769.py": "9caf5262e3d399f8919b8be79ad08fce46e31ca652f3edfd311e172053b43b68"
+      }
+    },
+    "Mbpp_769_swap_arithmetic_2": {
+      "id": "mutbench/769/swap_arithmetic/2",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_769_swap_arithmetic_2.json": "2eb60b9cd8ef05479d566dfef051aa6ab49e17dac31bdfa0321a8b16af8c0cdb",
+        "Mbpp_769_swap_arithmetic_2/reference.py": "bd5a6d6fd04f798e121a679a0b3659029424d3b1fb5f37c2e8f3abe3da230d08",
+        "Mbpp_769_swap_arithmetic_2/tests/hidden/evalplus_check.py": "3e12195b3ee180182571480909bad00ca3886eabdb78a84cd3da8932b9614a1c",
+        "Mbpp_769_swap_arithmetic_2/tests/hidden/test_Mbpp_769_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_769_swap_arithmetic_2/tests/visible/test_Mbpp_769.py": "9caf5262e3d399f8919b8be79ad08fce46e31ca652f3edfd311e172053b43b68"
+      }
+    },
+    "Mbpp_771_swap_boolean_3": {
+      "id": "mutbench/771/swap_boolean/3",
+      "split": "dev",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_771_swap_boolean_3.json": "0b3879d2f2b50dfff5557b77aa9c153d98aa900c03963ee042298c6a1720a585",
+        "Mbpp_771_swap_boolean_3/reference.py": "f7f5b5aac55b0029bf2bcde7bdaac321c4cda02a26fddbc2e9ea7cb64a24a996",
+        "Mbpp_771_swap_boolean_3/tests/hidden/evalplus_check.py": "f312475ecded9d43a273ba096b5ac1700bbbde1cd41774da485e8f5917b11a72",
+        "Mbpp_771_swap_boolean_3/tests/hidden/test_Mbpp_771_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_771_swap_boolean_3/tests/visible/test_Mbpp_771.py": "9528b1936e56c03df54077f3a46a17b05b253dcdc1d3997ef1a45c1eaeb873a6"
+      }
+    },
+    "Mbpp_775_flip_comparison_0": {
+      "id": "mutbench/775/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_775_flip_comparison_0.json": "60be2cb3dde4aff891a56f329e8da25a6dd64491e2cdf4bcb87c7c8659daaeb3",
+        "Mbpp_775_flip_comparison_0/reference.py": "1592d158ec2c685a2990078755472cb6679a18eb1dcb326fac0c8bb85a688b49",
+        "Mbpp_775_flip_comparison_0/tests/hidden/evalplus_check.py": "69d1607626361711c8547b73b4200b8dc7bf6abeedf1b88fb1ee1ba611541433",
+        "Mbpp_775_flip_comparison_0/tests/hidden/test_Mbpp_775_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_775_flip_comparison_0/tests/visible/test_Mbpp_775.py": "38d41b06a6b5c2ef027cb91c9cff127ac13059b4809c76d8b55945ca60f7b144"
+      }
+    },
+    "Mbpp_782_delete_statement_0": {
+      "id": "mutbench/782/delete_statement/0",
+      "split": "dev",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_782_delete_statement_0.json": "9fa1fd431bb46c894f93ac6245b2068f43887add05872e08a833b979141d156d",
+        "Mbpp_782_delete_statement_0/reference.py": "9fdf1caf2a163d3fd8d39f1c82eadc1a5b2079e6e11cf95b179644d8abdf3634",
+        "Mbpp_782_delete_statement_0/tests/hidden/evalplus_check.py": "a7df121c5676317264e349848525fa2836b93e3696bd0c8b5b97324033c15ef5",
+        "Mbpp_782_delete_statement_0/tests/hidden/test_Mbpp_782_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_782_delete_statement_0/tests/visible/test_Mbpp_782.py": "d2bb9adfff93ddadd9c5a0306fd911a2091617a1edadedd256967b1250e712ba"
+      }
+    },
+    "Mbpp_785_wrong_variable_0": {
+      "id": "mutbench/785/wrong_variable/0",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_785_wrong_variable_0.json": "35d1bcf75b40aafee08e5e0216357ebb8cf14719b4a74040f06f84d87146be8b",
+        "Mbpp_785_wrong_variable_0/reference.py": "710829e94f07e134918b2c9b452bbb8fc287fed6719b6e63ba08d4eee312b4b5",
+        "Mbpp_785_wrong_variable_0/tests/hidden/evalplus_check.py": "c4670aaae6d1f1a1cee950d9abeef01fae5e09aab74d10e6c593697b7ab6027b",
+        "Mbpp_785_wrong_variable_0/tests/hidden/test_Mbpp_785_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_785_wrong_variable_0/tests/visible/test_Mbpp_785.py": "cba812fd067f955e63a979122e0badc973b3c67a01085ae90b9b6a803c7ff03a"
+      }
+    },
+    "Mbpp_785_wrong_variable_1": {
+      "id": "mutbench/785/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_785_wrong_variable_1.json": "5571ba5cc82cea38d1ad14420a1527957a1628eb969300e75255947ed88b2100",
+        "Mbpp_785_wrong_variable_1/reference.py": "710829e94f07e134918b2c9b452bbb8fc287fed6719b6e63ba08d4eee312b4b5",
+        "Mbpp_785_wrong_variable_1/tests/hidden/evalplus_check.py": "c4670aaae6d1f1a1cee950d9abeef01fae5e09aab74d10e6c593697b7ab6027b",
+        "Mbpp_785_wrong_variable_1/tests/hidden/test_Mbpp_785_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_785_wrong_variable_1/tests/visible/test_Mbpp_785.py": "cba812fd067f955e63a979122e0badc973b3c67a01085ae90b9b6a803c7ff03a"
+      }
+    },
+    "Mbpp_788_swap_arithmetic_0": {
+      "id": "mutbench/788/swap_arithmetic/0",
+      "split": "test",
+      "stratum": "swap_arithmetic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_788_swap_arithmetic_0.json": "b0bfbec2dce0ee15dc2b4438a4d8c5879fec4c0f8aba8494c7f580afe34adb92",
+        "Mbpp_788_swap_arithmetic_0/reference.py": "ee734847a23ee57e56a8b3a6a2f81017e747dbd12a0419b8568870cb45e51c03",
+        "Mbpp_788_swap_arithmetic_0/tests/hidden/evalplus_check.py": "e9ef138080e0440ea2f80415995fb3d2a7bee024926848fb1c60c9c957ddb2b0",
+        "Mbpp_788_swap_arithmetic_0/tests/hidden/test_Mbpp_788_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_788_swap_arithmetic_0/tests/visible/test_Mbpp_788.py": "4b9bb1f02dc5f284580379a7fb1db48f2b1b0f06b7e4dcac195eaa7dd73a6893"
+      }
+    },
+    "Mbpp_790_shift_bound_0": {
+      "id": "mutbench/790/shift_bound/0",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_790_shift_bound_0.json": "566fd242784dd682c9a0d15d5fbf9ce09c83a3fded7990d487133bb519f28161",
+        "Mbpp_790_shift_bound_0/reference.py": "cd6e9d02652829dd600a1930f9eb150c627454a10680b01a8ebf633855aff1ed",
+        "Mbpp_790_shift_bound_0/tests/hidden/evalplus_check.py": "7bcfafcad04dc597d94ad8122f57e4535b2316c785d8e9fdf4ff1c1acffb7fbb",
+        "Mbpp_790_shift_bound_0/tests/hidden/test_Mbpp_790_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_790_shift_bound_0/tests/visible/test_Mbpp_790.py": "43604d9e50ebdaf385c026b9be8db39970276ab18ee870919993388bf23529a5"
+      }
+    },
+    "Mbpp_791_swap_boolean_0": {
+      "id": "mutbench/791/swap_boolean/0",
+      "split": "test",
+      "stratum": "swap_boolean",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_791_swap_boolean_0.json": "e971ce2114dd4185c2b636814d45e6ada469a7798597364834ba1f440fcfb852",
+        "Mbpp_791_swap_boolean_0/reference.py": "5a26612ec33a69a32326a3223e3f7549e99c529bdd75c441cfd347f0403b2282",
+        "Mbpp_791_swap_boolean_0/tests/hidden/evalplus_check.py": "095e27d7a7f12ddedd1ccdca7a86a2e01a853fc6203d278c0408725615776d15",
+        "Mbpp_791_swap_boolean_0/tests/hidden/test_Mbpp_791_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_791_swap_boolean_0/tests/visible/test_Mbpp_791.py": "39c379995d8095f0b3fb2728f61e2be177df30b80c2ce91e60c2400259b1ed28"
+      }
+    },
+    "Mbpp_79_flip_comparison_0": {
+      "id": "mutbench/79/flip_comparison/0",
+      "split": "dev",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_79_flip_comparison_0.json": "5ef80771d0dca8aaafecd74c2a154efb5ba34d3f3223153024306cadf5cb088b",
+        "Mbpp_79_flip_comparison_0/reference.py": "9896ebafa689324e58de80a9d1456ddfed536605b44498e5f4bbcd9b7d6050b8",
+        "Mbpp_79_flip_comparison_0/tests/hidden/evalplus_check.py": "097e280418662e880eea0e19dc70af366abd628b583d05f5635e6f8bbe091651",
+        "Mbpp_79_flip_comparison_0/tests/hidden/test_Mbpp_79_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_79_flip_comparison_0/tests/visible/test_Mbpp_79.py": "e6380c3bc50002fc2c0ce11b9e7ef4d841846d6f349f72db4c3ba9946075c495"
+      }
+    },
+    "Mbpp_801_wrong_variable_4": {
+      "id": "mutbench/801/wrong_variable/4",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_801_wrong_variable_4.json": "eea17ca87647372018676af9d5aebafc309cad3277d6a51394bb4379196ab65e",
+        "Mbpp_801_wrong_variable_4/reference.py": "8a2036971996864259d4beb6817ac07cda11034dc792596e7f13fdb30bca56d5",
+        "Mbpp_801_wrong_variable_4/tests/hidden/evalplus_check.py": "ddde70d084acd2a470b4a26015abe22c8bc9db5ecfbc480f9004b93289ee8816",
+        "Mbpp_801_wrong_variable_4/tests/hidden/test_Mbpp_801_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_801_wrong_variable_4/tests/visible/test_Mbpp_801.py": "b97a78042e5b6a6c7d2eb6ef22ba784e247b8af77cb0e4034f2f51f4271d9ce0"
+      }
+    },
+    "Mbpp_803_drop_guard_0": {
+      "id": "mutbench/803/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_803_drop_guard_0.json": "57db612a6cd4d7d19a656b5f2710cd4d266001fa5dc561fc91f7f7304c2e092f",
+        "Mbpp_803_drop_guard_0/reference.py": "cd9ff551447a32ee881e6f057caf10f26910cae057b8a8a0b0246ce8346d24bd",
+        "Mbpp_803_drop_guard_0/tests/hidden/evalplus_check.py": "4ca9fc6b02ddfaf7661d73e1034c8270512f52855f220cb3a6eaf95f9231d437",
+        "Mbpp_803_drop_guard_0/tests/hidden/test_Mbpp_803_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_803_drop_guard_0/tests/visible/test_Mbpp_803.py": "4427ec406608e021d00605e4f2c352c9ccd17c5f911b840c035a7d6fd9945a3e"
+      }
+    },
+    "Mbpp_803_flip_comparison_1": {
+      "id": "mutbench/803/flip_comparison/1",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_803_flip_comparison_1.json": "315019e482a5436c2fab623008ec5153f67b42811deb87874a4ed4c6d0bedb40",
+        "Mbpp_803_flip_comparison_1/reference.py": "cd9ff551447a32ee881e6f057caf10f26910cae057b8a8a0b0246ce8346d24bd",
+        "Mbpp_803_flip_comparison_1/tests/hidden/evalplus_check.py": "4ca9fc6b02ddfaf7661d73e1034c8270512f52855f220cb3a6eaf95f9231d437",
+        "Mbpp_803_flip_comparison_1/tests/hidden/test_Mbpp_803_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_803_flip_comparison_1/tests/visible/test_Mbpp_803.py": "4427ec406608e021d00605e4f2c352c9ccd17c5f911b840c035a7d6fd9945a3e"
+      }
+    },
+    "Mbpp_804_flip_comparison_0": {
+      "id": "mutbench/804/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_804_flip_comparison_0.json": "67a2a439ceda59dc12aa1e172395b31aa44f15fccdea7552cb4c6ea92ecc7280",
+        "Mbpp_804_flip_comparison_0/reference.py": "7a109b7dbacbd17fc6ed5403e8f3da26cdba40208238136007b033079c38f4cb",
+        "Mbpp_804_flip_comparison_0/tests/hidden/evalplus_check.py": "88ab4a101552187e8e341525303562b35db876b1a52834c1961c64f22ac96a63",
+        "Mbpp_804_flip_comparison_0/tests/hidden/test_Mbpp_804_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_804_flip_comparison_0/tests/visible/test_Mbpp_804.py": "d66c2efa732ce12065f2d12df2934c4bd18b59ba7bb084912fc74220d8c3fbde"
+      }
+    },
+    "Mbpp_806_delete_statement_0": {
+      "id": "mutbench/806/delete_statement/0",
+      "split": "test",
+      "stratum": "delete_statement",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_806_delete_statement_0.json": "bdd5cb6670ea09eb712f41e312473db527cd07ad4265947a4be82dcc998f72d7",
+        "Mbpp_806_delete_statement_0/reference.py": "1801306e45f565dae4b3f634c098a86142333a61f440ceb439ea07cb7327ea57",
+        "Mbpp_806_delete_statement_0/tests/hidden/evalplus_check.py": "1c2c78091bca2b0fae001ebf226cef8bab762f0ddc1550ead87ab68c5e092c5b",
+        "Mbpp_806_delete_statement_0/tests/hidden/test_Mbpp_806_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_806_delete_statement_0/tests/visible/test_Mbpp_806.py": "e1e4daf86b80157022d7484677fadb791683a053a1a5f91bd5c1726985637e5c"
+      }
+    },
+    "Mbpp_807_flip_comparison_0": {
+      "id": "mutbench/807/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_807_flip_comparison_0.json": "bd2fc18595e6bcdacb8fc01f53716f649c69164fddc4ac2cfa7b8418b42700e3",
+        "Mbpp_807_flip_comparison_0/reference.py": "de7c51c0ed3e2f5b5a31d6ef09c05bb6e9ec7238ea13664ca54d2ef84c2cca0f",
+        "Mbpp_807_flip_comparison_0/tests/hidden/evalplus_check.py": "c6443ad656d357ba28c8bff4f8b04c51ad50ab1c2944bf0964c6f6ddc04ceca4",
+        "Mbpp_807_flip_comparison_0/tests/hidden/test_Mbpp_807_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_807_flip_comparison_0/tests/visible/test_Mbpp_807.py": "5565a6fbdabc11e911b238aa66753f15c2d61e07361c9d59f25e4307d6aed46a"
+      }
+    },
+    "Mbpp_808_wrong_variable_1": {
+      "id": "mutbench/808/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_808_wrong_variable_1.json": "243c55b6ec63e129b52b677aeeac60f53bbbb1d4b45b3329a6b9856351502870",
+        "Mbpp_808_wrong_variable_1/reference.py": "ea2e68616c92b3ce4008e6cc027bb0c6cf0a722f51eab7584e59bf69df14bfac",
+        "Mbpp_808_wrong_variable_1/tests/hidden/evalplus_check.py": "58641b28580316ac92fd6385ac68fcfc2836128a4aff531130dd3d193d9988c2",
+        "Mbpp_808_wrong_variable_1/tests/hidden/test_Mbpp_808_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_808_wrong_variable_1/tests/visible/test_Mbpp_808.py": "6512f0235bf6007aa17922b3fc2b2ecb2d0c834baf1463197cfbb021ea309d28"
+      }
+    },
+    "Mbpp_84_drop_guard_0": {
+      "id": "mutbench/84/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_84_drop_guard_0.json": "67c46277ee6c8c0e42d61e17e2be8313c83f38f9ffbe6a739d3be80f90501d9a",
+        "Mbpp_84_drop_guard_0/reference.py": "cf3405857c36b2853d6b37c3fd2ab85d36a952c01d023eedcc8a812e75ecb67d",
+        "Mbpp_84_drop_guard_0/tests/hidden/evalplus_check.py": "14def9c5cc53986fbf98abff8242fb2bd7f5e23141ec457bb25a960a662d5170",
+        "Mbpp_84_drop_guard_0/tests/hidden/test_Mbpp_84_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_84_drop_guard_0/tests/visible/test_Mbpp_84.py": "a17fc23597ee3805b681e0c7c4b99293667d4b0a3cfd43f172e128c8eba31122"
+      }
+    },
+    "Mbpp_90_wrong_variable_1": {
+      "id": "mutbench/90/wrong_variable/1",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_90_wrong_variable_1.json": "6a14342c242b2a1be87de2460044691b8a7e38338f6822bee1f289d8be2778c7",
+        "Mbpp_90_wrong_variable_1/reference.py": "36e57a76d09865ad23f7f42212c94bf3b7b7634ffabd348d94ade4762b84caa2",
+        "Mbpp_90_wrong_variable_1/tests/hidden/evalplus_check.py": "f63682e2caa3bb747b84f7ab37de281695f6dde8d959b815065f31aa4a068a2c",
+        "Mbpp_90_wrong_variable_1/tests/hidden/test_Mbpp_90_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_90_wrong_variable_1/tests/visible/test_Mbpp_90.py": "7089b183998917382397bd4abf4ea9ca8a095f21e03aacb27b5eb1ce3256c71b"
+      }
+    },
+    "Mbpp_91_flip_comparison_0": {
+      "id": "mutbench/91/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_91_flip_comparison_0.json": "6e377b8ddff0a394043a33182e49537ac2fcddde12d9019dc6adb3f3a4a2c493",
+        "Mbpp_91_flip_comparison_0/reference.py": "e0e835526ff10545600e81080a2dc8effbbbfff1386b9a7aee772c467a47ea04",
+        "Mbpp_91_flip_comparison_0/tests/hidden/evalplus_check.py": "fb1c2a0bafa3aaa98b621b1f277e37991f2b322452321b2d62621d0cb46e49df",
+        "Mbpp_91_flip_comparison_0/tests/hidden/test_Mbpp_91_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_91_flip_comparison_0/tests/visible/test_Mbpp_91.py": "1f1a89eb912d8fc5d785c0dc9bc2f5f751a590013092b996a0d6b35f20194b66"
+      }
+    },
+    "Mbpp_92_drop_guard_0": {
+      "id": "mutbench/92/drop_guard/0",
+      "split": "test",
+      "stratum": "drop_guard",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_92_drop_guard_0.json": "a0925610c4e4f69701e8e0f48e912ab86c2de5e488b273364bd3362a356bf06f",
+        "Mbpp_92_drop_guard_0/reference.py": "e9b16c0b08c491b622ce26d09c08651e753f01d45b21ce9bda4c3cd522166637",
+        "Mbpp_92_drop_guard_0/tests/hidden/evalplus_check.py": "1f76389be4fe29d319ccbdd42851096b59c58e9ffa9a57b0d34bf736383fe0b1",
+        "Mbpp_92_drop_guard_0/tests/hidden/test_Mbpp_92_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_92_drop_guard_0/tests/visible/test_Mbpp_92.py": "1834b553af6f2fa399494fa570cbad524860f4c9a7b092d940ec62266f055efe"
+      }
+    },
+    "Mbpp_92_flip_comparison_0": {
+      "id": "mutbench/92/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_92_flip_comparison_0.json": "ff948faff154de11af0f5c7b74095fc107b72de6528f0b5830382723f051c880",
+        "Mbpp_92_flip_comparison_0/reference.py": "e9b16c0b08c491b622ce26d09c08651e753f01d45b21ce9bda4c3cd522166637",
+        "Mbpp_92_flip_comparison_0/tests/hidden/evalplus_check.py": "1f76389be4fe29d319ccbdd42851096b59c58e9ffa9a57b0d34bf736383fe0b1",
+        "Mbpp_92_flip_comparison_0/tests/hidden/test_Mbpp_92_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_92_flip_comparison_0/tests/visible/test_Mbpp_92.py": "1834b553af6f2fa399494fa570cbad524860f4c9a7b092d940ec62266f055efe"
+      }
+    },
+    "Mbpp_94_shift_bound_0": {
+      "id": "mutbench/94/shift_bound/0",
+      "split": "dev",
+      "stratum": "shift_bound",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_94_shift_bound_0.json": "63472a93215e941f490700f80c72861c7652a8b4e634ee33a31a3d0cc90d3fea",
+        "Mbpp_94_shift_bound_0/reference.py": "16406448cdf9b6adabc5c8c17394e094b363bf9611ae7371ddcd9be4e33de8a7",
+        "Mbpp_94_shift_bound_0/tests/hidden/evalplus_check.py": "d31aede2bf510a087645aee59c503689bc5c16ad1770030ca8fe701519315dd7",
+        "Mbpp_94_shift_bound_0/tests/hidden/test_Mbpp_94_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_94_shift_bound_0/tests/visible/test_Mbpp_94.py": "545329359264ee322933706839fbd7f58b7707b615646243cf75cc7f422100d2"
+      }
+    },
+    "Mbpp_95_wrong_variable_0": {
+      "id": "mutbench/95/wrong_variable/0",
+      "split": "test",
+      "stratum": "wrong_variable",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "crash"
+      },
+      "files": {
+        "Mbpp_95_wrong_variable_0.json": "bf0d189ce35ff84e67de1031455eaedf267ba6343fba61afc02ee3dadb3935b9",
+        "Mbpp_95_wrong_variable_0/reference.py": "250191e2ea8a266828a61baa0eb755a8a3eee1818e6dd13da724bc9b24a04ff3",
+        "Mbpp_95_wrong_variable_0/tests/hidden/evalplus_check.py": "0e2f6ad6aa0f6f5906841be9665a8cd1082b3e20514fa014e9d76926cb586f9b",
+        "Mbpp_95_wrong_variable_0/tests/hidden/test_Mbpp_95_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_95_wrong_variable_0/tests/visible/test_Mbpp_95.py": "7ee2d8ffa6ff80b3765605d29f3beeba5bff9cf3a8d0f2da5de1fb96ca4181a2"
+      }
+    },
+    "Mbpp_9_flip_comparison_0": {
+      "id": "mutbench/9/flip_comparison/0",
+      "split": "test",
+      "stratum": "flip_comparison",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "labels": {
+        "symptom": "wrong output"
+      },
+      "files": {
+        "Mbpp_9_flip_comparison_0.json": "6c032eda3218efd18dbae45cd8bf32a4b1810d2fb056b2d3b0d1b091815f7f52",
+        "Mbpp_9_flip_comparison_0/reference.py": "331365b6ba514850c19f22bbd03785d42506487f2be17da284f771c4c429dd9f",
+        "Mbpp_9_flip_comparison_0/tests/hidden/evalplus_check.py": "9ff5732a1452e1bf80f7f7c40a631f22c3a77d299a8c86b4a82d8a79c58b8cd8",
+        "Mbpp_9_flip_comparison_0/tests/hidden/test_Mbpp_9_hidden.py": "12a7209b3eaf26bb51bcdf17de1cd00112dbc007275172b9e89a59fbdb73e414",
+        "Mbpp_9_flip_comparison_0/tests/visible/test_Mbpp_9.py": "ae05f7d73a365a114b84fb0d805c1a873edfc7e39a3a298ba07dbcc7ebc9811b"
+      }
+    }
+  },
+  "dropped": {
+    "Mbpp_103_swap_boolean_0": "validation: buggy code passes every hidden test",
+    "Mbpp_105": "conversion: no mutation sites",
+    "Mbpp_111": "conversion: no mutation sites",
+    "Mbpp_116": "conversion: no mutation sites",
+    "Mbpp_118": "conversion: no mutation sites",
+    "Mbpp_123_shift_bound_0": "validation: buggy code passes every hidden test",
+    "Mbpp_129_drop_guard_2": "validation: buggy code passes every hidden test",
+    "Mbpp_132": "conversion: no mutation sites",
+    "Mbpp_133_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_141_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_16": "conversion: no mutation sites",
+    "Mbpp_162_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_166_drop_guard_0": "validation: buggy code passes every hidden test",
+    "Mbpp_172": "conversion: no mutation sites",
+    "Mbpp_223_drop_guard_0": "validation: buggy code passes every hidden test",
+    "Mbpp_224": "conversion: no mutation sites",
+    "Mbpp_234": "conversion: no mutation sites",
+    "Mbpp_235_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_239_swap_boolean_0": "validation: buggy code passes every hidden test",
+    "Mbpp_242": "conversion: no mutation sites",
+    "Mbpp_252": "conversion: no mutation sites",
+    "Mbpp_255_wrong_variable_0": "validation: reference fails the hidden tests (OOM: killed for exceeding the memory limit)",
+    "Mbpp_255_wrong_variable_1": "validation: reference fails the hidden tests (OOM: killed for exceeding the memory limit)",
+    "Mbpp_260_drop_guard_0": "validation: buggy code passes every hidden test",
+    "Mbpp_264_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_269": "conversion: no mutation sites",
+    "Mbpp_286_shift_bound_0": "validation: buggy code passes every hidden test",
+    "Mbpp_287_swap_arithmetic_6": "validation: buggy code passes every hidden test",
+    "Mbpp_418": "conversion: no mutation sites",
+    "Mbpp_427": "conversion: no mutation sites",
+    "Mbpp_435_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_437": "conversion: no mutation sites",
+    "Mbpp_439": "conversion: no mutation sites",
+    "Mbpp_448_drop_guard_2": "validation: buggy code passes every hidden test",
+    "Mbpp_451": "conversion: no mutation sites",
+    "Mbpp_453_drop_guard_0": "validation: buggy code passes every hidden test",
+    "Mbpp_457": "conversion: no mutation sites",
+    "Mbpp_477": "conversion: no mutation sites",
+    "Mbpp_478": "conversion: no mutation sites",
+    "Mbpp_556_shift_bound_0": "validation: buggy code passes every hidden test",
+    "Mbpp_557": "conversion: no mutation sites",
+    "Mbpp_559_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_562": "conversion: no mutation sites",
+    "Mbpp_563": "conversion: no mutation sites",
+    "Mbpp_565": "conversion: no mutation sites",
+    "Mbpp_566": "conversion: no mutation sites",
+    "Mbpp_569": "conversion: no mutation sites",
+    "Mbpp_57": "conversion: no mutation sites",
+    "Mbpp_583_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_587": "conversion: no mutation sites",
+    "Mbpp_590_wrong_variable_0": "validation: reference fails the hidden tests (TESTS_FAILED: test_evalplus: AssertionError)",
+    "Mbpp_590_wrong_variable_1": "validation: reference fails the hidden tests (TESTS_FAILED: test_evalplus: AssertionError)",
+    "Mbpp_590_wrong_variable_3": "validation: reference fails the hidden tests (TESTS_FAILED: test_evalplus: AssertionError)",
+    "Mbpp_592_wrong_variable_3": "validation: buggy code passes every hidden test",
+    "Mbpp_593": "conversion: no mutation sites",
+    "Mbpp_596": "conversion: no mutation sites",
+    "Mbpp_599_shift_bound_0": "validation: reference fails the hidden tests (TIMEOUT: a test hit the per-test timeout)",
+    "Mbpp_599_swap_arithmetic_0": "validation: reference fails the hidden tests (TIMEOUT: a test hit the per-test timeout)",
+    "Mbpp_599_wrong_variable_4": "validation: reference fails the hidden tests (TIMEOUT: a test hit the per-test timeout)",
+    "Mbpp_604": "conversion: no mutation sites",
+    "Mbpp_614": "conversion: no mutation sites",
+    "Mbpp_624": "conversion: no mutation sites",
+    "Mbpp_628": "conversion: no mutation sites",
+    "Mbpp_62_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_641_swap_arithmetic_3": "validation: buggy code passes every hidden test",
+    "Mbpp_7": "conversion: no mutation sites",
+    "Mbpp_71_flip_comparison_1": "validation: buggy code passes every hidden test",
+    "Mbpp_722_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_725": "conversion: no mutation sites",
+    "Mbpp_732": "conversion: no mutation sites",
+    "Mbpp_737_wrong_variable_0": "validation: reference fails the visible tests (RUNTIME_ERROR: test_00: TypeError, test_02: TypeError)",
+    "Mbpp_737_wrong_variable_1": "validation: reference fails the visible tests (RUNTIME_ERROR: test_00: TypeError, test_02: TypeError)",
+    "Mbpp_748": "conversion: no mutation sites",
+    "Mbpp_751_shift_bound_1": "validation: buggy code passes every hidden test",
+    "Mbpp_760_shift_bound_0": "validation: buggy code passes every hidden test",
+    "Mbpp_763_flip_comparison_0": "validation: buggy code passes every hidden test",
+    "Mbpp_766": "conversion: no mutation sites",
+    "Mbpp_777": "conversion: no mutation sites",
+    "Mbpp_781_swap_arithmetic_1": "validation: buggy code passes every hidden test",
+    "Mbpp_787_wrong_variable_0": "validation: reference fails the visible tests (RUNTIME_ERROR: test_02: TypeError, test_03: TypeError)",
+    "Mbpp_787_wrong_variable_1": "validation: reference fails the visible tests (RUNTIME_ERROR: test_02: TypeError, test_03: TypeError)",
+    "Mbpp_794_wrong_variable_0": "validation: reference fails the visible tests (RUNTIME_ERROR: test_00: TypeError)",
+    "Mbpp_794_wrong_variable_1": "validation: reference fails the visible tests (RUNTIME_ERROR: test_00: TypeError)",
+    "Mbpp_796": "conversion: no mutation sites",
+    "Mbpp_798": "conversion: no mutation sites",
+    "Mbpp_799_swap_arithmetic_0": "validation: buggy code passes every hidden test",
+    "Mbpp_800": "conversion: no mutation sites",
+    "Mbpp_805": "conversion: no mutation sites",
+    "Mbpp_99": "conversion: no mutation sites",
+    "Mbpp_9_shift_bound_0": "validation: buggy code passes every hidden test",
+    "Mbpp_9_swap_arithmetic_1": "validation: buggy code passes every hidden test"
+  }
+}

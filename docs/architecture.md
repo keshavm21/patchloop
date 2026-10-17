@@ -168,7 +168,7 @@ flowchart TD
 
 ## Known limitations
 
-- **Only plain data crosses.** A function under test must take and return plain data. A function that returns its own class's instances, a generator or a callable can't be judged this way, and neither can a test that relies on the function mutating its arguments, since the judge sees only the return value. When benchmarks are validated (Phase 3), tasks like these fail the reference-solution check and are dropped and logged.
+- **Only plain data crosses.** A function under test must take and return plain data. A function that returns its own class's instances, a generator or a callable can't be judged this way, and neither can a test that relies on the function mutating its arguments, since the judge sees only the return value. Tasks like these fail the reference-solution check during benchmark validation and are dropped and logged. None of HumanEvalFix's 162 tasks were dropped for this; in MutBench, 3 problems were, because their functions return `re.Match` objects.
 - **Visible inputs can be special-cased.** A candidate can hard-code the visible tests' answers. That is why hidden tests decide the final verdict.
 - **Containers share the host kernel.** Kernel exploits are out of scope. gVisor or Firecracker would be the next step.
 
@@ -225,9 +225,20 @@ src/patchloop/
   tracing.py                 trace.jsonl writer
   view.py                    terminal rendering for solve and replay
   cli.py                     patchloop solve, patchloop replay
+  bench/humanevalfix.py      HumanEvalPack rows -> repair tasks (check() -> pytest)
+  bench/mutbench.py          MBPP+ rows -> mutant repair tasks; sampling
+  bench/mutate.py            the 7 AST mutation operators
+  bench/validate.py          §8.3 validation in the sandbox
+  bench/split.py             stratified dev/test split
+  bench/setup.py             download, convert, validate, freeze or verify
+  bench/frozen.py            load a frozen benchmark, checked against its manifest
+  eval/runner.py             configs × tasks × repeats -> records.jsonl, resumable
+  eval/metrics.py            §8.5 metrics from records
+  eval/report.py             report.md and success_at_k.png
 prompts/v1/                  versioned prompt templates
 configs/                     single_shot, binary, errors, full, full_reflect
 benchmarks/examples/         5 hand-picked repair tasks with reference solutions
+benchmarks/*/v1/manifest.json  frozen benchmark manifests (task files are regenerated, not committed)
 tests/unit/                  loop, reply parsing, feedback, prompts, LLM, config, CLI, result parsing, wire
 tests/sandbox/               real-Docker status tests, the chaos suite, example validation, loop e2e
 results/                     committed measurements (sandbox overhead)

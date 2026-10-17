@@ -31,12 +31,17 @@ class CachedClient:
             usage = Usage.model_validate(entry["usage"]).model_copy(
                 update={"cached_calls": 1, "retries": 0, "retry_wait_s": 0.0}
             )
-            return Reply(text=entry["text"], usage=usage, model=entry["model"])
+            return Reply(entry["text"], usage, entry["model"], entry.get("finish_reason"))
         reply = self.inner.chat(
             messages, temperature=temperature, max_tokens=max_tokens, repeat=repeat
         )
         path.parent.mkdir(parents=True, exist_ok=True)
-        entry = {"text": reply.text, "model": reply.model, "usage": reply.usage.model_dump()}
+        entry = {
+            "text": reply.text,
+            "model": reply.model,
+            "finish_reason": reply.finish_reason,
+            "usage": reply.usage.model_dump(),
+        }
         tmp = path.with_suffix(f".{os.getpid()}.tmp")
         tmp.write_text(json.dumps(entry))
         tmp.replace(path)  # atomic, so parallel workers never read half a file

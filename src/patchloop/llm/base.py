@@ -20,6 +20,7 @@ class Reply:
     text: str
     usage: Usage
     model: str
+    finish_reason: str | None = None  # "length" means the reply hit max_tokens and was cut off
 
 
 class LLMClient(Protocol):

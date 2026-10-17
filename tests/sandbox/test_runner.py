@@ -75,3 +75,18 @@ def test_host_kills_at_the_wall_limit(run):
     assert result.status is Status.TIMEOUT
     assert result.timed_out
     assert result.duration_s < 2 + GRACE_S
+
+
+def test_solution_functions_named_like_tests_are_not_collected(run_sandbox, run_dir):
+    # MBPP has functions such as test_duplicate; `from solution import *` must not make
+    # pytest collect them as tests.
+    (run_dir / "sol").mkdir()
+    (run_dir / "sol" / "solution.py").write_text(
+        "def test_duplicate(xs):\n    return len(xs) != len(set(xs))\n"
+    )
+    (run_dir / "tests").mkdir()
+    (run_dir / "tests" / "test_dup.py").write_text(
+        "from solution import *\n\n\ndef test_00():\n    assert test_duplicate([1, 1])\n"
+    )
+    result = run_sandbox(run_dir / "sol", run_dir / "tests", 1)
+    assert result.status is Status.PASSED, result.failures

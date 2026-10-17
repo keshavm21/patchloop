@@ -2,7 +2,7 @@
 
 A sandboxed, self-repairing coding agent. An LLM fixes buggy Python functions by running visible tests in a locked-down Docker container, reading the failures and patching until the tests pass. A benchmark harness measures how much each design choice helps, and a chaos suite shows the sandbox holds.
 
-**Status:** early development. The sandbox, its chaos suite and the repair loop are in place, and the loop has repaired the 5 example tasks with `gemini-3.5-flash`. The benchmarks and the evaluation harness come next.
+**Status:** early development. The sandbox, its chaos suite, the repair loop, two frozen benchmarks (HumanEvalFix, 162 tasks; MutBench, 200 mutated MBPP+ tasks) and the evaluation harness are in place. The full experiment matrix comes next.
 
 See [docs/architecture.md](docs/architecture.md) for diagrams of the system, a sandbox run and the status rules.
 
@@ -25,10 +25,20 @@ make chaos                  # sandbox tests against real Docker
 Repair one task, against any OpenAI-compatible API or a local Ollama:
 
 ```bash
-patchloop solve benchmarks/examples/second_largest.json --config configs/full.yaml   # gemini-3.5-flash
+patchloop solve benchmarks/examples/second_largest.json --config configs/full.yaml   # gpt-oss-20b on Groq
 patchloop solve benchmarks/examples/second_largest.json --model <model-name>
 patchloop solve benchmarks/examples/second_largest.json --model <model-name> --base-url http://localhost:11434/v1
 patchloop replay runs/<date>/<task>/<run>/      # step through a finished run, with code diffs
+```
+
+Benchmarks are downloaded and built locally, never re-hosted. Only their manifests (dataset revision, file checksums, split) are committed, and setup checks the rebuilt files against them:
+
+```bash
+export HF_HOME=$PWD/.cache/hf
+python -m patchloop.bench.setup humanevalfix     # bigcode/humanevalpack, pinned revision
+python -m patchloop.bench.setup mutbench         # evalplus/mbppplus, pinned revision
+patchloop eval --bench humanevalfix --split dev --config configs/single_shot.yaml --config configs/full.yaml
+patchloop report results/humanevalfix-dev
 ```
 
 Check that Python can reach Docker:
