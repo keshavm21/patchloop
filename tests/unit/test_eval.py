@@ -9,7 +9,7 @@ from patchloop.bench.frozen import Benchmark
 from patchloop.config import AgentConfig
 from patchloop.eval.metrics import by_config
 from patchloop.eval.report import write_report
-from patchloop.eval.runner import EvalPlan, read_records, run_eval
+from patchloop.eval.runner import EvalPlan, SettingsMismatch, read_records, run_eval
 from patchloop.llm.base import LLMInfraError, Reply
 from patchloop.models import Usage
 from patchloop.sandbox.fake import FakeSandbox
@@ -138,3 +138,10 @@ def test_report(plan, task):
     assert (plan.out / "success_at_k.png").stat().st_size > 1000
     assert "unknown" in text  # cost without prices
     json.loads((plan.out / "records.jsonl").read_text().splitlines()[0])
+
+
+def test_resuming_with_changed_settings_is_refused(plan, task):
+    run(plan, task, [reply_with(FIXED)])
+    plan.configs[1] = plan.configs[1].model_copy(update={"max_attempts": 5})
+    with pytest.raises(SettingsMismatch, match="max_attempts"):
+        run(plan, task, [reply_with(FIXED)])

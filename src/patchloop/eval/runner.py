@@ -78,6 +78,28 @@ def pending(plan: EvalPlan, records: list[dict]) -> list[tuple[Task, AgentConfig
     return todo
 
 
+class SettingsMismatch(ValueError):
+    """The results folder already has runs under a config name, made with other settings."""
+
+
+def check_settings(plan: EvalPlan, records: list[dict]) -> None:
+    """Resuming must never mix settings under one config name: completed runs would be
+    skipped although they were made differently."""
+    current = {cfg.name: cfg.model_dump(mode="json") for cfg in plan.configs}
+    for r in records:
+        before = r["provenance"]["config"]
+        if r["config"] in current and before != current[r["config"]]:
+            changed = sorted(
+                k
+                for k in set(before) | set(current[r["config"]])
+                if before.get(k) != current[r["config"]].get(k)
+            )
+            raise SettingsMismatch(
+                f"{plan.out} has runs of config {r['config']!r} made with different settings "
+                f"({', '.join(changed)}); use another --out"
+            )
+
+
 def run_eval(
     plan: EvalPlan,
     llm_for: Callable[[AgentConfig], LLMClient],
@@ -87,6 +109,7 @@ def run_eval(
 ) -> EvalSummary:
     plan.out.mkdir(parents=True, exist_ok=True)
     records = read_records(plan.out)
+    check_settings(plan, records)
     todo = pending(plan, records)
     summary = EvalSummary(skipped=_count_triples(plan) - len(todo))
     if not todo:

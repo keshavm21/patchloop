@@ -126,7 +126,7 @@ def eval_(
     """Run configs × tasks × repeats on a frozen benchmark; resumable."""
     from .bench.frozen import BenchmarkMissing, load_benchmark
     from .config import load_config
-    from .eval.runner import ROOT, EvalPlan, run_eval
+    from .eval.runner import ROOT, EvalPlan, SettingsMismatch, run_eval
 
     if split not in ("dev", "test", "all"):
         raise typer.BadParameter("--split must be dev, test or all")
@@ -168,7 +168,10 @@ def eval_(
             highlight=False,
         )
 
-    summary = run_eval(plan, lambda cfg: _make_llm(cfg.model, cache=cache), on_record=show)
+    try:
+        summary = run_eval(plan, lambda cfg: _make_llm(cfg.model, cache=cache), on_record=show)
+    except SettingsMismatch as e:
+        raise typer.BadParameter(str(e)) from None
     latest = ROOT / "results" / "latest"
     if latest.is_symlink() or not latest.exists():
         latest.unlink(missing_ok=True)
@@ -208,7 +211,11 @@ def _make_llm(model_cfg, *, cache: bool):
             f"{model_cfg.api_key_env} is not set; put it in .env (see .env.example)"
         )
     llm = OpenAICompatClient(
-        model_cfg.name, api_key=api_key, base_url=model_cfg.base_url, price=model_cfg.price
+        model_cfg.name,
+        api_key=api_key,
+        base_url=model_cfg.base_url,
+        price=model_cfg.price,
+        reasoning_effort=model_cfg.reasoning_effort,
     )
     return CachedClient(llm) if cache else llm
 

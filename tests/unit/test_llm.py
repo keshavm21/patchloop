@@ -120,3 +120,15 @@ def test_retry_after_is_honoured_and_finish_reason_kept():
     reply = client.chat(MESSAGES, temperature=0.0, max_tokens=100)
     assert sleeps == [7.0]
     assert reply.finish_reason == "stop"
+
+
+def test_reasoning_effort_is_sent_and_keys_the_cache(tmp_path):
+    client, stub, _ = client_with(reasoning_effort="low")
+    seen = {}
+    create = stub.create
+    stub.create = lambda **kw: seen.update(kw) or create(**kw)
+    client.chat(MESSAGES, temperature=0.0, max_tokens=100)
+    assert seen["reasoning_effort"] == "low"
+    base = cache_key("m", MESSAGES, 0.0, 100, repeat=0)
+    assert base == cache_key("m", MESSAGES, 0.0, 100, repeat=0, extra={})
+    assert base != cache_key("m", MESSAGES, 0.0, 100, repeat=0, extra={"reasoning_effort": "low"})

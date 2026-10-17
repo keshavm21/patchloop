@@ -27,6 +27,7 @@ class OpenAICompatClient:
         api_key: str | None,
         base_url: str | None = None,
         price: Price | None = None,
+        reasoning_effort: str | None = None,
         max_retries: int = 5,
         timeout_s: float = 120.0,
         client=None,  # an openai.OpenAI, or a stand-in in tests
@@ -34,6 +35,8 @@ class OpenAICompatClient:
     ) -> None:
         self.model = model
         self.price = price
+        # Extra request parameters; they are part of the cache key (see CachedClient).
+        self.params = {"reasoning_effort": reasoning_effort} if reasoning_effort else {}
         self.max_retries = max_retries
         self._sleep = sleep
         # The SDK's own retries are off, so every retry goes through the backoff below.
@@ -56,6 +59,7 @@ class OpenAICompatClient:
                     messages=messages,
                     temperature=temperature,
                     max_tokens=max_tokens,
+                    **self.params,
                 )
             except _RETRYABLE as e:
                 if attempt == self.max_retries:

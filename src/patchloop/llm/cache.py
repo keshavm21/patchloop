@@ -22,7 +22,8 @@ class CachedClient:
     def chat(
         self, messages: list[Message], *, temperature: float, max_tokens: int, repeat: int = 0
     ) -> Reply:
-        key = cache_key(self.model, messages, temperature, max_tokens, repeat)
+        extra = getattr(self.inner, "params", {})
+        key = cache_key(self.model, messages, temperature, max_tokens, repeat, extra)
         path = self.cache_dir / f"{key}.json"
         if path.exists():
             entry = json.loads(path.read_text())
@@ -49,12 +50,15 @@ class CachedClient:
 
 
 def cache_key(
-    model: str, messages: list[Message], temperature: float, max_tokens: int, repeat: int
+    model: str,
+    messages: list[Message],
+    temperature: float,
+    max_tokens: int,
+    repeat: int,
+    extra: dict | None = None,
 ) -> str:
-    payload = {
-        "model": model,
-        "messages": messages,
-        "params": {"temperature": temperature, "max_tokens": max_tokens},
-        "repeat": repeat,
-    }
+    """Extra request parameters (such as reasoning_effort) join the key only when set, so
+    entries cached without them keep their keys."""
+    params = {"temperature": temperature, "max_tokens": max_tokens, **(extra or {})}
+    payload = {"model": model, "messages": messages, "params": params, "repeat": repeat}
     return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
