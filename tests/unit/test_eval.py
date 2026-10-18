@@ -212,3 +212,21 @@ def test_docker_down_stops_the_eval_without_a_record(plan, task):
     summary = run_eval(plan, lambda cfg: llm, sandbox_for=down)
     assert summary.quota_exhausted and "Docker is down" in summary.stopped_early
     assert read_records(plan.out) == []
+
+
+def test_rejudge_replaces_only_the_hidden_verdict(plan, task, monkeypatch):
+    import patchloop.eval.rejudge as rj
+    from patchloop.bench.frozen import Benchmark
+
+    run(plan, task, [reply_with(WRONG), reply_with(FIXED)])
+    before = read_records(plan.out)
+    monkeypatch.setattr(rj, "load_benchmark", lambda b, s: Benchmark(b, {}, [task]))
+    monkeypatch.setattr(
+        rj, "DockerSandbox", lambda work, limits: FakeSandbox(lambda c, t: passed(9))
+    )
+    changed, total = rj.rejudge(plan.out)
+    after = read_records(plan.out)
+    assert (changed, total) == (2, 4)  # single_shot's two wrong answers now "pass"
+    assert [r["attempts"] for r in after] == [r["attempts"] for r in before]
+    assert all(r["rejudged"]["before"] in ("PASSED", "TESTS_FAILED") for r in after)
+    assert (plan.out / rj.BACKUP).exists()

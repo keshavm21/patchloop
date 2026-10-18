@@ -208,6 +208,27 @@ def eval_(
 
 
 @app.command()
+def rejudge(
+    results: Annotated[Path, typer.Argument(help="A results folder holding records.jsonl.")],
+) -> None:
+    """Re-run the hidden tests on each run's final candidate with the benchmark's limits."""
+    from .eval.rejudge import rejudge as rejudge_records
+
+    def show(record: dict, before: str, after: str) -> None:
+        console.print(
+            f"  {record['config']:<16} r{record['repeat']} {record['task_id']:<36} "
+            f"{before} -> {after}",
+            highlight=False,
+        )
+
+    try:
+        changed, total = rejudge_records(results.resolve(), on_change=show)
+    except FileNotFoundError as e:
+        raise typer.BadParameter(str(e)) from None
+    console.print(f"{changed} of {total} hidden verdicts changed", highlight=False)
+
+
+@app.command()
 def report(
     results: Annotated[Path, typer.Argument(help="A results folder holding records.jsonl.")],
 ) -> None:

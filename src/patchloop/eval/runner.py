@@ -7,6 +7,7 @@ as agent failures. A run of consecutive infra errors stops the eval early: on a 
 usually means the quota is spent, and resuming later picks up where it left off.
 """
 
+import importlib
 import json
 import platform
 import subprocess
@@ -43,6 +44,7 @@ class EvalPlan:
     infra_retries: int = 2
     stop_after_infra_errors: int = 5
     max_cost_usd: float | None = None
+    limits: Limits | None = None  # None: the benchmark's own per-test timeout (bench_limits)
 
 
 @dataclass
@@ -116,7 +118,8 @@ def run_eval(
     summary = EvalSummary(skipped=_count_triples(plan) - len(todo))
     if not todo:
         return summary
-    sandbox_for = sandbox_for or (lambda work: DockerSandbox(work, Limits()))
+    limits = plan.limits or bench_limits(plan.bench.name)
+    sandbox_for = sandbox_for or (lambda work: DockerSandbox(work, limits))
     provenance = {cfg.name: _provenance(plan, cfg) for cfg in plan.configs}
     clients = {cfg.name: llm_for(cfg) for cfg in plan.configs}
     lock = threading.Lock()
@@ -189,6 +192,18 @@ def _count_triples(plan: EvalPlan) -> int:
     return len(plan.configs) * plan.repeats * len(plan.bench.tasks)
 
 
+def bench_limits(bench: str) -> Limits:
+    """Sandbox limits for a benchmark: its validated per-test timeout (MutBench's hidden test
+    runs every EvalPlus input in one test, so it needs 20 s), else the defaults."""
+    try:
+        module = importlib.import_module(f"patchloop.bench.{bench}")
+    except ImportError:
+        return Limits()
+    return Limits(
+        per_test_timeout_s=getattr(module, "PER_TEST_TIMEOUT_S", Limits().per_test_timeout_s)
+    )
+
+
 def _provenance(plan: EvalPlan, cfg: AgentConfig) -> dict:
     """What every result must be traceable to (§8.6)."""
     import docker
@@ -210,6 +225,7 @@ def _provenance(plan: EvalPlan, cfg: AgentConfig) -> dict:
         "dataset": plan.bench.name,
         "dataset_checksum": plan.bench.checksum,
         "arch": platform.machine(),
+        "per_test_timeout_s": (plan.limits or bench_limits(plan.bench.name)).per_test_timeout_s,
         "started_at": datetime.now(UTC).isoformat(timespec="seconds"),
     }
 
