@@ -5,6 +5,16 @@ from pathlib import Path
 
 from .metrics import ConfigMetrics, by_config
 from .runner import read_records
+from .stats import paired_comparison, repair_rate_ci
+
+# The comparisons §8.4 asks about, (a, b) meaning "does b beat a?"; shown when both ran.
+COMPARISONS = [
+    ("single_shot", "full"),
+    ("binary", "full"),
+    ("errors", "full"),
+    ("single_shot", "binary"),
+    ("full", "full_reflect"),
+]
 
 BREAKDOWN_TITLES = {
     "bug_type": "By bug type",
@@ -47,7 +57,10 @@ def _markdown(
         "",
         "## Results",
         "",
-        "| Config | Tasks × repeats | Repair % | Overfit % | Attempts to success | "
+        "Repair % is the mean over tasks of each task's solve rate across its repeats, with a "
+        "95% bootstrap interval over tasks.",
+        "",
+        "| Config | Tasks × repeats | Repair % [95% CI] | Overfit % | Attempts to success | "
         "Tokens / task | Cost / task | Time / task | Model time / task | Rate-limit wait / task "
         "| Cached calls |",
         "|---|---|---|---|---|---|---|---|---|---|---|",
@@ -55,12 +68,38 @@ def _markdown(
     for m in metrics.values():
         cost = f"${m.cost_per_task:.4f}" if m.cost_per_task is not None else "unknown"
         attempts = f"{m.attempts_to_success:.2f}" if m.attempts_to_success is not None else "–"
+        ci = repair_rate_ci(records, m.config)
+        repair = f"{_pct(ci.mean)} [{_pct(ci.low)}, {_pct(ci.high)}]" if ci else "–"
         lines.append(
-            f"| `{m.config}` | {m.tasks} × {m.repeats} | {_pct(m.repair_rate)} | "
+            f"| `{m.config}` | {m.tasks} × {m.repeats} | {repair} | "
             f"{_pct(m.overfit_rate)} | {attempts} | {m.tokens_per_task:,.0f} | {cost} | "
             f"{m.seconds_per_task:.1f} s | {m.model_seconds_per_task:.1f} s | "
             f"{m.retry_wait_per_task:.1f} s | {_pct(m.cached_call_share)}% |"
         )
+    comparisons = [
+        c
+        for a, b in COMPARISONS
+        if a in metrics and b in metrics
+        if (c := paired_comparison(records, a, b))
+    ]
+    if comparisons:
+        lines += [
+            "",
+            "## Comparisons",
+            "",
+            "Paired over the tasks both configs finished: the difference in per-task solve rate "
+            "(b − a, in points) with a 95% bootstrap interval. An interval that includes zero is "
+            "reported as no clear difference.",
+            "",
+            "| a | b | Tasks | b − a [95% CI] | Verdict |",
+            "|---|---|---|---|---|",
+        ]
+        for c in comparisons:
+            d = c.diff
+            lines.append(
+                f"| `{c.a}` | `{c.b}` | {c.tasks} | {100 * d.mean:+.1f} "
+                f"[{100 * d.low:+.1f}, {100 * d.high:+.1f}] | {c.verdict} |"
+            )
     max_k = max(m.max_attempts for m in metrics.values())
     lines += [
         "",

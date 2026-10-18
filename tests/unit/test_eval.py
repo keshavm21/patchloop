@@ -132,8 +132,8 @@ def test_report(plan, task):
     run(plan, task, [reply_with(WRONG), reply_with(FIXED)])
     path = write_report(plan.out)
     text = path.read_text()
-    assert "| `full` | 1 × 2 | 100.0 |" in text
-    assert "| `single_shot` | 1 × 2 | 0.0 |" in text
+    assert "| `full` | 1 × 2 | 100.0 [100.0, 100.0] |" in text
+    assert "| `single_shot` | 1 × 2 | 0.0 [0.0, 0.0] |" in text
     assert "![success@k](success_at_k.png)" in text
     assert (plan.out / "success_at_k.png").stat().st_size > 1000
     assert "unknown" in text  # cost without prices
@@ -145,3 +145,55 @@ def test_resuming_with_changed_settings_is_refused(plan, task):
     plan.configs[1] = plan.configs[1].model_copy(update={"max_attempts": 5})
     with pytest.raises(SettingsMismatch, match="max_attempts"):
         run(plan, task, [reply_with(FIXED)])
+
+
+def test_paired_bootstrap():
+    import numpy as np
+
+    from patchloop.eval.stats import bootstrap_mean, paired_comparison
+
+    records = []
+    for i in range(40):
+        for config, solved in (("single_shot", i < 20), ("full", i < 30)):
+            for repeat in range(3):
+                records.append(
+                    {
+                        "task_id": f"t{i}",
+                        "config": config,
+                        "repeat": repeat,
+                        "stop_reason": "SOLVED" if solved else "MAX_ATTEMPTS",
+                        "hidden_result": {"status": "PASSED" if solved else "TESTS_FAILED"},
+                    }
+                )
+    c = paired_comparison(records, "single_shot", "full")
+    assert c.tasks == 40 and abs(c.diff.mean - 0.25) < 1e-9
+    assert 0 < c.diff.low < 0.25 < c.diff.high and c.verdict == "`full` better"
+    same = paired_comparison(records, "full", "full")
+    assert same.verdict == "no clear difference"
+    flat = bootstrap_mean(np.array([0.5] * 10))
+    assert flat.low == flat.high == 0.5
+
+
+def test_report_has_intervals(plan, task):
+    run(plan, task, [reply_with(WRONG), reply_with(FIXED)])
+    text = write_report(plan.out).read_text()
+    assert "| `full` | 1 × 2 | 100.0 [100.0, 100.0] |" in text
+    assert "## Comparisons" in text and "| `single_shot` | `full` | 1 | +100.0" in text
+
+
+def test_summary_tables(plan, task):
+    from patchloop.eval.summary import comparisons, headline
+
+    run(plan, task, [reply_with(WRONG), reply_with(FIXED)])
+    table = "\n".join(headline([plan.out]))
+    assert "| `single_shot` | 0.0 [0.0, 0.0] |" in table
+    assert "| `full` | 100.0 [100.0, 100.0] |" in table
+    assert "`single_shot` | `full` | 1 | +100.0" in "\n".join(comparisons([plan.out]))
+
+
+def test_daily_quota_stops_the_eval_without_a_record(plan, task):
+    from patchloop.llm.base import QuotaExhausted
+
+    summary, _ = run(plan, task, [QuotaExhausted("tokens per day (TPD)")])
+    assert summary.quota_exhausted and "quota" in summary.stopped_early
+    assert read_records(plan.out) == []  # nothing recorded, so resuming reruns everything

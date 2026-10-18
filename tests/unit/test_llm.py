@@ -132,3 +132,14 @@ def test_reasoning_effort_is_sent_and_keys_the_cache(tmp_path):
     base = cache_key("m", MESSAGES, 0.0, 100, repeat=0)
     assert base == cache_key("m", MESSAGES, 0.0, 100, repeat=0, extra={})
     assert base != cache_key("m", MESSAGES, 0.0, 100, repeat=0, extra={"reasoning_effort": "low"})
+
+
+def test_daily_quota_is_not_retried():
+    from patchloop.llm.base import QuotaExhausted
+
+    error = api_error(openai.RateLimitError, 429)
+    error.args = ("Rate limit reached on tokens per day (TPD): Limit 200000, Used 199300",)
+    client, stub, sleeps = client_with([error])
+    with pytest.raises(QuotaExhausted):
+        client.chat(MESSAGES, temperature=0.0, max_tokens=100)
+    assert stub.calls == 1 and sleeps == []

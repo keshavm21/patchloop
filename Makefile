@@ -13,7 +13,7 @@ chaos:
 	$(PYTHON) -m pytest tests/sandbox -q
 
 demo:
-	$(PYTHON) -m patchloop solve benchmarks/examples/second_largest.json --llm replay
+	$(PYTHON) -m patchloop solve benchmarks/examples/second_largest.json --config configs/full.yaml --llm replay
 
 clean-containers:
 	@ids="$$(docker ps -aq --filter label=patchloop)"; \

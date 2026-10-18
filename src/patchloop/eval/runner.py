@@ -20,7 +20,7 @@ from pathlib import Path
 from ..agent.loop import solve
 from ..bench.frozen import Benchmark
 from ..config import AgentConfig
-from ..llm.base import LLMClient
+from ..llm.base import LLMClient, QuotaExhausted
 from ..models import StopReason, Task
 from ..sandbox.limits import Limits
 from ..sandbox.sandbox import DockerSandbox, Sandbox
@@ -50,6 +50,7 @@ class EvalSummary:
     skipped: int = 0
     infra_errors: int = 0
     stopped_early: str | None = None
+    quota_exhausted: bool = False
 
 
 def read_records(out: Path) -> list[dict]:
@@ -127,7 +128,16 @@ def run_eval(
         slug = task.id.replace("/", "_")
         work = plan.work / slug / cfg.name / f"r{repeat}"
         tracer = Tracer(work / "trace.jsonl", run=f"{task.id}/{cfg.name}/r{repeat}")
-        rec = solve(task, cfg, clients[cfg.name], sandbox_for(work), tracer=tracer, repeat=repeat)
+        try:
+            rec = solve(
+                task, cfg, clients[cfg.name], sandbox_for(work), tracer=tracer, repeat=repeat
+            )
+        except QuotaExhausted as e:
+            with lock:  # no record: the triple stays pending, and resuming reruns it
+                summary.stopped_early = f"daily quota spent ({e}); resume later"
+                summary.quota_exhausted = True
+            stop.set()
+            return
         record = {
             **json.loads(rec.model_dump_json()),
             "bench": plan.bench.name,

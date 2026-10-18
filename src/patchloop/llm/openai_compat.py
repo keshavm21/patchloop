@@ -8,7 +8,7 @@ import openai
 
 from ..config import Price
 from ..models import Usage
-from .base import LLMInfraError, Message, Reply, cost_usd
+from .base import LLMInfraError, Message, QuotaExhausted, Reply, cost_usd
 
 # Worth retrying: rate limits, server errors, timeouts and dropped connections.
 _RETRYABLE = (
@@ -62,6 +62,8 @@ class OpenAICompatClient:
                     **self.params,
                 )
             except _RETRYABLE as e:
+                if _is_daily_quota(e):  # waiting seconds won't help; it comes back over hours
+                    raise QuotaExhausted(f"{type(e).__name__}: {e}") from e
                 if attempt == self.max_retries:
                     raise LLMInfraError(f"{type(e).__name__} after {attempt + 1} tries: {e}") from e
                 backoff = min(60.0, 2**attempt) * (0.5 + random.random() / 2)
@@ -109,3 +111,11 @@ def _retry_after(error: Exception) -> float:
         return min(60.0, float(value)) if value else 0.0
     except ValueError:
         return 0.0
+
+
+def _is_daily_quota(error: Exception) -> bool:
+    """Groq: "tokens per day (TPD)" or "requests per day (RPD)"; Gemini: "...PerDay..."."""
+    text = str(error).lower()
+    return isinstance(error, openai.RateLimitError) and (
+        "per day" in text or "perday" in text or "(tpd)" in text or "(rpd)" in text
+    )

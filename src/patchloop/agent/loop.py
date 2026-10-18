@@ -9,7 +9,7 @@ import time
 from collections.abc import Callable
 
 from ..config import AgentConfig
-from ..llm.base import LLMClient, LLMInfraError
+from ..llm.base import LLMClient, LLMInfraError, QuotaExhausted
 from ..models import (
     Attempt,
     ExecutionResult,
@@ -70,6 +70,8 @@ def solve(
         tracer.emit(
             "hidden_verdict", final_attempt=rec.final_attempt, **_run_fields(rec.hidden_result)
         )
+    except QuotaExhausted:
+        raise  # not this task's infra error: the caller stops and resumes later
     except (LLMInfraError, SandboxInfraError) as e:
         reason, rec.infra_error, rec.hidden_result = StopReason.INFRA_ERROR, str(e), None
     rec.stop_reason = reason

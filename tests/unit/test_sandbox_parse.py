@@ -28,9 +28,7 @@ def output(exit_code: int, report: str = "", log: str = "") -> str:
 
 
 def parse(raw: str, expected: int = 2, timed_out: bool = False, oom: bool = False):
-    return parse_runner_output(
-        raw, timed_out=timed_out, oom=oom, expected=expected, duration_s=0.5
-    )
+    return parse_runner_output(raw, timed_out=timed_out, oom=oom, expected=expected, duration_s=0.5)
 
 
 def test_all_tests_passing_is_passed():

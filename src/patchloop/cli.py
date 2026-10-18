@@ -48,6 +48,15 @@ def solve(
     out: Annotated[Path, typer.Option(help="Where run folders go; keep it inside the project.")] = (
         Path("runs")
     ),
+    llm_kind: Annotated[
+        str, typer.Option("--llm", help="api (the configured model) or replay (recorded replies).")
+    ] = "api",
+    replay_file: Annotated[Path, typer.Option(help="Fixtures for --llm replay.")] = Path(
+        "tests/replay/demo.jsonl"
+    ),
+    record: Annotated[
+        Path | None, typer.Option(help="Append every real reply to this fixture file.")
+    ] = None,
 ) -> None:
     """Repair one task: attempts against the visible tests, then the hidden verdict."""
     from .agent.loop import solve as solve_task
@@ -70,11 +79,23 @@ def solve(
         if value is not None:
             data["model"][key] = value
     cfg = AgentConfig.model_validate(data)  # validates the overrides too (e.g. --feedback L9)
-    model_cfg = cfg.model
-    if not model_cfg.name:
-        raise typer.BadParameter("no model set: pass --model, or set model.name in the config")
+    if llm_kind == "replay":
+        from .llm.replay import ReplayLLM
 
-    llm = _make_llm(model_cfg, cache=cache)
+        try:
+            llm = ReplayLLM(replay_file)
+        except FileNotFoundError as e:
+            raise typer.BadParameter(str(e)) from None
+    elif llm_kind == "api":
+        if not cfg.model.name:
+            raise typer.BadParameter("no model set: pass --model, or set model.name in the config")
+        llm = _make_llm(cfg.model, cache=cache and record is None)
+        if record:
+            from .llm.replay import RecordingLLM
+
+            llm = RecordingLLM(llm, record)
+    else:
+        raise typer.BadParameter("--llm must be api or replay")
 
     task = Task.load(task_path)
     now = datetime.now()
@@ -183,7 +204,7 @@ def eval_(
     )
     if summary.stopped_early:
         console.print(f"stopped early: {summary.stopped_early}", style="yellow", highlight=False)
-        raise typer.Exit(2)
+        raise typer.Exit(3 if summary.quota_exhausted else 2)
 
 
 @app.command()

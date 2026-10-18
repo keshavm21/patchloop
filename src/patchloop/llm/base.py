@@ -15,6 +15,11 @@ class LLMInfraError(RuntimeError):
     error, never the agent's fault."""
 
 
+class QuotaExhausted(LLMInfraError):
+    """A daily quota (requests or tokens per day) is spent. Not a failure of any one task: the
+    eval stops without recording the run, and resumes once the quota comes back."""
+
+
 @dataclass(frozen=True)
 class Reply:
     text: str
