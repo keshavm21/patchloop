@@ -22,6 +22,7 @@ from ..bench.frozen import Benchmark
 from ..config import AgentConfig
 from ..llm.base import LLMClient, QuotaExhausted
 from ..models import StopReason, Task
+from ..sandbox.docker_runner import SandboxUnavailable
 from ..sandbox.limits import Limits
 from ..sandbox.sandbox import DockerSandbox, Sandbox
 from ..tracing import Tracer
@@ -50,7 +51,7 @@ class EvalSummary:
     skipped: int = 0
     infra_errors: int = 0
     stopped_early: str | None = None
-    quota_exhausted: bool = False
+    quota_exhausted: bool = False  # or Docker down: wait and resume, nothing was recorded
 
 
 def read_records(out: Path) -> list[dict]:
@@ -132,9 +133,10 @@ def run_eval(
             rec = solve(
                 task, cfg, clients[cfg.name], sandbox_for(work), tracer=tracer, repeat=repeat
             )
-        except QuotaExhausted as e:
+        except (QuotaExhausted, SandboxUnavailable) as e:
             with lock:  # no record: the triple stays pending, and resuming reruns it
-                summary.stopped_early = f"daily quota spent ({e}); resume later"
+                what = "daily quota spent" if isinstance(e, QuotaExhausted) else "Docker is down"
+                summary.stopped_early = f"{what} ({e}); resume later"
                 summary.quota_exhausted = True
             stop.set()
             return

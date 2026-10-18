@@ -197,3 +197,18 @@ def test_daily_quota_stops_the_eval_without_a_record(plan, task):
     summary, _ = run(plan, task, [QuotaExhausted("tokens per day (TPD)")])
     assert summary.quota_exhausted and "quota" in summary.stopped_early
     assert read_records(plan.out) == []  # nothing recorded, so resuming reruns everything
+
+
+def test_docker_down_stops_the_eval_without_a_record(plan, task):
+    from patchloop.sandbox.docker_runner import SandboxUnavailable
+
+    def down(work):
+        def run(code, tests_dir):
+            raise SandboxUnavailable("connection refused")
+
+        return FakeSandbox(run)
+
+    llm = KeyedLLM([reply_with(FIXED)])
+    summary = run_eval(plan, lambda cfg: llm, sandbox_for=down)
+    assert summary.quota_exhausted and "Docker is down" in summary.stopped_early
+    assert read_records(plan.out) == []

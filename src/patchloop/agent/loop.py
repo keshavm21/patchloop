@@ -20,7 +20,7 @@ from ..models import (
     host_result,
 )
 from ..safety.base import PolicyCheck, allow_all
-from ..sandbox.docker_runner import SandboxInfraError
+from ..sandbox.docker_runner import SandboxInfraError, SandboxUnavailable
 from ..sandbox.sandbox import Sandbox
 from ..tracing import Tracer
 from .feedback import regressions, render, summarize
@@ -70,7 +70,7 @@ def solve(
         tracer.emit(
             "hidden_verdict", final_attempt=rec.final_attempt, **_run_fields(rec.hidden_result)
         )
-    except QuotaExhausted:
+    except (QuotaExhausted, SandboxUnavailable):
         raise  # not this task's infra error: the caller stops and resumes later
     except (LLMInfraError, SandboxInfraError) as e:
         reason, rec.infra_error, rec.hidden_result = StopReason.INFRA_ERROR, str(e), None
