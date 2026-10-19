@@ -151,6 +151,7 @@ class Attempt(BaseModel):
     regressions: list[str] = []  # tests that passed on an earlier attempt and fail now
     summary: str  # the one-line history entry later prompts show
     usage: Usage = Usage()
+    finish_reason: str | None = None  # "length": the reply was cut off at max_output_tokens
 
 
 class RunRecord(BaseModel):

@@ -1,0 +1,11 @@
+# Model swap (§8.4): the same config on a second model.
+feedback: L3
+max_attempts: 3
+reflect: false
+explain_failures: false  # on by default for `patchloop solve` without --config
+model:
+  name: qwen/qwen3.8-27b
+  base_url: https://api.groq.com/openai/v1
+  api_key_env: GROQ_API_KEY
+  temperature: 0.0
+  max_output_tokens: 1000  # Groq free tier: qwen allows 1,000 output tokens a minute and refuses larger requests

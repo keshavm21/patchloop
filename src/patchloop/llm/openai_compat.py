@@ -8,7 +8,7 @@ import openai
 
 from ..config import Price
 from ..models import Usage
-from .base import LLMInfraError, Message, Reply, cost_usd
+from .base import LLMInfraError, Message, QuotaExhausted, Reply, cost_usd
 
 # Worth retrying: rate limits, server errors, timeouts and dropped connections.
 _RETRYABLE = (
@@ -27,6 +27,7 @@ class OpenAICompatClient:
         api_key: str | None,
         base_url: str | None = None,
         price: Price | None = None,
+        reasoning_effort: str | None = None,
         max_retries: int = 5,
         timeout_s: float = 120.0,
         client=None,  # an openai.OpenAI, or a stand-in in tests
@@ -34,6 +35,8 @@ class OpenAICompatClient:
     ) -> None:
         self.model = model
         self.price = price
+        # Extra request parameters; they are part of the cache key (see CachedClient).
+        self.params = {"reasoning_effort": reasoning_effort} if reasoning_effort else {}
         self.max_retries = max_retries
         self._sleep = sleep
         # The SDK's own retries are off, so every retry goes through the backoff below.
@@ -56,24 +59,29 @@ class OpenAICompatClient:
                     messages=messages,
                     temperature=temperature,
                     max_tokens=max_tokens,
+                    **self.params,
                 )
             except _RETRYABLE as e:
+                if _is_daily_quota(e):  # waiting seconds won't help; it comes back over hours
+                    raise QuotaExhausted(f"{type(e).__name__}: {e}") from e
                 if attempt == self.max_retries:
                     raise LLMInfraError(f"{type(e).__name__} after {attempt + 1} tries: {e}") from e
-                self._sleep(min(60.0, 2**attempt) * (0.5 + random.random() / 2))
+                backoff = min(60.0, 2**attempt) * (0.5 + random.random() / 2)
+                self._sleep(max(backoff, _retry_after(e)))
                 continue
             except openai.OpenAIError as e:  # 4xx other than 429: a config problem, not the agent
                 raise LLMInfraError(f"{type(e).__name__}: {e}") from e
             reply = self._reply(response, time.monotonic() - start)
             wait = start - first_try
             usage = reply.usage.model_copy(update={"retries": attempt, "retry_wait_s": wait})
-            return Reply(text=reply.text, usage=usage, model=reply.model)
+            return Reply(reply.text, usage, reply.model, reply.finish_reason)
         raise AssertionError("unreachable")
 
     def _reply(self, response, latency_s: float) -> Reply:
         if not response.choices:
             raise LLMInfraError("the API returned no choices")
-        text = response.choices[0].message.content or ""
+        choice = response.choices[0]
+        text = choice.message.content or ""
         usage = response.usage
         input_tokens = (usage.prompt_tokens or 0) if usage else 0
         output_tokens = (usage.completion_tokens or 0) if usage else 0
@@ -83,6 +91,7 @@ class OpenAICompatClient:
         output_tokens = max(output_tokens, total - input_tokens)
         return Reply(
             text=text,
+            finish_reason=getattr(choice, "finish_reason", None),
             model=getattr(response, "model", None) or self.model,
             usage=Usage(
                 input_tokens=input_tokens,
@@ -92,3 +101,21 @@ class OpenAICompatClient:
                 calls=1,
             ),
         )
+
+
+def _retry_after(error: Exception) -> float:
+    """Seconds the provider asked us to wait (Retry-After), capped at a minute; 0 if none."""
+    response = getattr(error, "response", None)
+    value = response.headers.get("retry-after") if response is not None else None
+    try:
+        return min(60.0, float(value)) if value else 0.0
+    except ValueError:
+        return 0.0
+
+
+def _is_daily_quota(error: Exception) -> bool:
+    """Groq: "tokens per day (TPD)" or "requests per day (RPD)"; Gemini: "...PerDay..."."""
+    text = str(error).lower()
+    return isinstance(error, openai.RateLimitError) and (
+        "per day" in text or "perday" in text or "(tpd)" in text or "(rpd)" in text
+    )

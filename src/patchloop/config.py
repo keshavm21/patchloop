@@ -25,6 +25,9 @@ class ModelConfig(_Strict):
     api_key_env: str = "LLM_API_KEY"
     temperature: float = 0.0
     max_output_tokens: int = 2048
+    # For reasoning models that take it (gpt-oss on Groq): "low", "medium" or "high". None sends
+    # nothing, so the provider's default applies.
+    reasoning_effort: Literal["low", "medium", "high"] | None = None
     price: Price | None = None  # without it, cost is reported as unknown
 
 

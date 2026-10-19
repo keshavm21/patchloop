@@ -126,6 +126,7 @@ def _stub(name):
         return _call(name, args, kwargs)
 
     call.__name__ = call.__qualname__ = name
+    call.__test__ = False  # `from solution import *` must not make pytest collect test_* names
     return call
 
 

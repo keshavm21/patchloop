@@ -1,0 +1,152 @@
+"""Write results/REPORT.md and the README's results section from the results folders.
+
+    python -m patchloop.eval.publish
+
+Both come from templates (results/REPORT.template.md, results/README_results.template.md) whose
+$placeholders are filled with numbers computed here from records.jsonl and
+results/error_analysis.json. Nothing is typed in by hand, and a value that has no data yet
+renders as "pending", so re-running after more repeats land updates every number at once.
+"""
+
+import json
+import re
+from collections import Counter
+from pathlib import Path
+from string import Template
+
+from .metrics import by_config
+from .runner import ROOT, read_records
+from .stats import repair_rate_ci
+from .summary import comparisons, folder_comparisons, headline, success_at_k, symptoms
+
+RESULTS = ROOT / "results"
+FOLDERS = {"hef": "humanevalfix-test", "mb": "mutbench-test", "qwen": "mutbench-test-qwen"}
+MAIN = ["hef", "mb"]
+README = ROOT / "README.md"
+# The generated block, or just the opening marker the first time (never "to end of file").
+MARKER = re.compile(r"<!-- RESULTS -->(?:.*?<!-- /RESULTS -->)?", re.DOTALL)
+PENDING = "pending"
+
+
+class Values(dict):
+    def __missing__(self, key: str) -> str:
+        return PENDING
+
+
+def _pct(x: float) -> str:
+    return f"{100 * x:.1f}"
+
+
+def _slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+
+
+def collect() -> Values:
+    v = Values()
+    for alias, folder in FOLDERS.items():
+        path = RESULTS / folder
+        if not (path / "records.jsonl").exists():
+            continue
+        records = read_records(path)
+        v[f"{alias}_bench"] = f"{records[0]['bench']} ({records[0]['split']})"
+        v[f"{alias}_model"] = records[0]["provenance"]["model"]
+        v[f"{alias}_shas"] = ", ".join(
+            sorted({f"`{r['provenance']['git_sha'][:7]}`" for r in records})
+        )
+        for name, m in by_config(records).items():
+            base = name.removesuffix("_qwen")
+            ci = repair_rate_ci(records, name)
+            v[f"{alias}_{base}"] = f"{_pct(ci.mean)} [{_pct(ci.low)}, {_pct(ci.high)}]"
+            v[f"{alias}_{base}_rate"] = _pct(ci.mean)
+            v[f"{alias}_{base}_n"] = f"{m.tasks} × {m.repeats}"
+            v[f"{alias}_{base}_tasks"] = str(m.tasks)
+            v[f"{alias}_{base}_repeats"] = str(m.repeats)
+            v[f"{alias}_{base}_overfit"] = _pct(m.overfit_rate)
+            v[f"{alias}_{base}_tokens"] = f"{m.tokens_per_task:,.0f}"
+            if m.cut_off_rate is not None:
+                v[f"{alias}_{base}_cutoff"] = _pct(m.cut_off_rate)
+            v[f"{alias}_{base}_quarantined"] = str(m.quarantined)
+        for a, b, c in folder_comparisons(records):
+            key = f"{alias}_{a.removesuffix('_qwen')}_vs_{b.removesuffix('_qwen')}"
+            d = c.diff
+            v[key] = f"{100 * d.mean:+.1f} [{100 * d.low:+.1f}, {100 * d.high:+.1f}]"
+            v[f"{key}_verdict"] = c.verdict.replace("_qwen", "")
+        _gains(v, alias, records)
+    _error_analysis(v)
+    v["table_headline"] = "\n".join(headline([RESULTS / FOLDERS[a] for a in MAIN if a in _have()]))
+    v["table_comparisons"] = "\n".join(
+        comparisons([RESULTS / f for a, f in FOLDERS.items() if a in _have()])
+    )
+    v["table_symptoms"] = "\n".join(symptoms([RESULTS / FOLDERS[a] for a in MAIN if a in _have()]))
+    sk = success_at_k([RESULTS / FOLDERS[a] for a in MAIN if a in _have()])
+    v["table_success_at_k"] = "\n".join(sk) if sk else "The attempts sweep is still running."
+    if "qwen" in _have():
+        v["table_qwen"] = "\n".join(headline([RESULTS / FOLDERS["qwen"]]))
+    return v
+
+
+def _have() -> set[str]:
+    return {a for a, f in FOLDERS.items() if (RESULTS / f / "records.jsonl").exists()}
+
+
+def _gains(v: Values, alias: str, records: list[dict]) -> None:
+    """Tasks only the loop solved, by how the single attempt had failed: a format failure the
+    loop recovered from, or a wrong answer it fixed from test feedback."""
+    names = set(by_config(records))
+    suffix = "_qwen" if "full_qwen" in names else ""
+    single = {
+        (r["task_id"], r["repeat"]): r for r in records if r["config"] == "single_shot" + suffix
+    }
+    full = {(r["task_id"], r["repeat"]): r for r in records if r["config"] == "full" + suffix}
+
+    def ok(r):
+        return (r.get("hidden_result") or {}).get("status") == "PASSED"
+
+    keys = [k for k in full if k in single and full[k]["stop_reason"] != "INFRA_ERROR"]
+    gained = [k for k in keys if ok(full[k]) and not ok(single[k])]
+    how = Counter(
+        single[k]["attempts"][0]["result"]["status"] for k in gained if single[k]["attempts"]
+    )
+    v[f"{alias}_gained"] = str(len(gained))
+    v[f"{alias}_gained_format"] = str(how["PARSE_FAILED"])
+    v[f"{alias}_gained_feedback"] = str(len(gained) - how["PARSE_FAILED"])
+    v[f"{alias}_lost"] = str(sum(ok(single[k]) and not ok(full[k]) for k in keys))
+
+
+def _error_analysis(v: Values) -> None:
+    path = RESULTS / "error_analysis.json"
+    if not path.exists():
+        return
+    labels = json.loads(path.read_text())["labels"]
+    counts = Counter(label["category"] for label in labels)
+    v["ea_total"] = str(len(labels))
+    for category, n in counts.items():
+        v[f"ea_{_slug(category)}"] = str(n)
+    v["table_error_analysis"] = "\n".join(
+        ["| Category | Failures |", "|---|---|"]
+        + [f"| {category} | {n} |" for category, n in counts.most_common()]
+    )
+
+
+def render(template: Path, values: Values) -> str:
+    return Template(template.read_text()).substitute(values)
+
+
+def main() -> None:
+    values = collect()
+    report = render(RESULTS / "REPORT.template.md", values)
+    (RESULTS / "REPORT.md").write_text(report)
+    section = render(RESULTS / "README_results.template.md", values).strip()
+    readme = README.read_text()
+    block = f"<!-- RESULTS -->\n{section}\n<!-- /RESULTS -->"
+    README.write_text(MARKER.sub(lambda _: block, readme, count=1))
+    pending = sorted(
+        set(re.findall(r"\$\{?(\w+)", (RESULTS / "REPORT.template.md").read_text())) - set(values)
+    )
+    print(f"wrote {RESULTS / 'REPORT.md'} and the README results section")
+    if pending:
+        print("pending (no data yet):", ", ".join(pending))
+
+
+if __name__ == "__main__":
+    main()

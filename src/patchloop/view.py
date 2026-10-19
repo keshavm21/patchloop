@@ -43,6 +43,10 @@ class LiveView:
                 self._line(f"attempt {n}", Text(f"blocked: {reason}", style="red"))
         elif kind == "sandbox_run":
             self._line(f"attempt {n}", _run_text(event))
+        elif kind == "feedback" and self.show_code:  # replay: what the model was told
+            failed = [line for line in event["text"].splitlines() if line.startswith("FAILED ")]
+            for line in failed[:3]:
+                self._line("feedback", Text(line, style="yellow"))
         elif kind == "hidden_verdict":
             self._line("hidden", _run_text(event))
         elif kind == "explanation" and event.get("text"):

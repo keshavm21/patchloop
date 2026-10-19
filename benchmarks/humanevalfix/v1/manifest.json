@@ -1,0 +1,2461 @@
+{
+  "name": "humanevalfix",
+  "version": "v1",
+  "dataset": {
+    "repo": "bigcode/humanevalpack",
+    "revision": "9a41762f73a8cb23bb5811b73d5aab164efcf378"
+  },
+  "built": {
+    "at": "2026-10-17T07:29:49+00:00",
+    "git_sha": "62ee224f2ce2db19cf78be5e0362b0e0719de787",
+    "image_id": "sha256:70032101b87db96c7534c2e51af6f723f9b96db4fbc103c2d4cae6cd256e81f7",
+    "arch": "arm64"
+  },
+  "split": {
+    "seed": 20261017,
+    "dev_fraction": 0.25,
+    "stratified_by": "bug_type",
+    "counts": {
+      "dev": 41,
+      "test": 121
+    }
+  },
+  "checksum": "72577208b63026efe3b4583aced0335c02520af9d7f79ce9db0c0f248ea9def0",
+  "valid_not_selected": 0,
+  "tasks": {
+    "Python_0": {
+      "id": "humanevalfix/Python/0",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_0.json": "f95eea733bb7e4d45cbf8df0796c70faf27dc802d49590e05c25f75b087e71d9",
+        "Python_0/reference.py": "40560c20a6f56877abd19fa87e39aa5d43f3bff6b7417c68e11fc772c096a6c9",
+        "Python_0/tests/hidden/test_Python_0_hidden.py": "b082c01a86a6a857fe9ffaa9429e7b393585b7719b6eb286a06efd88c6abb15d",
+        "Python_0/tests/visible/test_Python_0.py": "3d5ec9739eede5b9372d0ea3a65a214fe2ffbd2b78f46f8aa5cff032ebf27fd2"
+      }
+    },
+    "Python_1": {
+      "id": "humanevalfix/Python/1",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_1.json": "7907db4fa615ea9e51937e88e518879e4ed2896be65649625cd6aef7a901194d",
+        "Python_1/reference.py": "464c1465d5dbdf81777dab90f452cf22371867ee1349fed5d983ef0492c1f621",
+        "Python_1/tests/hidden/test_Python_1_hidden.py": "9a3ee9c5c329c9fd26909cd80200a54dbb844ef917d0f49d62ab72d1ef2cb98f",
+        "Python_1/tests/visible/test_Python_1.py": "a690fa2d92b646af9b2e2c44e7391e185ed0b03ada1869f582594e6587f5c36e"
+      }
+    },
+    "Python_10": {
+      "id": "humanevalfix/Python/10",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 5
+      },
+      "files": {
+        "Python_10.json": "137203ca35290257bb961ad8f874909912f7214d97658925b703577225130d41",
+        "Python_10/reference.py": "4f93855da57c185ede19a14d11665607cecc1dd05277e38c4736ef3f7c56a9b4",
+        "Python_10/tests/hidden/test_Python_10_hidden.py": "04de8a00b03c156ce3c63cae837fdd58b31986ce5f71193b13811fe880a9e1d4",
+        "Python_10/tests/visible/test_Python_10.py": "70e20740e96196a6fca9b65df3fc76f5f2d827c4793b16b0239f39311886b270"
+      }
+    },
+    "Python_100": {
+      "id": "humanevalfix/Python/100",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_100.json": "dc3d0b7688d507ffc62a3022ffe251aeb02d64f3e366c31b50abd197d08dd30f",
+        "Python_100/reference.py": "a38cdefc73665d5e2a41ba44dc333edea691fa055270cb85140233829b593dbf",
+        "Python_100/tests/hidden/test_Python_100_hidden.py": "a3157bfee04cfdfe69ad246ae5d5bf768b07908cabcd9ea3225cd02cdfbd46b9",
+        "Python_100/tests/visible/test_Python_100.py": "b1f438cd071a949889d81f84a2406abc6ee6c8338a55cadd8e7d430c9ab724f7"
+      }
+    },
+    "Python_101": {
+      "id": "humanevalfix/Python/101",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 6
+      },
+      "files": {
+        "Python_101.json": "0cd0ede7efb70ae28b00f0a3c5d6eea1c4bc5d2c1dcb6a41a16fd1e6380bfc02",
+        "Python_101/reference.py": "a347a489bfc518ee83e8408f517daaba1005b8cf01cf1ab8aaf2295861d8f6e5",
+        "Python_101/tests/hidden/test_Python_101_hidden.py": "90b3fae6cc00f3a43426a21fe0e4ed3d6273e4f41e9ef3894b79807fdb3e9868",
+        "Python_101/tests/visible/test_Python_101.py": "79738eff17531fc6b1a0a7cdb4c3a9beedf82fad5c04e6e298d3b005b9b14e18"
+      }
+    },
+    "Python_102": {
+      "id": "humanevalfix/Python/102",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 8
+      },
+      "files": {
+        "Python_102.json": "2cf17d23bc7f1b3a7d042e4645ca8ebdc8aa389f39d37c874b7a66f90e72f55c",
+        "Python_102/reference.py": "74a43d58d3d67cebcc8fcd3ce09d30b7a9bc65b96a0c2e23f14c6658ae1f5812",
+        "Python_102/tests/hidden/test_Python_102_hidden.py": "cb4d2c57ef12d619d2e11c85f7f73de5eb15f6f7dccd2fe82ddc823fc2d2d56f",
+        "Python_102/tests/visible/test_Python_102.py": "87ef145fe4c10dfe428fb55adfddae99b4a1496e664b4e27bda6a82d59b8e718"
+      }
+    },
+    "Python_103": {
+      "id": "humanevalfix/Python/103",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 12
+      },
+      "files": {
+        "Python_103.json": "b7002f852ca4a111e062611a8d0f4558127c6e55e43c66f6356852478d7e95b9",
+        "Python_103/reference.py": "4a2b1380cd44182161cf2ae33adfdcbb405a1e3736459c1bb82a1c306f18ee0c",
+        "Python_103/tests/hidden/test_Python_103_hidden.py": "d6bd6e571b9b8f310a935e7052f0c127376387d5ba0f945262493aa63116b5ed",
+        "Python_103/tests/visible/test_Python_103.py": "aab295e9e4f47ff06e60fcb6cb377f8300e7bd135ca4ee3e8fc0dc9b86aa4101"
+      }
+    },
+    "Python_104": {
+      "id": "humanevalfix/Python/104",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 4
+      },
+      "files": {
+        "Python_104.json": "05fc19f5df10c29b8d2a67f407f96322325b5aade88d46dea3204b6e7308aef5",
+        "Python_104/reference.py": "0ec4630dd40e41262c8560df80a19a80f1ee3ca09436ca7cfff5c06aaac528d9",
+        "Python_104/tests/hidden/test_Python_104_hidden.py": "4db1ea06394bb982ff0b0fe30d26c812efcac793838650155beaf24b85aa207c",
+        "Python_104/tests/visible/test_Python_104.py": "4db1ea06394bb982ff0b0fe30d26c812efcac793838650155beaf24b85aa207c"
+      }
+    },
+    "Python_105": {
+      "id": "humanevalfix/Python/105",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 5
+      },
+      "files": {
+        "Python_105.json": "b451e6ef9d4f58323a5586f9cb2f0e151ffae4a1b973a9efb550014d29eb9e66",
+        "Python_105/reference.py": "4732c5b95c79258ae34bafa30232f364868dac2ac475428b3c18a3fa3aeec467",
+        "Python_105/tests/hidden/test_Python_105_hidden.py": "20aaafb2035a015c9c9ef2e92a59ab3439faaaec6cc8eb4ae667b857cf875e8a",
+        "Python_105/tests/visible/test_Python_105.py": "d3d536ef47b46394a91f8a3553baef77a546a57baf49372c80c366fc5321afbf"
+      }
+    },
+    "Python_106": {
+      "id": "humanevalfix/Python/106",
+      "split": "dev",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_106.json": "6305975dc8471849dbe219c35b915fa7cbedfae269da7fa856927a3a3747761f",
+        "Python_106/reference.py": "4923aa6cabe5ccc261bd33379d0ce983b7d7fe37634e5ebd934f6852026d5682",
+        "Python_106/tests/hidden/test_Python_106_hidden.py": "71a42b4ae2bb5f82feddb8715723927c260ebc6405fd6e42482948943e04bf1a",
+        "Python_106/tests/visible/test_Python_106.py": "83b91192014cc2af8b95b512326eaa036a0922929ed47113657c6b6c3d72855b"
+      }
+    },
+    "Python_107": {
+      "id": "humanevalfix/Python/107",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 8
+      },
+      "files": {
+        "Python_107.json": "eb60a03e9f834f0036ce6ff1778a44947c3779a47b62d1f5ef62440c15dd583b",
+        "Python_107/reference.py": "b2b8bc7dfc97df580d10272c6f15afe44ba5b65f492be1bf88cbe109e9e76b88",
+        "Python_107/tests/hidden/test_Python_107_hidden.py": "9978912f9e2bcdcd0089d374c6455ae4a1c9a603464daf230dba5ed3db7f41ce",
+        "Python_107/tests/visible/test_Python_107.py": "ec6b3d4590c54bfb6a576e92f7a86d0ac7b004a886541a599c4c447811188cc8"
+      }
+    },
+    "Python_108": {
+      "id": "humanevalfix/Python/108",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_108.json": "4f5f9e7712c5d907cdd87b6308a01ee241d795eec09f1616764f4178d3fb8439",
+        "Python_108/reference.py": "7f4961a6940f3d43ec67131f5e374518786bb034830cabbd4bcac17fbbca2322",
+        "Python_108/tests/hidden/test_Python_108_hidden.py": "319f046d8d4fb5fd4c017864f1e92b69755af0f979d8c21e10e95637ef062a81",
+        "Python_108/tests/visible/test_Python_108.py": "c5026e284f516997cf6c11ecaaede1e8d0f6ecda49bd8159240b72f2293fd4e6"
+      }
+    },
+    "Python_109": {
+      "id": "humanevalfix/Python/109",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_109.json": "80e01b951e8d4d45557d293046cda40c9dc9d32bd606b4ad4629a9e56cbc32b2",
+        "Python_109/reference.py": "97f77cd731a2a2eebba8d9de02d56cf2b687a4ef1006042894ca3f7baf97594c",
+        "Python_109/tests/hidden/test_Python_109_hidden.py": "5d19a615a53d817cc4fdce6c209d2208444f4a599df3f66cde60e8523a944a9b",
+        "Python_109/tests/visible/test_Python_109.py": "1ca2a932c7c00689e4243f8e5270672a27b3b8e4dae48287124ccfc10ba8b801"
+      }
+    },
+    "Python_11": {
+      "id": "humanevalfix/Python/11",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_11.json": "1ac6f585a49aa22d1061bc240317df7ae95adb6bd7579552e16b142a39fa70ee",
+        "Python_11/reference.py": "3f868f860b145b75670a38e6b052ea1b335906692087fd6221ce83cffbcfa496",
+        "Python_11/tests/hidden/test_Python_11_hidden.py": "c15653b3156ae5a0ebe3f9cbd157f544be7870d3639db8d6b5c85bd1e171d0d0",
+        "Python_11/tests/visible/test_Python_11.py": "9cb264fc2d3fd0891839f268b76d702ee8c1aa0b033b36a9a08518b6afe11b85"
+      }
+    },
+    "Python_110": {
+      "id": "humanevalfix/Python/110",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_110.json": "845fe8f640a3209d692110451c98be62d7bd50c730b6feb58bbf86c5edb131c1",
+        "Python_110/reference.py": "a3e0fc4e3003b3e0f1140ee7929c2f843ca7f73d6bba90b125f0073b5703f6d7",
+        "Python_110/tests/hidden/test_Python_110_hidden.py": "5b412f596db6f2407654c046162420c54df83ed73e2894b37adfd5b05372b329",
+        "Python_110/tests/visible/test_Python_110.py": "1334fbb004f6b0f55466850861f105b58ec28f7eb231c1d5726fcf430c3488e2"
+      }
+    },
+    "Python_111": {
+      "id": "humanevalfix/Python/111",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 8
+      },
+      "files": {
+        "Python_111.json": "556d31257edbe62331c9591e281bda25c7eab7e253b6a7e906eb082a80254921",
+        "Python_111/reference.py": "1349d6231193dceb97603298b8a7a2489a252c7a21201dd3ed15d7baae638a6e",
+        "Python_111/tests/hidden/test_Python_111_hidden.py": "0b1ac11a585de738aa1c793cffa7fefd16e4a75970f349d6dde1f9df7d4123e8",
+        "Python_111/tests/visible/test_Python_111.py": "6c52d352e73230706199a5a553631abe4fcaec7ebcf53d9239aeab97b69295e7"
+      }
+    },
+    "Python_112": {
+      "id": "humanevalfix/Python/112",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 9
+      },
+      "files": {
+        "Python_112.json": "e96696732b8bd19d5094850af22318c32827f8b8f27c303b7dd35ea1d2626002",
+        "Python_112/reference.py": "8df37c8133a4a7c57d0ae0c33ed120451b58d97c2f10e25667468d2e850fa997",
+        "Python_112/tests/hidden/test_Python_112_hidden.py": "eb18d65e43116c7e8858b5c71a0db69a81082cb2dd19276719c25cde7086a7e0",
+        "Python_112/tests/visible/test_Python_112.py": "4a51b78f212d9752858b5144100141a699c2643e0135261d2207f1020493e343"
+      }
+    },
+    "Python_113": {
+      "id": "humanevalfix/Python/113",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_113.json": "c77ed1ecceb84c937a840441a3e4fe8848b154bc924613ac484b995dd1c9308c",
+        "Python_113/reference.py": "8771ce706f8b15b1198dc56aa057e977c0d6819afda6c17f0a0e7ac40bc2b0b4",
+        "Python_113/tests/hidden/test_Python_113_hidden.py": "7c2eaf93e63bfb6b8a8cc32f75a10bd1795b45b0731a441eadae7d307b180223",
+        "Python_113/tests/visible/test_Python_113.py": "c95eb26661aa6a9517406198ad35026d11bddffe38793bab3ffe621035dfe1f7"
+      }
+    },
+    "Python_114": {
+      "id": "humanevalfix/Python/114",
+      "split": "test",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 12
+      },
+      "files": {
+        "Python_114.json": "161d0a10e1f16d91d06db4c234346cfd2cc3e253eb777f61ab437543ada4a805",
+        "Python_114/reference.py": "fb21b6ff6699bc5280f641b01bbff16f96533ec1124289e5a864182034bac87a",
+        "Python_114/tests/hidden/test_Python_114_hidden.py": "deedd36f56515dbb782d4fd8ef693244dd14d4b32c4ea57d81ff52cac698e9b8",
+        "Python_114/tests/visible/test_Python_114.py": "34e3605b2916dd9315b8012541bae6eb3856f29decb6db3a31f58971ac4adc73"
+      }
+    },
+    "Python_115": {
+      "id": "humanevalfix/Python/115",
+      "split": "test",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 5
+      },
+      "files": {
+        "Python_115.json": "96869133cc10082697d692ac7f32a5a691e8420984e73fb3c5a310f179eb60da",
+        "Python_115/reference.py": "0aa20fb1f884e9dad5d6d5d5eb54e767cd0a5921dad65a9fd647933a86fe9f33",
+        "Python_115/tests/hidden/test_Python_115_hidden.py": "bcef79b0f3c6d75284e0bfce524e41e14c6de00f25b2af4eadbb7ea9dc442a02",
+        "Python_115/tests/visible/test_Python_115.py": "00d6ae9eedb730f78a805504c8b211c19da323cc0cd6b3beb27fdcab81b1c320"
+      }
+    },
+    "Python_116": {
+      "id": "humanevalfix/Python/116",
+      "split": "dev",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_116.json": "ed46f404252e62f258cf4eeb5cdf8abe76130ceed9b7cde88331f4cc0cc51322",
+        "Python_116/reference.py": "4a1c9620b23415a85297152a68588af293d2bd7a9b5e57b1a71da159b2a18f33",
+        "Python_116/tests/hidden/test_Python_116_hidden.py": "a944d5b2d596c6ec13e6cec0da68c612bf026250eb77ef55992eaef4ddf63ba7",
+        "Python_116/tests/visible/test_Python_116.py": "62a2824c24949343b63352cdc2677f357d32b94fdc97e194588a9c0d5af1b1c3"
+      }
+    },
+    "Python_117": {
+      "id": "humanevalfix/Python/117",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 7
+      },
+      "files": {
+        "Python_117.json": "3ac5480bc43811e8d03b1fe8bd9a6d2640be53b31aaffd802cb56206c32d2fef",
+        "Python_117/reference.py": "f4f44749dd79d814ff5d4f4d99de4b9b77f0d6c1214279782b5d0921da241934",
+        "Python_117/tests/hidden/test_Python_117_hidden.py": "35b1b06578c3f0b0797afb5755b83c60305c2dab584a3a5c4c11281a44e9d149",
+        "Python_117/tests/visible/test_Python_117.py": "24c9a690a7bff817fc84ca27119055f00d116a63810c5b5623317f1b54fabd95"
+      }
+    },
+    "Python_118": {
+      "id": "humanevalfix/Python/118",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 13
+      },
+      "files": {
+        "Python_118.json": "95876d5eaf49c6abfcfaf39bdf465c7a306695f1c3c24581ff9aa020ade5c667",
+        "Python_118/reference.py": "b240051f0c0d97476aac681f493c8d8855781689f4728a55bd49b7a4ac7b0da4",
+        "Python_118/tests/hidden/test_Python_118_hidden.py": "90813800468b949ba9360b07809912654d157061e71de6264e71e1728f74402b",
+        "Python_118/tests/visible/test_Python_118.py": "ce438cc9366c4559007c165c4bd2a175b819ced2ac6c14c7c0094b65eec8940b"
+      }
+    },
+    "Python_119": {
+      "id": "humanevalfix/Python/119",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 12
+      },
+      "files": {
+        "Python_119.json": "70e871226b633c68de941791761e2d926c7e0877e29c7282523f1db8702299c2",
+        "Python_119/reference.py": "f33159357ff6dea5acd672145da3303a471271f4d35835f0de254ed3c0b60c3e",
+        "Python_119/tests/hidden/test_Python_119_hidden.py": "96209402867f51ab9760e0314e164dd9d12d636950e7142ca26a6bf1fdc386c4",
+        "Python_119/tests/visible/test_Python_119.py": "311ee7d9fbad5050a25abb7cd3e7ab7841ff3143f4e3897bc5327dae422339a4"
+      }
+    },
+    "Python_12": {
+      "id": "humanevalfix/Python/12",
+      "split": "dev",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 3
+      },
+      "files": {
+        "Python_12.json": "91b71683eaa6b4effe0e4d3b2cd0e4341ab0d1efafe163099ee32b9dbeccb97c",
+        "Python_12/reference.py": "3685e6ba074e41236d9197c721cf71ef513eccd706be51a79f76727ad87884d6",
+        "Python_12/tests/hidden/test_Python_12_hidden.py": "c49f306180dd4fc407476603ef4365af7ba48efd9580533cf5666f1cbd01858c",
+        "Python_12/tests/visible/test_Python_12.py": "cf5e4be565d7d4438bf39fdf04678cc2008ae7563774ae2aaab020f38fa81418"
+      }
+    },
+    "Python_120": {
+      "id": "humanevalfix/Python/120",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 11
+      },
+      "files": {
+        "Python_120.json": "8aa5f7b051465a3506a0ac9e08891a3c1d1835e76572e8c984df82d475add905",
+        "Python_120/reference.py": "c7223ed63e8da56fc5c76a3ed76e3b33606f192abb9fcc5f79999a7313515fa7",
+        "Python_120/tests/hidden/test_Python_120_hidden.py": "c58596d5d76535120f2a0f12efbb9b8541efcf8183558d5baf272d5e610f0fb4",
+        "Python_120/tests/visible/test_Python_120.py": "b1a5a682bd4d5a1ef5bcc29b08ae996ae64b8f38b6bbf3cbc3659339137b5324"
+      }
+    },
+    "Python_121": {
+      "id": "humanevalfix/Python/121",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "files": {
+        "Python_121.json": "d7cd1b9b9e5e27092dd5e0ff5aa4bd9659cce73e811e0ddb5b493b8be5e988b1",
+        "Python_121/reference.py": "a781ae58bb4bd14af2ba5ebca8f2c31dd00506d01e7d89924ef7bcef27ad84de",
+        "Python_121/tests/hidden/test_Python_121_hidden.py": "342acf014feb24faa7c8e6ae180e777d860287508cefc26576bb5032f187f16a",
+        "Python_121/tests/visible/test_Python_121.py": "2c831e073c1d30c4fae6a51496eea265c4ec719d18b9c488a6aa4984f8d36f36"
+      }
+    },
+    "Python_122": {
+      "id": "humanevalfix/Python/122",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_122.json": "78b7519ce921a265b766886b34ef324112133ea8978dbb2db04cc958ec27edbe",
+        "Python_122/reference.py": "7c306c495ebc194bd5dbaf9bd2f606fab303d1e2307d6436640d3271b762d8ff",
+        "Python_122/tests/hidden/test_Python_122_hidden.py": "28be4729f736bef5a73af4d7f9c37cb9ba491f41e9289d7096ded1350ef1d074",
+        "Python_122/tests/visible/test_Python_122.py": "f381c479ddfef33262dc1b0bd14cd1aa652b4022f9aa5a3b84eb65dbde174699"
+      }
+    },
+    "Python_123": {
+      "id": "humanevalfix/Python/123",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_123.json": "f422c37e2b3b0f891e6bd435f8068e035214ed335d1a99b619fb52dd8e088839",
+        "Python_123/reference.py": "95f1c23dd3f5caa17218238727d9b9581a1d6fe8348c113fc523f89e9c2b76e8",
+        "Python_123/tests/hidden/test_Python_123_hidden.py": "54cac467e276bf37e8d52dbb27ec024bcad8ab6d1ff92138e7187d8fa69457a6",
+        "Python_123/tests/visible/test_Python_123.py": "9c01da989e0df6f5dc83948b3ba709e6f9ece3445310c2f5e21dd3a5332808e2"
+      }
+    },
+    "Python_124": {
+      "id": "humanevalfix/Python/124",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 16
+      },
+      "files": {
+        "Python_124.json": "0897c1093b3d69a7c741b23d3cee3e5dec6715a0807831c8fb588532ae01c74c",
+        "Python_124/reference.py": "318a4943910c16b3ff8fb79b2657c29ee14b27279ef9f7ed6da3f2ded1848820",
+        "Python_124/tests/hidden/test_Python_124_hidden.py": "6d7d18d41fc54a30eee39422603412fc761c93b42cf6c7a583c7b7606d939d91",
+        "Python_124/tests/visible/test_Python_124.py": "43000d257453b0a1f1d7ec1a705f6f0e31754dab5692e91041ba03c06bde4381"
+      }
+    },
+    "Python_125": {
+      "id": "humanevalfix/Python/125",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_125.json": "6be60f2682ea428715fe0b50fabc00cc0363886daab6b446f2b7afc5a53cd7d3",
+        "Python_125/reference.py": "1bb3d6e82bbefe63ade40e0641feefca720127f4e4e57fc441730d225bb1cf87",
+        "Python_125/tests/hidden/test_Python_125_hidden.py": "9e2a0f8b1eaea75209c977c0bc0408080a051d1264a7177a5b43c270741ea3ed",
+        "Python_125/tests/visible/test_Python_125.py": "acfc95939776329074dece7aacfda7d20d33bdd4033f752c695956fdc3163c51"
+      }
+    },
+    "Python_126": {
+      "id": "humanevalfix/Python/126",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 8,
+        "hidden": 13
+      },
+      "files": {
+        "Python_126.json": "da10eb704024090a1bd5e11aa22bc47ba8fa3aede03afc069559fe87a2d346d3",
+        "Python_126/reference.py": "9a6d734c27742e5670f9ab7291c459ad48a3cfdd1cb51cde6473d536aa528c2d",
+        "Python_126/tests/hidden/test_Python_126_hidden.py": "a86c24486280131f270098530646ead48f48b4c858ba21b717d534e5020c9c11",
+        "Python_126/tests/visible/test_Python_126.py": "45f45b7feb7d4549db21cbfdb5908783468f424010b599faa4daa05be26cfd5a"
+      }
+    },
+    "Python_127": {
+      "id": "humanevalfix/Python/127",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_127.json": "5359bc323ffd7299b3eb56561adf2f80ed342f5023419bf9cab132857fc09ffa",
+        "Python_127/reference.py": "7f0951c87fe5bcba20b3cd92de2b99fd910f784b402c745644247643cc1052b2",
+        "Python_127/tests/hidden/test_Python_127_hidden.py": "a9fb1b006e5d1d20ca92883fdad84b50e72dcf84493dc091891184250bf3bf20",
+        "Python_127/tests/visible/test_Python_127.py": "082dc1942064e8a5eb9316d9ae249c20c137fd3cd05c6fc3a2c60d4d7a947b0d"
+      }
+    },
+    "Python_128": {
+      "id": "humanevalfix/Python/128",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_128.json": "6c8189f2b24e02fb8deebc3f4254d010a368e4f166ff838fba44ddb850c30157",
+        "Python_128/reference.py": "f066cfe2c4f910bac960f4edf13203e73d3e30d18f66617d3200d03e45ed37c9",
+        "Python_128/tests/hidden/test_Python_128_hidden.py": "783cdbe7e865cbe8a55d17907451a21c6d562d8d7d78d7dfb2a3a9d046a2d69a",
+        "Python_128/tests/visible/test_Python_128.py": "002a72f3f9a502b88e6d54365a26ae35cb87e19a39145b5d11987a4c6adb5ff5"
+      }
+    },
+    "Python_129": {
+      "id": "humanevalfix/Python/129",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 1
+      },
+      "files": {
+        "Python_129.json": "0adef5d13f5df043a26fb077f35a7be92fd4d6c28d091face472811ce569a9f9",
+        "Python_129/reference.py": "45acb3c894f9cb3e0315a3f6c78cfc56b18fd32132839f58248aa6e0a7f1841c",
+        "Python_129/tests/hidden/test_Python_129_hidden.py": "c4726805e6a94dbf14f6683830eb3c9a7cb6d7fa30b41849ee66bc9433a1da68",
+        "Python_129/tests/visible/test_Python_129.py": "f57c3332b11a12eef2e29277d69bb9e031fc72d270b5037310e05ce37165c688"
+      }
+    },
+    "Python_13": {
+      "id": "humanevalfix/Python/13",
+      "split": "dev",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 4
+      },
+      "files": {
+        "Python_13.json": "04d7a1792ac9d56e2e81b185dff50bd64116395a333e08ac73c8a25bd203bf75",
+        "Python_13/reference.py": "acc3b98a289aff9cc3fa28e707155d5ce11e9ccc2523eb12c22c804bb8f5cb1f",
+        "Python_13/tests/hidden/test_Python_13_hidden.py": "e384157595ea2ba2be6f58917290a8a5fa4ee1a1b5e0bc32286946bdff3ab839",
+        "Python_13/tests/visible/test_Python_13.py": "38bae1afd18d3e8851f40d346eff719059a39311a4c5619701b894e3f883db2e"
+      }
+    },
+    "Python_130": {
+      "id": "humanevalfix/Python/130",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 10
+      },
+      "files": {
+        "Python_130.json": "4ec1e181f33840f264812ce9cea88555f3748d04f1b44a05e8b32e27930855af",
+        "Python_130/reference.py": "7e5ab6fda7a34d78e1d04c49d1df6b4240b18ad745609cf6c3c33d389a6b798a",
+        "Python_130/tests/hidden/test_Python_130_hidden.py": "06c6a2dcf0c9e079e79688cc33468d74583f517d2b74a0abcab41d8992039544",
+        "Python_130/tests/visible/test_Python_130.py": "749b8ab9899987b88a393b0e0ac04d9ebf732a4527c60dd4869a20b175d355ed"
+      }
+    },
+    "Python_131": {
+      "id": "humanevalfix/Python/131",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "files": {
+        "Python_131.json": "552121026810a00d19e435d98f85149ee105124c102e6d2165773453cfda3399",
+        "Python_131/reference.py": "a60ae2ea350ee67e74f2f668d153c44253835cdc7d2b3bada63a2e3ed49e8ff7",
+        "Python_131/tests/hidden/test_Python_131_hidden.py": "3f066654ed5a218e989eae9be725dce5a0fab1ac939914d128b76ba315840ef8",
+        "Python_131/tests/visible/test_Python_131.py": "262bad8bfb2b676848b6ec16f837668b4f3fc25a057140e0c852959bb2a05e6a"
+      }
+    },
+    "Python_132": {
+      "id": "humanevalfix/Python/132",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 14
+      },
+      "files": {
+        "Python_132.json": "cfff84872e23ea3d931a3b87b27d3455a016b458465832ed5c595054c88960af",
+        "Python_132/reference.py": "31319c42352e54d3fdc8f9eabdba474da7e58f9296c1dffa3e0629d3bcf27f56",
+        "Python_132/tests/hidden/test_Python_132_hidden.py": "f51e16d0d84e6ed4739a56d948cfda53b62201b1874a32e4270d7d1c19522c7c",
+        "Python_132/tests/visible/test_Python_132.py": "ae6c6a955009deedae5467d356c19becca14db0413bb75044b5bc4ff8f38c7ad"
+      }
+    },
+    "Python_133": {
+      "id": "humanevalfix/Python/133",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 12
+      },
+      "files": {
+        "Python_133.json": "4f5a1bbfff26b0c4a4621b364764a7d55fbd857ead0d28c5520593c2975e002d",
+        "Python_133/reference.py": "4ce782e063c80803e0368a885d61ed9776b5573cea1c4610d8e64bcdd9406d68",
+        "Python_133/tests/hidden/test_Python_133_hidden.py": "f365538316ad9cf7abd17445028c662b127f8cd819b8fe263a9774ae570fcefe",
+        "Python_133/tests/visible/test_Python_133.py": "0d0d3cc71a09f7dd55daaa6fdef412517e7e19c433b146f050b8bf7398ed1e47"
+      }
+    },
+    "Python_134": {
+      "id": "humanevalfix/Python/134",
+      "split": "test",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 10
+      },
+      "files": {
+        "Python_134.json": "ce7dd76d49a735f531d5504a569cb3ecb39c5c7f53654f5a81976885ef1a3b71",
+        "Python_134/reference.py": "304be224f49a6c8872720a5f4141adbe8c2584ac202102f5623189b73b4f9648",
+        "Python_134/tests/hidden/test_Python_134_hidden.py": "4311af6f297032820bf6ea533f5a901ee5522e6dc0b32cac215982b90e2a9c1c",
+        "Python_134/tests/visible/test_Python_134.py": "3f1bc3adad21c9c137da479e050e2883ae6f99c15235304b88730da2a76b2e03"
+      }
+    },
+    "Python_135": {
+      "id": "humanevalfix/Python/135",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_135.json": "8042dd9131bb44ec86aaf48a37f22eb553fc11c888670491d0b7509e976799a8",
+        "Python_135/reference.py": "b7d4e85e0e7bbbefb2915edddb2efab144ac70e4ec534b0dfdc4a229cda9b376",
+        "Python_135/tests/hidden/test_Python_135_hidden.py": "3b8a98ac8562a88e7380e92b1c7abac521727111aea7bba0fd3ad1bc8e21fac8",
+        "Python_135/tests/visible/test_Python_135.py": "3350b4f76af4c26158cb8df76438765f1ec2260116d05d2d96d9c808bbd17e26"
+      }
+    },
+    "Python_136": {
+      "id": "humanevalfix/Python/136",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 11
+      },
+      "files": {
+        "Python_136.json": "371b0f17473bd93e7acf98cc484fb6c93ee691ee2b15a1997735dc87418bb3ec",
+        "Python_136/reference.py": "53a17860cb4d15f70eafabbfa1ee8671180686b4cdb20dccc453b3322e5e8b02",
+        "Python_136/tests/hidden/test_Python_136_hidden.py": "601ad1b2d6600436e079c46644eb286318b92db0f4c7aa7dca5285500b952eed",
+        "Python_136/tests/visible/test_Python_136.py": "f59a035b7148604cb639eb069d47bb79cbe186844e3bb3156f1c3c63d8cd307b"
+      }
+    },
+    "Python_137": {
+      "id": "humanevalfix/Python/137",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 8
+      },
+      "files": {
+        "Python_137.json": "02819bc5ca1518c1d4d49e701cac053577baa325733568e9ebd7796412eb8a03",
+        "Python_137/reference.py": "8fd2c48b005f7a9772385d189d8df161b1e755c2007b4da0e8ebee825e960d3c",
+        "Python_137/tests/hidden/test_Python_137_hidden.py": "95c6c776973d91c9fd385843fdff975837e994905d7deec5f9c47bc5b8048bf5",
+        "Python_137/tests/visible/test_Python_137.py": "3c34d83b0c82fbbecc4defeb096ccf72bb5f046bc02297b454646a1ccf7f2b08"
+      }
+    },
+    "Python_138": {
+      "id": "humanevalfix/Python/138",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_138.json": "ef0742933c11e48344c52a5a52dc54195b36ff8ba76d84debe100d0252b21237",
+        "Python_138/reference.py": "a996bafd24b093c9f432a9200a893b4a25058d23c29cd88852fe038a760aa8cf",
+        "Python_138/tests/hidden/test_Python_138_hidden.py": "1fce83baca67c0460ce804bee905d0c34f986206273aace58870d5bce1476951",
+        "Python_138/tests/visible/test_Python_138.py": "81d2da1962f92b3e1cda67ec3d9bb77372821675191a05a28e56ed824d538310"
+      }
+    },
+    "Python_139": {
+      "id": "humanevalfix/Python/139",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_139.json": "b8f353f1dbc3895f102af7f83fc99c1651ad2ebad33c9d72993dfca95173344e",
+        "Python_139/reference.py": "70316ccc8dc0d91010339c8487ccc70147712d938f450699a4e96275aa0b9d5b",
+        "Python_139/tests/hidden/test_Python_139_hidden.py": "4e2a208c0d1bd7285e053d8abffb3a96e46517e08aff21a12a06fc8a6328342e",
+        "Python_139/tests/visible/test_Python_139.py": "437f0462cf4360b8ae8a76a81bf4389cdc47f907bc9f8ebd8ea22d38a90e7113"
+      }
+    },
+    "Python_14": {
+      "id": "humanevalfix/Python/14",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_14.json": "4ad8073477202164c279f9bf84622b3788f283468d490aaeb47330881617fe5b",
+        "Python_14/reference.py": "e8cd7aa1d5ff0f57886eaadfc33f200e424171a9135ba39f7a23436921c2014b",
+        "Python_14/tests/hidden/test_Python_14_hidden.py": "3b53bf2c220f4a1ca77eaa832606f6b5b41e93af51dd973e456f59e6d87dd624",
+        "Python_14/tests/visible/test_Python_14.py": "ca5f12a36ae3a4765ffd181d2452fe904f539abd17344d9f39a8871cc8160685"
+      }
+    },
+    "Python_140": {
+      "id": "humanevalfix/Python/140",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 5
+      },
+      "files": {
+        "Python_140.json": "c51a91057d4537a146d1587ebc45bb08ea627e812b78bb8e91ebe489695d294a",
+        "Python_140/reference.py": "26293c6f28ed8fd48b4e0f152f7d5ee01514549757e98d1129cc02a969f4e712",
+        "Python_140/tests/hidden/test_Python_140_hidden.py": "5cffd512b9307afc6c5338391d25dc3e348a9a825b269c6a86699452fa27b34e",
+        "Python_140/tests/visible/test_Python_140.py": "c0aa650784aa19c98d64534b14878e0c11ce8760711ede528934782efc2f1aa2"
+      }
+    },
+    "Python_141": {
+      "id": "humanevalfix/Python/141",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 26
+      },
+      "files": {
+        "Python_141.json": "f578ea858cf5a93d1f37b0dd49d074e6b73cfe6fcdeb83005ac4631edcedc53f",
+        "Python_141/reference.py": "dd7ecef4f7b631828454ee243a9b6ad03deeb43fc6eaf048b2fee786433d989d",
+        "Python_141/tests/hidden/test_Python_141_hidden.py": "a46c16758c00f6c9d1d32e283585bd7fc633b106dd15ff4d7ee6ff10f1096206",
+        "Python_141/tests/visible/test_Python_141.py": "76379449c1e4f012c58cdccb84d3386ab08ea2b45f6ae2a8de0c4761e631c51d"
+      }
+    },
+    "Python_142": {
+      "id": "humanevalfix/Python/142",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 11
+      },
+      "files": {
+        "Python_142.json": "525abb53be1487efd356cadd5a413d4a6df6cd0d7459757dbdf92aeae15e0cae",
+        "Python_142/reference.py": "18073c5ed1f0a363c4ec36adf2b60dc111d8f58d2fc3b4f1aaa51cd92015546a",
+        "Python_142/tests/hidden/test_Python_142_hidden.py": "8f2da3232a2c1c89f3818bb1f9e3fbf879c3214d2773399d3493bfae040289c5",
+        "Python_142/tests/visible/test_Python_142.py": "b4d15c3a8bc38d3dda179e4117ba449999e431eecb6e20718a7b6055011a8f62"
+      }
+    },
+    "Python_143": {
+      "id": "humanevalfix/Python/143",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_143.json": "a0a11d9cdf83cfc268fbe93792ef923e1f2af0f8194cbb62e23e66bf2ffea176",
+        "Python_143/reference.py": "b6a9340223e3506230524d3b1851c0e9b01b87cd99b2bb33a78d0f843e004ccd",
+        "Python_143/tests/hidden/test_Python_143_hidden.py": "3ed6b50b399b4357378fa161e6de032720dbd49712284ec7184019b4c1f805be",
+        "Python_143/tests/visible/test_Python_143.py": "3768b852c41060dff4238b980782a70070eb1df12ed652e6163d86e46cd1a2b4"
+      }
+    },
+    "Python_144": {
+      "id": "humanevalfix/Python/144",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 13
+      },
+      "files": {
+        "Python_144.json": "e2ee87194a534318eb0144844d466e87860e2f4c6ce29d12ea5d4bdd67909b16",
+        "Python_144/reference.py": "84e4011abca02fab7306fed8d9af5853a4d18ce753f4d048672e686721bb8235",
+        "Python_144/tests/hidden/test_Python_144_hidden.py": "1e2ed3a43662fe09f338ea3a2f4de20e692c742561b9cf9f72e6206eb4c1bfba",
+        "Python_144/tests/visible/test_Python_144.py": "9c4c14ff7c171fbf7a7533cbff700b4a87add31a3db6703db6c0a9acfa508879"
+      }
+    },
+    "Python_145": {
+      "id": "humanevalfix/Python/145",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 6
+      },
+      "files": {
+        "Python_145.json": "9e584106b73453a18445dd1a1b08110c78c8ee97f074f945093414ddc5b1dc0e",
+        "Python_145/reference.py": "05394cae05cc33b93aeb0b59d7c6fdcb1a96405a3d7881b61dbd13d9850f9cfd",
+        "Python_145/tests/hidden/test_Python_145_hidden.py": "389267c1ed27fe7c3e70471bcbc12b0fd5ded929880512d0408294d4573d8a20",
+        "Python_145/tests/visible/test_Python_145.py": "e7675c212a9eaa490bbe0ffc7061316b4794338a7f135decafa4aadd7cd555dc"
+      }
+    },
+    "Python_146": {
+      "id": "humanevalfix/Python/146",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_146.json": "ef0c471c2c7cab2fc9e154a67fd70499af5dca83b054998be2722a70fdf631ef",
+        "Python_146/reference.py": "5b7f7e4a29a9af17edbd8e1eec0283f6af06ba6516789e86737ca075341c086f",
+        "Python_146/tests/hidden/test_Python_146_hidden.py": "acfa2cd2d8ac2acf7e67085dc85108a4f757d75dc6c361e9b031eb074cfccfdc",
+        "Python_146/tests/visible/test_Python_146.py": "0af8e031cbe95def4d67932c040521984fa42780214ef49f1e0fd2e536abb153"
+      }
+    },
+    "Python_147": {
+      "id": "humanevalfix/Python/147",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_147.json": "c0b79df33d57721b7aac6681dbdaabd17639d69d06f153b549ad14882ae3334c",
+        "Python_147/reference.py": "4ca09e8b1a4f2d3cf9fe96c39a437dc587815274d932a077ff4ec9ecb0224368",
+        "Python_147/tests/hidden/test_Python_147_hidden.py": "92981ed19d20adb2589f3f18cd8180331951e1e8a6e40ecb9f039515248dd3f6",
+        "Python_147/tests/visible/test_Python_147.py": "275a1211b3c190c87b9ea213b9db33eb8a0620b74dd1e4743957ffe76d3a7acb"
+      }
+    },
+    "Python_148": {
+      "id": "humanevalfix/Python/148",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "files": {
+        "Python_148.json": "1afd05ec99ee16ac6e5ff2be168f9c3ba0ea289accbe01043e1ba08a4001b3ca",
+        "Python_148/reference.py": "529e2e1dedba6800826ce8e5b39a18a48acff77b7f593fd91a4d31f8f3d51f93",
+        "Python_148/tests/hidden/test_Python_148_hidden.py": "e11da16afd3d1c68e879a11b208ec1f1e5cf9381f8b80bfeb5e2cc3feacc3a7d",
+        "Python_148/tests/visible/test_Python_148.py": "bda77bb23b6d529981c09d435bf804c0014144915106863294631449e4ee6f83"
+      }
+    },
+    "Python_149": {
+      "id": "humanevalfix/Python/149",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_149.json": "d57df1cbafece07db95f382f04d884f4670dedf4f270c07243fbe233a0b5d346",
+        "Python_149/reference.py": "304bc7773070158a2b7b2c5e8489d9c19fc05f83551480106d7b8086a61050f3",
+        "Python_149/tests/hidden/test_Python_149_hidden.py": "5ace84ad63c661440477d5fe36196c2c4b1d4fbbd0940149b2f1b1ecce799c23",
+        "Python_149/tests/visible/test_Python_149.py": "50dfd7aca600774dfdc65f28717f6f6bcaae0a63fed6a3d9e44cd71aec49d6a0"
+      }
+    },
+    "Python_15": {
+      "id": "humanevalfix/Python/15",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_15.json": "82f3a3014e78928fbb5222c10f0c6a222cf79dc1008a6ff920298e2249c28048",
+        "Python_15/reference.py": "f161678bdb15abc033c648725ba309b043f670f59bcf5b5f46671ce0d0d625f1",
+        "Python_15/tests/hidden/test_Python_15_hidden.py": "3ef6610a58dd6efe26e986f2c8d28de1305e29eeef92eea7db0cca7d03bb6875",
+        "Python_15/tests/visible/test_Python_15.py": "63967d495b12cffae08c3ba288a0492646ea68607fd4df8d2d14f535a9afcf2c"
+      }
+    },
+    "Python_150": {
+      "id": "humanevalfix/Python/150",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 10
+      },
+      "files": {
+        "Python_150.json": "74aa2c6617c532ec37ea88dd68f2a3e0e67333e9870ad9635c7bc8f2c4ef210c",
+        "Python_150/reference.py": "d8e5b04576d26a538e4ea07d2b5a8bd45dc6d8e2f1aba74cb6c14aae824e1f5e",
+        "Python_150/tests/hidden/test_Python_150_hidden.py": "d3a563dbab75ae1df92b325d048d783640488f75c85dee23921d6a5515b73327",
+        "Python_150/tests/visible/test_Python_150.py": "3e8d128b41b884d6c87a06fa8eff68bf84ff2e98ff902b256f5e28e5efe1ba5f"
+      }
+    },
+    "Python_151": {
+      "id": "humanevalfix/Python/151",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 1
+      },
+      "files": {
+        "Python_151.json": "77ca48b172465ac9ff18b12839ae1e93226c76764d13d542ba150ed9adadae54",
+        "Python_151/reference.py": "295296b91d8fc2529963eb9d7b3491478f42a2a32e5599407169eea83c5c4550",
+        "Python_151/tests/hidden/test_Python_151_hidden.py": "7ab39e8a3f93da1b959e16aa97e56e849fe1fa78b6c14c1ac0846527fcbee5fd",
+        "Python_151/tests/visible/test_Python_151.py": "fe6e0973c606b8bfbab8d3de017c53b267b7066760a5805bbc7624247bd6e72b"
+      }
+    },
+    "Python_152": {
+      "id": "humanevalfix/Python/152",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 6
+      },
+      "files": {
+        "Python_152.json": "e56bb1650fb1d2cffdb8bde872e05a001e0c37b145daa1bc3a3b0617da6992b7",
+        "Python_152/reference.py": "2b3e202be41aca37e98f5b991e6266cc8b05e505074c21f77820c86067d11aa4",
+        "Python_152/tests/hidden/test_Python_152_hidden.py": "a5898f1a8162784a8f5cda9a5b82d51df5090925fab6b8741121de93fae00445",
+        "Python_152/tests/visible/test_Python_152.py": "5f72cbdcad386bc1ddf774b4d9659752f641bb3e6de7754fb641d1160b0361e6"
+      }
+    },
+    "Python_153": {
+      "id": "humanevalfix/Python/153",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 9
+      },
+      "files": {
+        "Python_153.json": "70278150242b30377d3fdbae746e1bd6fe11bb91a78305e438be6db63806e7e2",
+        "Python_153/reference.py": "0bbe9015b7f09eba63140b958603757a1fed0541099d5fde28ff0b3df5220c5f",
+        "Python_153/tests/hidden/test_Python_153_hidden.py": "790dbc0fc133205daa25bbbce23a1a2930ff5280a221365f8cc454acffb83bef",
+        "Python_153/tests/visible/test_Python_153.py": "1add66b65427a108697145eb75f6d5d4d6e07280d0c0d0161b729eb675ef809d"
+      }
+    },
+    "Python_154": {
+      "id": "humanevalfix/Python/154",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 6
+      },
+      "files": {
+        "Python_154.json": "f916c83b27d3762306090a2fb3b5bda5a99b2e39660040a2acb800a9de4f9eb6",
+        "Python_154/reference.py": "2a68e45e81eb791dce88ee518064dd47082b10c18ecaf41c6e49d4ecc61ef45f",
+        "Python_154/tests/hidden/test_Python_154_hidden.py": "acb4e672efed020fe660fb20963f544c7279e84cbf2ac97006fbfe85c3c76735",
+        "Python_154/tests/visible/test_Python_154.py": "2a934f1417dffa3a33b146a8199b39b49476a4f83f84d00a839b8b3e0dd84be0"
+      }
+    },
+    "Python_155": {
+      "id": "humanevalfix/Python/155",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 8
+      },
+      "files": {
+        "Python_155.json": "59da8b0842a60a3d3449fae9362fe086ad9119e016fe13b3931363a82b9b9a29",
+        "Python_155/reference.py": "28302aea92281abfe7fcead6703ffc48e8a09b5abf4f596c56aaa3badb687796",
+        "Python_155/tests/hidden/test_Python_155_hidden.py": "1ee7da9a8630c3f3bccf9cfb7bda9624da29f9a9db72d64a76939a9c1381db1f",
+        "Python_155/tests/visible/test_Python_155.py": "9a8e144ebb195ff661a0dd566fbb56cc3477452c54afde4ca2c65cd01cf78f1f"
+      }
+    },
+    "Python_156": {
+      "id": "humanevalfix/Python/156",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 14
+      },
+      "files": {
+        "Python_156.json": "1235d75fb925ba0e21678d751cf8fc5b29bf65897bf0a5f9d679abeb502e59d5",
+        "Python_156/reference.py": "800d032956b4c8c28e3e4ffdc7f35b01d8f8e87e7ec261f1d57703e7b19d1802",
+        "Python_156/tests/hidden/test_Python_156_hidden.py": "4d6e3888b370d66bf46847c38810c8faea4147e9c675edc8bd7d8974e535a4dc",
+        "Python_156/tests/visible/test_Python_156.py": "9f221ee7adc14e2cd326e7b5939b08820243f7bbfa1e12828069bad24d96a2db"
+      }
+    },
+    "Python_157": {
+      "id": "humanevalfix/Python/157",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 11
+      },
+      "files": {
+        "Python_157.json": "ef2f3895bd4b5c87d59d1f141ccdbaa307dcc0bb1754126a245ef342e072bd5a",
+        "Python_157/reference.py": "4265532feaad10d1363c5748518501944ecfd3a360514b1f1266b9fb0487c453",
+        "Python_157/tests/hidden/test_Python_157_hidden.py": "4ed74ae7040b0c0bf8dc012c009a01264afb3e8130b724eb220b4e7132e34b57",
+        "Python_157/tests/visible/test_Python_157.py": "9a5c9ccdb1d80472e10fd2b2306ded164f32df222025cf4e2695adfbd9b17ebe"
+      }
+    },
+    "Python_158": {
+      "id": "humanevalfix/Python/158",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 10
+      },
+      "files": {
+        "Python_158.json": "8280bda454fbb2ebe18d55bfe6de326e67e97602ca2c6a6bcd435db77151b63f",
+        "Python_158/reference.py": "31ae5edaaa64371f2dc43c11feac25b6272b29bff97e274a64174d45b12751d1",
+        "Python_158/tests/hidden/test_Python_158_hidden.py": "3c4f78d26df2cc561adbea5e582eddd34da82a6c1270ecefd5004f64df1020b9",
+        "Python_158/tests/visible/test_Python_158.py": "febba2b0c73afec6ebb0460a55ff6aefe527e1ab15e8f873ba18720937415a7c"
+      }
+    },
+    "Python_159": {
+      "id": "humanevalfix/Python/159",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 6
+      },
+      "files": {
+        "Python_159.json": "dcafcce6c07a51ce4eaec1a082487f0df2a93df26e55f76a09c567af373faf4d",
+        "Python_159/reference.py": "c2e0198e9c3e33b02bcaa6596582cc530d79e52cd40bc2ada3a8560993793166",
+        "Python_159/tests/hidden/test_Python_159_hidden.py": "2c9f4d84f82a58d37d6fb3c8f2c3557d9529476c3f2d004e4f7ed40bbccce170",
+        "Python_159/tests/visible/test_Python_159.py": "503ca6f481dde888d346f6ac676f17a5f14afdc13fe9d5b061a68771833691a3"
+      }
+    },
+    "Python_16": {
+      "id": "humanevalfix/Python/16",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_16.json": "baf196d1d64e606eddbb9060f1fce19295afb7a795fcf0a6db4a9f47a3c4f8c2",
+        "Python_16/reference.py": "b7f05bf0a6d10e8bb702baef920fb45bb68c347544c4e99502840e5fff06e93f",
+        "Python_16/tests/hidden/test_Python_16_hidden.py": "50d1b47af8ec7a5a846b2b1cd591d8ef9723a29a242f6a2dc059f4ad5a949f38",
+        "Python_16/tests/visible/test_Python_16.py": "7c9b9cbff12b04eaaed119c3f7764179c04e1e621d5cec3b7aab563901efa25b"
+      }
+    },
+    "Python_160": {
+      "id": "humanevalfix/Python/160",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_160.json": "b7f1c071b683823944d0f5da1804d3c6d5b1122da0f53dac331cafb5cd1c5bf7",
+        "Python_160/reference.py": "fec71e38f1f1cb08469737ffc423b7605eed059a1fa07857efcaa4c9eac62054",
+        "Python_160/tests/hidden/test_Python_160_hidden.py": "59a2e71ebb4fd4bf0de3acf351eead9b4f56d20a63ed2e6c12431105721e05c7",
+        "Python_160/tests/visible/test_Python_160.py": "3601b481988cda158dac0d06694ac9a38061b3b7aa88b16d2ac201ef6ca387a8"
+      }
+    },
+    "Python_161": {
+      "id": "humanevalfix/Python/161",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_161.json": "31f1d21ae34d84ce064582b47375bede7c1eaaaa4a2ece2718bac0bfc550a94f",
+        "Python_161/reference.py": "cd40fc4ba443e535c18eff48858719a022b691a6470797ca3582b8471b9d2b8f",
+        "Python_161/tests/hidden/test_Python_161_hidden.py": "893edcb14f2006a215f0b0b44775e62417faa0f5a633676f28d445a4e7b0b663",
+        "Python_161/tests/visible/test_Python_161.py": "2e0e8216f54ebe17a16967d25819463a4ce8b0cc41f33eaa718ff107581e3e9c"
+      }
+    },
+    "Python_162": {
+      "id": "humanevalfix/Python/162",
+      "split": "dev",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_162.json": "cf03681ad077616d923d3cd93fab250d654e6a1fce9f323936d8410225b43427",
+        "Python_162/reference.py": "1af6344a0f1245193a0240546c887edb47287ff826696aae83524e8c39c6f6cb",
+        "Python_162/tests/hidden/test_Python_162_hidden.py": "184a6cfb6768491375001bde2afaa195dea5515a71e2d26380e9fec674818f02",
+        "Python_162/tests/visible/test_Python_162.py": "4b0219b4d2ad9b5a06672f6516c4e17e8e4f5c2386dce76fed569b784b59c612"
+      }
+    },
+    "Python_163": {
+      "id": "humanevalfix/Python/163",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 4
+      },
+      "files": {
+        "Python_163.json": "345e89c12fd3a2ac239139a471160f456c779b251c3d79d028067bd9a8b64489",
+        "Python_163/reference.py": "8ad2ac81d2aaf15b6841837019d21e4b475d00901936195837291e5f8da62a7d",
+        "Python_163/tests/hidden/test_Python_163_hidden.py": "cb3815d95ffb947f69ddcf369445d1305d7c44054dc8989da1a3c10dd8ddaf1a",
+        "Python_163/tests/visible/test_Python_163.py": "cb3815d95ffb947f69ddcf369445d1305d7c44054dc8989da1a3c10dd8ddaf1a"
+      }
+    },
+    "Python_17": {
+      "id": "humanevalfix/Python/17",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_17.json": "5d95bc317ed2fe7018b77ddcda64cc732f89489d770cdcfb9dc019c63cf0ddf5",
+        "Python_17/reference.py": "c86bd8e4e832b444d607cfb09f9e20a8b92b9af77fcf8092555972fc2f9441ac",
+        "Python_17/tests/hidden/test_Python_17_hidden.py": "1d6a2e0a1cd5238305503847ebc436af9f52233ebbc624ee1b10c80a0f4941bb",
+        "Python_17/tests/visible/test_Python_17.py": "e60d7798d9922c1850a464733b72977d06590605ca8e14c60d471e9c9b8fe484"
+      }
+    },
+    "Python_18": {
+      "id": "humanevalfix/Python/18",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 4
+      },
+      "files": {
+        "Python_18.json": "a56b8e510d0a58a6d0707b02a5b73cfee6ea47dbdb82056cb088368a3bb5a1ed",
+        "Python_18/reference.py": "6bbf98aacc9fc764b75ea37319fc68fef68453dfd5e67703b6894379a97e039c",
+        "Python_18/tests/hidden/test_Python_18_hidden.py": "5d71cf60984014cf9f7ca05782f94fa24b70f8d20c0d0b52da12e7f82112ce5a",
+        "Python_18/tests/visible/test_Python_18.py": "a1f7c71beef6234cf0d782aacf494c399f2909d36fbc2a735c4a00393f3e49c3"
+      }
+    },
+    "Python_19": {
+      "id": "humanevalfix/Python/19",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_19.json": "9605569085a330e629bb6b71548507d216ba8293709013b0f2bfb672f5a5fc18",
+        "Python_19/reference.py": "87b64884bd6d975b360ebf3292114006500c249dd3c68c21977b705eb7a5004f",
+        "Python_19/tests/hidden/test_Python_19_hidden.py": "f761bd6e7234f823af3df4610e6c684e0a207f3ceb648f281dd64a3f11b1d9e0",
+        "Python_19/tests/visible/test_Python_19.py": "3efe57b69b29c3e70dfd506fee5e61c971afd2325c731909602dd2d3094e2e85"
+      }
+    },
+    "Python_2": {
+      "id": "humanevalfix/Python/2",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_2.json": "163c2f66649423c28f912a2708789f02e77bb5058d360577ff8e2781dc9a8a2d",
+        "Python_2/reference.py": "c8a85aa4b830d2fd587c6d26141536227265742c90f322fb40363f7a4fb9fab6",
+        "Python_2/tests/hidden/test_Python_2_hidden.py": "b87eca7654032bcc10cadf2c9540bdd19d5679242515eba709b3f585e6c2427f",
+        "Python_2/tests/visible/test_Python_2.py": "0dfc91c37299dbfbc9d6e3bcc5eca879d0302972fb1a475a56b058722432d028"
+      }
+    },
+    "Python_20": {
+      "id": "humanevalfix/Python/20",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_20.json": "2bf52bb1d27cb979d9b08b994db8a056f16db98e96a11e1588bbed6fe734c3c5",
+        "Python_20/reference.py": "c71bef97bdbf6601f7f70f815cead4e2725ffa6d6d85bf1a86e8d37d7d8e99fd",
+        "Python_20/tests/hidden/test_Python_20_hidden.py": "be381389b2767d9f81f69132ce25abf0c4eef97e1934f6363e1e780b746009ef",
+        "Python_20/tests/visible/test_Python_20.py": "8815a21c1ca8ebabaf78a34a2f9697a9e20fcfedad67ce957bc0face54e14b1e"
+      }
+    },
+    "Python_21": {
+      "id": "humanevalfix/Python/21",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_21.json": "794dd2b26057be4198ae59978839592750f0473c03ea4b72b124c5ceb988b7fa",
+        "Python_21/reference.py": "cac7ded7f3e9aca0cda3d698e8fc039880abedca0d55e1bc97003f36d988c17b",
+        "Python_21/tests/hidden/test_Python_21_hidden.py": "a8d2728c81633c626d79fddf5d7c7cf3ffcc8fa53e00900799aca00718883288",
+        "Python_21/tests/visible/test_Python_21.py": "c5c02d8a39ce9a266f9b9b93f7aaa02f26963729caede4e26de29e848234c8d3"
+      }
+    },
+    "Python_22": {
+      "id": "humanevalfix/Python/22",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_22.json": "26cc42d1035d6ff872d601920ebf44924c64373c2c3d9a7871a2e438d5ae84c8",
+        "Python_22/reference.py": "f40d9490d41818b6e23ba51a94771abe1f0677aeb203e6923e5a400f0762ba30",
+        "Python_22/tests/hidden/test_Python_22_hidden.py": "9b4bcb67b5b28adb81bd45c5b5b3e33b211a82f4f8ce027f4e72514b00dc800b",
+        "Python_22/tests/visible/test_Python_22.py": "7719b0ef154ff624d3def7be9a25bf790516945e25f9fd11ee9e85f6ace6df61"
+      }
+    },
+    "Python_23": {
+      "id": "humanevalfix/Python/23",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_23.json": "cdbd0b5eccc8ce4954f9b78d3df946dd7aa46abc4a411c0a4226e4b2a7a6fdda",
+        "Python_23/reference.py": "5c2f053d94a2d552f553d678541c7b074fb8f97f14d3b9dced2204311781a67a",
+        "Python_23/tests/hidden/test_Python_23_hidden.py": "a5cfd7478c7b209976ae15b71b68c6fe40f2cb6c94fad23a729030f9feed8d3d",
+        "Python_23/tests/visible/test_Python_23.py": "aba45eaf8b4595949d309ca2f8994f9ac417bd476528b716112db70ef2340b7d"
+      }
+    },
+    "Python_24": {
+      "id": "humanevalfix/Python/24",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_24.json": "f404fa46f0f0c8728e32b6ce153d1ec7c720e8343934f558b311f790562d297d",
+        "Python_24/reference.py": "edc35161ab72014ac56b571a50dd472ffac9413b62e60a1753a155fe0492e16a",
+        "Python_24/tests/hidden/test_Python_24_hidden.py": "22d7194e56d143787697e8d258814d4b232a143906bbd4ea2aed7fc96010ef80",
+        "Python_24/tests/visible/test_Python_24.py": "aecc8aac84b90b2bd78b1884394e8674334d78dcbfec2d16221a8a449526dd2d"
+      }
+    },
+    "Python_25": {
+      "id": "humanevalfix/Python/25",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_25.json": "68c015a1158ca88f2612b1f9cdb2523196b434e8c2df23ca48518dd0a54f889f",
+        "Python_25/reference.py": "cb794a5daa75c37ed83e112f6c147b01a8804e9812ea325ee74837b44b54b749",
+        "Python_25/tests/hidden/test_Python_25_hidden.py": "7ea2dc012465aab39ca53c88c9e7042520a3a2ba3e87e856f5c59e68473d1181",
+        "Python_25/tests/visible/test_Python_25.py": "94b4cb97940a44f20316e9db3cd4d9bee1a9ebf5f22c31bba10a284ed4dd90a6"
+      }
+    },
+    "Python_26": {
+      "id": "humanevalfix/Python/26",
+      "split": "dev",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_26.json": "9f8998e2e08f5657e3f2141ca5037d733dcecfdd7f476dbb7f16d1ac3055f795",
+        "Python_26/reference.py": "6818cb9723c5321311c0994f593c7536fdb4d4dd98b2740a278a40f272025b5e",
+        "Python_26/tests/hidden/test_Python_26_hidden.py": "29b730914a9fc3bec37f31cdd6db72ce86ba4bd08f3f89115146f03711e03f1b",
+        "Python_26/tests/visible/test_Python_26.py": "033100b0342780202ec7e8c5db66ce57175493e767410207fd30e984ac4df1d8"
+      }
+    },
+    "Python_27": {
+      "id": "humanevalfix/Python/27",
+      "split": "test",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_27.json": "a76bd8601449c74136637e3aa8c4ddeb9508f0647ac7d2992f4f7458ed32649a",
+        "Python_27/reference.py": "fa508946a76d82039a4cbee1d470837bf49795d24bcdd3ecd46a6c5cb25d8582",
+        "Python_27/tests/hidden/test_Python_27_hidden.py": "58f26ddc46cf09a27b3430baab462367ba0d7d91f0e8d1f3c4dda575803ff448",
+        "Python_27/tests/visible/test_Python_27.py": "d83f0b91e9dcbc73a98e6b182345fd82f0ecd673440450250f38f3f6846b2474"
+      }
+    },
+    "Python_28": {
+      "id": "humanevalfix/Python/28",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_28.json": "780fb1c396c6399d7a8ae155d4ce713236225f8592db15f4768a506b85a714a0",
+        "Python_28/reference.py": "6adee129d74e8fadb0bda08ffab73b5277437b7b98db5fd44b13a14a5dd74b79",
+        "Python_28/tests/hidden/test_Python_28_hidden.py": "6f0dcb899824d9e034791e8d5a0214b3a986a15ca2e3bb091f16beff62f320c2",
+        "Python_28/tests/visible/test_Python_28.py": "9020bbe57424b13f8ceefe0ad0b5ff9cb30b3630caa7bf03679c388e90439c28"
+      }
+    },
+    "Python_29": {
+      "id": "humanevalfix/Python/29",
+      "split": "dev",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 2
+      },
+      "files": {
+        "Python_29.json": "008fd421bbca5f4fe882cb30825351bb3a416445c64bc1ad9158c0467e212f68",
+        "Python_29/reference.py": "c6eec119a6156ac1d0ea03ee47936fe6df74952d9577e651474a3e8ac798b9cd",
+        "Python_29/tests/hidden/test_Python_29_hidden.py": "68a81d4685f13737248dea365c84a514ba48c8d2496f44492b6cb65a39a3e0ca",
+        "Python_29/tests/visible/test_Python_29.py": "091cc0c4782479fef9fe348d0e8b15a6eb78229bdad65b4ee84ef69fab546959"
+      }
+    },
+    "Python_3": {
+      "id": "humanevalfix/Python/3",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 6
+      },
+      "files": {
+        "Python_3.json": "89216c3057c616de17373c53b9d058c2ca63d785c11c493054f9d9b3d2a2df87",
+        "Python_3/reference.py": "1a710a84f86e12ee74b7279afbf9fd53480c1753e133161783c0b84b4999346a",
+        "Python_3/tests/hidden/test_Python_3_hidden.py": "e4801aa9cd6cde3601c8644223c16e811dcfe7d13ffe3a6a692fc2060379ae4a",
+        "Python_3/tests/visible/test_Python_3.py": "eb5be06c57b5acdd5101b0c224fd39070176c382c397d54d1d7563844ed388f7"
+      }
+    },
+    "Python_30": {
+      "id": "humanevalfix/Python/30",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 4
+      },
+      "files": {
+        "Python_30.json": "d2adde08a09f8cff02a47db5d2869d2626780c522cec19959a07afcc1c1a7965",
+        "Python_30/reference.py": "c9741ff36419df15dfa53a36c95fc1444af8f189f8c8fd6231ac88001395dad9",
+        "Python_30/tests/hidden/test_Python_30_hidden.py": "437a27b99ceb7ecd469b7635e1efb21ac07b6f0da9dc262b6ed097d8b0420cf3",
+        "Python_30/tests/visible/test_Python_30.py": "05775a6a70443daf821f8806581675433c1dee78e2dc3eff69955d9bc9eec842"
+      }
+    },
+    "Python_31": {
+      "id": "humanevalfix/Python/31",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 7,
+        "hidden": 13
+      },
+      "files": {
+        "Python_31.json": "040f74d7fb870b3d054c71976488726c775e6da775de29173e1b57b2b2c60354",
+        "Python_31/reference.py": "09c0feea56db4fbd3c6f55ebea9d298698967d34e87f1926e3aaae31a7a1fefb",
+        "Python_31/tests/hidden/test_Python_31_hidden.py": "7088cb2e59ebfd1ac1da7cb5b5b9a534561a5639f3a253d7acf5ba453e0bdf3f",
+        "Python_31/tests/visible/test_Python_31.py": "da28ea1f9500278e4cdd1340e4b83c4fd6adb21c3a2fdd9ba759d3eac60464c5"
+      }
+    },
+    "Python_32": {
+      "id": "humanevalfix/Python/32",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 1
+      },
+      "files": {
+        "Python_32.json": "ea058d1cdd0ecde2c8e037d0eb6ceb4467665c3e05fd49891a72b18ce9756e32",
+        "Python_32/reference.py": "3390a284edc311fb1d66d4a9e3a71a496f344fc7b747ce82fc9a8398fc775c7a",
+        "Python_32/tests/hidden/test_Python_32_hidden.py": "41a0df26e00ae76583434ed450ba25ce2df3edb935a82215ec504947691b2f28",
+        "Python_32/tests/visible/test_Python_32.py": "2d372e3e64d059561b3f8bc01d9623b5b4917994a64bdb3cdb0b3570284ac842"
+      }
+    },
+    "Python_33": {
+      "id": "humanevalfix/Python/33",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_33.json": "43641540905feb27ab06a98662123cfe1be04014722d76acf2cd7c17dfc57c4e",
+        "Python_33/reference.py": "7b2ec87ea8c43662dbdfaa660b2a9c5e38b3cc29189a6e10c5cbcfbdff9ea344",
+        "Python_33/tests/hidden/test_Python_33_hidden.py": "268879b7ff96cb6bc153d78e5a753922453d5423c9872394792ab16d8f7b9c3d",
+        "Python_33/tests/visible/test_Python_33.py": "6aa3392a2c391cd0ae8659a320494e8503c1072cadc6b8d6ceb5f66a510acad5"
+      }
+    },
+    "Python_34": {
+      "id": "humanevalfix/Python/34",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 1
+      },
+      "files": {
+        "Python_34.json": "671776a360f7d4914205a7cdd376c993acb6a1a4e4c66c9a2c3cf3b5b00c25be",
+        "Python_34/reference.py": "1d1814e48a199e54994f8d4a6c4f5e52a27dcdc145a0e4545c3534372c840737",
+        "Python_34/tests/hidden/test_Python_34_hidden.py": "404ee45bb373de63d4eb0688bfd0f885a797c06c392263f24924b378108c4143",
+        "Python_34/tests/visible/test_Python_34.py": "404ee45bb373de63d4eb0688bfd0f885a797c06c392263f24924b378108c4143"
+      }
+    },
+    "Python_35": {
+      "id": "humanevalfix/Python/35",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 2
+      },
+      "files": {
+        "Python_35.json": "20137f83801943b5cb7d744d09e9dcfb0efdda2fb2f99dd36b9d239cc64a7475",
+        "Python_35/reference.py": "dc01eef1e04c3495d2c434900b9928d085f09da6790226e543cff8bcd722205f",
+        "Python_35/tests/hidden/test_Python_35_hidden.py": "5148f2058bc31f447a18db0770e67ace8e4eee845eac72a3e76baf6a13655103",
+        "Python_35/tests/visible/test_Python_35.py": "9cce59f2cd44a0b2f13311c50b1a9a4d2e8438465847a34a5b46a01e6ae0c919"
+      }
+    },
+    "Python_36": {
+      "id": "humanevalfix/Python/36",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_36.json": "a9be7a5d33ab28da675832d76d0832babf28272e0ebfaa96d4238f037a42ce72",
+        "Python_36/reference.py": "746507c9af7b2032ff0307d55be461982157ff5e5d472a2655f74a27be2df1c9",
+        "Python_36/tests/hidden/test_Python_36_hidden.py": "7e1fecbace0010fd0ac521568c812e42a61be4181b278fb6be82d50c19cf3884",
+        "Python_36/tests/visible/test_Python_36.py": "a0094955037aa61709388b116919928c5a4ffb1a734a1089f4242a702c23f7da"
+      }
+    },
+    "Python_37": {
+      "id": "humanevalfix/Python/37",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_37.json": "5ad348edc1cfd80c7d3577e6cb1fe490b4ddfd2818092d10a17944bee10eb6a6",
+        "Python_37/reference.py": "f178ad6fb10eb0ff94574cc7b0a586bed05962b83cbfd4eb7b221d5d6d4fce28",
+        "Python_37/tests/hidden/test_Python_37_hidden.py": "b0896d23237bf4996ad77032df46542aabbda3b0ca13ccefe178f419f87014c0",
+        "Python_37/tests/visible/test_Python_37.py": "b38a44e60b05b7587b00cc4fd73b6092759fb9bb5f563bee826f80e5d1255947"
+      }
+    },
+    "Python_39": {
+      "id": "humanevalfix/Python/39",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 10
+      },
+      "files": {
+        "Python_39.json": "0a08fdadbc6675a574d8cdf20e5d75369fd1866e605499faac9b60e1f382ca28",
+        "Python_39/reference.py": "7d9bd9210048f684fc65f70e291a55d0811ccf776e75b1e81ced03439b3c9782",
+        "Python_39/tests/hidden/test_Python_39_hidden.py": "bc24790ef257d9742778b9b330f12e0f88d1f2a0d5cae84c3ae3eba6f0d0c81f",
+        "Python_39/tests/visible/test_Python_39.py": "c583d4bb5bd0c5d19912138e8de8c9391b954ecba57152d4e21107fefcddb17b"
+      }
+    },
+    "Python_4": {
+      "id": "humanevalfix/Python/4",
+      "split": "dev",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_4.json": "678495d3562d5cc4172e705c4a93afc1aaf97c92df7c530127720b59a7644376",
+        "Python_4/reference.py": "0c623b01f0e11938b37599e3a5a9e13d38d5e192a9e6a59ebd4fe6bc3c253946",
+        "Python_4/tests/hidden/test_Python_4_hidden.py": "d0526d69d4b6e4dc6a7039a80d8a5ecb6665a728966396541567bbb79233de90",
+        "Python_4/tests/visible/test_Python_4.py": "4d7ff5ab3269366473191cba1f60358d8fc65b94aa6a4b746d8be6eb246608a8"
+      }
+    },
+    "Python_40": {
+      "id": "humanevalfix/Python/40",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 9
+      },
+      "files": {
+        "Python_40.json": "1a7a2d8a59074b496b292f24ce4ddc7a4e7cf6114ebe3dd44148352c3b652131",
+        "Python_40/reference.py": "bf64d3f74f320e1dba8a73fc566c425803cce815bfed8636a70c7d17d8d9f8e8",
+        "Python_40/tests/hidden/test_Python_40_hidden.py": "4a0fbc4e70426691f6eb6486a9e7d4b5ec4d77daea6f73b70064811403a97c24",
+        "Python_40/tests/visible/test_Python_40.py": "5a5b1920dfa95752bc27bfbcfafbe6813b8a5ebf5cf3411cec3c456af491479d"
+      }
+    },
+    "Python_41": {
+      "id": "humanevalfix/Python/41",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_41.json": "048d15a216be2ed3826655e36a102abaa1286685d99bb89d92ddd8e804a95316",
+        "Python_41/reference.py": "c73b4df9f9c8bc24207ca636f2c2c55ec2419f6b445f734540d27969a80d12f1",
+        "Python_41/tests/hidden/test_Python_41_hidden.py": "3a94af420950fe963fdb24b7e1b8fbfdc283ccdc9bc5e3fda7da28a173b17cb7",
+        "Python_41/tests/visible/test_Python_41.py": "9160a87e5f3ea5b50cd87ef6b5d3f1f282f83ec6c23cdab7c4785de37204fcea"
+      }
+    },
+    "Python_42": {
+      "id": "humanevalfix/Python/42",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_42.json": "849f7b3f25580c5186682ffc216d340e28a627f86ab03778e26ecae5765b9c7d",
+        "Python_42/reference.py": "9e05f3407d2d95bb7a71e4a7377c3ec3b3621f37b60163f510de24dfa61bc444",
+        "Python_42/tests/hidden/test_Python_42_hidden.py": "2de44349f04db63f5df95ab499856689f082ee099271bc3fabce167b7e67ce98",
+        "Python_42/tests/visible/test_Python_42.py": "08f882119273ee0fc9ea4efde66b539d880f9382be798a8c8c0c1901c743c4dc"
+      }
+    },
+    "Python_43": {
+      "id": "humanevalfix/Python/43",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 9
+      },
+      "files": {
+        "Python_43.json": "1add397d14224f2dc09262dc3d88a49be7fc518466025431a1d9c2f0cebb78fd",
+        "Python_43/reference.py": "47648f54f2309e52e0bed53c69e57b6959aa9e2ce99de6ebe0226d6b8b1b3926",
+        "Python_43/tests/hidden/test_Python_43_hidden.py": "8d9e596b1bdf4e81bbe28b4f8be58d61af1d69b4644193c43d7b2cb9c44837e3",
+        "Python_43/tests/visible/test_Python_43.py": "4b013f7967f4989eb9b39c7d772a74b7d4e23cdac47d4822d10a8e046d09b077"
+      }
+    },
+    "Python_44": {
+      "id": "humanevalfix/Python/44",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 1
+      },
+      "files": {
+        "Python_44.json": "06bf809bfb76b8519196069c4d2e9e4f48ce57adf011608bc97576a2b0651711",
+        "Python_44/reference.py": "8a4ed1f07b8b14d66fc315b5dd17b0a047feea7cb4771b8298e2eb53aba83d74",
+        "Python_44/tests/hidden/test_Python_44_hidden.py": "ad741dbadb636c48008168d4fadf1797b98c7355052c7da2ced05122745bddde",
+        "Python_44/tests/visible/test_Python_44.py": "edfac8f09b836c31002fb9645b48204e60bd4f0ef69e41d0feca41cef5c1dcc9"
+      }
+    },
+    "Python_45": {
+      "id": "humanevalfix/Python/45",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_45.json": "2f19cc49a80aaead0cff19bec8a504cd0000f409db77c07ffb886baaa28fc798",
+        "Python_45/reference.py": "56311ba0eda16310539416a093b4e60272db6343508be7f619908ec3ef9ff755",
+        "Python_45/tests/hidden/test_Python_45_hidden.py": "c87979add6ec0f544fa9412690808b81afe6698112251ea82a126132db7aa494",
+        "Python_45/tests/visible/test_Python_45.py": "9d4b09f32113e1a5c5d10585f0e19f05826481b5f09c4aae808343ec6a702ade"
+      }
+    },
+    "Python_46": {
+      "id": "humanevalfix/Python/46",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 4
+      },
+      "files": {
+        "Python_46.json": "517732de2048b750477f2bd997068f8644903df458121dd70d202c1d7cb8302f",
+        "Python_46/reference.py": "0b60dd4588f6ca8383258a1da68f6af57d253bd17fa72b7b04ba3ecc7823f318",
+        "Python_46/tests/hidden/test_Python_46_hidden.py": "55401391a41643508d3832eb9a75624c722fa665199aa07c5deed75d3965763a",
+        "Python_46/tests/visible/test_Python_46.py": "678db8b7c1cd1f395c3d89f34a8c4e4b914781de4275455d9bfffbff856cf4b0"
+      }
+    },
+    "Python_47": {
+      "id": "humanevalfix/Python/47",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_47.json": "40330c5f65c0c2b5bc56662bf1f4e4060141102864756e27cc6c0e08a0ee98e5",
+        "Python_47/reference.py": "682536d6810aa26b15c660d964aaf4e0cc2fe3704c1cb4b1aefc94efd4940d78",
+        "Python_47/tests/hidden/test_Python_47_hidden.py": "b01705a5bf7302281a9892c314e4c562a2ae1da0de48ca79fd7aa0a49edfdb36",
+        "Python_47/tests/visible/test_Python_47.py": "3d5b17459127b59cb48574e09c8514b8e85b158fd7aa59c0754ac337ec3d7db9"
+      }
+    },
+    "Python_48": {
+      "id": "humanevalfix/Python/48",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 7
+      },
+      "files": {
+        "Python_48.json": "3dfd1910036fb5d718822f4ffd689639eacf446e64394d15db71ada8e55966a9",
+        "Python_48/reference.py": "d86d15a8509b6cdf7a77ed0b403339bcee442f6680bf0494d89ed77be2f73ead",
+        "Python_48/tests/hidden/test_Python_48_hidden.py": "4296d499c315c0df613045872af06c72cc2a5bf4b2e09933df2301dd364dce9d",
+        "Python_48/tests/visible/test_Python_48.py": "15973568c6e79014bacad36f2e11784bf6ccad0882ef52f962efd9339cf2d713"
+      }
+    },
+    "Python_49": {
+      "id": "humanevalfix/Python/49",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 7
+      },
+      "files": {
+        "Python_49.json": "afadad1fcc613100603d760b3492d22024fd768cc95eb03d5a0f7330480675dc",
+        "Python_49/reference.py": "2195f04d9a75a95faacad5f6ff056789ddda0b68432119fb837c0c04f9f79161",
+        "Python_49/tests/hidden/test_Python_49_hidden.py": "d62979e7d06edb4e503e9d2dd261655279d1c68d519fd4954f5a6967396ab96b",
+        "Python_49/tests/visible/test_Python_49.py": "5d34325c284dc10a71abafd731dea2d198fa6cd8bb780ba8ad918a0da0a51803"
+      }
+    },
+    "Python_5": {
+      "id": "humanevalfix/Python/5",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 3
+      },
+      "files": {
+        "Python_5.json": "3b70e2233ee982ed043c211206478dbd4ff47147fb409a8fcfc825b404361c9f",
+        "Python_5/reference.py": "e29d7eff9cf73491f718294c6990a771fa0c8093d19845e682c5e7924c2a6811",
+        "Python_5/tests/hidden/test_Python_5_hidden.py": "2b294ef3d30135aa92c8a665836cc88d264dc6f5f5951f6cbc9e8a392d7d30a3",
+        "Python_5/tests/visible/test_Python_5.py": "20bb9788da1b4cc94c301a7be3ca4a368ceb96a6d0c0ffaf3f6edff2158353cf"
+      }
+    },
+    "Python_51": {
+      "id": "humanevalfix/Python/51",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 7
+      },
+      "files": {
+        "Python_51.json": "3f43117ef08906ea988008f6f98a1c39ca753836da4ca43c4e6d517966f67d3a",
+        "Python_51/reference.py": "139d2f3098cc0ed8ad3989a20239497cdf9cb6f5d1e76feb7cf716c8e35e1f63",
+        "Python_51/tests/hidden/test_Python_51_hidden.py": "5e4871aff8d0821d02441c2b65e338f8d7c7df38cbb98ee4f9b185fa0e25c909",
+        "Python_51/tests/visible/test_Python_51.py": "487132fd8d185028001bf4016488a0be24aaf2a81d87bb60f66425aed1e6a966"
+      }
+    },
+    "Python_52": {
+      "id": "humanevalfix/Python/52",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 6
+      },
+      "files": {
+        "Python_52.json": "79c5360941c97a92d947c3201853b885f94ddec8e02363a5cf1b8436455860e7",
+        "Python_52/reference.py": "df913ceda88c48045486dbc7277aea9a54f415284e1299a99c01274d3b1e46db",
+        "Python_52/tests/hidden/test_Python_52_hidden.py": "5e07ddc9ed4d4c027c7416706ca0468823b2261e10761d9eba745e102bcd0f90",
+        "Python_52/tests/visible/test_Python_52.py": "db0b7848d6d27417abc5a274ccc5d74b461a5f2215200c2cf013f838d7268d1f"
+      }
+    },
+    "Python_53": {
+      "id": "humanevalfix/Python/53",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 1
+      },
+      "files": {
+        "Python_53.json": "691b917b7e72216f5e51367c6e01b84622e6fcaaf5a81612c029fbfc93189129",
+        "Python_53/reference.py": "23393194b0d346cd658b4702214818f23217839ca7e017afb812b5f4e593f6eb",
+        "Python_53/tests/hidden/test_Python_53_hidden.py": "3b8617375211617f5e46d3f8a3f267440ae507f07632d1777bb8797c2344d343",
+        "Python_53/tests/visible/test_Python_53.py": "b54850bf833779595bfd33d229e6cc74388ab4ff2d89a9ba0f44d21e96b8024e"
+      }
+    },
+    "Python_54": {
+      "id": "humanevalfix/Python/54",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 7
+      },
+      "files": {
+        "Python_54.json": "e8c4a226fa6beb5b43b0b9c31667ccbdc702e9ec0bd9732b29166717c28adf85",
+        "Python_54/reference.py": "436c11bc245a1058321af04daaac61500d45b36d90c4a098ffd71b8c75a21304",
+        "Python_54/tests/hidden/test_Python_54_hidden.py": "4be717729bd47e9d8cc31afe96af5a67dc4152517d8af75ba96a73a9ae9da170",
+        "Python_54/tests/visible/test_Python_54.py": "af822f31cfbc6fd61e3ee5511e927d1b660b62dddad6a56338b785fa2ca223c5"
+      }
+    },
+    "Python_55": {
+      "id": "humanevalfix/Python/55",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 5
+      },
+      "files": {
+        "Python_55.json": "1a0c1ed643239e18542043799ba9ef92f3385d34509a01e6d8d7aface3694b4b",
+        "Python_55/reference.py": "7e356c143a95810a3ea9e53b282dd24ba7c5f84118be608d62a56fcb5badc746",
+        "Python_55/tests/hidden/test_Python_55_hidden.py": "415426804322cdc8176b6d0cd8f9d6df3a24d4dba394ab3a8f0f0f3eea022bb7",
+        "Python_55/tests/visible/test_Python_55.py": "b772954bd1b0564a997845585f67fc2975e0f3c72dbb50a1f85b6ea459a81cac"
+      }
+    },
+    "Python_56": {
+      "id": "humanevalfix/Python/56",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 12
+      },
+      "files": {
+        "Python_56.json": "414a3dd6bf145990575d090f20ed331207b0a168522a48ca31ae2e61d3d290a4",
+        "Python_56/reference.py": "eeb4ec229309a79c9b1008231bf5618361274261c3f74bd3849f4ea92f8f4516",
+        "Python_56/tests/hidden/test_Python_56_hidden.py": "b13053ec8ac8e7c74b6479746335068c0041e3d438669ace49d9b0e02ad2e3e1",
+        "Python_56/tests/visible/test_Python_56.py": "fc95a677f588abcc3ea284e9d99fde3f98cea7d392c6af482ac79289a1366072"
+      }
+    },
+    "Python_57": {
+      "id": "humanevalfix/Python/57",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "files": {
+        "Python_57.json": "b9c974579623d3bf50b020c50f5be23dbab7df8ab639d0fadff98035dccddd72",
+        "Python_57/reference.py": "172c837191f07de25ea3aaef5720d37bc6a233aebfa88c6d2c4fc8ff9ee61c8a",
+        "Python_57/tests/hidden/test_Python_57_hidden.py": "2b902e86ea4f20318f9c649755ad094e6f4b00b0fe7ffb8eea9948360a409978",
+        "Python_57/tests/visible/test_Python_57.py": "0d37b13f480324d26a9f3b383b416dd92255165a2d864bcff88c7ac1b2b8d3e0"
+      }
+    },
+    "Python_58": {
+      "id": "humanevalfix/Python/58",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 4
+      },
+      "files": {
+        "Python_58.json": "ee6767b28038dd9a6da8222dd49393364ab945d9b6c8ef5bdaead8691447532e",
+        "Python_58/reference.py": "9256b87f0ed2b897067341729f6d3f16614dccd6a8a238b28e6e83601ee889ad",
+        "Python_58/tests/hidden/test_Python_58_hidden.py": "43a079e4c7c852f8abbfa19a997dbb3410255d11c7cffe3e7c32620c2f863fb5",
+        "Python_58/tests/visible/test_Python_58.py": "d22240bd59e22aa9208785e5a6a1b75b300f0c584c4b1d1c5b885bcc234db01f"
+      }
+    },
+    "Python_59": {
+      "id": "humanevalfix/Python/59",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_59.json": "cbca285f5dfe1e8e949b5d0081957f2dd5c516a7d38073c8c7ddc98a494185ad",
+        "Python_59/reference.py": "7686300de41f63660bd1039689be88f32103434eabd1c57b84d0763ea5d7c275",
+        "Python_59/tests/hidden/test_Python_59_hidden.py": "2fe80c1080dd9db13fb3111b96af37e0dda1d31ac59ae95074278978f7f8f6cd",
+        "Python_59/tests/visible/test_Python_59.py": "3d37b722498242aa6a1c90fd2e70576e813cd7d8a1f01d39a66bdd338e9c501d"
+      }
+    },
+    "Python_6": {
+      "id": "humanevalfix/Python/6",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 3
+      },
+      "files": {
+        "Python_6.json": "07fa5b418a1af230687a45f6539ebb1b51d089cb29d19b785ddfd4beab4ec9ea",
+        "Python_6/reference.py": "7a31b613f4456342f4ff112e741826f0ccb23cff4b09b87c6d93a366488afeb9",
+        "Python_6/tests/hidden/test_Python_6_hidden.py": "e78d6bcac30117fe506bc32c4c6c4f86a7e4dcabc9442f499ae18a9789d1d4b7",
+        "Python_6/tests/visible/test_Python_6.py": "fd3cf20b3271022037f597c04e55cbde08d411bd7f20fdd5ef156c16d3a23373"
+      }
+    },
+    "Python_60": {
+      "id": "humanevalfix/Python/60",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 5
+      },
+      "files": {
+        "Python_60.json": "4631aae3a51c1770fdcde959d4a74bc9d85e47c1162a57f2d3dad9ef6e93ec51",
+        "Python_60/reference.py": "85d8cd7a6998176d12c44daec408e3c48c4a0b9b4bb2ea5c6b6533010eb46946",
+        "Python_60/tests/hidden/test_Python_60_hidden.py": "fb0ae18b6c0116f8cef3b7d7bf1635a77ccf6256e149be33ef9b5b10c57f6ac3",
+        "Python_60/tests/visible/test_Python_60.py": "fb8ba33e7042846b3359cc4cc1c6c5a1743bbb5395af3ba51c1f855519b72279"
+      }
+    },
+    "Python_61": {
+      "id": "humanevalfix/Python/61",
+      "split": "dev",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 12
+      },
+      "files": {
+        "Python_61.json": "553e0a54bfe0fe1c027073370bf8d31bc468cb87a5f1ecaca919f0e39d21c208",
+        "Python_61/reference.py": "055533d4a7c8da2f5a63f6a507b72d610c25073f177c17c45fb97ab1317ca01c",
+        "Python_61/tests/hidden/test_Python_61_hidden.py": "620f6d06d2dc809d46c7d3ec42a3703e7ccf60c9a39eeee0fc2112ff146cae5d",
+        "Python_61/tests/visible/test_Python_61.py": "638017792dd3db2cdc223ab3b64f069be08daf477fb3565c7c0d6f5d86204111"
+      }
+    },
+    "Python_62": {
+      "id": "humanevalfix/Python/62",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_62.json": "daa50bb5efe7f814cf15fb1e1e6af37da2e48ee92caa8510451b24c640087937",
+        "Python_62/reference.py": "da7ffe1d1692d3401edc541e109ac96a99ef3409ef0e5192d966e516b9286c96",
+        "Python_62/tests/hidden/test_Python_62_hidden.py": "8bd482cdc44824acbebfdd27b812c65a03db5b13fa345041c4924c9febc22521",
+        "Python_62/tests/visible/test_Python_62.py": "7aac5e24ab1f8fec5ce262ac203ff3b56bbc05cfbc37ac93105f05c7f2c071e1"
+      }
+    },
+    "Python_63": {
+      "id": "humanevalfix/Python/63",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "files": {
+        "Python_63.json": "3b4f7f5fc82f5df62dd9da9e3b0720bfb00a684365a59c447a5c018eb2395dae",
+        "Python_63/reference.py": "12dd03bf127bf7c24e1a310f527825eee6791db3f4b7e588b2e6b0d5b5bc3f43",
+        "Python_63/tests/hidden/test_Python_63_hidden.py": "338a174fa5796f08a57856bc1c46c678825266611761c46d73c18236817922c9",
+        "Python_63/tests/visible/test_Python_63.py": "ed21642f537ef23037f5336b2decfcc81b3a5697c4494122043d6647ebe4730c"
+      }
+    },
+    "Python_64": {
+      "id": "humanevalfix/Python/64",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 7
+      },
+      "files": {
+        "Python_64.json": "606d53001868d15a4ea11e6f2b322c3b2f9225d9fd831b88a2d7b6f8c4d7724a",
+        "Python_64/reference.py": "b57f26df9f89ecbc78b70861bcdbd4f80a8bbeb48d0b105149796f70c3a987e2",
+        "Python_64/tests/hidden/test_Python_64_hidden.py": "3088d83058e3cbc4818b96f301f8ea6a22fdc133a5818a1c6becbecffcaf4f22",
+        "Python_64/tests/visible/test_Python_64.py": "0093240cc3f69a3fd51030087f7f0dfe122842767869633d02e10a59c1c6529c"
+      }
+    },
+    "Python_65": {
+      "id": "humanevalfix/Python/65",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_65.json": "05808832adc2bcd495baa4d896071c5974ab678b4b5790d63de4d4728438f0c1",
+        "Python_65/reference.py": "ee5a0959eefe41ad5e87921063312eed24deead40ecc24313001a1e385544b87",
+        "Python_65/tests/hidden/test_Python_65_hidden.py": "9050f5a87ee263a3766d5cc247b1a24da8d433e26376a46bb5433237f0e272e7",
+        "Python_65/tests/visible/test_Python_65.py": "d8eff5fd340bab10cbecc1a58e151d2a557284569390c4361d17f1ed61f615b1"
+      }
+    },
+    "Python_66": {
+      "id": "humanevalfix/Python/66",
+      "split": "test",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 8
+      },
+      "files": {
+        "Python_66.json": "ff61f05180c528919c2135f9ef17e2782bacf84b29a6857505e89c998a3491ea",
+        "Python_66/reference.py": "37d3eeb83599ca7d7b91a87ea77f4b2155a8513e260c385372b9ba039023efe2",
+        "Python_66/tests/hidden/test_Python_66_hidden.py": "8f92e0ca8cae4b35353c802e67f56ba1b824f4b143caa580f30e6b1b42fd79cd",
+        "Python_66/tests/visible/test_Python_66.py": "0463d6cc59e88be3e253f8ad459f2c2e98b17f1e541f83aa066e836de4728e74"
+      }
+    },
+    "Python_67": {
+      "id": "humanevalfix/Python/67",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 7
+      },
+      "files": {
+        "Python_67.json": "3cff346be128570eba21660d0f634110a110611e12e014abca685600b0ef979f",
+        "Python_67/reference.py": "aa71ad79a8c24af52fc74366c907d59f45d9a624dc9d07125d061bf8c3950663",
+        "Python_67/tests/hidden/test_Python_67_hidden.py": "b7c96a44e8ff254a5f922c5d53d5e0111e45a079c694d41dbd7d89748291d437",
+        "Python_67/tests/visible/test_Python_67.py": "d01aa50d09cef77258a6b3d9de3800477176dd77c4c862cb62ae732191ec4077"
+      }
+    },
+    "Python_68": {
+      "id": "humanevalfix/Python/68",
+      "split": "dev",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 8
+      },
+      "files": {
+        "Python_68.json": "49fc57bee85ee324247603e0614a7cf11b68d6dc71813354d8ba1c74c3e69151",
+        "Python_68/reference.py": "cfa3f5d6dfe2a5cf1736b076bb95426b2c090325976c8dea0900489cc2643d0b",
+        "Python_68/tests/hidden/test_Python_68_hidden.py": "4dde9a40b23181be5d3b56fb8332959fa41983f1d5129fd2e5ac123ed282ad96",
+        "Python_68/tests/visible/test_Python_68.py": "532642f7d5716c7cd781beeb1c2de4414ba120773dcd08d001d6f43020cd289f"
+      }
+    },
+    "Python_69": {
+      "id": "humanevalfix/Python/69",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 25
+      },
+      "files": {
+        "Python_69.json": "b37e8de5419a0b5e12a1353505b65e2fcffcf1abca02817d6728a07c50ae8e0d",
+        "Python_69/reference.py": "cfceb7d6996e32545a71eeea4d7a7de57d0ebfb49d4bce462f09c1d18104cf14",
+        "Python_69/tests/hidden/test_Python_69_hidden.py": "11360d3228181edc3403a4134cbdbbc873836e21337e3439a17eeb8d886d6fec",
+        "Python_69/tests/visible/test_Python_69.py": "c6875e2b09dbedca5a737f3626bf9d8adf8640c0c0a3c4ef597ff8bfcb32ea2b"
+      }
+    },
+    "Python_7": {
+      "id": "humanevalfix/Python/7",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 4
+      },
+      "files": {
+        "Python_7.json": "ff57c38e06b909675455964c6baadecb72afd1538851492b3017eeab2cfb5510",
+        "Python_7/reference.py": "5d6aa131b9692989db050cecd2d4958f5a7b1427749e1e07cf6406fa0f6a9e02",
+        "Python_7/tests/hidden/test_Python_7_hidden.py": "b7370c557f3d2173018b741b020d4e2c2d8f65d8f8a7ea8664ba1819fee55f96",
+        "Python_7/tests/visible/test_Python_7.py": "c2b4c8b64e3ec53a38d76e1ebbd93bbf9c3b495964c81aaf3f5bb000896ca6f6"
+      }
+    },
+    "Python_70": {
+      "id": "humanevalfix/Python/70",
+      "split": "dev",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 9
+      },
+      "files": {
+        "Python_70.json": "16281c2c80d95a10c45447821c8bfa16fe9c1f427a47ab3259558f8ee73d7d67",
+        "Python_70/reference.py": "83e0df67f2d22fc88e63e1475048cf8bdb72613b40d02e2f7d50a68eceb85fd7",
+        "Python_70/tests/hidden/test_Python_70_hidden.py": "f47a31c9fbba6361d1d077f7ee23b08fc246867696b67e9c7f7bd8e92d33b341",
+        "Python_70/tests/visible/test_Python_70.py": "243d1879f8c7dfeb70cc5339491a8f70070adb3b0765894456bb27d228952a9a"
+      }
+    },
+    "Python_71": {
+      "id": "humanevalfix/Python/71",
+      "split": "dev",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 9
+      },
+      "files": {
+        "Python_71.json": "a9f335ffd20424af236f7f23d47820bb8687b8b2cbdbb0e36e0cc95a0b771cfc",
+        "Python_71/reference.py": "0c33d330e24e9199e4651fff4adf5fed8dd328de1d25e06086f613c1307a77d8",
+        "Python_71/tests/hidden/test_Python_71_hidden.py": "219ea3e7875953329f9b89e9cd32414ab377a7be1bf2a89abd92d89f67a21f89",
+        "Python_71/tests/visible/test_Python_71.py": "6a8db4a4796c7ca1057593aca6524218ed98e079debf27b81ffc73e5dd9263da"
+      }
+    },
+    "Python_72": {
+      "id": "humanevalfix/Python/72",
+      "split": "dev",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 6
+      },
+      "files": {
+        "Python_72.json": "2ace8dd530dc8844883d91a34c3d667da0b8122a65832917e36d9f7fcb6eb41d",
+        "Python_72/reference.py": "63a56bc6500bd302147b26f67281210a8b5e49b3a10626c377d0ce550b78f456",
+        "Python_72/tests/hidden/test_Python_72_hidden.py": "33c972646bb91b31f57f6d3ffa7b234ee95ed59f810b303fda1fa60b0315e916",
+        "Python_72/tests/visible/test_Python_72.py": "1e48c8d13682b445891f2a86ab712bb8f114993dc0a567d9af7cd918f7c36fe8"
+      }
+    },
+    "Python_73": {
+      "id": "humanevalfix/Python/73",
+      "split": "dev",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 8
+      },
+      "files": {
+        "Python_73.json": "d4b039fa4e8b5446a27d48565a2f77d07db1c02b49ab993618467bdc43dbb937",
+        "Python_73/reference.py": "85d6b6d07eba962c260ebe85c0ad5299d2db74ba41598b597bbfb6d55b53fa71",
+        "Python_73/tests/hidden/test_Python_73_hidden.py": "304811633b072a5cd398ff73eeca0fd7a2a8834bc8572bd09f4562e45a3a78b2",
+        "Python_73/tests/visible/test_Python_73.py": "f332608dff6619a4fd955bb975365bf0b147c71144f4eb4a8d40b1d6bb03f067"
+      }
+    },
+    "Python_74": {
+      "id": "humanevalfix/Python/74",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 9
+      },
+      "files": {
+        "Python_74.json": "d28692d2a50fbee1d23e1144dcdefb0b9b4e2bfc1dfb6288a64f148e5cdd4599",
+        "Python_74/reference.py": "78a5909c399b92d43d1c7c8d7be59a0e1b747373f2427ce1a5c0a041ae2e1994",
+        "Python_74/tests/hidden/test_Python_74_hidden.py": "2d2cea8ee683b68934c9e05aa270f69c4f0d019b24c679f14442f20de889f503",
+        "Python_74/tests/visible/test_Python_74.py": "8b30ec2ee958c4e2c8526854add2c89f81228150815d79d7ed8601e467c17bcf"
+      }
+    },
+    "Python_75": {
+      "id": "humanevalfix/Python/75",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 10
+      },
+      "files": {
+        "Python_75.json": "8ad0038638c6ff3229f4498aadc41155eddc8beeab99b85d2eea4d275d71a317",
+        "Python_75/reference.py": "2d1088c993f2388df27f3d520b42b9cbb1ed5dec9be49b20cbcc79c445fdbaa7",
+        "Python_75/tests/hidden/test_Python_75_hidden.py": "55ff4ca28d17dccd1fb9c757e7746a772318a010390a6b3c0dd6f32e3e8da01b",
+        "Python_75/tests/visible/test_Python_75.py": "4bfd7eded5ab178c643f59a527e2ae6f4b75d54506f8505ccb32f2474e7c9c3c"
+      }
+    },
+    "Python_76": {
+      "id": "humanevalfix/Python/76",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 16
+      },
+      "files": {
+        "Python_76.json": "172a987c338702c5d77abeccc9a128efed647f4577f2929cbf011273b872c858",
+        "Python_76/reference.py": "c5989bade06093fd40b4504dae282670d6240dde538976d848a612d4b871ae64",
+        "Python_76/tests/hidden/test_Python_76_hidden.py": "24b07bf2418373619ca0c1a358a08b7f10aab6ee5fee6d84982fca8737bf8ce9",
+        "Python_76/tests/visible/test_Python_76.py": "1927656c32b06e7f38b1a2475dd2814a80f0a4cfb08e8bfc0148b627ec8738a5"
+      }
+    },
+    "Python_77": {
+      "id": "humanevalfix/Python/77",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 8
+      },
+      "files": {
+        "Python_77.json": "1681f4d6537f0372950c6bb7cb5552fbdc6b991808c708498b43ffd3d90c192d",
+        "Python_77/reference.py": "b66935789ca82fe9289ffb338140a2c302e20f408b7fe86e05365aba6dd4a15a",
+        "Python_77/tests/hidden/test_Python_77_hidden.py": "e2cd2f86b2dcc95fffcb5a151c5487f12956e91608943f4a5795cbcd812c5fe5",
+        "Python_77/tests/visible/test_Python_77.py": "490eaff24197b7986a7765366bc154ca527a2a45c8a7ba990c29c86f6dedfc5e"
+      }
+    },
+    "Python_78": {
+      "id": "humanevalfix/Python/78",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 7
+      },
+      "files": {
+        "Python_78.json": "7361000e74a35989c4accdd75bcf73d4e23fa7c17fa6d29a6df461340639f577",
+        "Python_78/reference.py": "ab2a482f98d7cb710cab0df47fb90d1a90d10190c4e9cad7ff1d6b720f4e5212",
+        "Python_78/tests/hidden/test_Python_78_hidden.py": "4b06daac029f6eec17b8c73362537b1cf901acda0635d106f5112c94ffb7a61f",
+        "Python_78/tests/visible/test_Python_78.py": "9004498e4650be611eb79b842ea8e328bd30076b20777dbd3194bb03d3b14e04"
+      }
+    },
+    "Python_79": {
+      "id": "humanevalfix/Python/79",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 4
+      },
+      "files": {
+        "Python_79.json": "5fc83afac029c830cab7eb4f765f8f67ea0ab8f01d87ec0b594f5d80f428928a",
+        "Python_79/reference.py": "5b3a4a73f3da00c9f654f202b336366dccb879738b710dbbd09861a6ad9895f2",
+        "Python_79/tests/hidden/test_Python_79_hidden.py": "97f822881b8d08198e6c533e3b521703582bb6471c1e4ca938b7a3ed6598fa3b",
+        "Python_79/tests/visible/test_Python_79.py": "f6e10d3b3166fe218a12d0d61d3d12ae19021c4d7632216cae3e66e28fb84e0e"
+      }
+    },
+    "Python_8": {
+      "id": "humanevalfix/Python/8",
+      "split": "dev",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_8.json": "83c13b8a81c5ab130ad0e897fd467f7ef6ba3c2c59426e8bdef8213a16ccbf1d",
+        "Python_8/reference.py": "f81f225ca186c969c4a4759fbb9068160082e0ab033456fcf524227202fea3f1",
+        "Python_8/tests/hidden/test_Python_8_hidden.py": "7a6d14404b8d8c7910fc2142e0aef23fabd61472bd8f983620f8b4484aa06c82",
+        "Python_8/tests/visible/test_Python_8.py": "929faee94ebf08a7a03d438d73aa203463a58799a8acc985fa54d7a64534789c"
+      }
+    },
+    "Python_80": {
+      "id": "humanevalfix/Python/80",
+      "split": "dev",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 8
+      },
+      "files": {
+        "Python_80.json": "b084df0dd7fb6e815f6f059548cbd4fb2d98d0781401c808df745f818d040c0d",
+        "Python_80/reference.py": "e478364eff25f6688683d37a57770ea316eaa4f042b631bba3214fa8b17d8b4b",
+        "Python_80/tests/hidden/test_Python_80_hidden.py": "88467b6967855fcd762bcb46f2495e48dd7c533691ec764a99bb11fe95715169",
+        "Python_80/tests/visible/test_Python_80.py": "e140ee44dbab88f7036c7cf1b18207584b8caffb89fc2e6fc4372a8b54ca9469"
+      }
+    },
+    "Python_81": {
+      "id": "humanevalfix/Python/81",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 6
+      },
+      "files": {
+        "Python_81.json": "381d236484e86db4654350747b16a7e2e298fbfced499f7bf2e9668994442c71",
+        "Python_81/reference.py": "8900ebef85192be8a1fb4f631fb051b9c2c14585f0c037133eeda5770cc17d36",
+        "Python_81/tests/hidden/test_Python_81_hidden.py": "0445fa28b8bfb166e9e8d7adebb2743f78ed1c9874ba4da4a12596132233fb59",
+        "Python_81/tests/visible/test_Python_81.py": "274ebd444a86fcbce31c5cb37acb1efaf93d71eed89d5befa5eacbca9e0318d6"
+      }
+    },
+    "Python_82": {
+      "id": "humanevalfix/Python/82",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 16
+      },
+      "files": {
+        "Python_82.json": "0700e3df20447088af204300e1478bfc60c1cc80f9b88e13aab7b21c9840a7c2",
+        "Python_82/reference.py": "2eadb7c1a07bbd210fc40d31fd83012ce989b8d1faf9de05798e3744a952d4f5",
+        "Python_82/tests/hidden/test_Python_82_hidden.py": "0bdd7282080e959e2a4fe6ab87e917ab0d442f83eaf1e8416099a938cd2ae695",
+        "Python_82/tests/visible/test_Python_82.py": "e2852f100287d9bcf784507523585f10679ca0c762819f7bb97d890981c27f37"
+      }
+    },
+    "Python_83": {
+      "id": "humanevalfix/Python/83",
+      "split": "dev",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_83.json": "cc4c0e55bdf2952f0d3804c35014a29de8260c1362dc7e16e6e2bb2fb3c9ebe1",
+        "Python_83/reference.py": "c8a9767e375df8c59594d2035a6f588a090643cb0fe71e340d12e2389965e2d2",
+        "Python_83/tests/hidden/test_Python_83_hidden.py": "1ae55e9921741e97aefa7a8b93335cbdbc853e2943710e5d076ae2f06991653a",
+        "Python_83/tests/visible/test_Python_83.py": "751a6ccb65a2b818b70bd97c9f075982562903fa595d852852f9550e2e6e46db"
+      }
+    },
+    "Python_84": {
+      "id": "humanevalfix/Python/84",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 5
+      },
+      "files": {
+        "Python_84.json": "52c1d759bcb0d70922aeb4d9f354214ff4882d09119460313e87381e250b97fe",
+        "Python_84/reference.py": "e1aeef122da529ee1c0511507122c49a89b15798629a8d8a414eb572598e8e88",
+        "Python_84/tests/hidden/test_Python_84_hidden.py": "4aa4e585714d8c46a3786cac76de35a151fc719ee11f6a1941a32da307ec52aa",
+        "Python_84/tests/visible/test_Python_84.py": "3299215de3719e9fbb8402e39c4ca40cbb55528f834645e88453824081d36c99"
+      }
+    },
+    "Python_85": {
+      "id": "humanevalfix/Python/85",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_85.json": "b1fc055039532eea9c442c946e2abbcc4d009655d6826df0ccb653285d7eb12e",
+        "Python_85/reference.py": "09ce2d9e1b0f163a34dabcbd4228d9d69a2205b139f33b67543ffec452c9f878",
+        "Python_85/tests/hidden/test_Python_85_hidden.py": "25f405a6c6c0a8dc13fdad3f9c2b43e3a4298560bd2e917dacada5c925c603e8",
+        "Python_85/tests/visible/test_Python_85.py": "1ae1bbbd289ab6b11ad64d1f499a438b30b7c2f49ff0aad64047f35631035294"
+      }
+    },
+    "Python_86": {
+      "id": "humanevalfix/Python/86",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "files": {
+        "Python_86.json": "1e44a85c6acc5c022d731d8b8d93afe805aa9333819ac11b2a7b8b4b3be91a57",
+        "Python_86/reference.py": "00b903bc70703a1761feb63a23e1b8c3a78b44796b3d39e318ae875651dca098",
+        "Python_86/tests/hidden/test_Python_86_hidden.py": "b5c9fb1c18bfaff997df545d3b0951a187bcb4d8ea963fcdb9744207f58376af",
+        "Python_86/tests/visible/test_Python_86.py": "3a3e2d2b1b811f2dc896da0911ac4d6b0a4f9eaf74d6c91d3947295a35f47e5d"
+      }
+    },
+    "Python_87": {
+      "id": "humanevalfix/Python/87",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 6
+      },
+      "files": {
+        "Python_87.json": "50a5aa19a761ab9da2e60ca099b9a7e02fb1e2f8c5c30afa7f4ba7be4bef6b51",
+        "Python_87/reference.py": "29f4705264b284fb80ba3fbfc94609ff7da3c29fbb018a97628cf0bcaf0f387d",
+        "Python_87/tests/hidden/test_Python_87_hidden.py": "162da3b275aaa08b2a1aa6ab743b29a148dd022bd291acced94425cf6ecc6cab",
+        "Python_87/tests/visible/test_Python_87.py": "d1c65b1ded314a16eb53973da12872df63f06bc7695ae9e25cf6facd9831ba39"
+      }
+    },
+    "Python_88": {
+      "id": "humanevalfix/Python/88",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 7
+      },
+      "files": {
+        "Python_88.json": "a7a787775255f0ddd81c83e40fa011db2cfd9632e8cdeaf4899fdcaf8d958860",
+        "Python_88/reference.py": "926567733627d042b64d6e24a50705510c090d4484da60110dec65557813e8b9",
+        "Python_88/tests/hidden/test_Python_88_hidden.py": "c85aa40656c02667f38f32df9d963b0d4bbe1854895eb939213ba9ccc0cd72bb",
+        "Python_88/tests/visible/test_Python_88.py": "c142570de9c06f772fabd52c69ebd6f79ffaa7e48bcecd766b3388f0b796c2af"
+      }
+    },
+    "Python_89": {
+      "id": "humanevalfix/Python/89",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 8
+      },
+      "files": {
+        "Python_89.json": "7e1d9124fcc6fb83b22b0a6ea1e86cb86ec6143fe342d095e693c62f7860ef3b",
+        "Python_89/reference.py": "0ccd01103ff334d6a86525b7619a534eb039d9dd0558e03a7faa580afa6c534e",
+        "Python_89/tests/hidden/test_Python_89_hidden.py": "950baa542a47fb574d9e9cadf5b05bd0ec2f0b0d31be72fc5c3a95adaa8da421",
+        "Python_89/tests/visible/test_Python_89.py": "df446be4d41797dbb5106c9fb88af15bc3d6c9706d179fe4035d2f9a38371a68"
+      }
+    },
+    "Python_9": {
+      "id": "humanevalfix/Python/9",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 1,
+        "hidden": 4
+      },
+      "files": {
+        "Python_9.json": "38e5b8796fa1199a89d5e04f230074ef1afced9e98efaa9849bdbcb5d7f37294",
+        "Python_9/reference.py": "32af61f17fb376cc1dd042dba50d561411a01ceb3047e358245b577c03971690",
+        "Python_9/tests/hidden/test_Python_9_hidden.py": "2955951efb4fb9a47479a74ec78231a52b4b803c7d7b426a3b021aafd84cffd3",
+        "Python_9/tests/visible/test_Python_9.py": "05942a7cde5d0c4348d01e883d5ec01b6d6a3337b001f382f6357cd964f9998f"
+      }
+    },
+    "Python_90": {
+      "id": "humanevalfix/Python/90",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 7
+      },
+      "files": {
+        "Python_90.json": "95d5cd1fa07507810690426f42df612c776aecc727c3de96cc74f947e4963647",
+        "Python_90/reference.py": "0e5a38ee21479dc973199d641ebaf4196b112e619d1d5df0d3b976e717d11e46",
+        "Python_90/tests/hidden/test_Python_90_hidden.py": "9ffc93773357e10e15d6cc09644d8ec2710cf0f184f5cb0dc4667ebbacfd6d9a",
+        "Python_90/tests/visible/test_Python_90.py": "54ddb70f803da5cd95b2fcc6dc6c726e43e975fb5032090c0097c288f388e6d3"
+      }
+    },
+    "Python_91": {
+      "id": "humanevalfix/Python/91",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 6
+      },
+      "files": {
+        "Python_91.json": "f87d670fda1a39ab32d2ea38de9212bdd9f3ef906e40d23f308f19b0757c6bdf",
+        "Python_91/reference.py": "9b4ec08c82d44e868f3eb751fdf69d0d1afbc31eb295bb79acb65f75e96d00ac",
+        "Python_91/tests/hidden/test_Python_91_hidden.py": "9b85d8b703cba138305c530af3787cdee0d5e04b340111448b25942892aad2e3",
+        "Python_91/tests/visible/test_Python_91.py": "81beec89305b4ddb17c738815a35f28d429266b69a2b0fea77373eb395e00a94"
+      }
+    },
+    "Python_92": {
+      "id": "humanevalfix/Python/92",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 10
+      },
+      "files": {
+        "Python_92.json": "cd6a5b9f4318fb923cd640d53bcc118854392e437575f41df692d3befed841d9",
+        "Python_92/reference.py": "669dd7a9707995704189b0f7460846d16c147215d59518d4c0cb9373cd4130b8",
+        "Python_92/tests/hidden/test_Python_92_hidden.py": "dbee6b8e279e597f417cd9b13f23d1e6a2d768e620a616ff0d4e82a4575939dd",
+        "Python_92/tests/visible/test_Python_92.py": "a1323c2c205c9f60ffb5fb98f4624a1331ddb0668ffe853dfdc3b42145192b29"
+      }
+    },
+    "Python_93": {
+      "id": "humanevalfix/Python/93",
+      "split": "test",
+      "stratum": "missing logic",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_93.json": "ce3679188b6a4f6e4da142ff14f9ef5ce66c33f5eef3a32900e1ad842ab8b4bb",
+        "Python_93/reference.py": "19db2432edbf74e1140741504e36d3c73a58659dae67e6170132db544ca2e125",
+        "Python_93/tests/hidden/test_Python_93_hidden.py": "f7f9961b571ad27c06faf2582ad76d5acf5f1850138f1b818a93a917dfaccb96",
+        "Python_93/tests/visible/test_Python_93.py": "890ce9e58235ab4772bd20ac341158d8acad77fbc112b13e4e84de5749877f73"
+      }
+    },
+    "Python_94": {
+      "id": "humanevalfix/Python/94",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 9
+      },
+      "files": {
+        "Python_94.json": "8d01d4d5c4e94e9b3c15c8f749a167b69725af4d9472193a19828052b987afa5",
+        "Python_94/reference.py": "fcc11d380b0260741e513c3adeb8a09a6f2dd464cc15cb0bbfcb6ae5571106dd",
+        "Python_94/tests/hidden/test_Python_94_hidden.py": "b50e2b991ae00acc2a4afafb347671ef93e7408033971a6b490c24b4849f13a4",
+        "Python_94/tests/visible/test_Python_94.py": "8e77e2b7a0649b10c97ef2231b8f5b4eee30ca5dddbecc9b27ef40104c94cf13"
+      }
+    },
+    "Python_95": {
+      "id": "humanevalfix/Python/95",
+      "split": "test",
+      "stratum": "operator misuse",
+      "expected_counts": {
+        "visible": 5,
+        "hidden": 7
+      },
+      "files": {
+        "Python_95.json": "96abec5103b713a5ab2916d63b8fc90c1998ea4f1f95bfbf8a4ae65b08982023",
+        "Python_95/reference.py": "52ddb0880b737d564ee737f74062d30397198ea91636e204e1454b57468af9f3",
+        "Python_95/tests/hidden/test_Python_95_hidden.py": "0f6932383788e3370b5e12991a85ffe348220a710b0887d372b965da77ecd438",
+        "Python_95/tests/visible/test_Python_95.py": "fe08f501a8ca9e039598f43928f94eba5f34823b3143c89aea92658e96a3132f"
+      }
+    },
+    "Python_96": {
+      "id": "humanevalfix/Python/96",
+      "split": "test",
+      "stratum": "variable misuse",
+      "expected_counts": {
+        "visible": 6,
+        "hidden": 10
+      },
+      "files": {
+        "Python_96.json": "16906a2177084ba6ee3db074ef0b9981b5f9461bb5f7dc4340eebb8135dcb7a9",
+        "Python_96/reference.py": "3586b9f194a0a4601013b33d0a998227e557787b967cdba514394e4dbbd72c23",
+        "Python_96/tests/hidden/test_Python_96_hidden.py": "ae5e4130f0256f61baf878bf274625f28df62221b9119a3ff5488d7a9c9babc6",
+        "Python_96/tests/visible/test_Python_96.py": "b335c6319d9fc4677dc03f8a59645e9618262a6aafa2339c5478e4d7304e2dbf"
+      }
+    },
+    "Python_97": {
+      "id": "humanevalfix/Python/97",
+      "split": "test",
+      "stratum": "excess logic",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 8
+      },
+      "files": {
+        "Python_97.json": "bff3c9c26fea7e36c71dc373882a478e8857e49bf2238ac733b65809b34825e4",
+        "Python_97/reference.py": "d241705f824c13f26bfa6b237eca7cb46fb19bd5e000ac6a8191dcb90a15598e",
+        "Python_97/tests/hidden/test_Python_97_hidden.py": "e42ae7d4100a76177579beac89388ddd4037e2d1cd1969c2853823dcbd87edd0",
+        "Python_97/tests/visible/test_Python_97.py": "06d7e201024f56595e2789dd06fe18c965b7306af5b07449738b9d4c1f4f65f6"
+      }
+    },
+    "Python_98": {
+      "id": "humanevalfix/Python/98",
+      "split": "test",
+      "stratum": "value misuse",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "files": {
+        "Python_98.json": "d2af33b5298719715a6d6eb32a4929c192836dd3150e89b4b9ebc7fc8eafff42",
+        "Python_98/reference.py": "11e595a2aae90f5bd3db9d5b0b25f8ecf7d7d5524a765b95acef9500fd88a64f",
+        "Python_98/tests/hidden/test_Python_98_hidden.py": "7cb2f7de2b077826665cd4a0cb9169772e61613d3ebfe2a7c80d661b7c57eb77",
+        "Python_98/tests/visible/test_Python_98.py": "f779f8eadfc973de536164b3646551e93a3fe21f054aed9e64d8398b449e0793"
+      }
+    },
+    "Python_99": {
+      "id": "humanevalfix/Python/99",
+      "split": "test",
+      "stratum": "function misuse",
+      "expected_counts": {
+        "visible": 2,
+        "hidden": 5
+      },
+      "files": {
+        "Python_99.json": "8d03b00567d7f3439b5d19fb666ec75b27c4f9dd8251a866608d0a9493682ef6",
+        "Python_99/reference.py": "1f4cb9f804587461c19d58132d7467bd02c5b2e4c56168ae45e3a934dbafcee5",
+        "Python_99/tests/hidden/test_Python_99_hidden.py": "b81a5fb2f50ed54ad0cdf89510d7dd881a40ad0706d968c5100bad7c263b824b",
+        "Python_99/tests/visible/test_Python_99.py": "1330baf0b5032c6969112fae7addeaa9597bede3be7af1cedf2db70a53ca9adf"
+      }
+    }
+  },
+  "dropped": {
+    "Python_38": "conversion: no usable example_test, and no plain assert in test to borrow",
+    "Python_50": "conversion: no usable example_test, and no plain assert in test to borrow"
+  }
+}

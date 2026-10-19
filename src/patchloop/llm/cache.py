@@ -22,7 +22,8 @@ class CachedClient:
     def chat(
         self, messages: list[Message], *, temperature: float, max_tokens: int, repeat: int = 0
     ) -> Reply:
-        key = cache_key(self.model, messages, temperature, max_tokens, repeat)
+        extra = getattr(self.inner, "params", {})
+        key = cache_key(self.model, messages, temperature, max_tokens, repeat, extra)
         path = self.cache_dir / f"{key}.json"
         if path.exists():
             entry = json.loads(path.read_text())
@@ -31,12 +32,17 @@ class CachedClient:
             usage = Usage.model_validate(entry["usage"]).model_copy(
                 update={"cached_calls": 1, "retries": 0, "retry_wait_s": 0.0}
             )
-            return Reply(text=entry["text"], usage=usage, model=entry["model"])
+            return Reply(entry["text"], usage, entry["model"], entry.get("finish_reason"))
         reply = self.inner.chat(
             messages, temperature=temperature, max_tokens=max_tokens, repeat=repeat
         )
         path.parent.mkdir(parents=True, exist_ok=True)
-        entry = {"text": reply.text, "model": reply.model, "usage": reply.usage.model_dump()}
+        entry = {
+            "text": reply.text,
+            "model": reply.model,
+            "finish_reason": reply.finish_reason,
+            "usage": reply.usage.model_dump(),
+        }
         tmp = path.with_suffix(f".{os.getpid()}.tmp")
         tmp.write_text(json.dumps(entry))
         tmp.replace(path)  # atomic, so parallel workers never read half a file
@@ -44,12 +50,15 @@ class CachedClient:
 
 
 def cache_key(
-    model: str, messages: list[Message], temperature: float, max_tokens: int, repeat: int
+    model: str,
+    messages: list[Message],
+    temperature: float,
+    max_tokens: int,
+    repeat: int,
+    extra: dict | None = None,
 ) -> str:
-    payload = {
-        "model": model,
-        "messages": messages,
-        "params": {"temperature": temperature, "max_tokens": max_tokens},
-        "repeat": repeat,
-    }
+    """Extra request parameters (such as reasoning_effort) join the key only when set, so
+    entries cached without them keep their keys."""
+    params = {"temperature": temperature, "max_tokens": max_tokens, **(extra or {})}
+    payload = {"model": model, "messages": messages, "params": params, "repeat": repeat}
     return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()

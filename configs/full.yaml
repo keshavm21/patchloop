@@ -4,6 +4,9 @@ max_attempts: 3
 reflect: false
 explain_failures: false  # on by default for `patchloop solve` without --config
 model:
-  name: gemini-3.5-flash
-  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  name: openai/gpt-oss-20b
+  base_url: https://api.groq.com/openai/v1
+  api_key_env: GROQ_API_KEY
   temperature: 0.0
+  max_output_tokens: 4096  # a reasoning model: room for its thinking plus the file
+  reasoning_effort: low    # medium spent the whole budget thinking on ~10% of attempts

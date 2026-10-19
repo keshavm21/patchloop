@@ -1,0 +1,229 @@
+{
+  "labelled_by": "hand, from traces and diffs against the reference",
+  "labels": [
+    {
+      "task_id": "mutbench/102/swap_boolean/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "benchmark noise",
+      "note": "reference keeps leading underscores; spec doesn't say so (gpt-oss fails it too)"
+    },
+    {
+      "task_id": "mutbench/109/shift_bound/1",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "wrong diagnosis",
+      "note": "rewrote the algorithm on another reading of the task instead of fixing s[i + 1]"
+    },
+    {
+      "task_id": "mutbench/113/shift_bound/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "benchmark noise",
+      "note": "reference returns None for the empty string, which the spec never mentions"
+    },
+    {
+      "task_id": "mutbench/278/wrong_variable/2",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "partial fix",
+      "note": "fixed isinstance(ele) but restructured the counting, off by one"
+    },
+    {
+      "task_id": "mutbench/311/swap_arithmetic/1",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "partial fix",
+      "note": "rewrote it and got n=0 wrong"
+    },
+    {
+      "task_id": "mutbench/389/drop_guard/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "wrong diagnosis",
+      "note": "added the wrong guard, twice (NO_PROGRESS)"
+    },
+    {
+      "task_id": "mutbench/462/delete_statement/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "benchmark noise",
+      "note": "right combinations in another order; the hidden test expects one exact order"
+    },
+    {
+      "task_id": "mutbench/592/shift_bound/1",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "wrong diagnosis",
+      "note": "changed the return formula, not the C[j + 1] bug"
+    },
+    {
+      "task_id": "mutbench/597/swap_arithmetic/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "benchmark noise",
+      "note": "correct merge of two sorted arrays; hidden inputs aren't sorted, against the spec"
+    },
+    {
+      "task_id": "mutbench/603/delete_statement/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "output-format failure",
+      "note": "replied with one line instead of the whole file"
+    },
+    {
+      "task_id": "mutbench/607/drop_guard/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "wrong diagnosis",
+      "note": "changed the return value; the bug was the missing None guard"
+    },
+    {
+      "task_id": "mutbench/620/swap_boolean/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "benchmark noise",
+      "note": "a valid divisible-subset algorithm that disagrees with the quirky reference"
+    },
+    {
+      "task_id": "mutbench/639/swap_boolean/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "benchmark noise",
+      "note": "followed the spec (drop lowercase starts); the reference also requires the rest lowercase"
+    },
+    {
+      "task_id": "mutbench/806/delete_statement/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "partial fix",
+      "note": "rewrote the run counting; differs from the reference on an edge case"
+    },
+    {
+      "task_id": "mutbench/92/drop_guard/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "wrong diagnosis",
+      "note": "wrote its own definition of undulating instead of restoring the guard"
+    },
+    {
+      "task_id": "mutbench/92/flip_comparison/0",
+      "model": "qwen/qwen3.8-27b",
+      "config": "full_qwen",
+      "category": "wrong diagnosis",
+      "note": "deleted the guard instead of flipping == to !="
+    },
+    {
+      "task_id": "humanevalfix/Python/127",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "wrong diagnosis",
+      "note": "fixed is_prime, missed the missing prime check, and rewrote the docstring to match"
+    },
+    {
+      "task_id": "humanevalfix/Python/145",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "wrong diagnosis",
+      "note": "invented 'negatives first' instead of the signed-first-digit rule the example implies"
+    },
+    {
+      "task_id": "humanevalfix/Python/54",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "wrong diagnosis",
+      "note": "compared character counts; the docstring examples mean character sets"
+    },
+    {
+      "task_id": "humanevalfix/Python/91",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "partial fix",
+      "note": "counts sentences starting with any 'I...', not the word 'I'"
+    },
+    {
+      "task_id": "mutbench/131/swap_boolean/0",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "partial fix",
+      "note": "reversed the vowels twice, so the output is unchanged"
+    },
+    {
+      "task_id": "mutbench/160/wrong_variable/4",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "benchmark noise",
+      "note": "a valid (x, y); EvalPlus expects one particular solution"
+    },
+    {
+      "task_id": "mutbench/286/swap_arithmetic/0",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "wrong diagnosis",
+      "note": "rewrote the algorithm instead of fixing a + k -> a * k"
+    },
+    {
+      "task_id": "mutbench/300/shift_bound/0",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "partial fix",
+      "note": "float division overflows on EvalPlus's huge inputs"
+    },
+    {
+      "task_id": "mutbench/300/swap_arithmetic/3",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "partial fix",
+      "note": "float division overflows on EvalPlus's huge inputs"
+    },
+    {
+      "task_id": "mutbench/305/drop_guard/0",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "over-defensive validation",
+      "note": "raises ValueError where the reference returns nothing"
+    },
+    {
+      "task_id": "mutbench/310/swap_boolean/0",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "wrong diagnosis",
+      "note": "kept spaces though the visible test drops them (no feedback in single_shot)"
+    },
+    {
+      "task_id": "mutbench/391/wrong_variable/6",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "over-defensive validation",
+      "note": "raises on unequal list lengths; the reference zips"
+    },
+    {
+      "task_id": "mutbench/580/swap_arithmetic/1",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "wrong diagnosis",
+      "note": "flattened the nested tuple instead of keeping its structure"
+    },
+    {
+      "task_id": "mutbench/622/delete_statement/2",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "partial fix",
+      "note": "passes visible, fails hidden edge cases"
+    },
+    {
+      "task_id": "mutbench/622/wrong_variable/13",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "partial fix",
+      "note": "passes visible, fails hidden edge cases"
+    },
+    {
+      "task_id": "mutbench/630/shift_bound/1",
+      "model": "openai/gpt-oss-20b",
+      "config": "single_shot",
+      "category": "over-defensive validation",
+      "note": "rejects non-2-D coordinates; the reference handles any dimension"
+    }
+  ]
+}

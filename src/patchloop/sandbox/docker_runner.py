@@ -30,6 +30,12 @@ class SandboxInfraError(RuntimeError):
     error, never the candidate's fault."""
 
 
+class SandboxUnavailable(SandboxInfraError):
+    """The Docker daemon doesn't answer at all (stopped, restarting, or starved of memory).
+    Like a spent quota, this isn't any one task's failure: evals stop without recording the run
+    and resume once Docker is back."""
+
+
 def run_tests(
     solution_dir: Path,
     tests_dir: Path,
@@ -61,7 +67,7 @@ def _default_client() -> docker.DockerClient:
     try:
         return docker.from_env()
     except docker.errors.DockerException as e:
-        raise SandboxInfraError(f"cannot reach Docker: {e}") from e
+        raise SandboxUnavailable(f"cannot reach Docker: {e}") from e
 
 
 def _run_once(
@@ -103,7 +109,16 @@ def _run_once(
             cleanup.callback(_remove, candidate)
             return _wait_and_collect(judge, candidate, expected_tests, limits)
     except (docker.errors.DockerException, requests.exceptions.RequestException) as e:
+        if not _daemon_answers(client):
+            raise SandboxUnavailable(f"the Docker daemon is unreachable: {e}") from e
         raise SandboxInfraError(f"sandbox run failed: {e}") from e
+
+
+def _daemon_answers(client: docker.DockerClient) -> bool:
+    try:
+        return bool(client.ping())
+    except (docker.errors.DockerException, requests.exceptions.RequestException):
+        return False
 
 
 def _create(

@@ -1,0 +1,12 @@
+# The attempts sweep (§8.4): full with five attempts. Attempts 1–3 match full's, so they come from the cache.
+feedback: L3
+max_attempts: 5
+reflect: false
+explain_failures: false  # on by default for `patchloop solve` without --config
+model:
+  name: openai/gpt-oss-20b
+  base_url: https://api.groq.com/openai/v1
+  api_key_env: GROQ_API_KEY
+  temperature: 0.0
+  max_output_tokens: 4096  # a reasoning model: room for its thinking plus the file
+  reasoning_effort: low    # medium spent the whole budget thinking on ~10% of attempts
