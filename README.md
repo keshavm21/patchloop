@@ -5,6 +5,20 @@
 A sandboxed, self-repairing coding agent, and a harness that measures it. An LLM fixes buggy Python functions by running the visible tests in a locked-down Docker sandbox, reading the failures and patching, until the tests pass or a stop rule fires. Hidden tests the model never sees give the verdict. Every number below comes from a frozen benchmark, a config file and a commit.
 
 <!-- RESULTS -->
+## Results
+
+Test splits, repair rate = share of tasks whose **hidden** tests pass, with 95% bootstrap intervals over tasks ([full report](results/REPORT.md)).
+
+| Benchmark (model) | Tasks × repeats | Single shot | Repair loop (3 attempts, test feedback) | Difference, points |
+|---|---|---|---|---|
+| MutBench, bugs new to the model (`openai/gpt-oss-20b`) | 150 × 1 | 83.3 [77.3, 89.3] | 86.7 [81.3, 92.0] | **+3.3 [+0.7, +6.7]** |
+| MutBench (`qwen/qwen3.8-27b`) | 150 × 1 | 81.3 [75.3, 87.3] | 89.3 [84.0, 94.0] | **+8.0 [+4.0, +12.7]** |
+| HumanEvalFix, public and likely memorised (`openai/gpt-oss-20b`) | 121 × 2 | 96.7 [93.4, 99.2] | 97.9 [95.0, 100.0] | +1.2 [+0.0, +3.3] |
+
+- **Where the model can't recall the answer.** MutBench: `full` better for the main model, `full` better for the second. HumanEvalFix: the model already solves 96.7% in one shot (no clear difference).
+- **How the loop gains.** Of the main model's 5 extra MutBench solves, 5 were wrong answers fixed after seeing a failing test. Of the second model's 12, 10 were malformed replies that a second attempt recovered.
+- **Why the rest fail.** In 32 hand-labelled failures: wrong diagnosis (12), partial fixes (9), benchmark noise where the reference contradicts its own spec (7), and over-defensive validation (3). There was no case of hard-coding the visible tests.
+<!-- /RESULTS -->
 
 ## How it works
 

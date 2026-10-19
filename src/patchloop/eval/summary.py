@@ -69,15 +69,30 @@ def comparisons(folders: list[Path]) -> list[str]:
     ]
     for folder in folders:
         records = read_records(folder)
-        names = set(by_config(records))
-        for a, b in COMPARISONS:
-            if a in names and b in names and (c := paired_comparison(records, a, b)):
-                d = c.diff
-                lines.append(
-                    f"| {_bench_name(records)} | `{a}` | `{b}` | {c.tasks} | {100 * d.mean:+.1f} "
-                    f"[{100 * d.low:+.1f}, {100 * d.high:+.1f}] | {c.verdict} |"
-                )
+        for a, b, c in folder_comparisons(records):
+            d = c.diff
+            lines.append(
+                f"| {_bench_name(records)} | `{a}` | `{b}` | {c.tasks} | {100 * d.mean:+.1f} "
+                f"[{100 * d.low:+.1f}, {100 * d.high:+.1f}] | {c.verdict} |"
+            )
     return lines
+
+
+def model_suffixes(names) -> set[str]:
+    """ "" for the main model's configs, plus suffixes such as "_qwen" for a model swap."""
+    return {"", *(n[len(base) :] for n in names for base in ORDER if n.startswith(base + "_"))}
+
+
+def folder_comparisons(records: list[dict]):
+    """(a, b, Comparison) for each planned pair present, per model suffix."""
+    names = set(by_config(records))
+    out = []
+    for suffix in sorted(model_suffixes(names)):
+        for a, b in COMPARISONS:
+            a2, b2 = a + suffix, b + suffix
+            if a2 in names and b2 in names and (c := paired_comparison(records, a2, b2)):
+                out.append((a2, b2, c))
+    return out
 
 
 def success_at_k(folders: list[Path], config: str = "full_5") -> list[str]:
