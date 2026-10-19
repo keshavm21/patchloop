@@ -27,6 +27,7 @@ from ..sandbox.docker_runner import SandboxUnavailable
 from ..sandbox.limits import Limits
 from ..sandbox.sandbox import DockerSandbox, Sandbox
 from ..tracing import Tracer
+from .metrics import complete_repeats
 
 ROOT = Path(__file__).resolve().parents[3]
 RECORDS = "records.jsonl"
@@ -61,6 +62,11 @@ def read_records(out: Path) -> list[dict]:
     if not path.exists():
         return []
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+
+
+def report_records(out: Path) -> list[dict]:
+    """The records the reports use: every finished repeat, without one that is still running."""
+    return complete_repeats(read_records(out))
 
 
 def pending(plan: EvalPlan, records: list[dict]) -> list[tuple[Task, AgentConfig, int]]:

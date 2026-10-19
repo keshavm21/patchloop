@@ -174,6 +174,20 @@ def test_paired_bootstrap():
     assert flat.low == flat.high == 0.5
 
 
+def test_reports_skip_a_repeat_still_running():
+    from patchloop.eval.metrics import complete_repeats
+
+    def rec(task_id, config, repeat):
+        return {"task_id": task_id, "config": config, "repeat": repeat}
+
+    records = [rec(t, c, 0) for t in ("a", "b") for c in ("single_shot", "full")]
+    records += [rec("a", "single_shot", 1), rec("a", "full", 1), rec("b", "full", 1)]
+    kept = {(r["task_id"], r["config"], r["repeat"]) for r in complete_repeats(records)}
+    assert ("a", "single_shot", 1) not in kept  # repeat 1 of single_shot lacks task b
+    assert {("a", "full", 1), ("b", "full", 1)} <= kept
+    assert len([k for k in kept if k[2] == 0]) == 4
+
+
 def test_report_has_intervals(plan, task):
     run(plan, task, [reply_with(WRONG), reply_with(FIXED)])
     text = write_report(plan.out).read_text()

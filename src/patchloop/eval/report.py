@@ -4,7 +4,7 @@ records.jsonl in that folder; nothing is estimated."""
 from pathlib import Path
 
 from .metrics import ConfigMetrics, by_config
-from .runner import read_records
+from .runner import report_records
 from .stats import paired_comparison, repair_rate_ci
 
 # The comparisons §8.4 asks about, (a, b) meaning "does b beat a?"; shown when both ran.
@@ -25,7 +25,7 @@ BREAKDOWN_TITLES = {
 
 
 def write_report(out: Path) -> Path:
-    records = read_records(out)
+    records = report_records(out)
     if not records:
         raise FileNotFoundError(f"no records in {out}")
     metrics = by_config(records)

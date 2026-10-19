@@ -11,7 +11,7 @@ from pathlib import Path
 
 from .metrics import by_config
 from .report import COMPARISONS
-from .runner import read_records
+from .runner import report_records
 from .stats import paired_comparison, repair_rate_ci
 
 ORDER = ["single_shot", "binary", "errors", "full", "full_5", "full_reflect"]
@@ -31,7 +31,7 @@ def _bench_name(records: list[dict]) -> str:
 
 
 def headline(folders: list[Path]) -> list[str]:
-    data = [(f, read_records(f)) for f in folders]
+    data = [(f, report_records(f)) for f in folders]
     configs = []
     for _, records in data:
         for name in by_config(records):
@@ -68,7 +68,7 @@ def comparisons(folders: list[Path]) -> list[str]:
         "|---|---|---|---|---|---|",
     ]
     for folder in folders:
-        records = read_records(folder)
+        records = report_records(folder)
         for a, b, c in folder_comparisons(records):
             d = c.diff
             lines.append(
@@ -98,7 +98,7 @@ def folder_comparisons(records: list[dict]):
 def success_at_k(folders: list[Path], config: str = "full_5") -> list[str]:
     rows = []
     for folder in folders:
-        records = read_records(folder)
+        records = report_records(folder)
         m = by_config(records).get(config)
         if m:
             rows.append((_bench_name(records), m))
@@ -121,7 +121,7 @@ def success_at_k(folders: list[Path], config: str = "full_5") -> list[str]:
 def symptoms(folders: list[Path]) -> list[str]:
     lines = ["| Benchmark | Symptom | Runs | `single_shot` | `full` |", "|---|---|---|---|---|"]
     for folder in folders:
-        records = read_records(folder)
+        records = report_records(folder)
         metrics = by_config(records)
         for key in ("symptom", "failure_symptoms"):
             single, full = metrics.get("single_shot"), metrics.get("full")
@@ -147,7 +147,8 @@ def main() -> None:
         out += ["", "## Success@k (attempts sweep)", "", *sk]
     out += ["", "## By failure symptom", "", *symptoms(args.folders)]
     for extra in args.extra:
-        out += ["", f"## {_bench_name(read_records(extra))}, second model", "", *headline([extra])]
+        name = _bench_name(report_records(extra))
+        out += ["", f"## {name}, second model", "", *headline([extra])]
     print("\n".join(out))
 
 

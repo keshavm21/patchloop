@@ -45,6 +45,21 @@ def finished(records: list[dict]) -> list[dict]:
     return list(latest.values())
 
 
+def complete_repeats(records: list[dict]) -> list[dict]:
+    """Drop a config's later repeats until they cover every task of its repeat 0, so a repeat
+    still running doesn't count some tasks twice in the reports. Repeat 0 is always kept."""
+    tasks = defaultdict(lambda: defaultdict(set))
+    for r in records:
+        tasks[r["config"]][r["repeat"]].add(r["task_id"])
+    keep = {
+        (config, repeat)
+        for config, by_repeat in tasks.items()
+        for repeat, ids in by_repeat.items()
+        if repeat == 0 or ids >= by_repeat.get(0, set())
+    }
+    return [r for r in records if (r["config"], r["repeat"]) in keep]
+
+
 def by_config(
     records: list[dict], breakdown_keys=("bug_type", "failure_symptoms", "operator", "symptom")
 ):

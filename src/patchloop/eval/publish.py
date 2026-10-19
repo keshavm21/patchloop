@@ -15,7 +15,7 @@ from pathlib import Path
 from string import Template
 
 from .metrics import by_config
-from .runner import ROOT, read_records
+from .runner import ROOT, report_records
 from .stats import repair_rate_ci
 from .summary import comparisons, folder_comparisons, headline, success_at_k, symptoms
 
@@ -47,7 +47,7 @@ def collect() -> Values:
         path = RESULTS / folder
         if not (path / "records.jsonl").exists():
             continue
-        records = read_records(path)
+        records = report_records(path)
         v[f"{alias}_bench"] = f"{records[0]['bench']} ({records[0]['split']})"
         v[f"{alias}_model"] = records[0]["provenance"]["model"]
         v[f"{alias}_shas"] = ", ".join(
@@ -66,6 +66,8 @@ def collect() -> Values:
             if m.cut_off_rate is not None:
                 v[f"{alias}_{base}_cutoff"] = _pct(m.cut_off_rate)
             v[f"{alias}_{base}_quarantined"] = str(m.quarantined)
+            for k, rate in m.success_at_k.items():
+                v[f"{alias}_{base}_k{k}"] = _pct(rate)
         for a, b, c in folder_comparisons(records):
             key = f"{alias}_{a.removesuffix('_qwen')}_vs_{b.removesuffix('_qwen')}"
             d = c.diff
