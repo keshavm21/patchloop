@@ -19,6 +19,8 @@ Test splits, repair rate = share of tasks whose **hidden** tests pass, with 95% 
 
 - **Where the model can't recall the answer.** MutBench: `full` better for the main model, `full` better for the second. HumanEvalFix: the model already solves 96.7% in one shot (no clear difference).
 - **How the loop gains.** Of the main model's 5 extra MutBench solves, 5 were wrong answers fixed after seeing a failing test. Of the second model's 12, 10 were malformed replies that a second attempt recovered.
+- **How much feedback it needs** (MutBench, main model). Pass/fail counts alone: `single_shot` 83.3% → `binary` 88.0% (`binary` better). Adding failing tests and exceptions (`errors`, 87.3%) or full tracebacks (`full`, 86.7%): against `full`, `binary` shows no clear difference and `errors` no clear difference.
+- **How many attempts.** With up to 5 attempts, 83.3% of MutBench is solved at attempt 1, 86.7% by attempt 2, 86.7% by 3 and 86.7% by 5.
 - **Why the rest fail.** In 32 hand-labelled failures: wrong diagnosis (12), partial fixes (9), benchmark noise where the reference contradicts its own spec (7), and over-defensive validation (3). There was no case of hard-coding the visible tests.
 <!-- /RESULTS -->
 
@@ -71,7 +73,7 @@ A trivial passing run costs 0.60 s at the median and 0.77 s at p95, from contain
 
 - **Validated before freezing.** Every task's reference solution passes both test sets in the sandbox, and its buggy version fails at least one hidden test; tasks that fail a check are dropped and logged. Datasets are pinned to a revision, downloaded and built locally, and never re-hosted. Only manifests with every file's checksum are committed, and setup refuses a rebuild that doesn't match.
 - **MutBench** samples 3 mutants per problem from 7 operators, keeps a mutant only if the hidden tests catch it, labels its symptom (wrong output, crash or hang), and balances 200 tasks across operators, at most 2 per problem. Its bugs are new even though the problems are public, which limits contamination.
-- **Splits and rigor.** 25% of each benchmark is a dev split, stratified with a fixed seed. The prompts (v1) and model settings were fixed using dev runs only, before any test run, and the results are on test. Each config runs 3 times. A task's solve rate is averaged over its repeats, and configs are compared with a paired bootstrap over tasks (95% intervals). An interval that includes zero is reported as "no clear difference".
+- **Splits and rigor.** 25% of each benchmark is a dev split, stratified with a fixed seed. The prompts (v1) and model settings were fixed using dev runs only, before any test run, and the results are on test. The plan called for 3 repeats per config; on the free tier's daily quota, HumanEvalFix (at the ceiling) got 2 and MutBench 1, with a second repeat under way. A task's solve rate is averaged over its finished repeats, and configs are compared with a paired bootstrap over tasks (95% intervals). An interval that includes zero is reported as "no clear difference".
 - **Infra errors aren't agent failures.** Rate limits, outages and Docker failures are retried, quarantined and reported separately.
 
 ## Design decisions
