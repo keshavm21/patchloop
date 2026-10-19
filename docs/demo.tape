@@ -4,9 +4,9 @@
 
 Output docs/demo.gif
 Set Shell "bash"
-Set FontSize 15
+Set FontSize 13
 Set Width 1200
-Set Height 720
+Set Height 1180
 Set Theme "Catppuccin Mocha"
 Set TypingSpeed 40ms
 
@@ -17,10 +17,10 @@ Show
 Type "# A repair from a recorded model reply: real sandbox, hidden tests, no API key" Enter
 Sleep 500ms
 Type "make demo" Enter
-Sleep 6s
+Sleep 11s
 
 Type "clear" Enter
 Type "# A real two-attempt repair from the MutBench test run: the failing test fixes the bug" Enter
 Sleep 500ms
 Type "patchloop replay runs/eval/mutbench-test/mutbench_131_swap_boolean_0/full/r0" Enter
-Sleep 9s
+Sleep 10s

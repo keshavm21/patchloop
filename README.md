@@ -4,6 +4,8 @@
 
 A sandboxed, self-repairing coding agent, and a harness that measures it. An LLM fixes buggy Python functions by running the visible tests in a locked-down Docker sandbox, reading the failures and patching, until the tests pass or a stop rule fires. Hidden tests the model never sees give the verdict. Every number below comes from a frozen benchmark, a config file and a commit.
 
+![PatchLoop: a recorded repair, then a real two-attempt fix where the failing test `assert 'USA' == 'ASU'` leads the model to the bug](docs/demo.gif)
+
 <!-- RESULTS -->
 ## Results
 
