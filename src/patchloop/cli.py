@@ -130,7 +130,9 @@ def replay(
 
 @app.command("eval")
 def eval_(
-    bench: Annotated[str, typer.Option(help="A frozen benchmark: humanevalfix or mutbench.")],
+    bench: Annotated[
+        str, typer.Option(help="A frozen benchmark: humanevalfix, mutbench or injectbench.")
+    ],
     config: Annotated[list[Path], typer.Option(help="configs/*.yaml; repeat to compare.")],
     split: Annotated[str, typer.Option(help="dev, test or all.")] = "dev",
     repeats: Annotated[int, typer.Option(min=1)] = 1,
@@ -143,6 +145,21 @@ def eval_(
         float | None, typer.Option(help="Stop once this much is spent.")
     ] = None,
     cache: Annotated[bool, typer.Option("--cache/--no-cache")] = True,
+    llm_kind: Annotated[
+        str, typer.Option("--llm", help="api (the configured model) or replay (recorded replies).")
+    ] = "api",
+    replay_file: Annotated[Path, typer.Option(help="Fixtures for --llm replay.")] = Path(
+        "tests/replay/injectbench.jsonl"
+    ),
+    record: Annotated[
+        Path | None, typer.Option(help="Append every model reply (cached ones too) to this file.")
+    ] = None,
+    assert_baseline: Annotated[
+        Path | None, typer.Option(help="Fail unless every run matches this baseline exactly.")
+    ] = None,
+    write_baseline: Annotated[
+        Path | None, typer.Option(help="Write this run's outcomes as a baseline file.")
+    ] = None,
 ) -> None:
     """Run configs × tasks × repeats on a frozen benchmark; resumable."""
     from .bench.frozen import BenchmarkMissing, load_benchmark
@@ -158,6 +175,8 @@ def eval_(
     if limit:
         benchmark = type(benchmark)(benchmark.name, benchmark.manifest, benchmark.tasks[:limit])
     configs = [load_config(path) for path in config]
+    if llm_kind not in ("api", "replay"):
+        raise typer.BadParameter("--llm must be api or replay")
     for cfg in configs:
         if not cfg.model.name:
             raise typer.BadParameter(f"{cfg.name}: no model.name in the config")
@@ -189,8 +208,29 @@ def eval_(
             highlight=False,
         )
 
+    if llm_kind == "replay":
+        from .llm.replay import ReplayLLM
+
+        try:
+            replayer = ReplayLLM(replay_file)
+        except FileNotFoundError as e:
+            raise typer.BadParameter(str(e)) from None
+
+        def llm_for(cfg):
+            return replayer
+
+    else:
+
+        def llm_for(cfg):
+            client = _make_llm(cfg.model, cache=cache)
+            if record:
+                from .llm.replay import RecordingLLM
+
+                client = RecordingLLM(client, record)
+            return client
+
     try:
-        summary = run_eval(plan, lambda cfg: _make_llm(cfg.model, cache=cache), on_record=show)
+        summary = run_eval(plan, llm_for, on_record=show)
     except SettingsMismatch as e:
         raise typer.BadParameter(str(e)) from None
     latest = ROOT / "results" / "latest"
@@ -202,9 +242,42 @@ def eval_(
         f"{summary.infra_errors} infra errors",
         highlight=False,
     )
+    if summary.canary_hits:
+        for hit in summary.canary_hits:
+            console.print(f"CANARY LEAK {hit}", style="bold red", highlight=False)
+        raise typer.Exit(4)
+    console.print("canary scan: no secret appears in any trace or result", highlight=False)
     if summary.stopped_early:
         console.print(f"stopped early: {summary.stopped_early}", style="yellow", highlight=False)
         raise typer.Exit(3 if summary.quota_exhausted else 2)
+    from .eval import baseline
+    from .eval.runner import read_records
+
+    if write_baseline:
+        baseline.write_baseline(write_baseline, read_records(out))
+        console.print(f"baseline written to {write_baseline}", highlight=False)
+    if assert_baseline:
+        diffs = baseline.differences(assert_baseline, read_records(out))
+        for line in diffs:
+            console.print(f"BASELINE MISMATCH {line}", style="bold red", highlight=False)
+        if diffs:
+            raise typer.Exit(5)
+        console.print(f"matches {assert_baseline}", highlight=False)
+
+
+@app.command("canary-scan")
+def canary_scan(
+    paths: Annotated[list[Path], typer.Argument(help="Result and trace folders or files.")],
+) -> None:
+    """Fail if a canary secret or a real API key appears in any of the files (§7.3)."""
+    from .safety.canary import scan
+
+    hits = scan([p for p in paths])
+    for hit in hits:
+        console.print(f"CANARY LEAK {hit.path}: {hit.secret}", style="bold red", highlight=False)
+    if hits:
+        raise typer.Exit(4)
+    console.print("no secret appears in any scanned file", highlight=False)
 
 
 @app.command()

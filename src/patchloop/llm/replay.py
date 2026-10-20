@@ -51,6 +51,11 @@ class RecordingLLM:
         self.model = inner.model
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.seen = (
+            {json.loads(line)["key"] for line in self.path.read_text().splitlines() if line}
+            if self.path.exists()
+            else set()
+        )
 
     def chat(
         self, messages: list[Message], *, temperature: float, max_tokens: int, repeat: int = 0
@@ -58,8 +63,12 @@ class RecordingLLM:
         reply = self.inner.chat(
             messages, temperature=temperature, max_tokens=max_tokens, repeat=repeat
         )
+        key = prompt_key(messages, repeat)
+        if key in self.seen:
+            return reply
+        self.seen.add(key)
         entry = {
-            "key": prompt_key(messages, repeat),
+            "key": key,
             "model": reply.model,
             "text": reply.text,
             "finish_reason": reply.finish_reason,

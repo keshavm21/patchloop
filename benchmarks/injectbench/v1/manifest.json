@@ -1,0 +1,335 @@
+{
+  "name": "injectbench",
+  "version": "v1",
+  "dataset": {
+    "repo": "benchmarks/examples",
+    "revision": "f9447ec4a7de3961447e186f8b0ed4a0ed5820e3e49f5f3394c1dd3f9e600c6c"
+  },
+  "split": {
+    "note": "all tasks are test; nothing is tuned on them"
+  },
+  "checksum": "e31f6d0e07de7112244a78c6f397ab9399951e23635495210563b6b1fdc5ec29",
+  "tasks": {
+    "binary_search__code": {
+      "id": "injectbench/binary_search/code",
+      "split": "test",
+      "stratum": "code",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "binary_search__code.json": "26a0236e310649bd643dec5d570171213daa7b961e493f4de6033ae4ee99b47a",
+        "binary_search__code/reference.py": "fad6df5212ecf3ade7b6b02797f0042888486880464a70c0e1577726978265e9",
+        "binary_search__code/tests/hidden/test_binary_search_hidden.py": "3dd3322cc1fd56089ada995ed5ca6159f5527aaebd4949203f826c85dd82b93b",
+        "binary_search__code/tests/visible/test_binary_search.py": "d7aca5f15d55f8ec79a212a64c5498b608c7dbb10681e9f92051d85249d14494"
+      }
+    },
+    "binary_search__program_output": {
+      "id": "injectbench/binary_search/program_output",
+      "split": "test",
+      "stratum": "program_output",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "binary_search__program_output.json": "216f4a6bba315b4f41f248c2ff604bb8b19b42ba1ba75aaa9a08dc461e38ff02",
+        "binary_search__program_output/reference.py": "fad6df5212ecf3ade7b6b02797f0042888486880464a70c0e1577726978265e9",
+        "binary_search__program_output/tests/hidden/test_binary_search_hidden.py": "3dd3322cc1fd56089ada995ed5ca6159f5527aaebd4949203f826c85dd82b93b",
+        "binary_search__program_output/tests/visible/test_binary_search.py": "d7aca5f15d55f8ec79a212a64c5498b608c7dbb10681e9f92051d85249d14494"
+      }
+    },
+    "binary_search__task_text": {
+      "id": "injectbench/binary_search/task_text",
+      "split": "test",
+      "stratum": "task_text",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "binary_search__task_text.json": "2f0ed5ea0c6c8eaa2ca7a901bb5b6f3e55a8e307ac4ab76b42c3511b64d32155",
+        "binary_search__task_text/reference.py": "fad6df5212ecf3ade7b6b02797f0042888486880464a70c0e1577726978265e9",
+        "binary_search__task_text/tests/hidden/test_binary_search_hidden.py": "3dd3322cc1fd56089ada995ed5ca6159f5527aaebd4949203f826c85dd82b93b",
+        "binary_search__task_text/tests/visible/test_binary_search.py": "d7aca5f15d55f8ec79a212a64c5498b608c7dbb10681e9f92051d85249d14494"
+      }
+    },
+    "binary_search__tests": {
+      "id": "injectbench/binary_search/tests",
+      "split": "test",
+      "stratum": "tests",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "binary_search__tests.json": "43e6637765a6c11286509e2bed57f8f46d12854b6f2669a7338d0efee667e8fe",
+        "binary_search__tests/reference.py": "fad6df5212ecf3ade7b6b02797f0042888486880464a70c0e1577726978265e9",
+        "binary_search__tests/tests/hidden/test_binary_search_hidden.py": "3dd3322cc1fd56089ada995ed5ca6159f5527aaebd4949203f826c85dd82b93b",
+        "binary_search__tests/tests/visible/test_binary_search.py": "60e232c64437a696940a010279a56094d8ba58a8dd657b7fcc151d6932b2082a"
+      }
+    },
+    "merge_intervals__code": {
+      "id": "injectbench/merge_intervals/code",
+      "split": "test",
+      "stratum": "code",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "merge_intervals__code.json": "cb615586cd5505a6c6eea551b379b01d6e594a457218ac4400dc74b1c9c2093d",
+        "merge_intervals__code/reference.py": "0942f4c395a13e432dc2495359cb9e8da6742310566bc725318198a34a904cec",
+        "merge_intervals__code/tests/hidden/test_merge_intervals_hidden.py": "03456b4537eb1fc09c71d45bc896956c880c66d4ad780f86a6243223b5b3c3dd",
+        "merge_intervals__code/tests/visible/test_merge_intervals.py": "2da788111e3f3737f4b6855d72567956e751dc0943de7448f464b41fe025578b"
+      }
+    },
+    "merge_intervals__program_output": {
+      "id": "injectbench/merge_intervals/program_output",
+      "split": "test",
+      "stratum": "program_output",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "merge_intervals__program_output.json": "cf3519cb5971766148705e51babb6ad8adc9bebde184d7323ff256252259f77a",
+        "merge_intervals__program_output/reference.py": "0942f4c395a13e432dc2495359cb9e8da6742310566bc725318198a34a904cec",
+        "merge_intervals__program_output/tests/hidden/test_merge_intervals_hidden.py": "03456b4537eb1fc09c71d45bc896956c880c66d4ad780f86a6243223b5b3c3dd",
+        "merge_intervals__program_output/tests/visible/test_merge_intervals.py": "2da788111e3f3737f4b6855d72567956e751dc0943de7448f464b41fe025578b"
+      }
+    },
+    "merge_intervals__task_text": {
+      "id": "injectbench/merge_intervals/task_text",
+      "split": "test",
+      "stratum": "task_text",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "merge_intervals__task_text.json": "1a0d3f7b993927ea5c24bb2a1beb7c042104883f1320e4dc5be9171f8d6a755c",
+        "merge_intervals__task_text/reference.py": "0942f4c395a13e432dc2495359cb9e8da6742310566bc725318198a34a904cec",
+        "merge_intervals__task_text/tests/hidden/test_merge_intervals_hidden.py": "03456b4537eb1fc09c71d45bc896956c880c66d4ad780f86a6243223b5b3c3dd",
+        "merge_intervals__task_text/tests/visible/test_merge_intervals.py": "2da788111e3f3737f4b6855d72567956e751dc0943de7448f464b41fe025578b"
+      }
+    },
+    "merge_intervals__tests": {
+      "id": "injectbench/merge_intervals/tests",
+      "split": "test",
+      "stratum": "tests",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "merge_intervals__tests.json": "2edfaac5b29fcd42b1e6d034f22b6fb3ee0943ede779422f7588aad0cdb4d045",
+        "merge_intervals__tests/reference.py": "0942f4c395a13e432dc2495359cb9e8da6742310566bc725318198a34a904cec",
+        "merge_intervals__tests/tests/hidden/test_merge_intervals_hidden.py": "03456b4537eb1fc09c71d45bc896956c880c66d4ad780f86a6243223b5b3c3dd",
+        "merge_intervals__tests/tests/visible/test_merge_intervals.py": "b53f242deb4ee5ff21424b2b466939b4058e9faf5e2d39a342c4b556c21c12bb"
+      }
+    },
+    "roman_to_int__code": {
+      "id": "injectbench/roman_to_int/code",
+      "split": "test",
+      "stratum": "code",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "roman_to_int__code.json": "01bb72ad0b771d95f9050e6c50ac540d7e154d9632bcc448de06420fd64cff5f",
+        "roman_to_int__code/reference.py": "9e40064bc5df89946ece5ed8f5b6f26ec204e690709154644d56b869de4739e4",
+        "roman_to_int__code/tests/hidden/test_roman_to_int_hidden.py": "2938763b9e1914ba941b06a7a163d4060df7541a390c34f75799f9914f1cc670",
+        "roman_to_int__code/tests/visible/test_roman_to_int.py": "7894b0935393399176da4ee047c9007c23fa6695058ebba018c707f629cb86c9"
+      }
+    },
+    "roman_to_int__program_output": {
+      "id": "injectbench/roman_to_int/program_output",
+      "split": "test",
+      "stratum": "program_output",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "roman_to_int__program_output.json": "b0020dedcbb245aed13e10a57b15987d9ab42e5a63b3e7077c10e113c8c1ce0b",
+        "roman_to_int__program_output/reference.py": "9e40064bc5df89946ece5ed8f5b6f26ec204e690709154644d56b869de4739e4",
+        "roman_to_int__program_output/tests/hidden/test_roman_to_int_hidden.py": "2938763b9e1914ba941b06a7a163d4060df7541a390c34f75799f9914f1cc670",
+        "roman_to_int__program_output/tests/visible/test_roman_to_int.py": "7894b0935393399176da4ee047c9007c23fa6695058ebba018c707f629cb86c9"
+      }
+    },
+    "roman_to_int__task_text": {
+      "id": "injectbench/roman_to_int/task_text",
+      "split": "test",
+      "stratum": "task_text",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "roman_to_int__task_text.json": "d07389c0f2d8f9c58d2653d46106c1c9f1a333bf1b78deb7bc41750fd8049099",
+        "roman_to_int__task_text/reference.py": "9e40064bc5df89946ece5ed8f5b6f26ec204e690709154644d56b869de4739e4",
+        "roman_to_int__task_text/tests/hidden/test_roman_to_int_hidden.py": "2938763b9e1914ba941b06a7a163d4060df7541a390c34f75799f9914f1cc670",
+        "roman_to_int__task_text/tests/visible/test_roman_to_int.py": "7894b0935393399176da4ee047c9007c23fa6695058ebba018c707f629cb86c9"
+      }
+    },
+    "roman_to_int__tests": {
+      "id": "injectbench/roman_to_int/tests",
+      "split": "test",
+      "stratum": "tests",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 8
+      },
+      "labels": {},
+      "files": {
+        "roman_to_int__tests.json": "014335a2e1865d798599473e5e6c5e7f180cd65a85ac4fd161e02faa59c9712f",
+        "roman_to_int__tests/reference.py": "9e40064bc5df89946ece5ed8f5b6f26ec204e690709154644d56b869de4739e4",
+        "roman_to_int__tests/tests/hidden/test_roman_to_int_hidden.py": "2938763b9e1914ba941b06a7a163d4060df7541a390c34f75799f9914f1cc670",
+        "roman_to_int__tests/tests/visible/test_roman_to_int.py": "4a944862c5202d8ebaf2c33bed205ccbb9a2b74d8375dcfe82588fe08a27c6b1"
+      }
+    },
+    "second_largest__code": {
+      "id": "injectbench/second_largest/code",
+      "split": "test",
+      "stratum": "code",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 9
+      },
+      "labels": {},
+      "files": {
+        "second_largest__code.json": "cedfbda5006044cec03f31c59ecd88469f71a75606080f967f9abef4439e62a8",
+        "second_largest__code/reference.py": "a634fa5b2eb7a0db4655b483ec80bf36cac10ead0204447a49e6a7d16b3abdbc",
+        "second_largest__code/tests/hidden/test_second_largest_hidden.py": "a552cab34493fcc67e44063d529b56865e67f5bcd8f355ad5528267262d348d1",
+        "second_largest__code/tests/visible/test_second_largest.py": "f888e1f7041c9916973c044f51000b5618d6e93c5510816d32df275f7d9abfe8"
+      }
+    },
+    "second_largest__program_output": {
+      "id": "injectbench/second_largest/program_output",
+      "split": "test",
+      "stratum": "program_output",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 9
+      },
+      "labels": {},
+      "files": {
+        "second_largest__program_output.json": "aa44262619d48a9494514a867b9fe97b96d2e33b2075ae191b3763d595ff3bf3",
+        "second_largest__program_output/reference.py": "a634fa5b2eb7a0db4655b483ec80bf36cac10ead0204447a49e6a7d16b3abdbc",
+        "second_largest__program_output/tests/hidden/test_second_largest_hidden.py": "a552cab34493fcc67e44063d529b56865e67f5bcd8f355ad5528267262d348d1",
+        "second_largest__program_output/tests/visible/test_second_largest.py": "f888e1f7041c9916973c044f51000b5618d6e93c5510816d32df275f7d9abfe8"
+      }
+    },
+    "second_largest__task_text": {
+      "id": "injectbench/second_largest/task_text",
+      "split": "test",
+      "stratum": "task_text",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 9
+      },
+      "labels": {},
+      "files": {
+        "second_largest__task_text.json": "07a7eebbb092174af04b753dba5c334d12da03f315e85da140a8de4299ad6b4f",
+        "second_largest__task_text/reference.py": "a634fa5b2eb7a0db4655b483ec80bf36cac10ead0204447a49e6a7d16b3abdbc",
+        "second_largest__task_text/tests/hidden/test_second_largest_hidden.py": "a552cab34493fcc67e44063d529b56865e67f5bcd8f355ad5528267262d348d1",
+        "second_largest__task_text/tests/visible/test_second_largest.py": "f888e1f7041c9916973c044f51000b5618d6e93c5510816d32df275f7d9abfe8"
+      }
+    },
+    "second_largest__tests": {
+      "id": "injectbench/second_largest/tests",
+      "split": "test",
+      "stratum": "tests",
+      "expected_counts": {
+        "visible": 4,
+        "hidden": 9
+      },
+      "labels": {},
+      "files": {
+        "second_largest__tests.json": "20c3695caffab34ca1dc19490c31f174d6634bb39ca82d1f0cd934b056c7263d",
+        "second_largest__tests/reference.py": "a634fa5b2eb7a0db4655b483ec80bf36cac10ead0204447a49e6a7d16b3abdbc",
+        "second_largest__tests/tests/hidden/test_second_largest_hidden.py": "a552cab34493fcc67e44063d529b56865e67f5bcd8f355ad5528267262d348d1",
+        "second_largest__tests/tests/visible/test_second_largest.py": "7550292470783ba672e0141ffef1711d779e585125d3c9032c2f226daa20cd5c"
+      }
+    },
+    "top_k_words__code": {
+      "id": "injectbench/top_k_words/code",
+      "split": "test",
+      "stratum": "code",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "labels": {},
+      "files": {
+        "top_k_words__code.json": "ecc182a325c92d37b64ac42c28be692e1c20fcbfb03457469c4508b9e25d2ca0",
+        "top_k_words__code/reference.py": "85b194a287944c9542554ff00878a2926de4932c48939a8581b65975c5309723",
+        "top_k_words__code/tests/hidden/test_top_k_words_hidden.py": "d95b272afbc98069b8e3ef394d064f6c68203a9182285624dae957078e62f296",
+        "top_k_words__code/tests/visible/test_top_k_words.py": "6bb0829519fa6f33a22f48cb6d2ac7e0315913d435b77d8193070be4203402ce"
+      }
+    },
+    "top_k_words__program_output": {
+      "id": "injectbench/top_k_words/program_output",
+      "split": "test",
+      "stratum": "program_output",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "labels": {},
+      "files": {
+        "top_k_words__program_output.json": "e1d3d4a7e598b1d7b430ef3c82c67473c3b7688f9d4564988335de596bd73f2b",
+        "top_k_words__program_output/reference.py": "85b194a287944c9542554ff00878a2926de4932c48939a8581b65975c5309723",
+        "top_k_words__program_output/tests/hidden/test_top_k_words_hidden.py": "d95b272afbc98069b8e3ef394d064f6c68203a9182285624dae957078e62f296",
+        "top_k_words__program_output/tests/visible/test_top_k_words.py": "6bb0829519fa6f33a22f48cb6d2ac7e0315913d435b77d8193070be4203402ce"
+      }
+    },
+    "top_k_words__task_text": {
+      "id": "injectbench/top_k_words/task_text",
+      "split": "test",
+      "stratum": "task_text",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "labels": {},
+      "files": {
+        "top_k_words__task_text.json": "2d20e941aa9b80466c9bf8af16b444360fa124cd97146d6e210d548f3e8bbf97",
+        "top_k_words__task_text/reference.py": "85b194a287944c9542554ff00878a2926de4932c48939a8581b65975c5309723",
+        "top_k_words__task_text/tests/hidden/test_top_k_words_hidden.py": "d95b272afbc98069b8e3ef394d064f6c68203a9182285624dae957078e62f296",
+        "top_k_words__task_text/tests/visible/test_top_k_words.py": "6bb0829519fa6f33a22f48cb6d2ac7e0315913d435b77d8193070be4203402ce"
+      }
+    },
+    "top_k_words__tests": {
+      "id": "injectbench/top_k_words/tests",
+      "split": "test",
+      "stratum": "tests",
+      "expected_counts": {
+        "visible": 3,
+        "hidden": 7
+      },
+      "labels": {},
+      "files": {
+        "top_k_words__tests.json": "113260f3e474f5105ad2144f95b9466084f6c8a8bfd683bc14be22be366f46f9",
+        "top_k_words__tests/reference.py": "85b194a287944c9542554ff00878a2926de4932c48939a8581b65975c5309723",
+        "top_k_words__tests/tests/hidden/test_top_k_words_hidden.py": "d95b272afbc98069b8e3ef394d064f6c68203a9182285624dae957078e62f296",
+        "top_k_words__tests/tests/visible/test_top_k_words.py": "c268d4802341598596f0acf3e54348085ee4596f9e54d84b9038037c03ca69da"
+      }
+    }
+  },
+  "dropped": {}
+}

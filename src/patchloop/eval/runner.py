@@ -14,7 +14,7 @@ import subprocess
 import threading
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -23,6 +23,7 @@ from ..bench.frozen import Benchmark
 from ..config import AgentConfig
 from ..llm.base import LLMClient, QuotaExhausted
 from ..models import StopReason, Task
+from ..safety import canary
 from ..sandbox.docker_runner import SandboxUnavailable
 from ..sandbox.limits import Limits
 from ..sandbox.sandbox import DockerSandbox, Sandbox
@@ -55,6 +56,7 @@ class EvalSummary:
     infra_errors: int = 0
     stopped_early: str | None = None
     quota_exhausted: bool = False  # or Docker down: wait and resume, nothing was recorded
+    canary_hits: list[str] = field(default_factory=list)  # "path: secret name", must be empty
 
 
 def read_records(out: Path) -> list[dict]:
@@ -97,7 +99,8 @@ def check_settings(plan: EvalPlan, records: list[dict]) -> None:
     skipped although they were made differently."""
     current = {cfg.name: cfg.model_dump(mode="json") for cfg in plan.configs}
     for r in records:
-        before = r["provenance"]["config"]
+        # fields added after the run was made count as their defaults
+        before = AgentConfig.model_validate(r["provenance"]["config"]).model_dump(mode="json")
         if r["config"] in current and before != current[r["config"]]:
             changed = sorted(
                 k
@@ -120,6 +123,7 @@ def run_eval(
     plan.out.mkdir(parents=True, exist_ok=True)
     records = read_records(plan.out)
     check_settings(plan, records)
+    canary.plant(ROOT)  # harness-only; the containers get an explicit environment
     todo = pending(plan, records)
     summary = EvalSummary(skipped=_count_triples(plan) - len(todo))
     if not todo:
@@ -191,6 +195,9 @@ def run_eval(
         todo = pending(plan, read_records(plan.out))
         if not todo or stop.is_set():
             break
+    hits = canary.scan([plan.out, plan.work])
+    canary.write_report(plan.out, hits, [plan.out, plan.work])
+    summary.canary_hits = sorted({f"{h.path}: {h.secret}" for h in hits})
     return summary
 
 
