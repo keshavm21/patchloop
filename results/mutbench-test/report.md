@@ -12,9 +12,9 @@ Repair % is the mean over tasks of each task's solve rate across its repeats, wi
 |---|---|---|---|---|---|---|---|---|---|---|
 | `binary` | 150 × 1 | 88.0 [82.7, 92.7] | 11.3 | 1.05 | 814 | unknown | 2.6 s | 0.9 s | 0.0 s | 93.8% |
 | `errors` | 150 × 1 | 87.3 [82.0, 92.7] | 12.7 | 1.06 | 830 | unknown | 3.2 s | 0.9 s | 0.0 s | 93.8% |
-| `full` | 150 × 1 | 86.7 [81.3, 92.0] | 12.0 | 1.04 | 816 | unknown | 1.6 s | 0.9 s | 0.0 s | 93.8% |
+| `full` | 150 × 2 | 86.0 [80.7, 91.0] | 13.0 | 1.03 | 793 | unknown | 1.9 s | 0.8 s | 0.0 s | 95.0% |
 | `full_5` | 150 × 1 | 86.7 [81.3, 92.0] | 12.0 | 1.04 | 816 | unknown | 3.0 s | 0.9 s | 0.0 s | 100.0% |
-| `single_shot` | 150 × 1 | 83.3 [77.3, 89.3] | 11.3 | 1.00 | 700 | unknown | 4.0 s | 0.8 s | 1.1 s | 0.0% |
+| `single_shot` | 150 × 2 | 84.0 [78.3, 89.3] | 12.0 | 1.00 | 699 | unknown | 3.3 s | 0.8 s | 0.6 s | 0.0% |
 
 ## Comparisons
 
@@ -22,10 +22,10 @@ Paired over the tasks both configs finished: the difference in per-task solve ra
 
 | a | b | Tasks | b − a [95% CI] | Verdict |
 |---|---|---|---|---|
-| `single_shot` | `full` | 150 | +3.3 [+0.7, +6.7] | `full` better |
-| `binary` | `full` | 150 | -1.3 [-3.3, +0.0] | no clear difference |
-| `errors` | `full` | 150 | -0.7 [-2.0, +0.0] | no clear difference |
-| `single_shot` | `binary` | 150 | +4.7 [+1.3, +8.0] | `binary` better |
+| `single_shot` | `full` | 150 | +2.0 [+0.3, +4.0] | `full` better |
+| `binary` | `full` | 150 | -2.0 [-4.3, +0.0] | no clear difference |
+| `errors` | `full` | 150 | -1.3 [-3.0, +0.3] | no clear difference |
+| `single_shot` | `binary` | 150 | +4.0 [+1.3, +7.0] | `binary` better |
 
 ## Success@k
 
@@ -35,9 +35,9 @@ Share of runs whose hidden tests pass with the code from attempt k or earlier.
 |---|---|---|---|---|---|
 | `binary` | 83.3 | 88.0 | 88.0 | – | – |
 | `errors` | 82.7 | 86.7 | 87.3 | – | – |
-| `full` | 83.3 | 86.7 | 86.7 | – | – |
+| `full` | 83.3 | 86.0 | 86.0 | – | – |
 | `full_5` | 83.3 | 86.7 | 86.7 | 86.7 | 86.7 |
-| `single_shot` | 83.3 | – | – | – | – |
+| `single_shot` | 84.0 | – | – | – | – |
 
 ![success@k](success_at_k.png)
 
@@ -47,9 +47,9 @@ Share of runs whose hidden tests pass with the code from attempt k or earlier.
 |---|---|
 | `binary` | SOLVED 147, NO_PROGRESS 3 |
 | `errors` | SOLVED 149, NO_PROGRESS 1 |
-| `full` | SOLVED 146, NO_PROGRESS 4 |
+| `full` | SOLVED 295, NO_PROGRESS 5 |
 | `full_5` | SOLVED 146, NO_PROGRESS 4 |
-| `single_shot` | SOLVED 140, MAX_ATTEMPTS 10 |
+| `single_shot` | SOLVED 284, MAX_ATTEMPTS 16 |
 
 ## Regressions, cut-off replies and sandbox time
 
@@ -59,29 +59,29 @@ A cut-off reply hit the config's `max_output_tokens` (for a reasoning model, oft
 |---|---|---|---|---|
 | `binary` | 0.0 | 0.0 | 0.60 s | 1.71 s |
 | `errors` | 0.0 | 0.6 | 0.84 s | 1.52 s |
-| `full` | 18.2 | 0.0 | 0.40 s | 0.51 s |
+| `full` | 11.8 | 0.0 | 0.47 s | 0.86 s |
 | `full_5` | 18.2 | 0.0 | 0.86 s | 1.46 s |
-| `single_shot` | – (no second attempts) | 0.0 | 0.57 s | 1.18 s |
+| `single_shot` | – (no second attempts) | 0.0 | 0.51 s | 1.03 s |
 
 ## By mutation operator
 
 | Operator | Runs | `binary` | `errors` | `full` | `full_5` | `single_shot` |
 |---|---|---|---|---|---|---|
-| delete_statement | 14 | 85.7 | 85.7 | 78.6 | 78.6 | 78.6 |
-| drop_guard | 12 | 83.3 | 83.3 | 83.3 | 83.3 | 83.3 |
-| flip_comparison | 28 | 96.4 | 96.4 | 96.4 | 96.4 | 96.4 |
-| shift_bound | 28 | 85.7 | 85.7 | 85.7 | 85.7 | 85.7 |
-| swap_arithmetic | 28 | 92.9 | 92.9 | 92.9 | 92.9 | 78.6 |
-| swap_boolean | 13 | 76.9 | 69.2 | 69.2 | 69.2 | 61.5 |
-| wrong_variable | 27 | 85.2 | 85.2 | 85.2 | 85.2 | 85.2 |
+| delete_statement | 28 | 85.7 | 85.7 | 82.1 | 78.6 | 82.1 |
+| drop_guard | 24 | 83.3 | 83.3 | 79.2 | 83.3 | 79.2 |
+| flip_comparison | 56 | 96.4 | 96.4 | 96.4 | 96.4 | 96.4 |
+| shift_bound | 56 | 85.7 | 85.7 | 85.7 | 85.7 | 85.7 |
+| swap_arithmetic | 56 | 92.9 | 92.9 | 91.1 | 92.9 | 82.1 |
+| swap_boolean | 26 | 76.9 | 69.2 | 69.2 | 69.2 | 65.4 |
+| wrong_variable | 54 | 85.2 | 85.2 | 83.3 | 85.2 | 83.3 |
 
 ## By failure symptom
 
 | Symptom | Runs | `binary` | `errors` | `full` | `full_5` | `single_shot` |
 |---|---|---|---|---|---|---|
-| crash | 71 | 91.5 | 91.5 | 91.5 | 91.5 | 85.9 |
-| hang | 4 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
-| wrong output | 75 | 84.0 | 82.7 | 81.3 | 81.3 | 80.0 |
+| crash | 142 | 91.5 | 91.5 | 90.1 | 91.5 | 87.3 |
+| hang | 8 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+| wrong output | 150 | 84.0 | 82.7 | 81.3 | 81.3 | 80.0 |
 
 ## Infra errors
 
