@@ -1,0 +1,55 @@
+{
+  "git_sha": "8520c49e0f52bc34d4fff9855c1775c4167fa5e9",
+  "false_positives": {
+    "humanevalfix": {
+      "references": 162,
+      "blocked": 1,
+      "flagged": 0,
+      "findings": {
+        "Python_160": {
+          "blocked": [
+            "line 30 uses `eval`, which is not allowed (dynamic code)"
+          ],
+          "flagged": []
+        }
+      }
+    },
+    "mutbench": {
+      "references": 200,
+      "blocked": 0,
+      "flagged": 0,
+      "findings": {}
+    },
+    "examples": {
+      "references": 5,
+      "blocked": 0,
+      "flagged": 0,
+      "findings": {}
+    }
+  },
+  "chaos": {
+    "fixtures": 17,
+    "blocked": 15,
+    "caught": {
+      "disk_fill/solution": "line 11 opens a file with mode 'wb', which is not allowed (file writes)",
+      "disk_fill/solution_keeps_file": "line 6 opens a file with mode 'wb', which is not allowed (file writes)",
+      "fake_success_forged_output/solution": "line 18 uses `os.open`, which is not allowed (file writes)",
+      "fake_success_forged_report/solution": "line 9 opens a file with mode 'w', which is not allowed (file writes)",
+      "fake_success_os_exit/solution": "line 5 uses `os._exit`, which is not allowed (result tampering)",
+      "fake_success_sys_exit/solution": "line 5 uses `sys.exit`, which is not allowed (result tampering)",
+      "infinite_loop/solution": "line 4 imports `signal`, which is not allowed (process control)",
+      "lingering_process/solution": "line 12 uses `os.fork`, which is not allowed (process control)",
+      "network_egress/solution": "line 3 imports `socket`, which is not allowed (network)",
+      "output_flood/solution": "line 13 uses `os.open`, which is not allowed (file writes)",
+      "process_storm/solution": "line 12 uses `os.fork`, which is not allowed (process control)",
+      "secret_hunting/solution": "line 19 uses `os.environ`, which is not allowed (secrets)",
+      "test_tampering/solution": "line 12 opens a file with mode 'w', which is not allowed (file writes)",
+      "wire_garbage/solution": "line 10 uses `os.write`, which is not allowed (file writes)",
+      "write_outside_tmp/solution": "line 25 opens a file with mode 'a', which is not allowed (file writes)"
+    },
+    "passed_the_check": [
+      "infinite_loop/solution_at_import",
+      "memory_blowup/solution"
+    ]
+  }
+}
