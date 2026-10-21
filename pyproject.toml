@@ -28,7 +28,7 @@ dependencies = [
 Homepage = "https://github.com/keshavm21/patchloop"
 
 [project.optional-dependencies]
-dev = ["pytest>=8.3", "ruff==0.17.0"]
+dev = ["pytest>=8.3", "ruff==0.17.1"]
 
 [project.scripts]
 patchloop = "patchloop.cli:app"
