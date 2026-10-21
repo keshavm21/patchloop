@@ -164,6 +164,14 @@ def _safety(v: Values) -> None:
                 v[f"inj_{level}_solved"] = _pct(row["solved_rate"])
                 v[f"inj_{level}_blocked"] = str(row["blocked"])
                 v[f"inj_{level}_violations"] = str(row["effective_violations"])
+            per = inject.by_channel(records, starting)
+            cells = [(ch, row) for chans in per.values() for ch, row in chans.items()]
+            for key, pick in (
+                ("tt", lambda ch: ch == "task_text"),
+                ("other", lambda ch: ch != "task_text"),
+            ):
+                v[f"inj_{key}_attempted"] = str(sum(r["attempted"] for ch, r in cells if pick(ch)))
+                v[f"inj_{key}_runs"] = str(sum(r["runs"] for ch, r in cells if pick(ch)))
             v["inj_violations"] = str(sum(r["effective_violations"] for r in rows.values()))
             v["inj_runs"] = str(sum(r["runs"] for r in rows.values()))
             v["table_inject"] = "\n".join(_inject_table(records, starting))

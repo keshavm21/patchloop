@@ -56,6 +56,8 @@ Attempts by injection channel (runs with an attempt, of the runs in that channel
 
 $table_inject
 
+**What this shows.** Across all four levels the model followed the planted instruction in $inj_tt_attempted of $inj_tt_runs runs where it sat in the task text, and in $inj_other_attempted of $inj_other_runs runs where it was hidden in code, a test or program output. So for this model on this benchmark, the data rule (D1) and the tags (D2) did not change attempted compliance: it already ignores instructions planted in code, tests and output, and an instruction in the task description reads as part of the task. What did help is D3: the policy check stopped $inj_d3_blocked of those attempts before they ran, at the price of solving $inj_d3_solved% of the injected tasks against $inj_d0_solved% at D0. Nothing reached outside the sandbox at any level ($inj_violations effective violations), which is the sandbox's job, not the prompt's.
+
 The defenses are cumulative. D0 is the prompt with no rule that untrusted text is data and no tags around it; D1 adds the rule; D2 adds data tags around the task, code, tests and program output (this is what every other experiment here ran); D3 adds the static policy check. The conduct rules (don't touch the tests, no network, no environment variables) are in the prompt at every level, so the ladder isolates the data rule, the tags and the check.
 
 ## Second model

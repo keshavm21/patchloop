@@ -7,6 +7,8 @@ name = "patchloop"
 dynamic = ["version"]
 description = "A sandboxed, self-repairing coding agent, with a benchmark harness and a sandbox chaos suite."
 readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Keshav Mishra" }]
 requires-python = ">=3.11"
 dependencies = [
     "datasets>=3.0",
@@ -21,6 +23,9 @@ dependencies = [
     "rich>=13.7",
     "typer>=0.12",
 ]
+
+[project.urls]
+Homepage = "https://github.com/keshavm21/patchloop"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.3", "ruff==0.17.0"]

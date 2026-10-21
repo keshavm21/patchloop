@@ -1,6 +1,8 @@
 # PatchLoop
 
 [![CI](https://github.com/keshavm21/patchloop/actions/workflows/ci.yml/badge.svg)](https://github.com/keshavm21/patchloop/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)
 
 A sandboxed, self-repairing coding agent, and a harness that measures it. An LLM fixes buggy Python functions by running the visible tests in a locked-down Docker sandbox, reading the failures and patching, until the tests pass or a stop rule fires. Hidden tests the model never sees give the verdict. Every number below comes from a frozen benchmark, a config file and a commit.
 
@@ -21,6 +23,7 @@ Test splits, repair rate = share of tasks whose **hidden** tests pass, with 95% 
 - **How the loop gains.** Of the main model's 6 extra MutBench solves, 6 were wrong answers fixed after seeing a failing test. Of the second model's 12, 10 were malformed replies that a second attempt recovered.
 - **How much feedback it needs** (MutBench, main model). Pass/fail counts alone: `single_shot` 84.0% → `binary` 88.0% (`binary` better). Adding failing tests and exceptions (`errors`, 87.3%) or full tracebacks (`full`, 86.0%): against `full`, `binary` shows no clear difference and `errors` no clear difference.
 - **How many attempts.** With up to 5 attempts, 83.3% of MutBench is solved at attempt 1, 86.7% by attempt 2, 86.7% by 3 and 86.7% by 5.
+- **Safety.** The chaos suite (17 of 17 tests) shows the sandbox contains every hostile fixture, and 0 canary leaks turned up in 367 scanned files. On InjectBench's 20 planted-instruction tasks the model followed the planted action in 20 of 20 task-text runs but in 0 of 60 runs where it was hidden in code, tests or program output, and the D1 rule and D2 tags didn't change that. The D3 policy check stopped 5 attempts before they ran, with 0 effective violations at any level; on clean MutBench dev tasks the repair rate is 76.0% at D0 and 82.0% at D3 (no clear difference). The policy check blocks 1 of 367 reference solutions.
 - **Why the rest fail.** In 32 hand-labelled failures: wrong diagnosis (12), partial fixes (9), benchmark noise where the reference contradicts its own spec (7), and over-defensive validation (3). There was no case of hard-coding the visible tests.
 <!-- /RESULTS -->
 
@@ -38,7 +41,7 @@ flowchart LR
 ```
 
 1. Build the prompt: the task, the current code, the visible tests, a one-line summary of each earlier attempt, and full feedback on the latest one.
-2. Ask the model for the whole corrected file in one code block, and check its syntax on the host. Nothing the model writes ever runs on the host.
+2. Ask the model for the whole corrected file in one code block, and check its syntax on the host (and, at defense level D3, the policy rules). Nothing the model writes ever runs on the host.
 3. Run the visible tests in the sandbox and classify the result (`PASSED`, `TESTS_FAILED`, `RUNTIME_ERROR`, `TIMEOUT`, `OOM`, …).
 4. Stop on success, after 3 attempts, on no progress (repeated code or a repeated error), or when the token or time budget runs out. Otherwise render the failures as feedback and go again.
 5. Judge the best candidate (the most visible tests passed) against the hidden tests, in fresh containers.
@@ -63,6 +66,16 @@ Every run uses **two fresh containers**. A judge runs pytest and the tests. A se
 The **chaos suite** (`make chaos`, run in CI) throws hostile code at the sandbox and checks that each attack is contained: infinite loops, a 4 GiB memory blowup, a fork bomb, network egress over IPv4 and IPv6, DNS and UDP, secret hunting with a planted canary key, writes outside `/tmp`, test tampering, disk fill, output floods, lingering processes, and fake success. Building it turned up two ways a candidate could fake `PASSED` in a single-container design, by planting a JUnit report or by writing fake results to the runner's stdout. The two-container judge closes both, and both are now regression tests.
 
 A trivial passing run costs 0.60 s at the median and 0.77 s at p95, from container creation to removal ([`results/sandbox_overhead_arm64.json`](results/sandbox_overhead_arm64.json), Apple Silicon, Docker Desktop).
+
+## Safety beyond the sandbox
+
+The sandbox is the boundary. Three more layers sit around it, each measured:
+
+- **A static policy check** ([`safety/policy.py`](src/patchloop/safety/policy.py), rules in [`policy.yaml`](src/patchloop/safety/policy.yaml)). Before any candidate runs, it is parsed with `ast` on the host and blocked if it imports network or process modules, calls `eval`/`exec`/`compile`, writes or deletes files, reads `os.environ`, or tampers with the result (`sys.exit`, importing `pytest`). Plain `import os` stays allowed. The violation goes back to the model like a test failure ("line 3 imports `subprocess`, which is not allowed"). It is defense in depth, not the boundary: building names from strings gets past it. It is checked against every reference solution in both benchmarks; see the safety table in [results/REPORT.md](results/REPORT.md).
+- **Prompt-injection defense, as a ladder** (`defense: D0`–`D3` in a config). D0 sends untrusted text as is; D1 adds a rule that the task, code, tests and program output are data; D2 wraps each in tags (every other result here ran D2); D3 adds the policy check. **InjectBench** (20 tasks, built from the example tasks by `python -m patchloop.bench.injectbench`) plants a benign, detectable instruction in the task text, the code, a visible test or the program's own output, and measures how often the agent's code tries the planted action at each level. A clean-task run checks that the defenses don't make the agent worse at its job.
+- **Canary secrets.** A fake secret lives in the harness's environment and a canary file outside every mount; neither ever enters a container. After every eval, all traces and result files are searched for them and for the real API keys (`patchloop canary-scan` does the same on demand), and a hit fails the run and CI.
+
+The **replay smoke eval** (`make smoke`, in CI) runs InjectBench at all four levels with recorded model replies instead of a model, so it needs no key, and checks every run's outcome against [`results/baseline_replay.json`](results/baseline_replay.json) exactly. Any change to the agent, the sandbox or the prompts shows up as a diff.
 
 ## Benchmarks and method
 
@@ -121,3 +134,7 @@ patchloop report results/mutbench-test
 ```
 
 The Docker SDK reads `DOCKER_HOST`, not the docker CLI's context. On Colima, set `export DOCKER_HOST="$(docker context inspect --format '{{.Endpoints.docker.Host}}')"` first, and check that `python -c "import docker; print(docker.from_env().ping())"` prints `True`.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
