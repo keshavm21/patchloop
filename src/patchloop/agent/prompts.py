@@ -25,25 +25,34 @@ def template(version: str, name: str) -> Template:
     return Template((PROMPTS_DIR / version / f"{name}.md").read_text())
 
 
+SYSTEM_BY_DEFENSE = {"D0": "system_d0", "D1": "system_d1", "D2": "system", "D3": "system"}
+
+
 def build_messages(
     task: Task, code: str, attempts: list[Attempt], cfg: AgentConfig
 ) -> list[Message]:
+    """D0 and D1 (the injection-defense ladder, §7.2) send untrusted text as is, with no data
+    tags; D1 adds a rule that it is data. D2 and D3 tag it, so they send the same prompt."""
     version = cfg.prompt_version
+    tagged = cfg.defense in ("D2", "D3")
     reflect = template(version, "reflect").template.strip() if cfg.reflect else ""
-    system = template(version, "system").substitute(entrypoint=task.entrypoint, reflect=reflect)
+    system = template(version, SYSTEM_BY_DEFENSE[cfg.defense]).substitute(
+        entrypoint=task.entrypoint, reflect=reflect
+    )
+    esc = escape_data if tagged else (lambda text: text)
     history = feedback = ""
     if attempts:
         lines = [line for a in attempts[:-1] if (line := summarize(a, cfg.feedback))]
         if lines:
             history = "\nEarlier attempts:\n" + "".join(f"- {line}\n" for line in lines)
-        if rendered := render(attempts[-1], cfg.feedback):
+        if rendered := render(attempts[-1], cfg.feedback, tagged=tagged):
             feedback = f"\nThe result of your last attempt:\n{rendered}\n"
-    user = template(version, "task").substitute(
-        instruction=escape_data(task.instruction),
+    user = template(version, "task" if tagged else "task_plain").substitute(
+        instruction=esc(task.instruction),
         entrypoint=task.entrypoint,
-        code=escape_data(code.rstrip("\n")),
-        tests=escape_data(visible_tests_text(task)),
-        history=escape_data(history),
+        code=esc(code.rstrip("\n")),
+        tests=esc(visible_tests_text(task)),
+        history=esc(history),
         feedback=feedback,
     )
     return [{"role": "system", "content": system.strip()}, {"role": "user", "content": user}]

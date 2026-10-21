@@ -19,7 +19,7 @@ from ..models import (
     Task,
     host_result,
 )
-from ..safety.base import PolicyCheck, allow_all
+from ..safety.base import PolicyCheck, policy_for
 from ..sandbox.docker_runner import SandboxInfraError, SandboxUnavailable
 from ..sandbox.sandbox import Sandbox
 from ..tracing import Tracer
@@ -35,12 +35,13 @@ def solve(
     llm: LLMClient,
     sandbox: Sandbox,
     *,
-    policy: PolicyCheck = allow_all,
+    policy: PolicyCheck | None = None,
     tracer: Tracer | None = None,
     repeat: int = 0,
     clock: Callable[[], float] = time.monotonic,
 ) -> RunRecord:
     tracer = tracer or Tracer()
+    policy = policy or policy_for(cfg.defense)
     start = clock()
     rec = RunRecord(
         task_id=task.id,
@@ -56,6 +57,7 @@ def solve(
         model=llm.model,
         prompt_version=cfg.prompt_version,
         feedback=cfg.feedback,
+        defense=cfg.defense,
         max_attempts=cfg.max_attempts,
         repeat=repeat,
         expected=task.expected_counts.model_dump(),

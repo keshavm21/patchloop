@@ -43,6 +43,10 @@ class AgentConfig(_Strict):
     max_attempts: int = 3
     reflect: bool = False
     max_policy_blocks: int = 2
+    # Injection defense (§7.2): D0 none; D1 a rule that task, code, test and program-output
+    # text is data; D2 adds data tags around every untrusted input (v1's prompts); D3 adds
+    # the static policy check. D2 is what every earlier experiment ran.
+    defense: Literal["D0", "D1", "D2", "D3"] = "D2"
     budget: Budget = Budget()
     explain_failures: bool = True  # turn off in ablations so it doesn't skew token counts
     prompt_version: str = "v1"

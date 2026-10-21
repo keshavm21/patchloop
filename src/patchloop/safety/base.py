@@ -1,5 +1,5 @@
-"""The interface of the static policy check (§7.1). The checker itself arrives in Phase 5;
-until then the loop uses `allow_all`."""
+"""The interface of the static policy check (§7.1). The checker is policy.py; the loop uses it
+at defense level D3 and `allow_all` below that."""
 
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -16,3 +16,12 @@ PolicyCheck = Callable[[str], PolicyResult]
 
 def allow_all(code: str) -> PolicyResult:
     return PolicyResult()
+
+
+def policy_for(defense: str) -> PolicyCheck:
+    """The policy check a defense level uses: only D3 runs the static check."""
+    if defense != "D3":
+        return allow_all
+    from .policy import check
+
+    return check

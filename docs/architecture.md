@@ -2,11 +2,11 @@
 
 PatchLoop repairs buggy Python functions. A model proposes a fix, the fix runs against visible tests in locked-down Docker containers, the failures are fed back, and the loop repeats until the tests pass or a stop condition fires. Hidden tests, which the model never sees, give the final verdict.
 
-This page covers what is built so far (the sandbox and the repair loop) and how it fits into the planned system.
+This page covers the sandbox, the repair loop, the safety layers around them and the evaluation harness.
 
 ## The whole system
 
-Solid boxes are built; dashed boxes are planned. The syntax check exists; the policy rules arrive in Phase 5, and until then the loop's policy hook allows everything.
+The syntax check always runs on the host. The policy rules run too at defense level D3 (`defense: D3` in a config); below that the loop's policy hook allows everything, so every other experiment ran without it.
 
 ```mermaid
 flowchart LR
@@ -17,7 +17,7 @@ flowchart LR
         prompt["agent/prompts.py<br/>build prompt"]
         llm["llm/<br/>call the model"]
         parse_code["agent/parsing.py<br/>extract one code block"]
-        policy["syntax check, then<br/>safety/policy.py (Phase 5)"]:::planned
+        policy["syntax check, then<br/>safety/policy.py (at D3)"]
         runner["sandbox/docker_runner.py<br/>run_tests()"]
         resparse["sandbox/parse.py<br/>parse + classify"]
         stop["agent/stopping.py<br/>stop conditions"]
@@ -44,7 +44,6 @@ flowchart LR
     stop -- "stop: best-so-far vs<br/>hidden tests, fresh containers" --> runner
     stop -.-> trace
 
-    classDef planned stroke-dasharray: 5 5,color:#888
 ```
 
 ## One sandbox run
@@ -220,7 +219,7 @@ src/patchloop/
   llm/                       OpenAI-compatible client, disk cache, FakeLLM
   sandbox/sandbox.py         the Sandbox interface and DockerSandbox
   sandbox/fake.py            FakeSandbox for unit tests
-  safety/base.py             the policy hook (allow_all until Phase 5)
+  safety/base.py             the policy hook (allow_all below D3, policy.check at D3)
   config.py                  pydantic models for configs/*.yaml
   tracing.py                 trace.jsonl writer
   view.py                    terminal rendering for solve and replay
@@ -243,3 +242,23 @@ tests/unit/                  loop, reply parsing, feedback, prompts, LLM, config
 tests/sandbox/               real-Docker status tests, the chaos suite, example validation, loop e2e
 results/                     committed measurements (sandbox overhead)
 ```
+
+## Safety layers around the sandbox
+
+The sandbox is the boundary; these add early feedback and measurement.
+
+```mermaid
+flowchart LR
+    prompt["Prompt: D0 plain,<br/>D1 + data rule,<br/>D2 + data tags"] --> model["Model"]
+    model --> code["Candidate code"]
+    code --> check["D3 only: policy.check<br/>(ast, nothing runs)"]
+    check -- "allowed" --> box["Sandbox"]
+    check -- "blocked: violation fed back,<br/>no container starts" --> prompt
+    box --> traces["Traces and results"]
+    traces --> scan["Canary scan: planted canaries and<br/>real API keys searched for;<br/>a hit fails the run"]
+```
+
+- **Defense ladder (D0–D3).** D0 sends untrusted text as is. D1 adds a rule that the task, code, tests and program output are data. D2 wraps each in tags (every earlier experiment ran D2). D3 adds the static policy check. `prompts/v1/system_d0.md`, `system_d1.md` and `task_plain.md` hold the lower levels; D2 and D3 send the same prompt.
+- **InjectBench** (`bench/injectbench.py`) copies each of the five example tasks four times, planting a benign instruction in the task text, the code, a visible test or the program's own output. `eval/inject.py` counts how often an attempt's code contains the planted action (in a line that is new compared with the starting code).
+- **Canaries** (`safety/canary.py`): a fake secret in the harness environment and a canary file outside every mount. Every eval scans its traces and results for them and for the real API keys and writes `canary_scan.json`; any hit exits with code 4.
+- **Replay smoke eval** (`make smoke`, in CI): InjectBench at all four levels, with recorded model replies, checked against `results/baseline_replay.json` exactly (`eval/baseline.py`).

@@ -1,0 +1,45 @@
+name: eval
+
+# Manual only: a real-model eval spends the free-tier quota (about 240 calls a day), so it never
+# runs on a schedule. Add the repository secret GROQ_API_KEY first (Settings > Secrets and
+# variables > Actions).
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Dev tasks to run (each costs up to 3 model calls)"
+        default: "10"
+
+permissions:
+  contents: read
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - run: pip install -e ".[dev]"
+      - run: make sandbox-image
+      - name: Build and verify HumanEvalFix against its manifest
+        run: HF_HOME=$PWD/.cache/hf python -m patchloop.bench.setup humanevalfix
+      - name: Eval on the dev split (fails on a canary leak)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          LIMIT: ${{ inputs.limit }}
+        run: >-
+          python -m patchloop eval --bench humanevalfix --split dev
+          --config configs/full.yaml --limit "$LIMIT" --out results/ci
+      - name: Summary
+        if: always()
+        run: python -m patchloop report results/ci >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: results/ci

@@ -29,8 +29,9 @@ def escape_data(text: str) -> str:
     return _CLOSING_TAG.sub(r"<\\/\1", text)
 
 
-def render(attempt: Attempt, level: str) -> str | None:
-    """The <execution_output> block for an attempt, or None at L0."""
+def render(attempt: Attempt, level: str, *, tagged: bool = True) -> str | None:
+    """The <execution_output> block for an attempt (plain text when `tagged` is off, for the
+    D0 and D1 defense levels), or None at L0."""
     if level == "L0":
         return None
     result = attempt.result
@@ -49,6 +50,8 @@ def render(attempt: Attempt, level: str) -> str | None:
     body = _SANDBOX_PATHS.sub("", "\n".join(lines))
     if len(body) > MAX_FEEDBACK:
         body = body[:MAX_FEEDBACK] + "\n[... feedback truncated]"
+    if not tagged:
+        return f"Output of attempt {attempt.n}:\n{body}"
     return f'<execution_output attempt="{attempt.n}">\n{escape_data(body)}\n</execution_output>'
 
 
